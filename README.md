@@ -21,7 +21,7 @@ it will download all blog url into `result.json` (**it will take long time**)
 1. `MEMBER_NAME` : For example,if you only want to download all of Asuka's blog
 
 		http://blog.nogizaka46.com/asuka.saito/
-you should set `MEMBER_NAME=asuka.saito'`
+you should set `MEMBER_NAME='asuka.saito'`
 
 
 # Sample Result #
