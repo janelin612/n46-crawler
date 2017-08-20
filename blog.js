@@ -54,7 +54,7 @@ var archieveCrawler=new Crawler({
                 }
               }
             );
-            pageCountCrawler.queue(archieveList[0]);
+            pageCountCrawler.queue(archieveList);
         }
         done();
     }
