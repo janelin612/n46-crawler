@@ -13,7 +13,7 @@ n46-crawler
 
 [https://www.npmjs.com/package/minimist](https://www.npmjs.com/package/minimist)
 
-	# npm install minimist
+	$ npm install minimist
 
 ## 2.usage ##
 
