@@ -21,6 +21,7 @@ module.exports ={
       }else{
         var filename=IMAGE_SAVE_DIR+"/"+res.request.uri.href.replace(IMAGE_HOST,'').replace(/\//g,'_');
         fs.createWriteStream(filename).write(res.body);
+        console.log(filename);
       }
       done();
     }

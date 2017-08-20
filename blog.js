@@ -12,6 +12,30 @@ const BLOG_URL='http://blog.nogizaka46.com/';
  */
 var MEMBER_NAME='';
 
+/**
+ * 爬蟲的最高連線數
+ * >1的話，結果會無法照時間排序，但會加快執行速度
+ */
+var connCount=1;
+
+/**
+ * 圖片下載模式
+ * 若此變數改為true
+ * 則爬蟲會改為下載所有部落格照片
+ * 而非原始的json設計
+ */
+var imageMode=false;
+
+//自command line帶入參數
+var argv = require('minimist')(process.argv.slice(2));
+if(argv.a){
+  MEMBER_NAME=argv.a;
+}
+if(argv.speed){
+  connCount=10;
+}
+imageMode=(argv.image!=null);
+
 
 /**
  * 從畫面右側的下拉選單抽取全部的年月列表
@@ -30,7 +54,7 @@ var archieveCrawler=new Crawler({
                 }
               }
             );
-            pageCountCrawler.queue(archieveList);
+            pageCountCrawler.queue(archieveList[0]);
         }
         done();
     }
@@ -42,7 +66,7 @@ var archieveCrawler=new Crawler({
  * 反之表示只有一頁，直接開始爬取
  */
 var pageCountCrawler = new Crawler({
-    maxConnections : 1, //>1的話，結果會不一定照時間排序，但會加快執行速度
+    maxConnections : connCount,
     callback : function (error, res, done) {
         if(error){
             console.log(error);
@@ -74,37 +98,38 @@ var result=[];
  * 並將結果輸出至json
  */
 var blogCrawler= new Crawler({
-    maxConnections : 1, //>1的話，結果會不一定照時間排序，但會加快執行速度
+    maxConnections : connCount,
     callback : function (error, res, done) {
         if(error){
             console.log(error);
         }else{
             var $ = res.$;
 
-            $("#sheet h1.clearfix").each(function(index,value){
-              var item={
-                datetime:$(value).nextAll('.entrybottom').text().split('｜')[0].trim(),
-                author:$(value).find('.heading .author').text(),
-                // author_path:$(value).find('.heading a').attr('href').replace(BLOG_URL,'').split('/')[0].trim(),
-                title:$(value).find('.heading a').text(),
-                url:$(value).find('.heading a').attr('href'),
-              };
-              result.push(item);
-            });
-            console.log(result.length+' results');
+            if(imageMode){
+              $("#sheet .entrybody img").each(function(index,value){
+                Image.downloader.queue($(value).attr("src"));
+              });
+            }else{
+              $("#sheet h1.clearfix").each(function(index,value){
+                var item={
+                  datetime:$(value).nextAll('.entrybottom').text().split('｜')[0].trim(),
+                  author:$(value).find('.heading .author').text(),
+                  // author_path:$(value).find('.heading a').attr('href').replace(BLOG_URL,'').split('/')[0].trim(),
+                  title:$(value).find('.heading a').text(),
+                  url:$(value).find('.heading a').attr('href'),
+                };
+                result.push(item);
+              });
+              console.log(result.length+' results');
 
-            //輸出檔案(有成員名稱就用成員名稱命名)
-            var fileName=MEMBER_NAME?MEMBER_NAME.replace('.','_')+".json":'result.json'
-            fs.writeFile(fileName, JSON.stringify(result), 'utf8');
+              //輸出檔案(有成員名稱就用成員名稱命名)
+              var fileName=MEMBER_NAME?MEMBER_NAME.replace('.','_')+".json":'result.json'
+              fs.writeFile(fileName, JSON.stringify(result), 'utf8');
+            }
         }
         done();
     }
 });
 
-//於參數帶入作者欄位
-var argv = require('minimist')(process.argv.slice(2));
-if(argv.a){
-  MEMBER_NAME=argv.a;
-}
 //執行!
 archieveCrawler.queue(BLOG_URL+MEMBER_NAME);

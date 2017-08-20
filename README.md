@@ -7,25 +7,34 @@ n46-crawler
 # Get started #
 ## 1.install dependencies ##
 
-[https://github.com/bda-research/node-crawler](https://github.com/bda-research/node-crawler "https://github.com/bda-research/node-crawler")
+[node-crawler](https://github.com/bda-research/node-crawler "https://github.com/bda-research/node-crawler")
 
 	$ npm install crawler
 
-[https://www.npmjs.com/package/minimist](https://www.npmjs.com/package/minimist)
+[minimist](https://www.npmjs.com/package/minimist)
 
-	# npm install minimist
+	$ npm install minimist
 
 ## 2.usage ##
 
-	$ node main.js
-it will download all blog url into `result.json` (**it will take long time**)
+	$ node blog.js
+it will download all blog url into `./result.json`  (**Will take long time!!**)
 
 # Argument #
 
 1. `-a MEMBER_NAME` : For example,if you only want to download all of Asuka's blog
 
-		http://blog.nogizaka46.com/asuka.saito/
-you can use this: `$ node main.js -a 'asuka.saito'`
+
+	> http://blog.nogizaka46.com/asuka.saito/
+ 
+	you can use this:
+ 
+		$ node blog.js -a 'asuka.saito'
+
+2. `--speed` : speed mode. It will use more connection for crawler,but this will cause the data to not be sorted by datetime correctly.
+3.  `--image` : ImageDownloader Mode. When you add this argument,the crawler will download all picture in blog and the json output will be disabled.
+	- **recommend** using it with `--speed` argument
+	- all picture will save at `./img`
 
 
 # Sample Result #
