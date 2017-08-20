@@ -29,13 +29,21 @@ it will download all blog url into `./result.json`  (**Will take long time!!**)
 	you can use this:
 
 		$ node blog.js -a 'asuka.saito'
-		
+
 2. `--speed` : speed mode. It will use more connection for crawler,but this will cause the data to not be sorted by datetime correctly.
 3.  `--image` : ImageDownloader Mode. When you add this argument,the crawler will download all picture in blog and the json output will be disabled.
 	- **recommend** using it with `--speed` argument
 	- all picture will save at `./img`
+4. `--list` : list all member name like below
 
-
+		秋元 真夏       manatsu.akimoto
+		生田 絵梨花     erika.ikuta
+		生駒 里奈       rina.ikoma
+		伊藤 かりん     karin.itou
+		伊藤 純奈       junna.itou
+		伊藤 万理華     marika.ito
+		...etc
+		
 # Sample Result #
 The Json File will look like this:
 
