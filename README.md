@@ -1,4 +1,4 @@
-n46-crawler 
+n46-crawler
 ===========
 
 將官方部落格的所有文章網址整理成`json`格式的檔案  
@@ -11,6 +11,10 @@ n46-crawler
 
 	$ npm install crawler
 
+[https://www.npmjs.com/package/minimist](https://www.npmjs.com/package/minimist)
+
+	# npm install minimist
+
 ## 2.usage ##
 
 	$ node main.js
@@ -18,15 +22,15 @@ it will download all blog url into `result.json` (**it will take long time**)
 
 # Argument #
 
-1. `MEMBER_NAME` : For example,if you only want to download all of Asuka's blog
+1. `-a MEMBER_NAME` : For example,if you only want to download all of Asuka's blog
 
 		http://blog.nogizaka46.com/asuka.saito/
-you should set `MEMBER_NAME='asuka.saito'`
+you can use this: `$ node main.js -a 'asuka.saito'`
 
 
 # Sample Result #
 The Json File will look like this:
-	
+
 	[{
 		"datetime": "2017/08/19 20:42",
 		"author": "３期生",

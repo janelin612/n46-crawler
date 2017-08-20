@@ -30,7 +30,7 @@ var archieveCrawler=new Crawler({
                 }
               }
             );
-            pageCountCrawler.queue(archieveList);
+            pageCountCrawler.queue(archieveList[0]);
         }
         done();
     }
@@ -101,5 +101,10 @@ var blogCrawler= new Crawler({
     }
 });
 
+//於參數帶入作者欄位
+var argv = require('minimist')(process.argv.slice(2));
+if(argv.a){
+  MEMBER_NAME=argv.a;
+}
 //執行!
 archieveCrawler.queue(BLOG_URL+MEMBER_NAME);
