@@ -36,6 +36,31 @@ if(argv.speed){
 }
 imageMode=(argv.image!=null);
 
+/**
+ * 取回成員列表
+ */
+var authorCrawler=new Crawler({
+  maxConnections:1,
+  callback:function(error,res,done){
+    if(error){
+      console.log(error);
+    }else{
+      var $=res.$;
+      $("#sidemember a").each(function(index,value){
+          let path=$(value).attr("href").replace("./",'');
+          let name='';
+          if($(value).find("img").length>0){
+            name=$(value).find(".kanji").text();
+          }else {
+            name=$(value).text();
+          }
+          console.log(name+'\t'+path);
+      });
+    }
+    done();
+  }
+});
+
 
 /**
  * 從畫面右側的下拉選單抽取全部的年月列表
@@ -132,4 +157,8 @@ var blogCrawler= new Crawler({
 });
 
 //執行!
-archieveCrawler.queue(BLOG_URL+MEMBER_NAME);
+if(argv.list){
+  authorCrawler.queue(BLOG_URL);
+}else{
+  archieveCrawler.queue(BLOG_URL+MEMBER_NAME);
+}
