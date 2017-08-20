@@ -27,6 +27,8 @@ it will download all blog url into `result.json` (**it will take long time**)
 		http://blog.nogizaka46.com/asuka.saito/
 you can use this: `$ node main.js -a 'asuka.saito'`
 
+2. `-S` : speed mode. It will use more connection for crawler,but this will cause the data to not be sorted by datetime correctly.
+
 
 # Sample Result #
 The Json File will look like this:

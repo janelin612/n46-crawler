@@ -12,6 +12,23 @@ const BLOG_URL='http://blog.nogizaka46.com/';
  */
 var MEMBER_NAME='';
 
+/**
+ * 爬蟲的最高連線數
+ * >1的話，結果會無法照時間排序，但會加快執行速度
+ */
+var connCount=1;
+
+
+
+//自command line帶入參數
+var argv = require('minimist')(process.argv.slice(2));
+if(argv.a){
+  MEMBER_NAME=argv.a;
+}
+if(argv.S){
+  connCount=10;
+}
+
 
 /**
  * 從畫面右側的下拉選單抽取全部的年月列表
@@ -42,7 +59,7 @@ var archieveCrawler=new Crawler({
  * 反之表示只有一頁，直接開始爬取
  */
 var pageCountCrawler = new Crawler({
-    maxConnections : 1, //>1的話，結果會不一定照時間排序，但會加快執行速度
+    maxConnections : connCount,
     callback : function (error, res, done) {
         if(error){
             console.log(error);
@@ -74,7 +91,7 @@ var result=[];
  * 並將結果輸出至json
  */
 var blogCrawler= new Crawler({
-    maxConnections : 1, //>1的話，結果會不一定照時間排序，但會加快執行速度
+    maxConnections : connCount,
     callback : function (error, res, done) {
         if(error){
             console.log(error);
@@ -101,10 +118,6 @@ var blogCrawler= new Crawler({
     }
 });
 
-//於參數帶入作者欄位
-var argv = require('minimist')(process.argv.slice(2));
-if(argv.a){
-  MEMBER_NAME=argv.a;
-}
+
 //執行!
 archieveCrawler.queue(BLOG_URL+MEMBER_NAME);
