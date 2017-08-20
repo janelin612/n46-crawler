@@ -1,16 +1,16 @@
-let fs = require('fs');
-let Crawler = require("crawler");
-let Image=require('./image')
+const fs = require('fs');
+const Crawler = require("crawler");
+const Image=require('./image')
 
 /**
  * 主網站網址
  */
-let BLOG_URL='http://blog.nogizaka46.com/';
+const BLOG_URL='http://blog.nogizaka46.com/';
 /**
  * 成員名稱
  * 留白的話表示抓全部人的
  */
-let MEMBER_NAME='';
+var MEMBER_NAME='';
 
 
 /**
@@ -53,7 +53,7 @@ var pageCountCrawler = new Crawler({
             if($("#sheet .paginate").length>0){
               var pageInArchieveList=[];
               var size=$("#sheet .paginate").first().children("a").length;
-              for(var i=1;i<=size;i++){
+              for(let i=1;i<=size;i++){
                 pageInArchieveList.push(URL+"&p="+i);
               }
               blogCrawler.queue(pageInArchieveList)

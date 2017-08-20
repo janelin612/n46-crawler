@@ -1,14 +1,14 @@
-let fs = require('fs');
-let Crawler = require("crawler");
+const fs = require('fs');
+const Crawler = require("crawler");
 
 /**
  * 照片主機網址
  */
-let IMAGE_HOST='http://img.nogizaka46.com/blog/';
+const IMAGE_HOST='http://img.nogizaka46.com/blog/';
 /**
  * 圖片儲存路徑
  */
-let IMAGE_SAVE_DIR="./img"
+var IMAGE_SAVE_DIR="./img"
 
 module.exports ={
   downloader:new Crawler({
