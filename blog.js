@@ -18,16 +18,23 @@ var MEMBER_NAME='';
  */
 var connCount=1;
 
-
+/**
+ * 圖片下載模式
+ * 若此變數改為true
+ * 則爬蟲會改為下載所有部落格照片
+ * 而非原始的json設計
+ */
+var imageMode=false;
 
 //自command line帶入參數
 var argv = require('minimist')(process.argv.slice(2));
 if(argv.a){
   MEMBER_NAME=argv.a;
 }
-if(argv.S){
+if(argv.speed){
   connCount=10;
 }
+imageMode=(argv.image!=null);
 
 
 /**
@@ -47,7 +54,7 @@ var archieveCrawler=new Crawler({
                 }
               }
             );
-            pageCountCrawler.queue(archieveList);
+            pageCountCrawler.queue(archieveList[0]);
         }
         done();
     }
@@ -98,26 +105,31 @@ var blogCrawler= new Crawler({
         }else{
             var $ = res.$;
 
-            $("#sheet h1.clearfix").each(function(index,value){
-              var item={
-                datetime:$(value).nextAll('.entrybottom').text().split('｜')[0].trim(),
-                author:$(value).find('.heading .author').text(),
-                // author_path:$(value).find('.heading a').attr('href').replace(BLOG_URL,'').split('/')[0].trim(),
-                title:$(value).find('.heading a').text(),
-                url:$(value).find('.heading a').attr('href'),
-              };
-              result.push(item);
-            });
-            console.log(result.length+' results');
+            if(imageMode){
+              $("#sheet .entrybody img").each(function(index,value){
+                Image.downloader.queue($(value).attr("src"));
+              });
+            }else{
+              $("#sheet h1.clearfix").each(function(index,value){
+                var item={
+                  datetime:$(value).nextAll('.entrybottom').text().split('｜')[0].trim(),
+                  author:$(value).find('.heading .author').text(),
+                  // author_path:$(value).find('.heading a').attr('href').replace(BLOG_URL,'').split('/')[0].trim(),
+                  title:$(value).find('.heading a').text(),
+                  url:$(value).find('.heading a').attr('href'),
+                };
+                result.push(item);
+              });
+              console.log(result.length+' results');
 
-            //輸出檔案(有成員名稱就用成員名稱命名)
-            var fileName=MEMBER_NAME?MEMBER_NAME.replace('.','_')+".json":'result.json'
-            fs.writeFile(fileName, JSON.stringify(result), 'utf8');
+              //輸出檔案(有成員名稱就用成員名稱命名)
+              var fileName=MEMBER_NAME?MEMBER_NAME.replace('.','_')+".json":'result.json'
+              fs.writeFile(fileName, JSON.stringify(result), 'utf8');
+            }
         }
         done();
     }
 });
-
 
 //執行!
 archieveCrawler.queue(BLOG_URL+MEMBER_NAME);
