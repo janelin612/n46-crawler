@@ -2,10 +2,6 @@ const fs = require('fs');
 const Crawler = require("crawler");
 
 /**
- * 照片主機網址
- */
-const IMAGE_HOST='http://img.nogizaka46.com/blog/';
-/**
  * 圖片儲存路徑
  */
 var IMAGE_SAVE_DIR="./img"
@@ -19,9 +15,20 @@ module.exports ={
       if(error){
         console.log(error);
       }else{
-        var filename=IMAGE_SAVE_DIR+"/"+res.request.uri.href.replace(IMAGE_HOST,'').replace(/\//g,'_');
-        fs.createWriteStream(filename).write(res.body);
-        console.log(filename);
+        var urlWithoutDomain=res.request.uri.href.replace(/^http\S\/\/\S+?\//,'');
+        var splitArray=urlWithoutDomain.split("/");
+
+        var d=IMAGE_SAVE_DIR;
+        for(i=0;i<splitArray.length;i++){
+          if (!fs.existsSync(d)) {
+            fs.mkdirSync(d);
+          }
+          d+="/"+splitArray[i];
+          // d+="-"+splitArray[i];
+        }
+        console.log(d);
+        fs.createWriteStream(d).write(res.body);
+        
       }
       done();
     }
