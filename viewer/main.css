@@ -8,7 +8,7 @@ body{
 }
 .menu{
     position: fixed;
-    max-width: 300px;
+    max-width: 20%;
     height: 560px;
     overflow-y:scroll;
 }
@@ -21,13 +21,19 @@ body{
     font-size: 15px;
     padding: 3px 0;
 }
-.content{
+.main{
     margin: 0 auto;
     position: relative;
-    max-width: 600px;
-    padding: 8px 48px;
+    max-width: 50%;
+    padding: 8px;
 }
 h1 a{
     color:#7e1083;
     text-decoration:none;
+}
+.content{
+    font-size: 18px;
+}
+.content img{
+    max-width: 95%;
 }
