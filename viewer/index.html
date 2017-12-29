@@ -16,7 +16,7 @@
             <ul >
                 <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
                     <div>{{item.title}}</div>
-                    <div v-if="index==selected" class="small-datetime">{{item.datetime}}</div>
+                    <div class="small-datetime">{{item.datetime}}</div>
                 </li>
             </ul>
         </div>
