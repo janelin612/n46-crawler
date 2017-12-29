@@ -16,9 +16,11 @@ body{
     cursor: pointer;
     text-overflow : ellipsis;
 }
+.menu li.selected{
+    color:#7e1083;
+}
 .menu li:hover{
     color:#7e1083;
-    font-size: 15px;
     padding: 3px 0;
 }
 .main{

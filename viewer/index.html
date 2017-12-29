@@ -13,10 +13,10 @@
 <body>
     <div id="app">
         <ul class="menu">
-            <li v-for="(item,index) in list" v-on:click="onListSelected(index)" v-html="item.title"></li>
+            <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">{{item.title}}</li>
         </ul>
         <div class="main">
-            <h1><a :href="list[selected].url" v-html="list[selected].title" target="_blank"></a></h1>
+            <h1><a :href="list[selected].url" target="_blank">{{list[selected].title}}</a></h1>
             <h3>{{list[selected].datetime}} - {{list[selected].author}} </h3>
             <hr/>
             <span class="content" v-html="list[selected].content"></span>
@@ -34,10 +34,16 @@ var app=new Vue({
         onListSelected:function(index){
             window.scrollTo(0,0);
             this.selected=index;
+            var obj = { Url: window.location.pathname+"?index="+index };
+            history.pushState(obj, document.title, obj.Url);
         }
     },
     created:function(){
         this.$http.get("./result.json").then(res=>{this.list=res.body});
+        var index = new URL(window.location).searchParams.get("index");
+        if(index!=null && index!=''){
+            this.selected=index;
+        }
     }
 });
 </script>
