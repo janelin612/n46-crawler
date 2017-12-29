@@ -15,14 +15,14 @@
         <div class="menu">
             <ul >
                 <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
-                    <div>{{item.title}}</div>
+                    <div v-html="item.title"></div>
                     <div class="small-datetime">{{item.datetime}}</div>
                 </li>
             </ul>
         </div>
         
         <div class="main">
-            <h1><a :href="list[selected].url" target="_blank">{{list[selected].title}}</a></h1>
+            <h1><a :href="list[selected].url" target="_blank" v-html="list[selected].title"></a></h1>
             <h3>{{list[selected].datetime}} - {{list[selected].author}} </h3>
             <hr/>
             <span class="content" v-html="list[selected].content"></span>
