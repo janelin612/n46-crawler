@@ -12,9 +12,12 @@
 </head>
 <body>
     <div id="app">
-        <ul class="menu">
-            <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">{{item.title}}</li>
-        </ul>
+        <div class="menu">
+            <ul >
+                <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''"><div>{{item.title}}</div></li>
+            </ul>
+        </div>
+        
         <div class="main">
             <h1><a :href="list[selected].url" target="_blank">{{list[selected].title}}</a></h1>
             <h3>{{list[selected].datetime}} - {{list[selected].author}} </h3>
