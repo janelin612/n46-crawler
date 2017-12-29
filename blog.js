@@ -138,7 +138,7 @@ var blogCrawler= new Crawler({
             }else{
               $("#sheet h1.clearfix").each(function(index,value){
                 $(value).nextAll('div.entrybody').first().find("img").each(function(index,value){
-                  var src=".img/"+$(value).attr("src").replace(/^http\S\/\/\S+?\//,'');
+                  var src="img/"+$(value).attr("src").replace(/^http\S\/\/\S+?\//,'');
                   $(value).attr("src",src);
                 });
 
@@ -154,8 +154,7 @@ var blogCrawler= new Crawler({
               });
               console.log(result.length+' results');
 
-              //輸出檔案(有成員名稱就用成員名稱命名)
-              var fileName=MEMBER_NAME?MEMBER_NAME.replace('.','_')+".json":'result.json'
+              var fileName='./viewer/result.json'
               fs.writeFile(fileName, JSON.stringify(result), 'utf8');
             }
         }

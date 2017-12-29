@@ -1,0 +1,33 @@
+body{
+    font-family:sans-serif;
+    font-size: 15px;
+    color: #34495e;
+}
+#app{
+    position: static;
+}
+.menu{
+    position: fixed;
+    max-width: 300px;
+    height: 560px;
+    overflow-y:scroll;
+}
+.menu li{
+    cursor: pointer;
+    text-overflow : ellipsis;
+}
+.menu li:hover{
+    color:#7e1083;
+    font-size: 15px;
+    padding: 3px 0;
+}
+.content{
+    margin: 0 auto;
+    position: relative;
+    max-width: 600px;
+    padding: 8px 48px;
+}
+h1 a{
+    color:#7e1083;
+    text-decoration:none;
+}

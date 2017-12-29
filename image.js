@@ -4,7 +4,7 @@ const Crawler = require("crawler");
 /**
  * 圖片儲存路徑
  */
-var IMAGE_SAVE_DIR="./img"
+var IMAGE_SAVE_DIR="./viewer/img"
 
 module.exports ={
   downloader:new Crawler({
