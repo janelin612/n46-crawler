@@ -5,19 +5,20 @@ body{
     font-size: 15px;
     color: #34495e;
 }
-#app{
-    position: static;
-}
+
 .menu{
     position: fixed;
-    max-width: 20%;
+    max-width: 25%;
     height: 100%;
     overflow-y:scroll;
     background-color: #ECEFF1;
 }
 .menu ul{
-    padding: 24px 24px;
+    padding: 24px 12px 24px 24px;
     margin: 0;
+}
+.menu li {
+    padding: 3px;
 }
 .menu li div{
     width: 99%;
@@ -28,15 +29,21 @@ body{
 }
 .menu li.selected{
     color:#7e1083;
+    padding: 6px 3px;
+    font-size:17px;
 }
 .menu li:hover{
     color:#7e1083;
-    padding: 3px 0;
+    padding: 6px 3px;
+}
+.small-datetime{
+    padding-left: 2px;
+    font-size: 12px;
 }
 .main{
     margin: 0 auto;
     position: relative;
-    max-width: 50%;
+    max-width: 46%;
     padding: 8px;
 }
 h1 a{
