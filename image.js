@@ -27,8 +27,9 @@ module.exports ={
           // d+="-"+splitArray[i];
         }
         console.log(d);
-        fs.createWriteStream(d).write(res.body);
-        
+        var writeStream = fs.createWriteStream(d);
+        writeStream.write(res.body);
+        writeStream.end();
       }
       done();
     }
