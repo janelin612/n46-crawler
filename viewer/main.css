@@ -9,7 +9,7 @@ body{
 .menu{
     position: fixed;
     max-width: 20%;
-    height: 560px;
+    height: 90%;
     overflow-y:scroll;
 }
 .menu li{
