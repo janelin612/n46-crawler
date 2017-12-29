@@ -138,7 +138,7 @@ var blogCrawler= new Crawler({
               var item={
                 datetime:$(value).nextAll('div.entrybottom').first().text().split('｜')[0].trim(),
                 author:$(value).find('.heading .author').text(),
-                title:$(value).find('.heading a').text(),
+                title:$(value).find('.heading a').html(),
                 url:$(value).find('.heading a').attr('href'),
                 content:$(value).nextAll('div.entrybody').first().html()
               };
