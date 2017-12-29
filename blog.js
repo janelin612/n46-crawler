@@ -47,8 +47,8 @@ var authorCrawler=new Crawler({
     }else{
       var $=res.$;
       $("#sidemember a").each(function(index,value){
-          let path=$(value).attr("href").replace("./",'');
-          let name='';
+          var path=$(value).attr("href").replace("./",'');
+          var name='';
           if($(value).find("img").length>0){
             name=$(value).find(".kanji").text();
           }else {
@@ -96,13 +96,13 @@ var pageCountCrawler = new Crawler({
         if(error){
             console.log(error);
         }else{
-            let URL=res.request.uri.href;
+            var URL=res.request.uri.href;
             var $ = res.$;
             //若有分頁則整理出分頁list 沒有就直接開始爬
             if($("#sheet .paginate").length>0){
               var pageInArchieveList=[];
               var size=$("#sheet .paginate").first().children("a").length;
-              for(let i=1;i<=size;i++){
+              for(var i=1;i<=size;i++){
                 pageInArchieveList.push(URL+"&p="+i);
               }
               blogCrawler.queue(pageInArchieveList)
@@ -124,6 +124,7 @@ var result=[];
  */
 var blogCrawler= new Crawler({
     maxConnections : connCount,
+    jQuery:{name: 'cheerio',options:{decodeEntities: false}},
     callback : function (error, res, done) {
         if(error){
             console.log(error);
@@ -137,11 +138,12 @@ var blogCrawler= new Crawler({
             }else{
               $("#sheet h1.clearfix").each(function(index,value){
                 var item={
-                  datetime:$(value).nextAll('.entrybottom').text().split('｜')[0].trim(),
+                  datetime:$(value).nextAll('div.entrybottom').first().text().split('｜')[0].trim(),
                   author:$(value).find('.heading .author').text(),
                   // author_path:$(value).find('.heading a').attr('href').replace(BLOG_URL,'').split('/')[0].trim(),
                   title:$(value).find('.heading a').text(),
                   url:$(value).find('.heading a').attr('href'),
+                  content:$(value).nextAll('div.entrybody').first().html()
                 };
                 result.push(item);
               });
