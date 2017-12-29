@@ -137,6 +137,11 @@ var blogCrawler= new Crawler({
               });
             }else{
               $("#sheet h1.clearfix").each(function(index,value){
+                $(value).nextAll('div.entrybody').first().find("img").each(function(index,value){
+                  var src=".img/"+$(value).attr("src").replace(/^http\S\/\/\S+?\//,'');
+                  $(value).attr("src",src);
+                });
+
                 var item={
                   datetime:$(value).nextAll('div.entrybottom').first().text().split('｜')[0].trim(),
                   author:$(value).find('.heading .author').text(),
