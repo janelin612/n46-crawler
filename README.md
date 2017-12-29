@@ -41,7 +41,7 @@ it will download all blog url into `./viewer/result.json`  (**Will take long tim
 		...etc
 
 3. `--no_image` : Get blog without image resource，all image will keep their original address.   
-(If the blog is closed,you would lose all image )
+(If the blog is been closed,you will lose all image )
 		
 
 # Sample Result #
@@ -60,7 +60,7 @@ The Json File will look like this:
 	"author": "佐々木琴子",
 	"title": "ツ",
 	"url": "http://blog.nogizaka46.com/kotoko.sasaki/2017/08/040349.php",
-    "content":"<div>...........</div>"
+	"content":"<div>...........</div>"
 }]
 
 ```
