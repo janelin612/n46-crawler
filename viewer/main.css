@@ -5,8 +5,8 @@ body{
     font-size: 15px;
     color: #34495e;
 }
-h1, h2, h3, h4, h5, h6 {
-    font-size: 110%;
+h2, h3, h4, h5, h6 {
+    font-size: 100%;
 }
 
 .menu{
@@ -49,11 +49,14 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 46%;
     padding: 8px;
 }
-h1 a{
+h1 {
     color:#7e1083;
+    line-height: 1.15;
+    font-size: 24px;
+}
+.datetime{
+    color: #34495e;
     text-decoration:none;
-    line-height: 1.3;
-    font-size: 120%;
 }
 .content{
     font-size: 18px;
