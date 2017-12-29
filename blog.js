@@ -13,28 +13,20 @@ const BLOG_URL='http://blog.nogizaka46.com/';
 var MEMBER_NAME='';
 
 /**
- * 爬蟲的最高連線數
- * >1的話，結果會無法照時間排序，但會加快執行速度
+ * 不下載圖片
+ * 若此欄位為true，則只會紀錄純html
+ * 不會下載圖片，也不會異動圖片網址(指向原本的伺服器)
+ * 故如果部落格沒有被關掉圖片可以正常顯示
+ * 但如果部落格已被關閉，則圖片會因為原始位置失聯而全部破圖
  */
-var connCount=1;
-
-/**
- * 圖片下載模式
- * 若此變數改為true
- * 則爬蟲會改為下載所有部落格照片
- * 而非原始的json設計
- */
-var imageMode=false;
+var no_image=false;
 
 //自command line帶入參數
 var argv = require('minimist')(process.argv.slice(2));
 if(argv.a){
   MEMBER_NAME=argv.a;
 }
-if(argv.speed){
-  connCount=10;
-}
-imageMode=(argv.image!=null);
+no_image=(argv.no_image!=null);
 
 /**
  * 取回成員列表
@@ -91,7 +83,7 @@ var archieveCrawler=new Crawler({
  * 反之表示只有一頁，直接開始爬取
  */
 var pageCountCrawler = new Crawler({
-    maxConnections : connCount,
+    maxConnections : 1,
     callback : function (error, res, done) {
         if(error){
             console.log(error);
@@ -123,7 +115,7 @@ var result=[];
  * 並將結果輸出至json
  */
 var blogCrawler= new Crawler({
-    maxConnections : connCount,
+    maxConnections : 1,
     jQuery:{name: 'cheerio',options:{decodeEntities: false}},
     callback : function (error, res, done) {
         if(error){
@@ -131,32 +123,31 @@ var blogCrawler= new Crawler({
         }else{
             var $ = res.$;
 
-            if(imageMode){
-              $("#sheet .entrybody img").each(function(index,value){
-                Image.downloader.queue($(value).attr("src"));
-              });
-            }else{
-              $("#sheet h1.clearfix").each(function(index,value){
+            $("#sheet h1.clearfix").each(function(index,value){
+              //將圖片網址改為本地端位置，並下載圖片
+              if(!no_image){
                 $(value).nextAll('div.entrybody').first().find("img").each(function(index,value){
-                  var src="img/"+$(value).attr("src").replace(/^http\S\/\/\S+?\//,'');
-                  $(value).attr("src",src);
+                  var src=$(value).attr("src");
+                  Image.downloader.queue(src);
+                  
+                  var localLocation="img/"+src.replace(/^http\S\/\/\S+?\//,'');
+                  $(value).attr("src",localLocation);
                 });
+              }
+              
+              var item={
+                datetime:$(value).nextAll('div.entrybottom').first().text().split('｜')[0].trim(),
+                author:$(value).find('.heading .author').text(),
+                title:$(value).find('.heading a').text(),
+                url:$(value).find('.heading a').attr('href'),
+                content:$(value).nextAll('div.entrybody').first().html()
+              };
+              result.push(item);
+            });
+            console.log(result.length+' results');
 
-                var item={
-                  datetime:$(value).nextAll('div.entrybottom').first().text().split('｜')[0].trim(),
-                  author:$(value).find('.heading .author').text(),
-                  // author_path:$(value).find('.heading a').attr('href').replace(BLOG_URL,'').split('/')[0].trim(),
-                  title:$(value).find('.heading a').text(),
-                  url:$(value).find('.heading a').attr('href'),
-                  content:$(value).nextAll('div.entrybody').first().html()
-                };
-                result.push(item);
-              });
-              console.log(result.length+' results');
-
-              var fileName='./viewer/result.json'
-              fs.writeFile(fileName, JSON.stringify(result), 'utf8');
-            }
+            var fileName='./viewer/result.json'
+            fs.writeFile(fileName, JSON.stringify(result), 'utf8');
         }
         done();
     }
