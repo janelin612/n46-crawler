@@ -1,8 +1,11 @@
 n46-crawler
 ===========
 
-將官方部落格的所有文章網址整理成`json`格式的檔案  
-目前暫無將所有內文全部爬下來的打算
+將官方部落格的所有文章整理成`json`格式的檔案，並且可以自由決定是否要下載全部圖片  
+本專案包含:
+
+1. 爬蟲
+2. 一個簡單的Html檢視器，用來閱讀爬好的json檔 
 
 # Get started #
 ## 1.install dependencies ##
@@ -40,9 +43,12 @@ it will download all blog url into `./viewer/result.json`  (**Will take long tim
 		伊藤 万理華     marika.ito
 		...etc
 
-3. `--no_image` : Get blog without image resource，all image will keep their original address.   
-(If the blog is been closed,you will lose all image )
+3. `--image` : download all image and replace the original address into local address`, for example:
 		
+		<img src="http://img.nogizaka46.com/blog/XXXXX.jpeg">
+will be replaced into
+
+		<img src="img/blog/XXXXX.jpeg">
 
 # Sample Result #
 The Json File will look like this:

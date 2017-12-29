@@ -13,20 +13,18 @@ const BLOG_URL='http://blog.nogizaka46.com/';
 var MEMBER_NAME='';
 
 /**
- * 不下載圖片
- * 若此欄位為true，則只會紀錄純html
- * 不會下載圖片，也不會異動圖片網址(指向原本的伺服器)
- * 故如果部落格沒有被關掉圖片可以正常顯示
- * 但如果部落格已被關閉，則圖片會因為原始位置失聯而全部破圖
+ * 下載圖片
+ * 若本功能啟用的話 會將部落格內的所有照片網址替換成本地端
+ * 並把圖片下載至本地端
  */
-var no_image=false;
+var downloadImage=false;
 
 //自command line帶入參數
 var argv = require('minimist')(process.argv.slice(2));
 if(argv.a){
   MEMBER_NAME=argv.a;
 }
-no_image=(argv.no_image!=null);
+downloadImage=(argv.image!=null);
 
 /**
  * 取回成員列表
@@ -125,7 +123,7 @@ var blogCrawler= new Crawler({
 
             $("#sheet h1.clearfix").each(function(index,value){
               //將圖片網址改為本地端位置，並下載圖片
-              if(!no_image){
+              if(downloadImage){
                 $(value).nextAll('div.entrybody').first().find("img").each(function(index,value){
                   var src=$(value).attr("src");
                   Image.downloader.queue(src);
