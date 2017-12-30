@@ -35,15 +35,24 @@ var blogCrawler= new Crawler({
                   fs.renameSync(FOLDER+src, "viewer/img/"+src); //圖片搬過去
                 });
               }
+            
+            //處理href被多包一層的問題
+            $("#sheet div.entrybody").find("a").each(function(index,value){
+                var href=$(value).attr('href');
+                if(href.startsWith("javascript")){
+                    href=href.replace(/\n/g,'').replace(/javascript.+tion=/,'').replace(/'/g,"");
+                    $(value).attr('href',href);
+                }
+            });
               
-              var item={
-                datetime:$("#sheet div.entrybottom").first().text().split('｜')[0].trim(),
-                author:$("#sheet h1.clearfix .heading .author").text(),
-                title:$("#sheet h1.clearfix .heading .entrytitle").html(),
-                url:"",
-                content:$("#sheet div.entrybody").html()
-              };
-              result.unshift(item);
+             var item={
+               datetime:$("#sheet div.entrybottom").first().text().split('｜')[0].trim(),
+               author:$("#sheet h1.clearfix .heading .author").text(),
+               title:$("#sheet h1.clearfix .heading .entrytitle").html(),
+               url:"",
+               content:$("#sheet div.entrybody").html()
+             };
+            result.unshift(item);
             console.log(result.length+' results');
             
 
