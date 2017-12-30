@@ -129,10 +129,12 @@ var blogCrawler= new Crawler({
               if(downloadImage){
                 $(value).nextAll('div.entrybody').first().find("img").each(function(index,value){
                   var src=$(value).attr("src");
-                  Image.downloader.queue(src);
+                  if(src!=null && src.length>0){
+                    Image.downloader.queue(src);
                   
-                  var localLocation="img/"+src.replace(/^http\S\/\/\S+?\//,'');
-                  $(value).attr("src",localLocation);
+                    var localLocation="img/"+src.replace(/^http\S\/\/\S+?\//,'');
+                    $(value).attr("src",localLocation);
+                  }
                 });
               }
               
