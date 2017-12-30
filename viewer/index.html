@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog</title>
+    <title>乃木坂46 非公式ブログ</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js" integrity="sha256-z1if//it5+Nk8vE5T+Oj4fQFt3lzPUCZBFB8nfSzBWo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
@@ -12,18 +12,36 @@
 </head>
 <body>
     <div id="app">
+        <div class="member">
+            <img :src="member.image" alt="" class="avatar">
+            <div class="name">{{member.name}}</div>
+            <div class="name hiragana">{{member.name_hiragana}}</div>
+
+            <ul class="intro">
+                <li v-for="item in member.intro">
+                    <span class="key">{{item.key}}</span>  <span class="value">{{item.value}}</span>
+                </li>
+            </ul>
+
+            <ul class="tag">
+                <li v-for="item in member.tag">{{item}}</li>
+            </ul>
+        </div>
+
         <div class="menu">
             <ul >
                 <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
-                    <div>{{item.title}}</div>
-                    <div v-if="index==selected" class="small-datetime">{{item.datetime}}</div>
+                    <div v-html="item.title"></div>
+                    <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
+                    <div class="small-datetime">{{item.datetime}}</div>
                 </li>
             </ul>
         </div>
         
-        <div class="main">
-            <h1><a :href="list[selected].url" target="_blank">{{list[selected].title}}</a></h1>
-            <h3>{{list[selected].datetime}} - {{list[selected].author}} </h3>
+        <div class="main" v-if="list[selected]!=null">
+            <h1 v-html="list[selected].title"></h1>
+            <h1 v-if="list[selected].title.length==0">&nbsp;&nbsp;&nbsp;</h1>
+            <h3><a :href="list[selected].url" target="_blank" class="datetime">{{list[selected].datetime}}</a> - {{list[selected].author}} </h3>
             <hr/>
             <span class="content" v-html="list[selected].content"></span>
         </div>
@@ -34,21 +52,24 @@ var app=new Vue({
     el:"#app",
     data:{
         selected:0,
-        list:[]
+        list:[],
+        member:{}
     },
     methods:{
         onListSelected:function(index){
             window.scrollTo(0,0);
             this.selected=index;
-            var obj = { Url: window.location.pathname+"?index="+index };
+            var obj = { Url: window.location.toString().split("?")[0]+"?no="+index };
             history.pushState(obj, document.title, obj.Url);
         }
     },
     created:function(){
-        this.$http.get("./result.json").then(res=>{this.list=res.body});
-        var index = new URL(window.location).searchParams.get("index");
-        if(index!=null && index!=''){
-            this.selected=index;
+        this.$http.get("./result.json").then(res=>{this.list=res.body},res=>{this.list=[]});
+        this.$http.get("./member.json").then(res=>{this.member=res.body},res=>{this.member={}});
+
+        var no = new URL(window.location).searchParams.get("no");
+        if(no!=null && no!=''){
+            this.selected=no;
         }
     }
 });

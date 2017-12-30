@@ -1,24 +1,29 @@
 body{
     padding: 0;
     margin: 0;
-    font-family:sans-serif;
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
     font-size: 15px;
     color: #34495e;
+}
+h2, h3, h4, h5, h6 {
+    font-size: 100%;
 }
 
 .menu{
     position: fixed;
-    max-width: 25%;
+    margin-left: 15%;
+    width: 25%;
     height: 100%;
     overflow-y:scroll;
-    background-color: #ECEFF1;
+    background-color: #B0BEC5;
 }
 .menu ul{
-    padding: 24px 12px 24px 24px;
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 .menu li {
-    padding: 3px;
+   padding: 10px 8px;
 }
 .menu li div{
     width: 99%;
@@ -28,26 +33,30 @@ body{
     cursor: pointer;
 }
 .menu li.selected{
+    background-color: #ECEFF1;
     color:#7e1083;
-    padding: 6px 3px;
-    font-size:17px;
 }
 .menu li:hover{
+    background-color: #ECEFF1;
     color:#7e1083;
-    padding: 6px 3px;
 }
 .small-datetime{
     padding-left: 2px;
     font-size: 12px;
 }
 .main{
-    margin: 0 auto;
+    margin: 0 0 0 40%;
     position: relative;
     max-width: 46%;
-    padding: 8px;
+    padding: 8px 8px 8px 16px;
 }
-h1 a{
+h1 {
     color:#7e1083;
+    line-height: 1.15;
+    font-size: 24px;
+}
+.datetime{
+    color: #34495e;
     text-decoration:none;
 }
 .content{
@@ -55,4 +64,53 @@ h1 a{
 }
 .content img{
     max-width: 95%;
+}
+
+.member{
+    position: fixed;
+    width: 15%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #455A64;
+    color: #ECEFF1;
+}
+.member .avatar{
+    width: 90%;
+    margin:5%;
+}
+.member .name{
+    font-size: 120%;
+    text-align: center;
+}
+.member .hiragana{
+    line-height: 0.9;
+    font-size: 90%;
+}
+.member ul{
+    font-size: 12px;
+    padding: 0;
+    margin-top: 24px;
+    list-style: none;
+}
+.member .key{
+    display: inline-block;
+    width: 33%;
+    text-align: right;
+}
+.member .key::after{
+    content: "："
+}
+.member .value{
+    display: inline-block;
+    width: 60%;
+    text-align: left;
+}
+.member .tag li{
+    background: #bf87c1;
+    color: #fff;
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 0px 2px 5px 2px;
+    white-space: nowrap;
+    border-radius: 5px;
 }
