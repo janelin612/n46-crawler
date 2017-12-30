@@ -56,6 +56,7 @@
     var app = new Vue({
         el: "#app",
         data: {
+            firstTimeUpdate:true,
             selected: 0,
             list: [],
             member: {}
@@ -75,6 +76,13 @@
             var no = new URL(window.location).searchParams.get("no");
             if (no != null && no != '') {
                 this.selected = no;
+            }
+        },
+        updated:function(){
+            if(this.firstTimeUpdate){
+                var single=this.$el.querySelector(".menu li").scrollHeight;
+                this.$el.querySelector(".menu").scrollTop=single*(this.selected);
+                this.firstTimeUpdate=false;
             }
         }
     });
