@@ -48,7 +48,7 @@ h2, h3, h4, h5, h6 {
     margin: 0 0 0 40%;
     position: relative;
     max-width: 46%;
-    padding: 8px;
+    padding: 8px 8px 8px 16px;
 }
 h1 {
     color:#7e1083;
