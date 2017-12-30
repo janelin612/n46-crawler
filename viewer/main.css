@@ -75,7 +75,8 @@ h1 {
     color: #ECEFF1;
 }
 .member .avatar{
-    width: 100%;
+    width: 90%;
+    margin:5%;
 }
 .member .name{
     font-size: 120%;
