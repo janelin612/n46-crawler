@@ -20,12 +20,20 @@ var MEMBER_NAME='';
  */
 var downloadImage=false;
 
+/**
+ * 嚴謹模式
+ * TODO 寫說明
+ */
+var strict=false;
+
+
 //自command line帶入參數
 var argv = require('minimist')(process.argv.slice(2));
 if(argv.a){
   MEMBER_NAME=argv.a;
 }
 downloadImage=(argv.image!=null);
+strict=(argv.strict!=null);
 
 /**
  * 取回成員列表
@@ -93,16 +101,22 @@ var pageCountCrawler = new Crawler({
         }else{
             var URL=res.request.uri.href;
             var $ = res.$;
-            //若有分頁則整理出分頁list 沒有就直接開始爬
+
+            var pageInArchieveList=[];
+            //若有分頁則整理出分頁list 沒有就直接用網址本身
             if($("#sheet .paginate").length>0){
-              var pageInArchieveList=[];
               var size=$("#sheet .paginate").first().children("a").length;
               for(var i=1;i<=size;i++){
                 pageInArchieveList.push(URL+"&p="+i);
               }
+            }else{
+              pageInArchieveList.push(URL);
+            }
+
+            if(!strict){
               blogCrawler.queue(pageInArchieveList)
             }else{
-              blogCrawler.queue(URL)
+              blogLinkListCrawler.queue(pageInArchieveList);
             }
         }
         done();
@@ -158,6 +172,69 @@ var blogCrawler= new Crawler({
     }
 });
 
+
+/**
+ * 取回畫面上的部落格連結
+ * 並呼叫後續的爬蟲
+ */
+var blogLinkListCrawler=new Crawler({
+  maxConnections : 1,
+  jQuery:{name: 'cheerio',options:{decodeEntities: false}},
+  callback : function (error, res, done) {
+      if(error){
+          console.log(error);
+      }else{
+          var $ = res.$;
+
+          $("#sheet .entrytitle a").each(function(index,value){
+            var link=$(value).attr("href");
+            singleBlogCrawler.queue(link);
+          });
+          
+      }
+      done();
+  }
+});
+
+var singleBlogCrawler = new Crawler({
+  maxConnections: 1,
+  jQuery: { name: 'cheerio', options: { decodeEntities: false } },
+  callback: function (error, res, done) {
+    if (error) {
+      console.log(error);
+    } else {
+      var $ = res.$;
+
+      //將圖片網址改為本地端位置，並下載圖片
+      if (downloadImage) {
+        $("#sheet div.entrybody").find("img").each(function (index, value) {
+          var src = $(value).attr("src");
+          if (src != null && src.length > 0) {
+            Image.downloader.queue(src);
+
+            var localLocation = "img/" + src.replace(/^http\S\/\/\S+?\//, '');
+            $(value).attr("src", localLocation);
+          }
+        });
+      }
+
+      var item = {
+        datetime: $("#sheet div.entrybottom").first().text().split('｜')[0].trim(),
+        author: $("#sheet h1.clearfix .heading .author").text(),
+        title: $("#sheet h1.clearfix .heading .entrytitle").html(),
+        url: res.request.uri.href,
+        content: $("#sheet div.entrybody").html()
+      };
+      result.push(item);
+      console.log(item.url+" | "+item.title);
+
+      var fileName = './viewer/result.json'
+      fs.writeFile(fileName, JSON.stringify(result), 'utf8');
+
+    }
+    done();
+  }
+});
 
 
 //執行!

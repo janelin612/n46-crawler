@@ -8,7 +8,7 @@ var IMAGE_SAVE_DIR="./viewer/img"
 
 module.exports ={
   downloader:new Crawler({
-    maxConnections:10,
+    maxConnections:20,
     encoding:null,
     jQuery:false,
     callback:function(error,res,done){
