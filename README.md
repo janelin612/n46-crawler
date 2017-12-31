@@ -21,7 +21,7 @@ n46-crawler
 ## 2.usage ##
 
 	$ node blog.js
-it will download all blog url into `./viewer/result.json`  (**Will take long time!!**)
+it will download all blog into `./viewer/result.json`  (**Will take long time!!**)
 
 # Argument #
 
@@ -43,15 +43,28 @@ it will download all blog url into `./viewer/result.json`  (**Will take long tim
 		伊藤 万理華     marika.ito
 		...etc
 
-3. `--image` : download all image and replace the original address into local address`, for example:
+3. `--image` : download all image and replace the original address into local address.   
+	For example:
 		
+		<!-- original  -->
 		<img src="http://img.nogizaka46.com/blog/XXXXX.jpeg">
-will be replaced into
 
+		<!-- new -->
 		<img src="img/blog/XXXXX.jpeg">
 
+4. `--strict` : strict mode.
+This feature is made for Nakamoto Himeka .   
+Because there is some wrong html format in her blog,it will causes the crawler crash...  
+
+	> http://blog.nogizaka46.com/himeka.nakamoto/?d=201505 
+
+	When you using strict mode, the crawler will enter every blog page to download data rather than list page. It will make about 5 times request than normal situation
+
 # Sample Result #
-The Json File will look like this:
+
+Each Request will generate two json file
+
+1. `result.json` : main file
 
 ```json
 [{
@@ -69,4 +82,37 @@ The Json File will look like this:
 	"content":"<div>...........</div>"
 }]
 
+```
+
+2. `member.json` : member's introduction
+
+```json
+{
+    "name": "伊藤 万理華",
+    "name_hiragana": "いとう まりか ",
+    "image": "img/www/member/img/itoumarika_prof.jpg",
+    "intro": [
+        {
+            "key": "生年月日",
+            "value": "1996年2月20日"
+        },
+        {
+            "key": "血液型",
+            "value": "O型"
+        },
+        {
+            "key": "星座",
+            "value": "うお座"
+        },
+        {
+            "key": "身長",
+            "value": "156cm"
+        }
+    ],
+    "tag": [
+        "1期生",
+        "選抜メンバー",
+        "十一福神"
+    ]
+}
 ```
