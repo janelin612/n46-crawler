@@ -22,7 +22,8 @@ var downloadImage=false;
 
 /**
  * 嚴謹模式
- * TODO 寫說明
+ * 啟用後會整理出部落格的文章連結之後一篇一篇進去爬 理論上會慢五倍...
+ * 但可以確保跑版不會搞掛爬蟲
  */
 var strict=false;
 
@@ -81,8 +82,10 @@ var archieveCrawler=new Crawler({
             pageCountCrawler.queue(archieveList);
 
             var memberUrl=$("#sideprofile .txt p a").attr("href");
-            Member.downloadImage=this.downloadImage;
-            Member.crawler.queue(memberUrl);
+            if(memberUrl!=null && memberUrl.length>0){
+              Member.downloadImage=this.downloadImage;
+              Member.crawler.queue(memberUrl);
+            }
         }
         done();
     }
@@ -230,7 +233,6 @@ var singleBlogCrawler = new Crawler({
 
       var fileName = './viewer/result.json'
       fs.writeFile(fileName, JSON.stringify(result), 'utf8');
-
     }
     done();
   }
