@@ -1,6 +1,7 @@
 const fs = require('fs');
 const Crawler = require("crawler");
 const Image=require('./image')
+const Member=require('./member')
 
 /**
  * 主網站網址
@@ -19,12 +20,21 @@ var MEMBER_NAME='';
  */
 var downloadImage=false;
 
+/**
+ * 嚴謹模式
+ * 啟用後會整理出部落格的文章連結之後一篇一篇進去爬 理論上會慢五倍...
+ * 但可以確保跑版不會搞掛爬蟲
+ */
+var strict=false;
+
+
 //自command line帶入參數
 var argv = require('minimist')(process.argv.slice(2));
 if(argv.a){
   MEMBER_NAME=argv.a;
 }
 downloadImage=(argv.image!=null);
+strict=(argv.strict!=null);
 
 /**
  * 取回成員列表
@@ -71,8 +81,11 @@ var archieveCrawler=new Crawler({
             );
             pageCountCrawler.queue(archieveList);
 
-            var member=$("#sideprofile .txt p a").attr("href");
-            memberDetailCrawler.queue(member);
+            var memberUrl=$("#sideprofile .txt p a").attr("href");
+            if(memberUrl!=null && memberUrl.length>0){
+              Member.downloadImage=this.downloadImage;
+              Member.crawler.queue(memberUrl);
+            }
         }
         done();
     }
@@ -91,16 +104,22 @@ var pageCountCrawler = new Crawler({
         }else{
             var URL=res.request.uri.href;
             var $ = res.$;
-            //若有分頁則整理出分頁list 沒有就直接開始爬
+
+            var pageInArchieveList=[];
+            //若有分頁則整理出分頁list 沒有就直接用網址本身
             if($("#sheet .paginate").length>0){
-              var pageInArchieveList=[];
               var size=$("#sheet .paginate").first().children("a").length;
               for(var i=1;i<=size;i++){
                 pageInArchieveList.push(URL+"&p="+i);
               }
+            }else{
+              pageInArchieveList.push(URL);
+            }
+
+            if(!strict){
               blogCrawler.queue(pageInArchieveList)
             }else{
-              blogCrawler.queue(URL)
+              blogLinkListCrawler.queue(pageInArchieveList);
             }
         }
         done();
@@ -129,10 +148,12 @@ var blogCrawler= new Crawler({
               if(downloadImage){
                 $(value).nextAll('div.entrybody').first().find("img").each(function(index,value){
                   var src=$(value).attr("src");
-                  Image.downloader.queue(src);
+                  if(src!=null && src.length>0){
+                    Image.downloader.queue(src);
                   
-                  var localLocation="img/"+src.replace(/^http\S\/\/\S+?\//,'');
-                  $(value).attr("src",localLocation);
+                    var localLocation="img/"+src.replace(/^http\S\/\/\S+?\//,'');
+                    $(value).attr("src",localLocation);
+                  }
                 });
               }
               
@@ -154,58 +175,69 @@ var blogCrawler= new Crawler({
     }
 });
 
-var member={};
-var memberDetailCrawler=new Crawler({
+
+/**
+ * 取回畫面上的部落格連結
+ * 並呼叫後續的爬蟲
+ */
+var blogLinkListCrawler=new Crawler({
   maxConnections : 1,
+  jQuery:{name: 'cheerio',options:{decodeEntities: false}},
   callback : function (error, res, done) {
       if(error){
           console.log(error);
       }else{
-          var URL=res.request.uri.href;
           var $ = res.$;
 
-          var memberImage=$("#profile img").first().attr("src");
-
-          if(downloadImage){
-            Image.downloader.queue(memberImage);
-            memberImage="img/"+memberImage.replace(/^http\S\/\/\S+?\//,'');
-          }
-
-          var memberName_hiragana=$("#profile div.txt h2 span").text();
-          $("#profile div.txt h2 span").remove();
-          var memberName=$("#profile div.txt h2").text();
-
-          //table
-          var introList=[];
-          $("#profile div.txt dl dt").each(function(index,view){
-            var key=$(view).text().replace("：","");
-            var value=$(view).nextAll("dd").first().text();
-            introList.push({
-              key:key,value:value
-            });
+          $("#sheet .entrytitle a").each(function(index,value){
+            var link=$(value).attr("href");
+            singleBlogCrawler.queue(link);
           });
-
-          //tag
-          var tagList=[];
-          $("#profile div.txt div.status div").each(function(index,view){
-            tagList.push($(view).text());
-          });
-
-          //write all
-          member={
-            name:memberName,
-            name_hiragana:memberName_hiragana,
-            image:memberImage,
-            intro:introList,
-            tag:tagList
-          }
-
-          var fileName='./viewer/member.json'
-          fs.writeFile(fileName, JSON.stringify(member), 'utf8');
+          
       }
       done();
   }
 });
+
+var singleBlogCrawler = new Crawler({
+  maxConnections: 1,
+  jQuery: { name: 'cheerio', options: { decodeEntities: false } },
+  callback: function (error, res, done) {
+    if (error) {
+      console.log(error);
+    } else {
+      var $ = res.$;
+
+      //將圖片網址改為本地端位置，並下載圖片
+      if (downloadImage) {
+        $("#sheet div.entrybody").find("img").each(function (index, value) {
+          var src = $(value).attr("src");
+          if (src != null && src.length > 0) {
+            Image.downloader.queue(src);
+
+            var localLocation = "img/" + src.replace(/^http\S\/\/\S+?\//, '');
+            $(value).attr("src", localLocation);
+          }
+        });
+      }
+
+      var item = {
+        datetime: $("#sheet div.entrybottom").first().text().split('｜')[0].trim(),
+        author: $("#sheet h1.clearfix .heading .author").text(),
+        title: $("#sheet h1.clearfix .heading .entrytitle").html(),
+        url: res.request.uri.href,
+        content: $("#sheet div.entrybody").html()
+      };
+      result.push(item);
+      console.log(item.url+" | "+item.title);
+
+      var fileName = './viewer/result.json'
+      fs.writeFile(fileName, JSON.stringify(result), 'utf8');
+    }
+    done();
+  }
+});
+
 
 //執行!
 if(argv.list){
