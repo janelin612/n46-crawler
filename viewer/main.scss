@@ -1,0 +1,145 @@
+$color-member-bg:#455A64;
+$color-list-bg:#B0BEC5;
+$color-list-selected-bg:#ECEFF1;
+$color-default-text:#34495e;
+$color-highlight:#7e1083;
+$color-light-text:#ECEFF1;
+$color-member-tag-bg:#b773b9;
+
+$width-cloumn-1:15%;
+$width-cloumn-2:25%;
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+    font-size: 15px;
+    color: $color-default-text;
+    overflow-y: scroll;
+}
+h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+.menu{
+    position: fixed;
+    margin-left: $width-cloumn-1;
+    width: $width-cloumn-2;
+    height: 100%;
+    overflow-y:scroll;
+    background-color: $color-list-bg;
+    
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li{
+        padding: 10px 8px;
+
+        &.selected{
+            background-color: $color-list-selected-bg;
+            color:$color-highlight;
+        }
+        &:hover{
+            background-color: $color-list-selected-bg;
+            color:$color-highlight;
+        }
+
+        div{
+            width: 99%;
+            white-space: nowrap;
+            text-overflow:ellipsis;
+            overflow-x: hidden;
+            cursor: pointer;
+        }
+    }
+    
+    .small-datetime{
+        padding-left: 2px;
+        font-size: 12px;
+    }
+}
+
+.main{
+    margin-left: ($width-cloumn-1)+($width-cloumn-2);
+    position: relative;
+    max-width: 46%;
+    padding: 8px 8px 8px 16px;
+
+    h1 {
+        color:$color-highlight;
+        line-height: 1.15;
+        font-size: 24px;
+    }
+
+    .datetime{
+        color: #34495e;
+        text-decoration:none;
+    }
+    .content{
+        font-size: 18px;
+    
+        img{
+            max-width: 95%;
+        }
+    }
+}
+
+.member{
+    position: fixed;
+    width: $width-cloumn-1;
+    height: 100%;
+    overflow: hidden;
+    background-color: $color-member-bg;
+    color:$color-light-text ;
+
+    .avatar{
+        width: 90%;
+        margin:5%;
+    }
+
+    .name{
+        font-size: 120%;
+        text-align: center;
+    }
+
+    .hiragana{
+        line-height: 0.9;
+        font-size: 90%;
+    }
+
+    ul{
+        font-size: 12px;
+        padding: 0;
+        margin-top: 24px;
+        list-style: none;
+    }
+
+    .key{
+        display: inline-block;
+        width: 33%;
+        text-align: right;
+
+        &::after{
+            content: "："
+        }
+    }
+
+    .value{
+        display: inline-block;
+        width: 60%;
+        text-align: left;
+    }
+
+    .tag li{
+        background: $color-member-tag-bg;
+        color: $color-light-text;
+        display: inline-block;
+        padding: 2px 8px;
+        margin: 0px 2px 5px 2px;
+        white-space: nowrap;
+        border-radius: 5px;
+    }
+}
