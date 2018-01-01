@@ -62,7 +62,7 @@ Because there is some wrong html format in her blog,it will causes the crawler c
 
 # Sample Result #
 
-Each Request will generate two json file
+Crawler will generate two json file
 
 1. `result.json` : main file
 
@@ -84,7 +84,7 @@ Each Request will generate two json file
 
 ```
 
-2. `member.json` : member's introduction
+2. `member.json` : member's introduction when you using `-a MEMBER_NAME` argument
 
 ```json
 {
@@ -110,9 +110,27 @@ Each Request will generate two json file
         }
     ],
     "tag": [
-        "1期生",
-        "選抜メンバー",
-        "十一福神"
+        "1期生","選抜メンバー","十一福神"
     ]
 }
 ```
+
+
+# Viewer #
+本來只想要有個簡單的畫面來讀JSON檔，結果越寫越複雜...
+
+## Dependencies
+只有要看的話不用裝東西，直接把`./viewer/index.html`打開就有了，但如果要自己改點東西的話....
++ Vue.js : 此部分直接把檔案放在`./viewer/script`底下了，不用在npm裝東西
++ Sass : 輸出已經包含.css檔，如果要自己改sass的話，該裝的編譯器還是要裝
+
+		$ npm install -g node-sass less
+	
+	ps:沒有搭配gulp使用，要用的自己裝XD
+
+## Known issues
+
++ Chrome : 載入的工作邏輯是對本地端的json檔打http get取得，結果這件事情被Chrome禁止(file-access-from-files)，所以目前本閱讀器不支援直接用Chrome開...
+	 + 解法1 : 找個空間把整包掛上去
+	 + 解法2 : 對Chrome下參數`--allow-file-access-from-files` 詳細說明:[連結](http://blog.twtnn.com/2015/03/ajaxcross-origin-requests-are-only.html)
+	 + 解法3 : 改用Firefox吧
