@@ -5,29 +5,31 @@ body {
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
   font-size: 15px;
   color: #34495e;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  background-color: white; }
 
 h2, h3, h4, h5, h6 {
   font-size: 100%; }
 
 .menu {
   position: fixed;
-  margin-left: 15%;
-  width: 25%;
+  margin-left: 14%;
+  width: 26%;
   height: 100%;
   overflow-y: scroll;
-  background-color: #B0BEC5; }
+  background-color: #b5bfd1; }
   .menu ul {
     list-style: none;
     padding: 0;
     margin: 0; }
   .menu li {
-    padding: 10px 8px; }
+    color: #2b2d42;
+    padding: 10px 8px 10px 12px; }
     .menu li.selected {
-      background-color: #ECEFF1;
+      background-color: #edf2f4;
       color: #7e1083; }
     .menu li:hover {
-      background-color: #ECEFF1;
+      background-color: #edf2f4;
       color: #7e1083; }
     .menu li div {
       width: 99%;
@@ -44,28 +46,54 @@ h2, h3, h4, h5, h6 {
   position: relative;
   max-width: 46%;
   padding: 8px 8px 8px 16px; }
-  .main h1 {
-    color: #7e1083;
-    line-height: 1.15;
-    font-size: 24px; }
-  .main .datetime {
-    color: #34495e;
-    text-decoration: none; }
+  .main .heading {
+    display: flex;
+    flex-direction: row;
+    border: #7e1083 2px solid;
+    border-radius: 6px;
+    margin: 8px 0 24px 0; }
+    .main .heading .post-time {
+      text-decoration: none;
+      min-width: 96px;
+      color: white;
+      background-color: #7e1083;
+      padding: 8px; }
+      .main .heading .post-time .year-month {
+        font-size: 12px; }
+      .main .heading .post-time .date {
+        font-size: 43px;
+        line-height: 43px; }
+      .main .heading .post-time .week {
+        font-size: 12px; }
+    .main .heading .post-info {
+      color: #7e1083;
+      padding: 8px;
+      width: 100%; }
+      .main .heading .post-info .author {
+        font-size: 13px;
+        border-bottom: #7e1083 1px dotted;
+        margin-bottom: 8px; }
+      .main .heading .post-info .title {
+        font-size: 20px;
+        line-height: 20px; }
   .main .content {
     font-size: 18px; }
     .main .content img {
       max-width: 95%; }
 
 .member {
+  color: #eaecf0;
   position: fixed;
-  width: 15%;
+  width: 14%;
   height: 100%;
   overflow: hidden;
-  background-color: #455A64;
-  color: #ECEFF1; }
+  background-color: #2b2d42;
+  box-shadow: 1px 0 6px #2b2d42;
+  z-index: 1; }
   .member .avatar {
     width: 90%;
-    margin: 5%; }
+    margin: 5%;
+    border-radius: 12px; }
   .member .name {
     font-size: 120%;
     text-align: center; }
@@ -79,7 +107,7 @@ h2, h3, h4, h5, h6 {
     list-style: none; }
   .member .key {
     display: inline-block;
-    width: 33%;
+    width: 35%;
     text-align: right; }
     .member .key::after {
       content: "："; }
@@ -89,7 +117,7 @@ h2, h3, h4, h5, h6 {
     text-align: left; }
   .member .tag li {
     background: #b773b9;
-    color: #ECEFF1;
+    color: #eaecf0;
     display: inline-block;
     padding: 2px 8px;
     margin: 0px 2px 5px 2px;

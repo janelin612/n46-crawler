@@ -1,10 +1,11 @@
 const fs = require('fs');
 const Crawler = require("crawler");
+const Image=require('./image');
 
 var member={};
 
 module.exports ={
-  downloadImage:false,
+  downloadImage:'',
   crawler:new Crawler({
     maxConnections : 1,
     callback : function (error, res, done) {
@@ -16,7 +17,7 @@ module.exports ={
   
             var memberImage=$("#profile img").first().attr("src");
   
-            if(this.downloadImage){
+            if(module.exports.downloadImage){
               Image.downloader.queue(memberImage);
               memberImage="img/"+memberImage.replace(/^http\S\/\/\S+?\//,'');
             }
