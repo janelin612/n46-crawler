@@ -57,9 +57,12 @@ var app = new Vue({
         //第一次開啟時將卷軸捲到正確的位置
         if(this.firstTimeUpdate){
             var dom=this.$el.querySelector(".menu li");
-            var single=dom==null?0:dom.scrollHeight;
-            this.$el.querySelector(".menu").scrollTop=single*(this.selected);
-            this.firstTimeUpdate=false;
+            //TODO 搞懂為啥這邊會拿到null
+            if(dom!=null){
+                var single=dom.scrollHeight;
+                this.$el.querySelector(".menu").scrollTop=single*(this.selected);
+                this.firstTimeUpdate=false;
+            }
         }
     }
 });
