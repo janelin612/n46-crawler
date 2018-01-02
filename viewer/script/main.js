@@ -27,7 +27,7 @@ var app = new Vue({
             }else{
                 var time = new Date(this.currentPost.datetime);
                 var month=(time.getMonth()+1)>9?""+(time.getMonth()+1):"0"+(time.getMonth()+1);
-                var date=(time.getDate())+1>9?""+time.getDate():"0"+time.getDate();
+                var date=time.getDate()>9?""+time.getDate():"0"+time.getDate();
                 return {
                     yearMonth:time.getFullYear()+"/"+month,
                     date:date,
