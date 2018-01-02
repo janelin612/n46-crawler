@@ -83,7 +83,7 @@ var archieveCrawler=new Crawler({
 
             var memberUrl=$("#sideprofile .txt p a").attr("href");
             if(memberUrl!=null && memberUrl.length>0){
-              Member.downloadImage=this.downloadImage;
+              Member.downloadImage=downloadImage;
               Member.crawler.queue(memberUrl);
             }
         }
