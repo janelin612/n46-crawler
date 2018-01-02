@@ -1,13 +1,13 @@
-$color-member-bg:#455A64;
-$color-list-bg:#B0BEC5;
-$color-list-selected-bg:#ECEFF1;
+$color-member-bg:#2b2d42;
+$color-list-bg:#b5bfd1;
+$color-list-selected-bg:#edf2f4;
 $color-default-text:#34495e;
 $color-highlight:#7e1083;
-$color-light-text:#ECEFF1;
+$color-light-text:#eaecf0;
 $color-member-tag-bg:#b773b9;
 
-$width-cloumn-1:15%;
-$width-cloumn-2:25%;
+$width-cloumn-1:14%;
+$width-cloumn-2:26%;
 
 body{
     padding: 0;
@@ -16,6 +16,7 @@ body{
     font-size: 15px;
     color: $color-default-text;
     overflow-y: scroll;
+    background-color: white;
 }
 h2, h3, h4, h5, h6 {
     font-size: 100%;
@@ -36,7 +37,8 @@ h2, h3, h4, h5, h6 {
     }
 
     li{
-        padding: 10px 8px;
+        color: $color-member-bg;
+        padding: 10px 8px 10px 12px;
 
         &.selected{
             background-color: $color-list-selected-bg;
@@ -96,7 +98,7 @@ h2, h3, h4, h5, h6 {
             padding: 8px;
             width: 100%;
             .author{
-                font-size: 12px;
+                font-size: 13px;
                 border-bottom: $color-highlight 1px dotted;
                 margin-bottom: 8px;
             }
@@ -117,16 +119,19 @@ h2, h3, h4, h5, h6 {
 }
 
 .member{
+    color:$color-light-text;
     position: fixed;
     width: $width-cloumn-1;
     height: 100%;
     overflow: hidden;
     background-color: $color-member-bg;
-    color:$color-light-text ;
+    box-shadow: 1px 0 6px $color-member-bg;
+    z-index: 1;
 
     .avatar{
         width: 90%;
         margin:5%;
+        border-radius: 12px;
     }
 
     .name{
@@ -148,7 +153,7 @@ h2, h3, h4, h5, h6 {
 
     .key{
         display: inline-block;
-        width: 33%;
+        width: 35%;
         text-align: right;
 
         &::after{
