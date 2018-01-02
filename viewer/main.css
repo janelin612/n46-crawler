@@ -48,18 +48,19 @@ h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: row;
     border: #7e1083 2px solid;
-    border-radius: 6px; }
+    border-radius: 6px;
+    margin: 8px 0 24px 0; }
     .main .heading .post-time {
       text-decoration: none;
-      width: 100px;
+      min-width: 96px;
       color: white;
       background-color: #7e1083;
       padding: 8px; }
       .main .heading .post-time .year-month {
         font-size: 12px; }
       .main .heading .post-time .date {
-        font-size: 41px;
-        line-height: 41px; }
+        font-size: 43px;
+        line-height: 43px; }
       .main .heading .post-time .week {
         font-size: 12px; }
     .main .heading .post-info {

@@ -73,9 +73,10 @@ h2, h3, h4, h5, h6 {
         flex-direction: row;
         border: $color-highlight 2px solid;
         border-radius: 6px;
+        margin: 8px 0 24px 0;
         .post-time{
             text-decoration: none;
-            width: 100px;
+            min-width: 96px;
             color: white;
             background-color: $color-highlight;
             padding: 8px;
@@ -83,8 +84,8 @@ h2, h3, h4, h5, h6 {
                 font-size: 12px;
             }
             .date{
-                font-size: 41px;
-                line-height: 41px;
+                font-size: 43px;
+                line-height: 43px;
             }
             .week{
                 font-size: 12px;
