@@ -68,16 +68,44 @@ h2, h3, h4, h5, h6 {
     max-width: 46%;
     padding: 8px 8px 8px 16px;
 
-    h1 {
-        color:$color-highlight;
-        line-height: 1.15;
-        font-size: 24px;
+    .heading{
+        display: flex;
+        flex-direction: row;
+        border: $color-highlight 2px solid;
+        border-radius: 6px;
+        .post-time{
+            text-decoration: none;
+            width: 100px;
+            color: white;
+            background-color: $color-highlight;
+            padding: 8px;
+            .year-month{
+                font-size: 12px;
+            }
+            .date{
+                font-size: 41px;
+                line-height: 41px;
+            }
+            .week{
+                font-size: 12px;
+            }
+        }
+        .post-info{
+            color: $color-highlight;
+            padding: 8px;
+            width: 100%;
+            .author{
+                font-size: 12px;
+                border-bottom: $color-highlight 1px dotted;
+                margin-bottom: 8px;
+            }
+            .title{
+                font-size: 20px;
+                line-height: 20px;
+            }
+        }
     }
 
-    .datetime{
-        color: #34495e;
-        text-decoration:none;
-    }
     .content{
         font-size: 18px;
     

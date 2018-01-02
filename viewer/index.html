@@ -42,50 +42,21 @@
             </ul>
         </div>
 
-        <div class="main" v-if="list[selected]!=null">
-            <h1 v-html="list[selected].title"></h1>
-            <h1 v-if="list[selected].title.length==0">&nbsp;&nbsp;&nbsp;</h1>
-            <h3>
-                <a :href="list[selected].url" target="_blank" class="datetime">{{list[selected].datetime}}</a> - {{list[selected].author}} </h3>
-            <hr/>
-            <span class="content" v-html="list[selected].content"></span>
+        <div class="main" v-if="currentPost!=null">
+            <div class="heading">
+                <a class="post-time" :href="currentPost.url" target="_blank">
+                    <div class="year-month">{{currentPostDate.yearMonth}}</div>
+                    <span class="date">{{currentPostDate.date}}</span>
+                    <span class="week">{{currentPostDate.weekday}}</span>
+                </a>
+                <div class="post-info">
+                    <div class="author">{{currentPost.author}}</div>
+                    <div class="title" v-html="currentPost.title"></div>
+                </div>
+            </div>
+            <span class="content" v-html="currentPost.content"></span>
         </div>
     </div>
 </body>
-<script>
-    var app = new Vue({
-        el: "#app",
-        data: {
-            firstTimeUpdate:true,
-            selected: 0,
-            list: [],
-            member: {}
-        },
-        methods: {
-            onListSelected: function (index) {
-                window.scrollTo(0, 0);
-                this.selected = index;
-                var obj = { Url: window.location.toString().split("?")[0] + "?no=" + index };
-                history.pushState(obj, document.title, obj.Url);
-            }
-        },
-        created: function () {
-            this.$http.get("./result.json").then(res => { this.list = res.body }, res => { this.list = [] });
-            this.$http.get("./member.json").then(res => { this.member = res.body }, res => { this.member = {} });
-
-            var no = new URL(window.location).searchParams.get("no");
-            if (no != null && no != '') {
-                this.selected = no;
-            }
-        },
-        updated:function(){
-            if(this.firstTimeUpdate){
-                var single=this.$el.querySelector(".menu li").scrollHeight;
-                this.$el.querySelector(".menu").scrollTop=single*(this.selected);
-                this.firstTimeUpdate=false;
-            }
-        }
-    });
-</script>
-
+<script src="script/main.js"></script>
 </html>

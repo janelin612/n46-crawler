@@ -44,13 +44,35 @@ h2, h3, h4, h5, h6 {
   position: relative;
   max-width: 46%;
   padding: 8px 8px 8px 16px; }
-  .main h1 {
-    color: #7e1083;
-    line-height: 1.15;
-    font-size: 24px; }
-  .main .datetime {
-    color: #34495e;
-    text-decoration: none; }
+  .main .heading {
+    display: flex;
+    flex-direction: row;
+    border: #7e1083 2px solid;
+    border-radius: 6px; }
+    .main .heading .post-time {
+      text-decoration: none;
+      width: 100px;
+      color: white;
+      background-color: #7e1083;
+      padding: 8px; }
+      .main .heading .post-time .year-month {
+        font-size: 12px; }
+      .main .heading .post-time .date {
+        font-size: 41px;
+        line-height: 41px; }
+      .main .heading .post-time .week {
+        font-size: 12px; }
+    .main .heading .post-info {
+      color: #7e1083;
+      padding: 8px;
+      width: 100%; }
+      .main .heading .post-info .author {
+        font-size: 12px;
+        border-bottom: #7e1083 1px dotted;
+        margin-bottom: 8px; }
+      .main .heading .post-info .title {
+        font-size: 20px;
+        line-height: 20px; }
   .main .content {
     font-size: 18px; }
     .main .content img {
