@@ -15,10 +15,10 @@ module.exports ={
       if(error){
         console.log(error);
       }else{
-        var urlWithoutDomain=res.request.uri.href.replace(/^http\S\/\/\S+?\//,'');
-        var splitArray=urlWithoutDomain.split("/");
+        let urlWithoutDomain=res.request.uri.href.replace(/^http\S\/\/\S+?\//,'');
+        let splitArray=urlWithoutDomain.split("/");
 
-        var d=IMAGE_SAVE_DIR;
+        let d=IMAGE_SAVE_DIR;
         for(i=0;i<splitArray.length;i++){
           if (!fs.existsSync(d)) {
             fs.mkdirSync(d);
@@ -27,7 +27,7 @@ module.exports ={
           // d+="-"+splitArray[i];
         }
         console.log(d);
-        var writeStream = fs.createWriteStream(d);
+        let writeStream = fs.createWriteStream(d);
         writeStream.write(res.body);
         writeStream.end();
       }
