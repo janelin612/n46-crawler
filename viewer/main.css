@@ -11,76 +11,6 @@ body {
 h2, h3, h4, h5, h6 {
   font-size: 100%; }
 
-.menu {
-  position: fixed;
-  margin-left: 14%;
-  width: 26%;
-  height: 100%;
-  overflow-y: scroll;
-  background-color: #b5bfd1; }
-  .menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0; }
-  .menu li {
-    color: #2b2d42;
-    padding: 10px 8px 10px 12px; }
-    .menu li.selected {
-      background-color: #edf2f4;
-      color: #7e1083; }
-    .menu li:hover {
-      background-color: #edf2f4;
-      color: #7e1083; }
-    .menu li div {
-      width: 99%;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow-x: hidden;
-      cursor: pointer; }
-  .menu .small-datetime {
-    padding-left: 2px;
-    font-size: 12px; }
-
-.main {
-  margin-left: 40%;
-  position: relative;
-  max-width: 46%;
-  padding: 8px 8px 8px 16px; }
-  .main .heading {
-    display: flex;
-    flex-direction: row;
-    border: #7e1083 2px solid;
-    border-radius: 6px;
-    margin: 8px 0 24px 0; }
-    .main .heading .post-time {
-      text-decoration: none;
-      min-width: 96px;
-      color: white;
-      background-color: #7e1083;
-      padding: 8px; }
-      .main .heading .post-time .year-month {
-        font-size: 12px; }
-      .main .heading .post-time .date {
-        font-size: 43px;
-        line-height: 43px; }
-      .main .heading .post-time .week {
-        font-size: 12px; }
-    .main .heading .post-info {
-      color: #7e1083;
-      padding: 8px;
-      width: 100%; }
-      .main .heading .post-info .author {
-        font-size: 13px;
-        border-bottom: #7e1083 1px dotted;
-        margin-bottom: 8px; }
-      .main .heading .post-info .title {
-        font-size: 20px;
-        line-height: 20px; }
-  .main .content {
-    font-size: 18px; }
-    .main .content img {
-      max-width: 95%; }
-
 .member {
   color: #eaecf0;
   position: fixed;
@@ -115,11 +45,85 @@ h2, h3, h4, h5, h6 {
     display: inline-block;
     width: 60%;
     text-align: left; }
-  .member .tag li {
-    background: #b773b9;
-    color: #eaecf0;
-    display: inline-block;
-    padding: 2px 8px;
-    margin: 0px 2px 5px 2px;
-    white-space: nowrap;
-    border-radius: 5px; }
+  .member .tag {
+    margin: 24px 8px 0 8px; }
+    .member .tag li {
+      background: #b773b9;
+      color: #eaecf0;
+      display: inline-block;
+      padding: 2px 8px;
+      margin: 0px 2px 5px 2px;
+      white-space: nowrap;
+      border-radius: 5px; }
+
+.menu {
+  position: fixed;
+  margin-left: 14%;
+  width: 26%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: #b5bfd1; }
+  .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+  .menu li {
+    color: #2b2d42;
+    padding: 10px 8px 10px 12px;
+    transition: background-color 0.1s linear; }
+    .menu li.selected {
+      background-color: #edf2f4;
+      color: #7e1083; }
+    .menu li:hover {
+      background-color: #edf2f4;
+      color: #7e1083;
+      transition: background-color 0.1s linear; }
+    .menu li div {
+      width: 99%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+      cursor: pointer; }
+  .menu .small-datetime {
+    padding-left: 2px;
+    font-size: 12px; }
+
+.main {
+  margin-left: 40%;
+  position: relative;
+  max-width: 640px;
+  padding: 8px 8px 8px 16px; }
+  .main .heading {
+    display: flex;
+    flex-direction: row;
+    border: #7e1083 2px solid;
+    border-radius: 6px;
+    margin: 8px 0 24px 0; }
+    .main .heading .post-time {
+      text-decoration: none;
+      min-width: 96px;
+      color: white;
+      background-color: #7e1083;
+      padding: 8px; }
+      .main .heading .post-time .year-month {
+        font-size: 12px; }
+      .main .heading .post-time .date {
+        font-size: 43px;
+        line-height: 43px; }
+      .main .heading .post-time .week {
+        font-size: 12px; }
+    .main .heading .post-info {
+      color: #7e1083;
+      padding: 8px;
+      width: 100%; }
+      .main .heading .post-info .author {
+        font-size: 13px;
+        border-bottom: #7e1083 1px dotted;
+        margin-bottom: 8px; }
+      .main .heading .post-info .title {
+        font-size: 20px;
+        line-height: 22px; }
+  .main .content {
+    font-size: 18px; }
+    .main .content img {
+      max-width: 95%; }

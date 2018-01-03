@@ -22,102 +22,6 @@ h2, h3, h4, h5, h6 {
     font-size: 100%;
 }
 
-.menu{
-    position: fixed;
-    margin-left: $width-cloumn-1;
-    width: $width-cloumn-2;
-    height: 100%;
-    overflow-y:scroll;
-    background-color: $color-list-bg;
-    
-    ul{
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    li{
-        color: $color-member-bg;
-        padding: 10px 8px 10px 12px;
-
-        &.selected{
-            background-color: $color-list-selected-bg;
-            color:$color-highlight;
-        }
-        &:hover{
-            background-color: $color-list-selected-bg;
-            color:$color-highlight;
-        }
-
-        div{
-            width: 99%;
-            white-space: nowrap;
-            text-overflow:ellipsis;
-            overflow-x: hidden;
-            cursor: pointer;
-        }
-    }
-    
-    .small-datetime{
-        padding-left: 2px;
-        font-size: 12px;
-    }
-}
-
-.main{
-    margin-left: ($width-cloumn-1)+($width-cloumn-2);
-    position: relative;
-    max-width: 46%;
-    padding: 8px 8px 8px 16px;
-
-    .heading{
-        display: flex;
-        flex-direction: row;
-        border: $color-highlight 2px solid;
-        border-radius: 6px;
-        margin: 8px 0 24px 0;
-        .post-time{
-            text-decoration: none;
-            min-width: 96px;
-            color: white;
-            background-color: $color-highlight;
-            padding: 8px;
-            .year-month{
-                font-size: 12px;
-            }
-            .date{
-                font-size: 43px;
-                line-height: 43px;
-            }
-            .week{
-                font-size: 12px;
-            }
-        }
-        .post-info{
-            color: $color-highlight;
-            padding: 8px;
-            width: 100%;
-            .author{
-                font-size: 13px;
-                border-bottom: $color-highlight 1px dotted;
-                margin-bottom: 8px;
-            }
-            .title{
-                font-size: 20px;
-                line-height: 20px;
-            }
-        }
-    }
-
-    .content{
-        font-size: 18px;
-    
-        img{
-            max-width: 95%;
-        }
-    }
-}
-
 .member{
     color:$color-light-text;
     position: fixed;
@@ -167,13 +71,114 @@ h2, h3, h4, h5, h6 {
         text-align: left;
     }
 
-    .tag li{
-        background: $color-member-tag-bg;
-        color: $color-light-text;
-        display: inline-block;
-        padding: 2px 8px;
-        margin: 0px 2px 5px 2px;
-        white-space: nowrap;
-        border-radius: 5px;
+    .tag {
+        margin: 24px 8px 0 8px;
+        li{
+            background: $color-member-tag-bg;
+            color: $color-light-text;
+            display: inline-block;
+            padding: 2px 8px;
+            margin: 0px 2px 5px 2px;
+            white-space: nowrap;
+            border-radius: 5px;
+        }
+    }
+}
+
+.menu{
+    position: fixed;
+    margin-left: $width-cloumn-1;
+    width: $width-cloumn-2;
+    height: 100%;
+    overflow-y:scroll;
+    background-color: $color-list-bg;
+    
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li{
+        color: $color-member-bg;
+        padding: 10px 8px 10px 12px;
+        transition: background-color 0.1s linear;
+
+        &.selected{
+            background-color: $color-list-selected-bg;
+            color:$color-highlight;
+        }
+        &:hover{
+            background-color: $color-list-selected-bg;
+            color:$color-highlight;
+            transition: background-color 0.1s linear;
+        }
+
+        div{
+            width: 99%;
+            white-space: nowrap;
+            text-overflow:ellipsis;
+            overflow-x: hidden;
+            cursor: pointer;
+        }
+    }
+    
+    .small-datetime{
+        padding-left: 2px;
+        font-size: 12px;
+    }
+}
+
+.main{
+    margin-left: ($width-cloumn-1)+($width-cloumn-2);
+    position: relative;
+    max-width: 640px;
+    padding: 8px 8px 8px 16px;
+
+    .heading{
+        display: flex;
+        flex-direction: row;
+        border: $color-highlight 2px solid;
+        border-radius: 6px;
+        margin: 8px 0 24px 0;
+        .post-time{
+            text-decoration: none;
+            min-width: 96px;
+            color: white;
+            background-color: $color-highlight;
+            padding: 8px;
+            .year-month{
+                font-size: 12px;
+            }
+            .date{
+                font-size: 43px;
+                line-height: 43px;
+            }
+            .week{
+                font-size: 12px;
+            }
+        }
+        .post-info{
+            color: $color-highlight;
+            padding: 8px;
+            width: 100%;
+            .author{
+                font-size: 13px;
+                border-bottom: $color-highlight 1px dotted;
+                margin-bottom: 8px;
+            }
+            .title{
+                font-size: 20px;
+                line-height: 22px;
+            }
+        }
+    }
+
+    .content{
+        font-size: 18px;
+    
+        img{
+            max-width: 95%;
+        }
     }
 }
