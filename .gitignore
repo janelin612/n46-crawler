@@ -57,7 +57,3 @@ typings/
 # dotenv environment variables file
 .env
 
-
-# build result
-viewer/img/
-viewer/*.json

@@ -1,0 +1,75 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Meiryo,"Meiryo UI", sans-serif;
+    font-size: 15px;
+    background-color: #2b2d42;
+}
+#app{
+    height: 100%;
+    width: 100%;
+}
+.group{
+    margin: 0 auto;
+    max-width: 800px;
+}
+.year{
+    margin: 12px;
+    color: white;
+    font-size: 30px;
+    line-height: 30px;
+    border-bottom: solid 2px white;
+}
+.list{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content:flex-start;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    margin: 0 16px;
+}
+@media screen and (max-width: 700px) {
+    .list{
+        justify-content: center;
+    }
+}
+.member{
+    border-radius: 5px;
+    cursor: pointer;
+    color: #2b2d42;
+    background-color: white;
+    margin: 8px;
+    padding: 8px;
+    max-width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s linear;
+    text-shadow: 1px 1px 5px #c2c2c2;
+    text-decoration: none;
+}
+.member:hover{
+    background-color: #b5bfd1;
+    color: #7e1083;
+    transition: all 0.3s linear;
+}
+.member img{
+    width: 97%;
+}
+.member .info{
+    margin: 16px 0 0 0 ;
+}
+.member .info .name{
+    font-size: 25px;
+    line-height: 25px;
+}
+.member .info .name-hiragana{
+    font-size: 18px;
+    line-height: 20px;
+}
+.member .info{
+    display: flex;
+    flex-direction: column;
+}

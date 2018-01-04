@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>乃木坂46卒業メンバーのブログ</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <meta property="og:site_name" content="乃木坂46卒業メンバーのブログ">
+    <meta property="og:title" content="乃木坂46卒業メンバーのブログ">
+    <meta property="og:description" content="乃木坂46 已畢業成員部落格文章備份 " >
+    <meta property="og:type" content="article" >
+    <meta property="og:image" content="https://janelin612.github.io/n46-crawler/ogimg.jpg" >
+
+    <script src="script/vue.min.js"></script>
+    <script src="script/vue-resource.js"></script>
+    <link rel="stylesheet" href="landingpage.css">
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="(group,index) in list" class="group">
+            <div class="year">{{group.year}}</div>
+            <div class="list">
+                <a v-for="(item,index) in group.member" class="member" :href="item.link">
+                    <img :src="item.image" alt="" />
+                    <div class="info">
+                        <div class="name">{{item.name}}</div>
+                        <div class="name-hiragana">{{item.name_hiragana}}</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+var app = new Vue({
+    el: "#app",
+    data: {
+        list: []
+    },
+    created:function(){
+        this.$http.get("./memberlist.json").then(res => { this.list = res.body }, res => { this.list = [] });
+    }
+});
+</script>
+
+</html>
