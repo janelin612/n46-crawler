@@ -41,7 +41,7 @@ var app = new Vue({
             window.scrollTo(0, 0);
             this.selected = index;
             var obj = { Url: window.location.toString().split("?")[0] + "?no=" + index };
-            history.pushState(obj, document.title, obj.Url);
+            history.replaceState(obj, document.title, obj.Url);
         }
     },
     created: function () {
