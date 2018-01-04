@@ -45,10 +45,10 @@ var authorCrawler=new Crawler({
     if(error){
       console.log(error);
     }else{
-      var $=res.$;
+      let $=res.$;
       $("#sidemember a").each(function(index,value){
-          var path=$(value).attr("href").replace("./",'');
-          var name='';
+          let path=$(value).attr("href").replace("./",'');
+          let name='';
           if($(value).find("img").length>0){
             name=$(value).find(".kanji").text();
           }else {
@@ -71,8 +71,8 @@ var archieveCrawler=new Crawler({
         if(error){
             console.log(error);
         }else{
-            var $ = res.$;
-            var archieveList=[];
+            let $ = res.$;
+            let archieveList=[];
             $('#sidearchives select option').each(function(index,value){
                 if($(value).attr("value").length>1){
                   archieveList.push($(value).attr("value"));
@@ -81,7 +81,7 @@ var archieveCrawler=new Crawler({
             );
             pageCountCrawler.queue(archieveList);
 
-            var memberUrl=$("#sideprofile .txt p a").attr("href");
+            let memberUrl=$("#sideprofile .txt p a").attr("href");
             if(memberUrl!=null && memberUrl.length>0){
               Member.downloadImage=downloadImage;
               Member.crawler.queue(memberUrl);
@@ -102,14 +102,14 @@ var pageCountCrawler = new Crawler({
         if(error){
             console.log(error);
         }else{
-            var URL=res.request.uri.href;
-            var $ = res.$;
+            let URL=res.request.uri.href;
+            let $ = res.$;
 
-            var pageInArchieveList=[];
+            let pageInArchieveList=[];
             //若有分頁則整理出分頁list 沒有就直接用網址本身
             if($("#sheet .paginate").length>0){
-              var size=$("#sheet .paginate").first().children("a").length;
-              for(var i=1;i<=size;i++){
+              let size=$("#sheet .paginate").first().children("a").length;
+              for(let i=1;i<=size;i++){
                 pageInArchieveList.push(URL+"&p="+i);
               }
             }else{
@@ -141,23 +141,23 @@ var blogCrawler= new Crawler({
         if(error){
             console.log(error);
         }else{
-            var $ = res.$;
+            let $ = res.$;
 
             $("#sheet h1.clearfix").each(function(index,value){
               //將圖片網址改為本地端位置，並下載圖片
               if(downloadImage){
                 $(value).nextAll('div.entrybody').first().find("img").each(function(index,value){
-                  var src=$(value).attr("src");
+                  let src=$(value).attr("src");
                   if(src!=null && src.length>0){
                     Image.downloader.queue(src);
                   
-                    var localLocation="img/"+src.replace(/^http\S\/\/\S+?\//,'');
+                    let localLocation="img/"+src.replace(/^http\S\/\/\S+?\//,'');
                     $(value).attr("src",localLocation);
                   }
                 });
               }
               
-              var item={
+              let item={
                 datetime:$(value).nextAll('div.entrybottom').first().text().split('｜')[0].trim(),
                 author:$(value).find('.heading .author').text(),
                 title:$(value).find('.heading a').html(),
@@ -168,8 +168,8 @@ var blogCrawler= new Crawler({
             });
             console.log(result.length+' results');
 
-            var fileName='./viewer/result.json'
-            fs.writeFile(fileName, JSON.stringify(result), 'utf8');
+            let fileName='./viewer/result.json'
+            fs.writeFile(fileName, JSON.stringify(result), 'utf8',function(){;});
         }
         done();
     }
@@ -187,10 +187,10 @@ var blogLinkListCrawler=new Crawler({
       if(error){
           console.log(error);
       }else{
-          var $ = res.$;
+          let $ = res.$;
 
           $("#sheet .entrytitle a").each(function(index,value){
-            var link=$(value).attr("href");
+            let link=$(value).attr("href");
             singleBlogCrawler.queue(link);
           });
           
@@ -206,22 +206,22 @@ var singleBlogCrawler = new Crawler({
     if (error) {
       console.log(error);
     } else {
-      var $ = res.$;
+      let $ = res.$;
 
       //將圖片網址改為本地端位置，並下載圖片
       if (downloadImage) {
         $("#sheet div.entrybody").find("img").each(function (index, value) {
-          var src = $(value).attr("src");
+          let src = $(value).attr("src");
           if (src != null && src.length > 0) {
             Image.downloader.queue(src);
 
-            var localLocation = "img/" + src.replace(/^http\S\/\/\S+?\//, '');
+            let localLocation = "img/" + src.replace(/^http\S\/\/\S+?\//, '');
             $(value).attr("src", localLocation);
           }
         });
       }
 
-      var item = {
+      let item = {
         datetime: $("#sheet div.entrybottom").first().text().split('｜')[0].trim(),
         author: $("#sheet h1.clearfix .heading .author").text(),
         title: $("#sheet h1.clearfix .heading .entrytitle").html(),
@@ -231,8 +231,8 @@ var singleBlogCrawler = new Crawler({
       result.push(item);
       console.log(item.url+" | "+item.title);
 
-      var fileName = './viewer/result.json'
-      fs.writeFile(fileName, JSON.stringify(result), 'utf8');
+      let fileName = './viewer/result.json'
+      fs.writeFile(fileName, JSON.stringify(result), 'utf8',function(){;});
     }
     done();
   }

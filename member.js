@@ -12,32 +12,32 @@ module.exports ={
         if(error){
             console.log(error);
         }else{
-            var URL=res.request.uri.href;
-            var $ = res.$;
+            let URL=res.request.uri.href;
+            let $ = res.$;
   
-            var memberImage=$("#profile img").first().attr("src");
+            let memberImage=$("#profile img").first().attr("src");
   
             if(module.exports.downloadImage){
               Image.downloader.queue(memberImage);
               memberImage="img/"+memberImage.replace(/^http\S\/\/\S+?\//,'');
             }
   
-            var memberName_hiragana=$("#profile div.txt h2 span").text();
+            let memberName_hiragana=$("#profile div.txt h2 span").text();
             $("#profile div.txt h2 span").remove();
-            var memberName=$("#profile div.txt h2").text();
+            let memberName=$("#profile div.txt h2").text();
   
             //table
-            var introList=[];
+            let introList=[];
             $("#profile div.txt dl dt").each(function(index,view){
-              var key=$(view).text().replace("：","");
-              var value=$(view).nextAll("dd").first().text();
+              let key=$(view).text().replace("：","");
+              let value=$(view).nextAll("dd").first().text();
               introList.push({
                 key:key,value:value
               });
             });
   
             //tag
-            var tagList=[];
+            let tagList=[];
             $("#profile div.txt div.status div").each(function(index,view){
               tagList.push($(view).text());
             });
@@ -51,8 +51,8 @@ module.exports ={
               tag:tagList
             }
   
-            var fileName='./viewer/member.json'
-            fs.writeFile(fileName, JSON.stringify(member), 'utf8');
+            let fileName='./viewer/member.json'
+            fs.writeFile(fileName, JSON.stringify(member), 'utf8',function(){;});
         }
         done();
     }

@@ -41,7 +41,7 @@ var app = new Vue({
             window.scrollTo(0, 0);
             this.selected = index;
             var obj = { Url: window.location.toString().split("?")[0] + "?no=" + index };
-            history.pushState(obj, document.title, obj.Url);
+            history.replaceState(obj, document.title, obj.Url);
         }
     },
     created: function () {
@@ -54,10 +54,15 @@ var app = new Vue({
         }
     },
     updated:function(){
-        //第一次開啟時將卷軸捲到正確的位置
+        
         if(this.firstTimeUpdate){
+            //更改網站標題
+            if('name' in this.member){
+                document.title=this.member.name+" 非公式ブログ";
+            }
+
+            //第一次開啟時將卷軸捲到正確的位置
             var dom=this.$el.querySelector(".menu li");
-            //TODO 搞懂為啥這邊會拿到null
             if(dom!=null){
                 var single=dom.scrollHeight;
                 this.$el.querySelector(".menu").scrollTop=single*(this.selected);
