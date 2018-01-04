@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>乃木坂46 非公式ブログ</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <script src="script/vue.min.js"></script>
+    <script src="script/vue-resource.js"></script>
+    <link rel="stylesheet" href="landingpage.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="list">
+            <a v-for="(item,index) in list" class="member" :href="item.link">
+                <img :src="item.image" alt="" />
+                <div class="info">
+                    <div class="name">{{item.name}}</div>
+                    <div class="name-hiragana">{{item.name_hiragana}}</div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            list: [
+                {
+                    name: "橋本 奈々未",
+                    name_hiragana: "はしもと　ななみ",
+                    image: "http://img.nogizaka46.com/www/member/img/hashimotonanami_prof.jpg",
+                    link:"nanami.hashimoto/index.html"
+                },
+                {
+                    name: "伊藤 万理華",
+                    name_hiragana: "いとう まりか",
+                    image: "http://img.nogizaka46.com/www/member/img/itoumarika_prof.jpg",
+                    link:"marika.ito/index.html"
+                },
+                {
+                    name: "中元 日芽香",
+                    name_hiragana: "なかもと ひめか",
+                    image: "http://img.nogizaka46.com/www/member/img/nakamotohimeka_prof.jpg",
+                    link:"himeka.nakamoto/index.html"
+                },
+            ]
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,17 @@
+{
+    "image":"img/hashimotonanami_prof.jpg",
+    "name": "橋本 奈々未",
+    "name_hiragana": "はしもと　ななみ",
+    "intro": [
+        {
+            "key":"生年月日","value":"1993年2月20日"
+        },{
+            "key":"血液型","value":"B型"
+        },{
+            "key":"星座","value":"うお座"
+        },{
+            "key":"身長","value":"163cm"
+        }
+    ],
+    "tag":["1期生","選抜メンバー","十一福神"]
+}
