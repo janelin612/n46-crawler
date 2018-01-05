@@ -19,7 +19,10 @@ h2, h3, h4, h5, h6 {
   overflow: hidden;
   background-color: #2b2d42;
   box-shadow: 1px 0 6px #2b2d42;
-  z-index: 1; }
+  z-index: 2; }
+  @media screen and (max-width: 700px) {
+    .member {
+      width: 35%; } }
   .member .avatar {
     width: 90%;
     margin: 5%;
@@ -62,7 +65,12 @@ h2, h3, h4, h5, h6 {
   width: 26%;
   height: 100%;
   overflow-y: scroll;
-  background-color: #b5bfd1; }
+  background-color: #b5bfd1;
+  z-index: 1; }
+  @media screen and (max-width: 700px) {
+    .menu {
+      margin-left: 35%;
+      width: 60%; } }
   .menu ul {
     list-style: none;
     padding: 0;
@@ -89,6 +97,7 @@ h2, h3, h4, h5, h6 {
     font-size: 12px; }
 
 .main {
+  z-index: 0;
   margin-left: 40%;
   position: relative;
   max-width: 640px;

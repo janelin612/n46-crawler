@@ -9,6 +9,10 @@ $color-member-tag-bg:#b773b9;
 $width-cloumn-1:14%;
 $width-cloumn-2:26%;
 
+$width-gap:700px;
+$width-cloumn-1-m:35%;
+$width-cloumn-2-m:60%;
+
 body{
     padding: 0;
     margin: 0;
@@ -23,6 +27,9 @@ h2, h3, h4, h5, h6 {
 }
 
 .member{
+    @media screen and (max-width:$width-gap){
+        width: $width-cloumn-1-m;
+    }
     color:$color-light-text;
     position: fixed;
     width: $width-cloumn-1;
@@ -30,7 +37,7 @@ h2, h3, h4, h5, h6 {
     overflow: hidden;
     background-color: $color-member-bg;
     box-shadow: 1px 0 6px $color-member-bg;
-    z-index: 1;
+    z-index: 2;
 
     .avatar{
         width: 90%;
@@ -86,12 +93,17 @@ h2, h3, h4, h5, h6 {
 }
 
 .menu{
+    @media screen and (max-width:$width-gap){
+        margin-left: $width-cloumn-1-m;
+        width: $width-cloumn-2-m;
+    }
     position: fixed;
     margin-left: $width-cloumn-1;
     width: $width-cloumn-2;
     height: 100%;
     overflow-y:scroll;
     background-color: $color-list-bg;
+    z-index: 1;
     
     ul{
         list-style: none;
@@ -130,6 +142,7 @@ h2, h3, h4, h5, h6 {
 }
 
 .main{
+    z-index: 0;
     margin-left: ($width-cloumn-1)+($width-cloumn-2);
     position: relative;
     max-width: 640px;
