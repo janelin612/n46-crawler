@@ -11,12 +11,13 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script> -->
     <script src="script/vue.min.js"></script>
     <script src="script/vue-resource.js"></script>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="resource/main.css">
 </head>
 
 <body>
     <div id="app">
-        <div class="member">
+        <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="resource/menu.svg" alt=""></button>
+        <div class="member" :class="{'hide':isFold}">
             <img :src="member.image" alt="" class="avatar">
             <div class="name">{{member.name}}</div>
             <div class="name hiragana">{{member.name_hiragana}}</div>
@@ -33,7 +34,7 @@
             </ul>
         </div>
 
-        <div class="menu">
+        <div class="menu" :class="{'hide':isFold}">
             <ul>
                 <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
                     <div v-html="item.title"></div>

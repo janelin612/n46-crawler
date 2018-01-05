@@ -136,4 +136,3 @@ Crawler will generate two json file
 	 + 解法1 : 找個空間把整包掛上去
 	 + 解法2 : 對Chrome下參數`--allow-file-access-from-files` 詳細說明:[連結](http://blog.twtnn.com/2015/03/ajaxcross-origin-requests-are-only.html)
 	 + 解法3 : 改用Firefox吧
-+ RWD : 完全沒做 目前用手機看是會無法使用的，有空再來改
