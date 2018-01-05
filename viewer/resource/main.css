@@ -24,7 +24,10 @@ h2, h3, h4, h5, h6 {
   z-index: 2; }
   @media screen and (max-width: 700px) {
     .member {
-      width: 35%; } }
+      width: 35%; }
+      .member.hide {
+        left: -35%;
+        transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1); } }
   .member .avatar {
     width: 90%;
     margin: 5%;
@@ -44,12 +47,19 @@ h2, h3, h4, h5, h6 {
     display: inline-block;
     width: 35%;
     text-align: right; }
+    @media screen and (max-width: 700px) {
+      .member .key {
+        display: none; } }
     .member .key::after {
       content: "："; }
   .member .value {
     display: inline-block;
     width: 60%;
     text-align: left; }
+    @media screen and (max-width: 700px) {
+      .member .value {
+        width: 90%;
+        padding-left: 8px; } }
   .member .tag {
     margin: 24px 8px 0 8px; }
     .member .tag li {
@@ -60,10 +70,6 @@ h2, h3, h4, h5, h6 {
       margin: 0px 2px 5px 2px;
       white-space: nowrap;
       border-radius: 5px; }
-  @media screen and (max-width: 700px) {
-    .member.hide {
-      left: -35%;
-      transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1); } }
 
 .menu {
   position: fixed;
@@ -78,7 +84,10 @@ h2, h3, h4, h5, h6 {
   @media screen and (max-width: 700px) {
     .menu {
       margin-left: 35%;
-      width: 60%; } }
+      width: 60%; }
+      .menu.hide {
+        left: -95%;
+        transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1); } }
   .menu ul {
     list-style: none;
     padding: 0;
@@ -103,10 +112,6 @@ h2, h3, h4, h5, h6 {
   .menu .small-datetime {
     padding-left: 2px;
     font-size: 12px; }
-  @media screen and (max-width: 700px) {
-    .menu.hide {
-      left: -95%;
-      transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1); } }
 
 .main {
   z-index: 0;

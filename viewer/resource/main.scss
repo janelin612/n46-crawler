@@ -29,6 +29,11 @@ h2, h3, h4, h5, h6 {
 .member{
     @media screen and (max-width:$width-gap){
         width: $width-cloumn-1-m;
+
+        &.hide{
+            left: -(($width-cloumn-1-m));
+            transition: left 0.5s cubic-bezier(.17,.84,.44,1);
+        }
     }
     color:$color-light-text;
     position: fixed;
@@ -65,6 +70,9 @@ h2, h3, h4, h5, h6 {
     }
 
     .key{
+        @media screen and (max-width:$width-gap){
+            display: none;
+        }
         display: inline-block;
         width: 35%;
         text-align: right;
@@ -75,6 +83,10 @@ h2, h3, h4, h5, h6 {
     }
 
     .value{
+        @media screen and (max-width:$width-gap){
+            width: 90%;
+            padding-left: 8px;
+        }
         display: inline-block;
         width: 60%;
         text-align: left;
@@ -92,21 +104,16 @@ h2, h3, h4, h5, h6 {
             border-radius: 5px;
         }
     }
-
-    &.hide{
-        @media screen and (max-width:$width-gap){
-            left: -(($width-cloumn-1-m));
-            transition: left 0.5s cubic-bezier(.17,.84,.44,1);
-        }
-    }
 }
 
 .menu{
     @media screen and (max-width:$width-gap){
         margin-left: $width-cloumn-1-m;
         width: $width-cloumn-2-m;
-
-        
+        &.hide{
+            left: -(($width-cloumn-1-m)+($width-cloumn-2-m));
+            transition: left 0.5s cubic-bezier(.17,.84,.44,1);
+        }
     }
     position: fixed;
     left: 0;
@@ -151,13 +158,6 @@ h2, h3, h4, h5, h6 {
     .small-datetime{
         padding-left: 2px;
         font-size: 12px;
-    }
-
-    &.hide{
-        @media screen and (max-width:$width-gap){
-            left: -(($width-cloumn-1-m)+($width-cloumn-2-m));
-            transition: left 0.5s cubic-bezier(.17,.84,.44,1);
-        }
     }
 }
 
