@@ -5,10 +5,8 @@ body {
     font-size: 15px;
     background-color: #2b2d42;
 }
-
 #app{
     position: fixed;
-    display: block;
     height: 100%;
     width: 100%;
 }
@@ -18,6 +16,8 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    overflow-y: auto;
 }
 .member{
     border-radius: 5px;
@@ -26,7 +26,7 @@ body {
     background-color: white;
     margin: 8px;
     padding: 8px;
-    max-width: 600px;
+    max-width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,8 +40,7 @@ body {
     transition: all 0.3s linear;
 }
 .member img{
-    width: 250px;
-    
+    width: 97%;
 }
 .member .info{
     margin: 16px 0 0 0 ;
@@ -49,13 +48,11 @@ body {
 .member .info .name{
     font-size: 30px;
     line-height: 30px;
-    
 }
 .member .info .name-hiragana{
     font-size: 20px;
     line-height: 22px;
 }
-
 .member .info{
     display: flex;
     flex-direction: column;
