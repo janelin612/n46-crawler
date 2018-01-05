@@ -96,6 +96,11 @@ h2, h3, h4, h5, h6 {
     padding-left: 2px;
     font-size: 12px; }
 
+@media screen and (max-width: 700px) {
+  .menu-hide {
+    left: -95%;
+    transition: left 0.5s linear; } }
+
 .main {
   z-index: 0;
   margin-left: 40%;

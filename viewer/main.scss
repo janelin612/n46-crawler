@@ -91,6 +91,12 @@ h2, h3, h4, h5, h6 {
         }
     }
 }
+.member-hide{
+    @media screen and (max-width:$width-gap){
+        left: -(($width-cloumn-1-m));
+        transition: left 0.5s linear;
+    }
+}
 
 .menu{
     @media screen and (max-width:$width-gap){
@@ -138,6 +144,13 @@ h2, h3, h4, h5, h6 {
     .small-datetime{
         padding-left: 2px;
         font-size: 12px;
+    }
+}
+
+.menu-hide{
+    @media screen and (max-width:$width-gap){
+        left: -(($width-cloumn-1-m)+($width-cloumn-2-m));
+        transition: left 0.5s linear;
     }
 }
 
