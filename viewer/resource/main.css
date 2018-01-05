@@ -60,11 +60,10 @@ h2, h3, h4, h5, h6 {
       margin: 0px 2px 5px 2px;
       white-space: nowrap;
       border-radius: 5px; }
-
-@media screen and (max-width: 700px) {
-  .member-hide {
-    left: -35%;
-    transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1); } }
+  @media screen and (max-width: 700px) {
+    .member.hide {
+      left: -35%;
+      transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1); } }
 
 .menu {
   position: fixed;
@@ -104,11 +103,10 @@ h2, h3, h4, h5, h6 {
   .menu .small-datetime {
     padding-left: 2px;
     font-size: 12px; }
-
-@media screen and (max-width: 700px) {
-  .menu-hide {
-    left: -95%;
-    transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1); } }
+  @media screen and (max-width: 700px) {
+    .menu.hide {
+      left: -95%;
+      transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1); } }
 
 .main {
   z-index: 0;
@@ -155,11 +153,22 @@ h2, h3, h4, h5, h6 {
       max-width: 95%; }
 
 #btn-toggle {
-  display: none; }
+  background-color: #7e1083;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 100;
+  position: fixed;
+  left: 8px;
+  bottom: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  border: none; }
   @media screen and (max-width: 700px) {
     #btn-toggle {
-      z-index: 100;
-      position: fixed;
-      display: block;
-      left: 1%;
-      bottom: 1%; } }
+      display: block; } }
+  #btn-toggle img {
+    width: 99%;
+    height: 99%; }
+  #btn-toggle.hide {
+    opacity: 0.5; }
