@@ -32,6 +32,8 @@ h2, h3, h4, h5, h6 {
     }
     color:$color-light-text;
     position: fixed;
+    left: 0;
+    transition: left 0.5s cubic-bezier(.17,.84,.44,1);
     width: $width-cloumn-1;
     height: 100%;
     overflow: hidden;
@@ -94,7 +96,7 @@ h2, h3, h4, h5, h6 {
 .member-hide{
     @media screen and (max-width:$width-gap){
         left: -(($width-cloumn-1-m));
-        transition: left 0.5s linear;
+        transition: left 0.5s cubic-bezier(.17,.84,.44,1);
     }
 }
 
@@ -104,6 +106,8 @@ h2, h3, h4, h5, h6 {
         width: $width-cloumn-2-m;
     }
     position: fixed;
+    left: 0;
+    transition: left 0.5s cubic-bezier(.17,.84,.44,1);
     margin-left: $width-cloumn-1;
     width: $width-cloumn-2;
     height: 100%;
@@ -150,11 +154,14 @@ h2, h3, h4, h5, h6 {
 .menu-hide{
     @media screen and (max-width:$width-gap){
         left: -(($width-cloumn-1-m)+($width-cloumn-2-m));
-        transition: left 0.5s linear;
+        transition: left 0.5s cubic-bezier(.17,.84,.44,1);
     }
 }
 
 .main{
+    @media screen and (max-width:$width-gap){
+        margin-left: 0;
+    }
     z-index: 0;
     margin-left: ($width-cloumn-1)+($width-cloumn-2);
     position: relative;
@@ -206,5 +213,16 @@ h2, h3, h4, h5, h6 {
         img{
             max-width: 95%;
         }
+    }
+}
+
+#btn-toggle{
+    display: none;
+    @media screen and (max-width:$width-gap){
+        z-index: 100;
+        position: fixed;
+        display: block;
+        left: 1%;
+        bottom: 1%;
     }
 }

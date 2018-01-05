@@ -8,15 +8,16 @@
     <title>乃木坂46 非公式ブログ</title>
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script> -->
-    <script src="script/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script>
+    <!-- <script src="script/vue.min.js"></script> -->
     <script src="script/vue-resource.js"></script>
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
     <div id="app">
-        <div class="member">
+        <button id="btn-toggle" @click="onToggle()">TOGGLE</button>
+        <div class="member" :class="{'member-hide':isFold}">
             <img :src="member.image" alt="" class="avatar">
             <div class="name">{{member.name}}</div>
             <div class="name hiragana">{{member.name_hiragana}}</div>
@@ -33,7 +34,7 @@
             </ul>
         </div>
 
-        <div class="menu">
+        <div class="menu" :class="{'menu-hide':isFold}">
             <ul>
                 <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
                     <div v-html="item.title"></div>

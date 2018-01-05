@@ -14,6 +14,8 @@ h2, h3, h4, h5, h6 {
 .member {
   color: #eaecf0;
   position: fixed;
+  left: 0;
+  transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1);
   width: 14%;
   height: 100%;
   overflow: hidden;
@@ -59,8 +61,15 @@ h2, h3, h4, h5, h6 {
       white-space: nowrap;
       border-radius: 5px; }
 
+@media screen and (max-width: 700px) {
+  .member-hide {
+    left: -35%;
+    transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1); } }
+
 .menu {
   position: fixed;
+  left: 0;
+  transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1);
   margin-left: 14%;
   width: 26%;
   height: 100%;
@@ -99,7 +108,7 @@ h2, h3, h4, h5, h6 {
 @media screen and (max-width: 700px) {
   .menu-hide {
     left: -95%;
-    transition: left 0.5s linear; } }
+    transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1); } }
 
 .main {
   z-index: 0;
@@ -107,6 +116,9 @@ h2, h3, h4, h5, h6 {
   position: relative;
   max-width: 640px;
   padding: 8px 8px 8px 16px; }
+  @media screen and (max-width: 700px) {
+    .main {
+      margin-left: 0; } }
   .main .heading {
     display: flex;
     flex-direction: row;
@@ -141,3 +153,13 @@ h2, h3, h4, h5, h6 {
     font-size: 18px; }
     .main .content img {
       max-width: 95%; }
+
+#btn-toggle {
+  display: none; }
+  @media screen and (max-width: 700px) {
+    #btn-toggle {
+      z-index: 100;
+      position: fixed;
+      display: block;
+      left: 1%;
+      bottom: 1%; } }
