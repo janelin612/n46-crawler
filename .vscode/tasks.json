@@ -4,6 +4,6 @@
     "version": "0.1.0",
     "command": "node-sass",
     "isShellCommand": true,
-    "args": ["./viewer/main.scss", "./viewer/main.css"],
+    "args": ["./viewer/resource/main.scss", "./viewer/resource/main.css"],
     "showOutput": "always"
 }
