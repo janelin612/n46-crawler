@@ -5,7 +5,8 @@ var app = new Vue({
         firstTimeUpdate:true,
         selected: 0,
         list: [],
-        member: {}
+        member: {},
+        isFold:false
     },
     computed:{
         //指向目前選定的部落格文章
@@ -39,9 +40,13 @@ var app = new Vue({
     methods: {
         onListSelected: function (index) {
             window.scrollTo(0, 0);
+            this.isFold=true;
             this.selected = index;
             var obj = { Url: window.location.toString().split("?")[0] + "?no=" + index };
             history.replaceState(obj, document.title, obj.Url);
+        },
+        onToggle:function(){
+            this.isFold=!this.isFold;
         }
     },
     created: function () {
