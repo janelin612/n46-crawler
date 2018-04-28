@@ -1,13 +1,17 @@
 n46-crawler
 ===========
 
-[Demo Site](https://janelin612.github.io/n46-crawler/)
-
 將官方部落格的所有文章整理成`json`格式的檔案，並且可以自由決定是否要下載全部圖片  
 本專案包含:
 
 1. 爬蟲
 2. 一個簡單的Html檢視器，用來閱讀爬好的json檔 
+
+### [Demo Site](https://janelin612.github.io/n46-crawler/)
++ [橋本奈々未](https://janelin612.github.io/n46-crawler/nanami.hashimoto) - archived on 2017-12-31
++ [伊藤万理華](https://janelin612.github.io/n46-crawler/marika.ito) - archived on 2017-12-31
++ [中元日芽香](https://janelin612.github.io/n46-crawler/himeka.nakamoto) - archived on 2017-12-31
++ [川村真洋](https://janelin612.github.io/n46-crawler/mahiro.kawamura) - archived on 2018-04-27
 
 # Get started #
 ## 1.install dependencies ##
@@ -83,7 +87,6 @@ Crawler will generate two json file
 	"url": "http://blog.nogizaka46.com/kotoko.sasaki/2017/08/040349.php",
 	"content":"<div>...........</div>"
 }]
-
 ```
 
 2. `member.json` : member's introduction when you using `-a MEMBER_NAME` argument
@@ -116,7 +119,6 @@ Crawler will generate two json file
     ]
 }
 ```
-
 
 # Viewer #
 本來只想要有個簡單的畫面來讀JSON檔，結果越寫越複雜...
