@@ -15,7 +15,7 @@ module.exports ={
       if(error){
         console.log(error);
       }else{
-        let urlWithoutDomain=res.request.uri.href.replace(/^http\S\/\/\S+?\//,'');
+        let urlWithoutDomain=res.request.uri.href.replace(/^http(s){0,1}\S\/\/\S+?\//,'');
         let splitArray=urlWithoutDomain.split("/");
 
         let d=IMAGE_SAVE_DIR;

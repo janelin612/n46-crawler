@@ -19,7 +19,7 @@ module.exports ={
   
             if(module.exports.downloadImage){
               Image.downloader.queue(memberImage);
-              memberImage="img/"+memberImage.replace(/^http\S\/\/\S+?\//,'');
+              memberImage="img/"+memberImage.replace(/^http(s){0,1}\S\/\/\S+?\//,'');
             }
   
             let memberName_hiragana=$("#profile div.txt h2 span").text();

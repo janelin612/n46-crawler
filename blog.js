@@ -151,7 +151,7 @@ var blogCrawler= new Crawler({
                   if(src!=null && src.length>0){
                     Image.downloader.queue(src);
                   
-                    let localLocation="img/"+src.replace(/^http\S\/\/\S+?\//,'');
+                    let localLocation="img/"+src.replace(/^http(s){0,1}\S\/\/\S+?\//,'');
                     $(value).attr("src",localLocation);
                   }
                 });
@@ -215,8 +215,8 @@ var singleBlogCrawler = new Crawler({
           if (src != null && src.length > 0) {
             Image.downloader.queue(src);
 
-            let localLocation = "img/" + src.replace(/^http\S\/\/\S+?\//, '');
-            $(value).attr("src", localLocation);
+            let localLocation="img/"+src.replace(/^http(s){0,1}\S\/\/\S+?\//,'');
+            $(value).attr("src",localLocation);
           }
         });
       }
