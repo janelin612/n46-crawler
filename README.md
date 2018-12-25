@@ -14,9 +14,9 @@ n46-crawler
 + [川村真洋](https://janelin612.github.io/n46-crawler/mahiro.kawamura) - archived on 2018-04-27
 + [生駒里奈](https://janelin612.github.io/n46-crawler/rina.ikoma) - archived on 2018-05-12
 + [斎藤ちはる](https://janelin612.github.io/n46-crawler/chiharu.saito/) - archived on 2018-07-17
-+ [若月佑美](https://janelin612.github.io/n46-crawler/yumi.wakatsuki/) - archived on 2018-12-02
-+ [川後陽菜](https://janelin612.github.io/n46-crawler/hina.kawago/) - archived on 2018-12-04
-+ [能條愛未](https://janelin612.github.io/n46-crawler/ami.noujo/) - archived on 2018-12-04
++ [若月佑美](https://janelin612.github.io/n46-crawler/yumi.wakatsuki/) - archived on 2018-12-13
++ [川後陽菜](https://janelin612.github.io/n46-crawler/hina.kawago/) - archived on 2018-12-25
++ [能條愛未](https://janelin612.github.io/n46-crawler/ami.noujo/) - archived on 2018-12-25
 
 # Get started #
 ## 1.install dependencies ##
