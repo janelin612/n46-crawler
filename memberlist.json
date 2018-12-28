@@ -60,6 +60,12 @@
                 "name_hiragana": "のうじょう あみ",
                 "image": "ami.noujo/img/www/member/img/noujouami_prof.jpg",
                 "link": "ami.noujo/index.html"
+            },
+			{
+                "name": "西野 七瀬",
+                "name_hiragana": "にしの ななせ",
+                "image": "nanase.nishino/img/www/member/img/nishinonanase_prof.jpg",
+                "link": "nanase.nishino/index.html"
             }
         ]
     }
