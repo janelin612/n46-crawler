@@ -1,63 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>乃木坂46 非公式ブログ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>中元 日芽香 | 乃木坂46卒業メンバーのブログ</title>
+  <meta property="og:image" content="https://janelin612.github.io/n46-crawler/ogimg.jpg">
 
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <script src="../script/vue.min.js"></script>
-    <script src="../script/vue-resource.js"></script>
-    <link rel="stylesheet" href="../main.css">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <script src="../script/vue.min.js"></script>
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-38227412-4');
+  </script>
 </head>
 
 <body>
-    <div id="app">
-        <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../menu.svg" alt=""></button>
-        <div class="member" :class="{'hide':isFold}">
-            <img :src="member.image" alt="" class="avatar">
-            <div class="name">{{member.name}}</div>
-            <div class="name hiragana">{{member.name_hiragana}}</div>
+  <div id="app">
+    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../menu.svg" alt=""></button>
+    <div class="member" :class="{'hide':isFold}">
+      <img :src="member.image" alt="" class="avatar">
+      <div class="name">{{member.name}}</div>
+      <div class="name hiragana">{{member.name_hiragana}}</div>
 
-            <ul class="intro">
-                <li v-for="item in member.intro">
-                    <span class="key">{{item.key}}</span>
-                    <span class="value">{{item.value}}</span>
-                </li>
-            </ul>
+      <ul class="intro">
+        <li v-for="item in member.intro">
+          <span class="key">{{item.key}}</span>
+          <span class="value">{{item.value}}</span>
+        </li>
+      </ul>
 
-            <ul class="tag">
-                <li v-for="item in member.tag">{{item}}</li>
-            </ul>
-        </div>
-
-        <div class="menu" :class="{'hide':isFold}">
-            <ul>
-                <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
-                    <div v-html="item.title"></div>
-                    <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
-                    <div class="small-datetime">{{item.datetime}}</div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="main" v-if="currentPost!=null">
-            <div class="heading">
-                <a class="post-time" :href="currentPost.url" target="_blank">
-                    <div class="year-month">{{currentPostDate.yearMonth}}</div>
-                    <span class="date">{{currentPostDate.date}}</span>
-                    <span class="week">{{currentPostDate.weekday}}</span>
-                </a>
-                <div class="post-info">
-                    <div class="author">{{currentPost.author}}</div>
-                    <div class="title" v-html="currentPost.title"></div>
-                </div>
-            </div>
-            <span class="content" v-html="currentPost.content"></span>
-        </div>
+      <ul class="tag">
+        <li v-for="item in member.tag">{{item}}</li>
+      </ul>
     </div>
+
+    <div class="menu" :class="{'hide':isFold}">
+      <div class="loading-spinner" v-if="isLoading">
+        <div class="spinner"></div>
+      </div>
+      <ul>
+        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
+          <div v-html="item.title"></div>
+          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
+          <div class="small-datetime">{{item.datetime}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main" v-if="currentPost!=null">
+      <div class="heading">
+        <a class="post-time" :href="currentPost.url" target="_blank">
+          <div class="year-month">{{currentPostDate.yearMonth}}</div>
+          <span class="date">{{currentPostDate.date}}</span>
+          <span class="week">{{currentPostDate.weekday}}</span>
+        </a>
+        <div class="post-info">
+          <div class="author">{{currentPost.author}}</div>
+          <div class="title" v-html="currentPost.title"></div>
+        </div>
+      </div>
+      <div class="content" v-html="currentPost.content"></div>
+    </div>
+  </div>
 </body>
+<script> const defaultList=[{"datetime":"2017/12/22 11:18","author":"中元日芽香","title":"ひめたん-0o0-その731","url":"http://blog.nogizaka46.com/himeka.nakamoto/2017/12/042278.php","content":"<div>&nbsp;</div><div>最後の更新にします。</div><div>クローズまで時間があるので、よかったら</div><div>今までの記事も読んでみて下さい。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>バナナムーンGOLD</div><div>ヒムペキ兄さんのコーナーにて</div><div>歌出演しました！</div><div>&nbsp;</div><div>サプライズだったので</div><div>事前に告知できずすみません。</div><div>&nbsp;</div><div>バナナマンさんに今年言いたいことがある</div><div>女の子たちで集まって歌いました！</div><div>番組公式サイトに写真上がってるので</div><div>見てみて下さい。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>前回のらじらー！サンデーで</div><div>ソロ曲「自分のこと」</div><div>音源一部解禁されました～～</div><div>&nbsp;</div><div>メイキング映像も楽しみにしていて下さい。</div><div>懐かしの景色に心揺さぶられました。</div><div>&nbsp;</div><div>頃安監督がSNSで</div><div>紹介してくださってました！</div><div>お世話になりました！</div><div>&nbsp;</div><div>「僕だけの君～Under Super Best～」</div><div>よろしくお願いします。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>結局ひめたんいつまで活動するの？と</div><div>沢山聞かれました（笑）すみません。</div><div>&nbsp;</div><div>そして今も</div><div>最後の更新と言いながら</div><div>最後らしい言葉が見つかりません。笑</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>最近は沢山時間があります、</div><div>私にとって必要な時間だと感じています。</div><div>&nbsp;</div><div>いろんなことを考えます。</div><div>お世話になった人の顔も浮かぶし、</div><div>思い出なんかも蘇ります。</div><div>&nbsp;</div><div>振り返ってみて、やっぱり</div><div>私のした選択に何一つ後悔はありません！</div><div>&nbsp;</div><div>全部正しかったと思いたい。</div><div>それを証明するのは自分自身の、</div><div>これからの行いですよね。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>気がついたら</div><div>私はアイドルという職業に惚れてました。</div><div>&nbsp;</div><div>仕事が恋人とはこのことで</div><div>勉強する時間も、寝る時間さえも惜しいと</div><div>思ったほどでした。</div><div>&nbsp;</div><div>なんでこんなに夢中だったか</div><div>最後にお話ししても良いですか。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>綺麗な衣装が着られて楽しい、</div><div>お写真撮られるのが楽しい、</div><div>ステージに立つのが楽しい、全部本当です。</div><div>&nbsp;</div><div>でもそれ以上に</div><div>&nbsp;</div><div>私はここにいていいんだって</div><div>認めてもらいたかった、</div><div>その一心で走ってきたような気がします。</div><div>&nbsp;</div><div>この世界にいると、</div><div>私を必要としてくれる人が沢山いる。</div><div>私だけを見てくれている人が沢山いる。</div><div>&nbsp;</div><div>それが嬉しくて今日まで続けてきました。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>がむしゃらに進む姿勢というのは</div><div>それだけで人の胸を打つもので</div><div>&nbsp;</div><div>特別な才能があるわけではない私でも</div><div>勇気なのか、癒しなのか、希望なのか、</div><div>色んな感情を与えられる。</div><div>&nbsp;</div><div>アイドルの一番のウリは</div><div>素のキャラクターと</div><div>仕事への\"姿勢\"なんだと思います。</div><div>&nbsp;</div><div>シンガーには敵わないし</div><div>ダンサーには敵わないし</div><div>芸人には敵わない。</div><div>&nbsp;</div><div>パフォーマンスが完全でない分</div><div>いかに目の前のことに真摯に取り組むかが</div><div>求められている職業かなと考えた時、</div><div>&nbsp;</div><div>私はアイドルとして何事にも</div><div>全力でぶつかってきたつもりです。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>あくまで私のアイドル論ですが</div><div>語れと言われればいくらでも語ります。</div><div>それだけこのお仕事が好きでした。</div><div>&nbsp;</div><div>忙しいのが幸せな私には正直、</div><div>次への準備期間が心穏やかではありません。</div><div>今の宙ぶらりんな状態は落ち着かなくて。</div><div>&nbsp;</div><div><div>ですが私の進みたい方向性は</div><div>一応プランはあります。</div><div>&nbsp;</div><div>説得力のある人間に。</div><div>そのための経験をこれからの時間で</div><div>沢山していきたいと思っています。</div></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>アンダーライブお疲れ様！</div><div>紅白3年連続出演おめでとう！</div><div>&nbsp;</div><div>親愛なるメンバーひとりひとりに</div><div>この言葉を贈ります。</div><div>声を大にして言いたい。</div><div>&nbsp;</div><div>あなたは乃木坂に必要な存在だよ。</div><div>ここに至るまでに誰か一人でも欠けていれば</div><div>今の乃木坂はなかった。本当にありがとう。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>スタッフの皆様、ファンの皆様。</div><div>&nbsp;</div><div>今までお世話になりました。</div><div>本当にありがとうございました。</div><div>&nbsp;</div><div>またどこかで。</div><div>&nbsp;</div><div>&nbsp;</div><div>中元 日芽香</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/12/22/0891762/0000.jpeg\"></div>"},{"datetime":"2017/12/12 09:24","author":"中元日芽香","title":"ひめたん-0o0-その730","url":"http://blog.nogizaka46.com/himeka.nakamoto/2017/12/042118.php","content":"<div>&nbsp;</div><div><div>来年1月10日発売のアンダーアルバム</div><div>「僕だけの君～Under Super Best～」</div><div>の中にソロ曲を収録させて頂きました。</div><div>&nbsp;</div><div>「自分のこと」という曲です。</div><div>&nbsp;</div><div>あたたかい、私らしい詞です。</div><div>秋元先生からの愛を</div><div>感じています＼(^o^)／</div><div>&nbsp;</div><div>ドキュメンタリー映像の監督は</div><div>君僕でお世話になった山田篤宏監督。</div><div>所縁のある映像チームの皆さんと</div><div>和気あいあいとした現場でした。</div></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>アンダーアルバムについて</div><div>少しだけ語らせて下さい。</div><div>&nbsp;</div><div>左胸の勇気</div><div>狼に口笛を</div><div>涙がまだ悲しみだった頃</div><div>春のメロディー</div><div>13日の金曜日</div><div>扇風機</div><div>生まれたままで</div><div>ここにいる理由</div><div>あの日僕は咄嗟に嘘をついた</div><div>君は僕と会わない方がよかったのかな</div><div>別れ際、もっと好きになる</div><div>嫉妬の権利</div><div>不等号</div><div>アンダー</div><div>自由の彼方</div><div>欲望のリインカーネーション</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>オリメンとして歌いました。</div><div>これだけの曲に携われて嬉しい反面、</div><div>素直に喜べない自分がいた時期もあります。</div><div>&nbsp;</div><div>でも、今、こうして羅列してみて</div><div>一つ一つに思い出があるし</div><div>やっぱり誇りだ！！！</div><div>&nbsp;</div><div>毎回、アンダー曲も表題に</div><div>全然負けてなくね？という声があったの</div><div>めちゃめちゃ嬉しかったんです。</div><div>&nbsp;</div><div>だからこの楽曲達がメインで</div><div>アルバムになるって凄く感慨深い。</div><div>日の目を見て良かったね～って親心です。</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/12/12/3802286/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>「自分のこと」は今週17日の</div><div>らじらー！サンデー内で</div><div>初解禁します～～聴いてにゃ～～</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/12/12/3802286/0001.jpeg\"></div><div>&nbsp;</div><div>みり愛と葉月のSHOWROOMに</div><div>ゲリラで少しだけお邪魔しました～</div><div>&nbsp;</div><div>放送中に通りがかったのでつい。</div><div>可愛い後輩達です。</div><div>&nbsp;</div><div>みり愛も葉月も</div><div>頭の回転早い系アイドルだと</div><div>なんとなく思います(^0^)ステキ</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>東京ドームライブ</div><div>アンダーライブ九州シリーズ</div><div>&nbsp;</div><div>のぎ天、工事中、AKB48SHOW! etc</div><div>映像流して頂けて感謝です( ˃ ˂ )</div><div>&nbsp;</div><div>TopYell 1月号にて</div><div>ラストインタビューしてきました！</div><div>連載約2年間お世話になりました☆</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/12/12/3802286/0002.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>12月末まで</div><div>ブログモバメお付き合い下さい！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>(＊´・ω・＊)</div>"},{"datetime":"2017/11/24 11:06","author":"中元日芽香","title":"ひめたん-0o0-その729","url":"http://blog.nogizaka46.com/himeka.nakamoto/2017/11/041931.php","content":"<div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/11/24/8888758/0000.jpeg\"></div><div>&nbsp;</div><div>らじらー、乃木恋、取材、</div><div>他にも色々やってきました！！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>永遠だとは思っていませんが</div><div>しばしのお別れを沢山してきました。</div><div>&nbsp;</div><div>でも言われて凄く嬉しいのが</div><div>「これからも変わらずよろしくね」って。</div><div>&nbsp;</div><div>仕事仲間として、</div><div>アイドルとしての絆は、</div><div>有り続けるんだ～って思いました。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/11/24/8888758/0001.jpeg\"></div><div>&nbsp;</div><div>アシスタント卒業は、例えるなら、</div><div>実家を出て一人で暮らす時</div><div>みたいな感覚でした。</div><div>&nbsp;</div><div>お父さんお母さんお兄さんお姉さんが</div><div>いってらっしゃい(´；ω；｀)</div><div>って送ってくれるみたいな感覚。</div><div>&nbsp;</div><div>オリラジさんや</div><div>らじらーファミリーとの出会いは</div><div>私の人生の中で大きなことでした。</div><div>&nbsp;</div><div>ホームがあるってすごく大きい。</div><div>&nbsp;</div><div>嬉しいことも悔しいことも</div><div>全部ここに持ってきて一緒に共有して</div><div>また頑張ろうって思える。</div><div>&nbsp;</div><div>そんな素敵な場所でした( ˘ω˘ )</div><div>&nbsp;</div><div>次回からはさゆちゃんが</div><div>アシスタントになりますよう</div><div>安心して任せられます♡♡</div><div>&nbsp;</div><div>真夏さんも、さゆちゃんも、</div><div>らじらーファミリーです！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/11/24/8888758/0002.jpeg\"></div><div>&nbsp;</div><div>卒業発表してから今日までに</div><div>気づくことが沢山ありました。</div><div>&nbsp;</div><div>私の卒業なんだから</div><div>私が納得していればいいじゃん</div><div>って思っていましたがそれは傲慢な考えで</div><div>&nbsp;</div><div>見送ってくれる人たちの</div><div>あたたかい気持ちがあって初めて</div><div>成立するものなんだなって。</div><div>&nbsp;</div><div>私としては呆気ない感じに、</div><div>空気が流れるように去ろうという</div><div>理想があったのですが（笑）</div><div>&nbsp;</div><div>沢山の人が惜しんでくれるって</div><div>幸せなことだな～って。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>だから皆さん！！</div><div>&nbsp;</div><div>沢山惜しんで下さい！！！！！（笑）</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>なんちゃって。</div><div>&nbsp;</div><div>握手会とかで「次は誰推すの～？」とか</div><div>気軽に聞いたりしていました（笑）</div><div>&nbsp;</div><div>ほんと酷いですね私（笑）</div><div>&nbsp;</div><div>だって寂しい思いはしてほしく</div><div>なかったんだもん。</div><div>あと乃木坂からは離れてほしくなかった。</div><div>&nbsp;</div><div>でもどうしても中元単推しっていう声は</div><div>それはそれで幸せなことなんだと</div><div>この数ヶ月で気づきました！</div><div>&nbsp;</div><div>だからそれでも良いと思います！笑</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>ブログクローズがいつになるのやら</div><div>わかりませんが</div><div>それまでよろしくお願いします(^0^)</div><div>&nbsp;</div><div>モブサイコ100原作ファン、</div><div>アニメファンの私には</div><div>与田ちゃんのつぼみちゃん役歓喜です！！</div><div>&nbsp;</div><div>面白いから良かったら皆さんも</div><div>原作読んでみて下さい～～</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/11/24/8888758/0003.jpeg\"></div><div>&nbsp;</div><div>彼女は1歳になりました！</div><div>&nbsp;</div><div>お誕生日おめでとう！</div><div>生まれてきてくれてありがとう！</div><div>&nbsp;</div><div>大胆で、おてんばで、そして甘えん坊。</div><div>あざといです。参っちゃいますね。</div><div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/11/24/8888758/0004.jpeg\"></div><div>&nbsp;</div><div>生後2ヶ月半で</div><div>おうちにやってきたばかりの頃の写真。</div><div>&nbsp;</div><div>大きくなったね(´；ω；｀)</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>(＊´・ω・＊)</div>"},{"datetime":"2017/11/10 11:24","author":"中元日芽香","title":"ひめたん-0o0-その728","url":"http://blog.nogizaka46.com/himeka.nakamoto/2017/11/041775.php","content":"<div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/11/10/8052966/0000.jpeg\"></div><div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/11/10/8052966/0001.jpeg\"></div><div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/11/10/8052966/0002.jpeg\"></div><div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/11/10/8052966/0003.jpeg\"></div><div>&nbsp;</div><div><img src=\"img/blog/himeka.nakamoto/img/2017/11/10/8052966/0004.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>最後の個別握手会、</div><div>最後のライブ、終わりました。</div><div>&nbsp;</div><div>ありがとうございました！！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>握手会は遅い時間まで</div><div>沢山の方が残って下さって</div><div>卒業セレモニーを開催して頂きました～</div><div>&nbsp;</div><div>受験や転職や入院、大変な時も</div><div>ひめたんに元気をもらってました！って</div><div>沢山言っていただけて</div><div>&nbsp;</div><div>色んな方の人生の一部に</div><div>私が刻まれているんだと思いました</div><div>アイドルって凄いお仕事なんですね。</div><div>&nbsp;</div><div>私のために涙を流して下さる方が</div><div>こんなにもいるんだということが</div><div>不思議なような幸せなような。</div><div>&nbsp;</div><div>握手会で一番言われたのが</div><div>「幸せになってね。」</div><div>&nbsp;</div><div>もちろんこれからも幸せ探しますが</div><div>アイドルでいられることが</div><div>私は何より幸せでしたよ(^0^)</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>東京ドーム2days。</div><div>みんなの夢が叶ったことが嬉しいし</div><div>その瞬間を共有できたことが嬉しい。</div><div>&nbsp;</div><div>君は僕と会わない方が良かったのかな</div><div>アンダー</div><div>設定温度</div><div>乃木坂の詩</div><div>きっかけ</div><div>&nbsp;</div><div>どれも大切な曲です。</div><div>ドームで歌えて本当に良かった。</div><div>&nbsp;</div><div>46人で歌うのは神宮が最後だろうと</div><div>勝手に思っていました。</div><div>7/2に私の夏は終わったと。</div><div>&nbsp;</div><div>でももう一度みんなで歌えて良かった。</div><div>色んな人に迷惑を掛けてしまいましたが</div><div>出演できて良かったです！</div><div>&nbsp;</div><div>今まで言ったことなかったですが</div><div>君僕での一面のピンク色、</div><div>本当に綺麗でした。</div><div>&nbsp;</div><div>背中を押された気がします。</div><div>絶景でした。目に焼き付けましたよ。</div><div>ずっと愛され続ける楽曲になってほしい、、</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>人に愛されて成り立つお仕事、アイドル。</div><div>素敵だなと思いました。</div><div>&nbsp;</div><div>アンダーの歌詞へのアンサーとして</div><div>誰になんと言われようと</div><div>「私の人生はここにあったな」と。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>蓮加ちゃんのブログにあった</div><div>ミートボールの件（笑）、</div><div>&nbsp;</div><div>11/19深夜オンエアの</div><div>乃木坂工事中で</div><div>スッキリすると思います！！！</div><div>&nbsp;</div><div>最後にもう一度工事中に</div><div>出演できて良かったです！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>(＊´・ω・＊)</div>"}]; </script>
 <script src="../script/main.js"></script>
+
 </html>

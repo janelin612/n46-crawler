@@ -1,63 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>乃木坂46 非公式ブログ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>衛藤 美彩 | 乃木坂46卒業メンバーのブログ</title>
+  <meta property="og:image" content="https://janelin612.github.io/n46-crawler/ogimg.jpg">
 
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <script src="../script/vue.min.js"></script>
-    <script src="../script/vue-resource.js"></script>
-    <link rel="stylesheet" href="../main.css">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <script src="../script/vue.min.js"></script>
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-38227412-4');
+  </script>
 </head>
 
 <body>
-    <div id="app">
-        <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../menu.svg" alt=""></button>
-        <div class="member" :class="{'hide':isFold}">
-            <img :src="member.image" alt="" class="avatar">
-            <div class="name">{{member.name}}</div>
-            <div class="name hiragana">{{member.name_hiragana}}</div>
+  <div id="app">
+    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../menu.svg" alt=""></button>
+    <div class="member" :class="{'hide':isFold}">
+      <img :src="member.image" alt="" class="avatar">
+      <div class="name">{{member.name}}</div>
+      <div class="name hiragana">{{member.name_hiragana}}</div>
 
-            <ul class="intro">
-                <li v-for="item in member.intro">
-                    <span class="key">{{item.key}}</span>
-                    <span class="value">{{item.value}}</span>
-                </li>
-            </ul>
+      <ul class="intro">
+        <li v-for="item in member.intro">
+          <span class="key">{{item.key}}</span>
+          <span class="value">{{item.value}}</span>
+        </li>
+      </ul>
 
-            <ul class="tag">
-                <li v-for="item in member.tag">{{item}}</li>
-            </ul>
-        </div>
-
-        <div class="menu" :class="{'hide':isFold}">
-            <ul>
-                <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
-                    <div v-html="item.title"></div>
-                    <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
-                    <div class="small-datetime">{{item.datetime}}</div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="main" v-if="currentPost!=null">
-            <div class="heading">
-                <a class="post-time" :href="currentPost.url" target="_blank">
-                    <div class="year-month">{{currentPostDate.yearMonth}}</div>
-                    <span class="date">{{currentPostDate.date}}</span>
-                    <span class="week">{{currentPostDate.weekday}}</span>
-                </a>
-                <div class="post-info">
-                    <div class="author">{{currentPost.author}}</div>
-                    <div class="title" v-html="currentPost.title"></div>
-                </div>
-            </div>
-            <span class="content" v-html="currentPost.content"></span>
-        </div>
+      <ul class="tag">
+        <li v-for="item in member.tag">{{item}}</li>
+      </ul>
     </div>
+
+    <div class="menu" :class="{'hide':isFold}">
+      <div class="loading-spinner" v-if="isLoading">
+        <div class="spinner"></div>
+      </div>
+      <ul>
+        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
+          <div v-html="item.title"></div>
+          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
+          <div class="small-datetime">{{item.datetime}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main" v-if="currentPost!=null">
+      <div class="heading">
+        <a class="post-time" :href="currentPost.url" target="_blank">
+          <div class="year-month">{{currentPostDate.yearMonth}}</div>
+          <span class="date">{{currentPostDate.date}}</span>
+          <span class="week">{{currentPostDate.weekday}}</span>
+        </a>
+        <div class="post-info">
+          <div class="author">{{currentPost.author}}</div>
+          <div class="title" v-html="currentPost.title"></div>
+        </div>
+      </div>
+      <div class="content" v-html="currentPost.content"></div>
+    </div>
+  </div>
 </body>
+<script> const defaultList=[{"datetime":"2019/03/31 21:40","author":"衛藤美彩","title":"もし君がいなければ","url":"http://blog.nogizaka46.com/misa.eto/2019/03/049828.php","content":"<p><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">先ほどの全国握手会、無事終了致しました！</p>\n<div><br>\n<div>そして本日をもちまして、私衛藤美彩は乃木坂46を卒業します。\n<div>発表してから今日まで、あっという間に感じましたし、今もまだ実感はありませんが、卒業してからだんだんと実感していくんだと思います。</div>\n<div> </div>\n<div> </div>\n<div>握手会、たくさんの方が全国から最後のあいさつに来てくださり、本当に私の為に朝から沢山並んで頂きありがとうございました！！</div>\n<div>握手会は私の全てが詰まってる。</div>\n<div>私を支えてくれた大切な場所です。</div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/03/31/3611727/0000.jpeg\"></div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/03/31/3611727/0001.jpeg\"></div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/03/31/3611727/0002.jpeg\"></div>\n<div> </div>\n<div> </div>\n<div>ありがとうございました！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>3月19日のソロコンサート！</div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/03/31/3611727/0003.jpeg\"></div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/03/31/3611727/0004.jpeg\"></div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/03/31/3611727/0005.jpeg\"></div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/03/31/3611727/0006.jpeg\"></div>\n<div> </div>\n<div> </div>\n<div>セットリストから自分で考えて、アドバイスを頂きながら組み換えたり。</div>\n<div>そして今回ALL生バンドに初挑戦させて頂きました、少ないリハーサルの中、音を変えたりリズムを変えてみたり。</div>\n<div> </div>\n<div> </div>\n<div>1からやるのは初めてで大変なこともありましたが、本当にスタッフの皆さんのおかげで 私のやりたいことや見せたいものが全部詰め込まれたセットリストになりました！</div>\n<div> </div>\n<div> </div>\n<div>衣装は 乃木坂の歌衣装を沢山作ってくださる 尾内さんでした。</div>\n<div>水色のドレス、黒のかっこいい衣装、そしてラストの真っ赤なドレス。</div>\n<div>本当に、本当に、素晴らしかった。。。</div>\n<div>打ち合わせも1回でなかなかイメージが伝わったか不安だったけど、そんな不安もよそに、めちゃくちゃ素敵な衣装になりました。</div>\n<div>本当にありがとうございました！</div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/03/31/3611727/0007.jpeg\"></div>\n<div> </div>\n<div>バンドメンバーの皆様</div>\n<div>本当にありがとうございました♡</div>\n<div> </div>\n<div> </div>\n<div>アンコールではメンバーも駆けつけてくれて、アンコールのラストには 4月17日に発売されるニューアルバム『今が思い出になるまで』に収録される新曲で、初の私のソロ曲『もし君がいなければ』 を初披露させて頂きました。</div>\n<div>音源も解禁されましたが、聴いてくれましたか？</div>\n<div> </div>\n<div> </div>\n<div>秋元康先生が 詩を書いて下さり、そして作曲は私の大好きな 乃木坂の曲の中でも大好きな曲が多い、杉山勝彦さん。</div>\n<div>最後の最後でソロコンサートという夢だけではなくて ソロ曲まで、、、</div>\n<div>感無量です。</div>\n<div> </div>\n<div>ずっと私の人生において大切な曲になるし、ライブではこれをメンバーや後輩に歌い繋いでもらえたら嬉しいなと思いました。</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>本当に 悔いが1つもない！！</div>\n<div>後悔なく全力でやり切った、そう言い切れます。</div>\n<div>約8年、本当にやり切った。</div>\n<div>今日は沢山自分を甘やかしたいと思います♪</div>\n<div> </div>\n<div>ガムシャラに やってきたからこそ見えた道、冷静になれたからこそ開けた道、本当にこれまでを思い出すといくつもの通ってきた跡が残っていると思うけど....私の通った道に、何か後輩や乃木坂46に残せるものはあったかなぁ。</div>\n<div> </div>\n<div> </div>\n<div>ファンの皆さんと作り上げたこの絆は これからも色々な形で感じることもあると思うけど、一区切りするとするならば、言葉に代え難い、本当に素晴らしいものでした。</div>\n<div>感謝してもしきれない！！！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>これまで私を応援して下さって、本当にありがとうございました。</div>\n<div>どうか、皆さんのこれから進む道に 素晴らしい出会いがありますように。</div>\n<div>乃木坂46としては今日で卒業ですが、これから先の未来に向かって 私は私の人生を自分のペースでゆっくりと歩んでいきます！</div>\n<div> </div>\n<div> </div>\n<div>何が人生の正解かなんて誰も分からないけど、\"間違い＂があるのは知っている。</div>\n<div>正解を探すよりも 自分の信じた道に進むのみ、自分の周りにいる 大切な人達の意見を受け止めながら。</div>\n<div> </div>\n<div> </div>\n<div>好きな言葉は 『自分の人生に本気を出そう』！</div>\n<div>皆さんも私に負けないように、本気を出して貪欲に頑張ってくださいね。</div>\n<div>頑張りすぎないで、頑張ろう♪</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>これまで応援してくださり、本当にありがとうございました！</div>\n<div>私は乃木坂46に入れて幸せでした。</div>\n<div>今後も 衛藤美彩と 乃木坂46の応援をどうぞよろしくお願い致します。</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/03/31/3611727/0008.jpeg\"></div>\n<div> </div>\n<div>また会おうね。</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>2019.03.31   乃木坂46  衛藤美彩</div>\n<div> </div>\n</div>\n</div>"},{"datetime":"2019/02/14 21:00","author":"衛藤美彩","title":"みなさんへ。","url":"http://blog.nogizaka46.com/misa.eto/2019/02/049223.php","content":"<p><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></p>\n<div>いつも応援してくださる皆さんへ。</div>\n<div>\n<div>今日は、いきなりの発表になってしまいますが このブログを通して皆さんにお伝えしたいことがあります。</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>\n<div>私、衛藤美彩は 乃木坂46を卒業します。</div>\n</div>\n<div> </div>\n<div> </div>\n<div>\n<div> </div>\n<div>卒業を考え始めたのは 一年前、去年の誕生日を迎えたあたり、これから先どのようにして生きていきたいかと自分の心の声を聞く機会が増え、より具体的に活動のことも人生のことも考え出すようになったからです。</div>\n</div>\n<div> </div>\n<div> </div>\n<div>\n<div>乃木坂46に入ってから ここまで止まることなく突っ走ってきました。</div>\n<div>グループとしては ゆっくりゆっくりではありますが確実にみんなで坂を登ってきて、その見える景色の一つひとつを噛み締めて。</div>\n<div> </div>\n<div> </div>\n<div>個人としては 決して平坦な道のりとは言えませんでしたが、今日、今この瞬間も乃木坂46の一員として居られているのは 間違いなくファンの皆さんのおかげで、皆さんが私を新しい景色へと導いてくれました。</div>\n<div> </div>\n<div> </div>\n<div>未熟で子供だった、未完成で不安定だった私は、ここで本当に多くの事を学び 成長させて頂きました！</div>\n<div> </div>\n<div> </div>\n<div>まだまだ理想の自分とは言えないけど、これから先もっともっと 自分の見たことない自分にも出会いたいし、きっと出会えると信じられます。</div>\n<div>そう信じられるのは この８年間 諦めずに頑張ってきて 本当に沢山の夢を叶える事ができたからです。</div>\n<div> </div>\n<div> </div>\n<div>乃木坂46の活動で、どんな状況でも諦めずに頑張っていれば、その姿を見てくれている人は絶対にいると分かったからです。</div>\n<div>メンバー、スタッフの皆さん、お仕事で関わった皆さん、ファンの皆さんが、わたしに自信をくれました。</div>\n<div> </div>\n<div>とはいえ、不安はゼロではありません。</div>\n<div>その為に私が選択した道が\"卒業\"で、大きな一歩を踏み出す勇気を持とうと思いました！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>\n<div>私は乃木坂が大好きです。</div>\n<div> </div>\n<div>2011年の夏、みんなと出会ってから私の人生は大きく動き始めました。</div>\n</div>\n<div>沢山の可愛い後輩もできて 今では皆んな頼もしくて、、、愛おしくて。</div>\n<div> </div>\n<div>だからこそ、もちろん、離れてみて分かることや 自分がどれだけ恵まれた環境で活動させて頂いていたのかも痛感する事もあると思いますが、、私らしく前を向いて これからも頑張っていこうと思いました。</div>\n<div> </div>\n<div> </div>\n</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>そして。</div>\n<div> </div>\n<div>３月１９日に卒業ソロコンサートをやらせて頂くことになりました...！</div>\n<div>場所は、両国国技館に決定致しました。</div>\n<div>時間や詳細は決まり次第オフィシャルサイトにて発表致します。<br><br></div>\n<div> </div>\n<div> どのようにして卒業をするかと何度も話し合いを重ねて、沢山相談に乗って頂いたので、本当にスタッフの皆さんには感謝の気持ちでいっぱいです。</div>\n<div> </div>\n<div> </div>\n<div>決まって、まず最初に思い浮かんだのはファンの皆さんの顔でした(o^^o)</div>\n<div> </div>\n<div> </div>\n<div>何より私のファンの皆さんが望んでいたことなんじゃないか、、、私自身も歌う事というのはこだわってきた 乃木坂の活動の軸の部分だったので、こんな大きな初挑戦なものが活動の最後に残っているということも面白いなぁと思って すぐに、やってみたい！という気持ちが溢れてきました。</div>\n<div> </div>\n<div> </div>\n<div>\n<div>まさか自分がソロコンサートをやらせて頂けるなんて。</div>\n<div>いつかは挑戦してみたいなぁ...とは思いつつも、まさかこの卒業というタイミングで本当に実現するとは思ってもいなかったので本当に信じられないくらいに嬉しいです！</div>\n</div>\n<div> </div>\n<div> </div>\n<div>夢の１つだったものが、卒業というタイミングで叶えられること。</div>\n<div>最後に皆さんと同じ時間を共有して、私なりの形でこれまでの感謝を伝える場所にしたい！！と思いました。</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>そして、ソロコンの１９日がラストになるかもしれないと思っていましたが、本当の最後になるのは３月３１日の大阪全国握手会です！</div>\n<div>なので活動は３月３１日までという事になります。<br><br></div>\n<div> </div>\n<div>帰り道は遠回りしたくなる、の全国握手会には全て参加させて頂きます(o^^o)</div>\n<div> </div>\n<div>私にとって、とても思い入れのある握手会。</div>\n<div>握手会がなければ今の私はいない、と言っても過言ではないくらい みなさんに直接お会いできて 応援の言葉をかけてもらう事が 本当に私のパワーの源になっていました。</div>\n<div>約８年間、本当に何人の方が会いに来てくれたんだろう(；д；)</div>\n<div> </div>\n<div>握手会のことはまた話したいのでここまでにしておきます。</div>\n<div> </div>\n<div> </div>\n<div>初期からずっとお世話になっている三会場で、しかもラストの握手会が３月に東名阪全部でできるというのも本当に私は運が良いというか...最高についてるなぁと思いました(*T_T*) </div>\n<div> </div>\n<div> </div>\n<div>まとめると</div>\n<div> </div>\n<div>・2019年3月10日</div>\n<div>千葉会場幕張メッセ</div>\n<div>・2019年3月19日</div>\n<div>卒業ソロコンサート</div>\n<div>・2019年3月21日</div>\n<div>愛知会場ポートメッセなごや</div>\n<div>・2019年3月31日</div>\n<div>大阪会場インテックス大阪</div>\n<div> </div>\n<div> </div>\n<div>となります。</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>メンバーとも 全国握手会がありますし、それに来週のバーズデーライブも控えています！</div>\n<div>バスラはみんなのものだし、最終日はなぁちゃんの卒業コンサートなので。</div>\n<div>あくまでも個人的な気持ちとしては、私にとってもメンバーと大きな舞台でのコンサートはラストなので 景色やメンバーとの空気感、一瞬も見逃さないように噛み締めようと思っています！</div>\n<div> </div>\n<div>バスラが卒業の前にあって良かったなぁと思いつつ、乃木坂の7歳のお誕生日を、みんなで盛大にお祝いできたらなぁと思っています。</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>残された時間は少ないですが、、、最後まで全力で頑張りたいと思っていますので、応援よろしくお願い致します(*^^*)</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/02/14/4469014/0000.jpeg\"></div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>2019.02.14  衛藤美彩</div>\n</div>"},{"datetime":"2019/01/04 00:00","author":"衛藤美彩","title":"Birthday","url":"http://blog.nogizaka46.com/misa.eto/2019/01/048602.php","content":"<p><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">新年明けましておめでとうございます！</p>\n<div>2018年もありがとうございました。</div>\n<div>年末の歌番組、二年連続のレコード大賞も頂き、紅白歌合戦も四年連続出場と、最高の締めくくりができたと思います。</div>\n<div> </div>\n<div> </div>\n<div>レコード大賞の裏側では、乃木坂関係者のスタッフの方々や振り付けのSeishiroさん、多くのスタッフの方々が大賞発表の様子を見守ってくださいました。</div>\n<div>発表瞬間の盛り上がりの様子が。</div>\n<div>本当に嬉しかったです(*T_T*) </div>\n<div> </div>\n<div> </div>\n<div>そして、テレビの前で応援してくださったファンの皆さんや視聴者の皆さん。</div>\n<div>本当に、メンバー、スタッフ、ファンの皆さん、全員の力で大賞を受賞できたのだと改めて実感しました！</div>\n<div>\n<div> </div>\n<div>\n<div> </div>\n<div>振り返ってみると、2018年はグループとして 大きな挑戦をさせて頂いた1年でした。</div>\n<div>神宮と秩父宮ラグビー場での二会場同時開催のシンクロニシティライブ、上海での海外初単独公演！</div>\n<div> </div>\n<div>大変なことの方が多かったしメンバーの変動も激しかったですが、その度にチームとして結束力が増したような気がします！</div>\n<div> </div>\n<div> </div>\n<div>\n<div>2019年も 支えてくださる方々に感謝をしながら、沢山の方の力をお借りしながら、笑顔を届けていきたいと思います(o^^o)</div>\n<div>ありがとうございました！</div>\n</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>そして1月4日、本日26歳の誕生日を迎えました！</div>\n<div>両親に感謝します。</div>\n<div>26歳になっても 正直あんまり何も変わりません。。。笑</div>\n<div>25歳になった時の方が もう大人女子だなーと、しみじみしましたね(´∀｀)</div>\n<div> </div>\n<div> </div>\n<div>周りの大人女子の先輩方からは、26歳...これからもっともっと楽しくなるじゃん！とよく言って頂きます♡笑</div>\n<div> </div>\n<div> </div>\n<div>なんだか年々私も心が軽くなってきて！</div>\n<div>ストレスフリーと言いますか、多分１番は自分との向き合い方が上手になってきたんだろうけど、個人的には26歳はもっとマイペースに、自分を大切に、感謝の気持ちを忘れずにやっていけたらいいなぁと思います。</div>\n<div> </div>\n<div>みなさんも自分を大切にしてくださいね！</div>\n<div> </div>\n<div>力まず肩の力抜いて今年も楽しい1年にするぞー♪♪</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>美人百花  2019年  2月号</div>\n<div>2回目の表紙をやらせて頂きます♡</div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/01/03/0603077/0000.jpeg\"></div>\n<div> </div>\n<div>1月12日発売です！</div>\n<div>2019年に最初に発売される号で、前回の9月号から こんなに早く2回目をやらせて頂けるとは思ってもいなかったのでとても嬉しかったです(；ω；)</div>\n<div>新年にふさわしいヘアメイクに衣装、スタジオのセットで、、、沢山の方に見て頂きたいです</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/01/03/0603077/0001.jpeg\"></div>\n<div> </div>\n<div>舞台 三人姉妹の三人でぱしゃり♡</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/01/03/0603077/0002.jpeg\"></div>\n<div>レコ大 シンクロニシティのあとすぐ</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/01/03/0603077/0003.jpeg\"></div>\n<div>生ちゃん みおなと ポニテ族</div>\n<div>新年カウントダウンTV</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2019/01/03/0603077/0004.jpeg\"></div>\n<div>なーちゃんと</div>\n<div> </div>\n<div> </div>\n<div>2019年もどうぞよろしくお願い致します♡</div>\n<div> </div>\n<div> </div>\n<div> </div>\n</div>\n</div>"},{"datetime":"2018/07/25 19:12","author":"衛藤美彩","title":"美人百花","url":"http://blog.nogizaka46.com/misa.eto/2018/07/046193.php","content":"<p><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></p>\n<div>現在発売中のアップトゥボーイ♪</div>\n<div>表紙をやらせて頂いていますー！</div>\n<div> </div>\n<div> </div>\n<div>オフショット</div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2018/07/25/1324113/0000.jpeg\"></div>\n<div> </div>\n<div> </div>\n<div>前に乃木坂工事中で、私の最高顔グランプリ！ってやったんですけど、その時に出したのがアップトゥボーイさんの撮影のグラビアで。</div>\n<div>大人っぽい衣装と、中ページ、私にはかなり珍しくツインテールなんかしちゃってます。</div>\n<div>スポーティなツインテールですけどね！！！</div>\n<div> </div>\n<div> </div>\n<div>撮影で頂いた アンティークのスタンド照明 めっちゃ可愛くて寝室で使ってるんです。</div>\n<div>嬉しいな〜〜</div>\n<div>ぜひチェックをー♪</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>そしてお知らせです。</div>\n<div> </div>\n<div>この度 ウェーブコーポレーションの広告モデルに選んでいただきました。</div>\n<div>モノクロのかっこいいCMに仕上がりました、皆さんもう観てくれましたか？</div>\n<div>私は 周りの方々からはよく聞くんですけど、自分ではなかなか見れてなくて、この間ソファでポケーッとテレビを見ていたら たまたま見ることができました笑</div>\n<div> </div>\n<div> </div>\n<div>商品を使わせて頂いたんですが、まずスパトリートメント iマイクロパッチ。</div>\n<div>いつものお手入れのスペシャルバージョン、特別な日のケアにぴったりです(*^^*)</div>\n<div>保湿力が本当に凄くて！</div>\n<div> </div>\n<div>私は前の日が深夜に仕事終わって 睡眠取れずに次の仕事に向かった時に使ったんですね。</div>\n<div>ケアしたい部分に付けて就寝するので 翌朝のもっちり感、感動しました、、</div>\n<div> </div>\n<div>たくさんの方に手に取って頂きたいです。</div>\n<div> </div>\n<div>オフショットも上げていきますね！</div>\n<div>ウェーブコーポレーション、スパトリートメント、よろしくお願いします♡</div>\n<div>ウェブ版では ひなちまと久保ちゃんも一緒に出ていますのでそちらもチェックしてください！</div>\n<div> </div>\n<div><a href=\"http://www.wave-corporation.jp/\">http://www.wave-corporation.jp/</a></div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>21thシングル</div>\n<div>ジコチューで行こう！</div>\n<div>MVも公開されましたね〜〜</div>\n<div> 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</div>\n<div> </div>\n<div>初めての海外でのMV！</div>\n<div>暑さにやられながらも、みんなで短時間で集中！</div>\n<div>ライブリハも重なっていたから大変な部分もあったけど、その分仕上がりを見たら 海が綺麗でみんなも可愛くてステキなMVになりました。</div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2018/07/25/1324113/0001.jpeg\"></div>\n<div> </div>\n<div>前髪伸びてきたから流したられいかと姉妹みたいな写真が撮れたー</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>神宮 秩父宮</div>\n<div>シンクロニシティライブが終わりました！</div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2018/07/25/1324113/0002.jpeg\"></div>\n<div> </div>\n<div>バースデーライブ 今までと違った試みでした！</div>\n<div>新しいことに挑戦していくことは変わってしまう怖さもあるけど、常に変化し続けていきたいな、と</div>\n<div> </div>\n<div>めっっちゃ大変でしたけどね(；ω；)(；ω；)</div>\n<div>本当に！！！</div>\n<div>走って移動して自転車に乗って 雨に濡れて...トライアスロンみたい！とメンバーで話してた。笑</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>福岡公演も終わりました！</div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2018/07/25/1324113/0003.jpeg\"></div>\n<div> </div>\n<div> </div>\n<div>全国ツアー駆け抜けてます！</div>\n<div>ジコチューコーナーでは1人で1曲プロデュース！</div>\n<div>福岡公演初日の１回目に 私はやらせて頂いて、忘却と美学を選びました！</div>\n<div>相方には生ちゃん↑</div>\n<div> </div>\n<div> </div>\n<div>忘却が好きすぎてよく聴いていたのと、初期の頃に乃木坂ってどこで生ちゃんと2人で歌って以来 いつか一緒にまた歌えたらなーと密かに思っていて ヤフオクドームで実現しました♪ </div>\n<div>ほんとに気持ちよかったーー</div>\n<div>ドームで歌えたのは最高でした！</div>\n<div> </div>\n<div> </div>\n<div>このコーナー、みんなの個性が出るのと本当にみんな天才だ、、と思うくらい可愛かったりかっこよかったり面白かったり、とにかく裏で急いで着替えてモニター見てます。</div>\n<div> </div>\n<div>これからの公演に来る方、楽しみにしていてください</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>私も プロデュースコーナー、、、もしかしたら、福岡公演だけじゃ、な、いか、も？</div>\n<div> </div>\n<div>におわせます。笑</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>そしてそして最後にお知らせー✨</div>\n<div> </div>\n<div><img src=\"img/blog/misa.eto/img/2018/07/25/1324113/0004.jpeg\"></div>\n<div> </div>\n<div>昨年の春からレギュラーで出させて頂いています、美人百花</div>\n<div> </div>\n<div>来月号 初めての表紙をやらせて頂きます</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>(*ﾟーﾟ*)(*ﾟーﾟ*)  </div>\n<div> </div>\n<div>ファンの皆さんにやっとお知らせできるのが嬉しいです〜！</div>\n<div>撮影はもう終わっていて ステキなチームでいいものを撮って頂きました。リラックスできました</div>\n<div> </div>\n<div> </div>\n<div>撮影の途中で 美人百花チームのスタッフの皆さんからプレゼントが。</div>\n<div>表紙おめでとう！と色紙にメッセージ、、、</div>\n<div> </div>\n<div>まだ撮影終わっていないのに号泣もいいところってくらい大の大人が泣いてしまいました。。。笑</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>この仕事は 自分が主役であるように見えて 実はそうじゃないんだなって思う出来事が最近すごく増えました。</div>\n<div>私は昔から のちに大切な事に気付かされる経験や、周りの方々を通して日々学ばさせて頂いている事が多いなー、運と人に恵まれているなー、むしろそれが強みなのでは？と思わされる出来事が多いです。</div>\n<div>ありがたいです。</div>\n<div> </div>\n<div> </div>\n<div>きっと誰もが 大人になってくると誰も注意してくれなくなっちゃうと思うし、愛がないと誰も何も言わないし。</div>\n<div>だからこそ本当に嬉しい出来事でした♪</div>\n<div> </div>\n<div> </div>\n<div>9月号、8月9日発売です。</div>\n<div>みんなGETしてほしいー！！！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>いい報告がたくさんできたブログでした。</div>\n<div>また書くよー♪♪</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>これからFNSうたの夏まつりです！</div>\n<div>見てねー♪</div>"}]; </script>
 <script src="../script/main.js"></script>
+
 </html>

@@ -1,83 +1,118 @@
 [
-    {
-        "year": "2017",
-        "member": [
-            {
-                "name": "橋本 奈々未",
-                "name_hiragana": "はしもと　ななみ",
-                "image": "nanami.hashimoto/img/hashimotonanami_prof.jpg",
-                "link": "nanami.hashimoto/index.html"
-            },
-            {
-                "name": "中元 日芽香",
-                "name_hiragana": "なかもと ひめか",
-                "image": "himeka.nakamoto/img/www/member/img/nakamotohimeka_prof.jpg",
-                "link": "himeka.nakamoto/index.html"
-            },
-            {
-                "name": "伊藤 万理華",
-                "name_hiragana": "いとう まりか",
-                "image": "marika.ito/img/www/member/img/itoumarika_prof.jpg",
-                "link": "marika.ito/index.html"
-            }
-        ]
-    },
-    {
-        "year": "2018",
-        "member": [
-            {
-                "name": "川村 真洋",
-                "name_hiragana": "かわむら まひろ",
-                "image": "mahiro.kawamura/img/www/member/img/kawamuramahiro_prof.jpg",
-                "link": "mahiro.kawamura/index.html"
-            },
-            {
-                "name": "生駒 里奈",
-                "name_hiragana": "いこま りな",
-                "image": "rina.ikoma/img/www/member/img/ikomarina_prof.jpg",
-                "link": "rina.ikoma/index.html"
-            },
-            {
-                "name": "斎藤 ちはる",
-                "name_hiragana": "さいとう ちはる",
-                "image": "chiharu.saito/img/www/member/img/saitouchiharu_prof.jpg",
-                "link": "chiharu.saito/index.html"
-            },
-            {
-                "name": "若月 佑美",
-                "name_hiragana": "わかつき ゆみ",
-                "image": "yumi.wakatsuki/img/www/member/img/wakatsukiyumi_prof.jpg",
-                "link": "yumi.wakatsuki/index.html"
-            },
-            {
-                "name": "川後 陽菜",
-                "name_hiragana": "かわご ひな",
-                "image": "hina.kawago/img/www/member/img/kawagohina_prof.jpg",
-                "link": "hina.kawago/index.html"
-            },
-            {
-                "name": "能條 愛未",
-                "name_hiragana": "のうじょう あみ",
-                "image": "ami.noujo/img/www/member/img/noujouami_prof.jpg",
-                "link": "ami.noujo/index.html"
-            },
-			{
-                "name": "西野 七瀬",
-                "name_hiragana": "にしの ななせ",
-                "image": "nanase.nishino/img/www/member/img/nishinonanase_prof.jpg",
-                "link": "nanase.nishino/index.html"
-            }
-        ]
-    },
-    {
-        "year":"2019",
-        "member":[
-            {
-                "name": "衛藤 美彩",
-                "name_hiragana": "えとう みさ",
-                "image": "misa.eto/img/www/member/img/etoumisa_prof.jpg",
-                "link": "misa.eto/index.html"
-            }
-        ]
-    }
+  {
+    "year": "2020",
+    "member": [
+      {
+        "name": "佐々木 琴子",
+        "name_hiragana": "ささき ことこ ",
+        "image": "kotoko.sasaki/img/www/member/img/sasakikotoko_prof.jpg",
+        "link": "kotoko.sasaki/index.html"
+      },
+      {
+        "name": "井上 小百合",
+        "name_hiragana": "いのうえ さゆり",
+        "image": "sayuri.inoue/img/www/member/img/inouesayuri_prof.jpg",
+        "link": "sayuri.inoue/index.html"
+      }
+    ]
+  },
+  {
+    "year": "2019",
+    "member": [
+      {
+        "name": "桜井 玲香",
+        "name_hiragana": "さくらい れいか",
+        "image": "reika.sakurai/img/www/member/img/sakuraireika_prof.jpg",
+        "link": "reika.sakurai/index.html"
+      },
+      {
+        "name": "斉藤 優里",
+        "name_hiragana": "さいとう ゆうり",
+        "image": "yuuri.saito/img/www/member/img/saitouyuuri_prof.jpg",
+        "link": "yuuri.saito/index.html"
+      },
+      {
+        "name": "伊藤 かりん",
+        "name_hiragana": "いとう かりん",
+        "image": "karin.itou/img/www/member/img/itoukarin_prof.jpg",
+        "link": "karin.itou/index.html"
+      },
+      {
+        "name": "衛藤 美彩",
+        "name_hiragana": "えとう みさ",
+        "image": "misa.eto/img/www/member/img/etoumisa_prof.jpg",
+        "link": "misa.eto/index.html"
+      }
+    ]
+  },
+  {
+    "year": "2018",
+    "member": [
+      {
+        "name": "西野 七瀬",
+        "name_hiragana": "にしの ななせ",
+        "image": "nanase.nishino/img/www/member/img/nishinonanase_prof.jpg",
+        "link": "nanase.nishino/index.html"
+      },
+      {
+        "name": "川後 陽菜",
+        "name_hiragana": "かわご ひな",
+        "image": "hina.kawago/img/www/member/img/kawagohina_prof.jpg",
+        "link": "hina.kawago/index.html"
+      },
+      {
+        "name": "能條 愛未",
+        "name_hiragana": "のうじょう あみ",
+        "image": "ami.noujo/img/www/member/img/noujouami_prof.jpg",
+        "link": "ami.noujo/index.html"
+      },
+      {
+        "name": "若月 佑美",
+        "name_hiragana": "わかつき ゆみ",
+        "image": "yumi.wakatsuki/img/www/member/img/wakatsukiyumi_prof.jpg",
+        "link": "yumi.wakatsuki/index.html"
+      },
+      {
+        "name": "斎藤 ちはる",
+        "name_hiragana": "さいとう ちはる",
+        "image": "chiharu.saito/img/www/member/img/saitouchiharu_prof.jpg",
+        "link": "chiharu.saito/index.html"
+      },
+      {
+        "name": "生駒 里奈",
+        "name_hiragana": "いこま りな",
+        "image": "rina.ikoma/img/www/member/img/ikomarina_prof.jpg",
+        "link": "rina.ikoma/index.html"
+      },
+      {
+        "name": "川村 真洋",
+        "name_hiragana": "かわむら まひろ",
+        "image": "mahiro.kawamura/img/www/member/img/kawamuramahiro_prof.jpg",
+        "link": "mahiro.kawamura/index.html"
+      }
+    ]
+  },
+  {
+    "year": "2017",
+    "member": [
+      {
+        "name": "伊藤 万理華",
+        "name_hiragana": "いとう まりか",
+        "image": "marika.ito/img/www/member/img/itoumarika_prof.jpg",
+        "link": "marika.ito/index.html"
+      },
+      {
+        "name": "中元 日芽香",
+        "name_hiragana": "なかもと ひめか",
+        "image": "himeka.nakamoto/img/www/member/img/nakamotohimeka_prof.jpg",
+        "link": "himeka.nakamoto/index.html"
+      },
+      {
+        "name": "橋本 奈々未",
+        "name_hiragana": "はしもと　ななみ",
+        "image": "nanami.hashimoto/img/hashimotonanami_prof.jpg",
+        "link": "nanami.hashimoto/index.html"
+      }
+    ]
+  }
 ]

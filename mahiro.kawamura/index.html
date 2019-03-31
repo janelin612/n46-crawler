@@ -1,63 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>乃木坂46 非公式ブログ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>川村 真洋 | 乃木坂46卒業メンバーのブログ</title>
+  <meta property="og:image" content="https://janelin612.github.io/n46-crawler/ogimg.jpg">
 
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <script src="../script/vue.min.js"></script>
-    <script src="../script/vue-resource.js"></script>
-    <link rel="stylesheet" href="../main.css">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <script src="../script/vue.min.js"></script>
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-38227412-4');
+  </script>
 </head>
 
 <body>
-    <div id="app">
-        <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../menu.svg" alt=""></button>
-        <div class="member" :class="{'hide':isFold}">
-            <img :src="member.image" alt="" class="avatar">
-            <div class="name">{{member.name}}</div>
-            <div class="name hiragana">{{member.name_hiragana}}</div>
+  <div id="app">
+    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../menu.svg" alt=""></button>
+    <div class="member" :class="{'hide':isFold}">
+      <img :src="member.image" alt="" class="avatar">
+      <div class="name">{{member.name}}</div>
+      <div class="name hiragana">{{member.name_hiragana}}</div>
 
-            <ul class="intro">
-                <li v-for="item in member.intro">
-                    <span class="key">{{item.key}}</span>
-                    <span class="value">{{item.value}}</span>
-                </li>
-            </ul>
+      <ul class="intro">
+        <li v-for="item in member.intro">
+          <span class="key">{{item.key}}</span>
+          <span class="value">{{item.value}}</span>
+        </li>
+      </ul>
 
-            <ul class="tag">
-                <li v-for="item in member.tag">{{item}}</li>
-            </ul>
-        </div>
-
-        <div class="menu" :class="{'hide':isFold}">
-            <ul>
-                <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
-                    <div v-html="item.title"></div>
-                    <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
-                    <div class="small-datetime">{{item.datetime}}</div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="main" v-if="currentPost!=null">
-            <div class="heading">
-                <a class="post-time" :href="currentPost.url" target="_blank">
-                    <div class="year-month">{{currentPostDate.yearMonth}}</div>
-                    <span class="date">{{currentPostDate.date}}</span>
-                    <span class="week">{{currentPostDate.weekday}}</span>
-                </a>
-                <div class="post-info">
-                    <div class="author">{{currentPost.author}}</div>
-                    <div class="title" v-html="currentPost.title"></div>
-                </div>
-            </div>
-            <span class="content" v-html="currentPost.content"></span>
-        </div>
+      <ul class="tag">
+        <li v-for="item in member.tag">{{item}}</li>
+      </ul>
     </div>
+
+    <div class="menu" :class="{'hide':isFold}">
+      <div class="loading-spinner" v-if="isLoading">
+        <div class="spinner"></div>
+      </div>
+      <ul>
+        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
+          <div v-html="item.title"></div>
+          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
+          <div class="small-datetime">{{item.datetime}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main" v-if="currentPost!=null">
+      <div class="heading">
+        <a class="post-time" :href="currentPost.url" target="_blank">
+          <div class="year-month">{{currentPostDate.yearMonth}}</div>
+          <span class="date">{{currentPostDate.date}}</span>
+          <span class="week">{{currentPostDate.weekday}}</span>
+        </a>
+        <div class="post-info">
+          <div class="author">{{currentPost.author}}</div>
+          <div class="title" v-html="currentPost.title"></div>
+        </div>
+      </div>
+      <div class="content" v-html="currentPost.content"></div>
+    </div>
+  </div>
 </body>
+<script> const defaultList=[{"datetime":"2018/03/28 21:24","author":"川村真洋","title":"のぎ天2！ 46時間TV。 ","url":"http://blog.nogizaka46.com/mahiro.kawamura/2018/03/044059.php","content":"<br><div>&nbsp;</div><div>お疲れ様です♡</div><div>&nbsp;</div><div>桜満開ですね(^_^*)</div><div>撮影で桜を近くで見ました、綺麗な色。</div><div>&nbsp;</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/28/3974897/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>告知！！！</div><div>3月30日「のぎ天2 カラオケ大会」</div><div>見てくださいねぇ。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>そして何より、</div><div>46時間TV本当に楽しかったです。</div><div>最後に良い思い出作れて幸せです。</div><div>&nbsp;</div><div>&nbsp;</div><div>電視台。</div><div>電視台では「渋谷ブルース」を弾き語りました。</div><div>初めての弾き語り、少し緊張もしたけど、気持ちを込めて歌いました。</div><div>どうだったかな？</div><div>&nbsp;</div><div>&nbsp;</div><div>チューリップ。</div><div>チューリップの仲間達と箱根へ。</div><div>食べ歩き、箱根登山鉄道、ロープウェイ、水族館、動物ランド、ご飯、温泉...</div><div>沢山行ってきました。</div><div>&nbsp;</div><div>チューリップの皆だいすき♡</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/28/3974897/0001.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/28/3974897/0002.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>京都ロケ。</div><div>私、まあや、あみ。</div><div>&nbsp;</div><div>「妖怪ストリート」でのロケ。</div><div>そして何と言っても、1番楽しかったのが、舞妓さんになれたこと♡</div><div>&nbsp;</div><div>あみとまあやが沢山褒めてくれたから嬉しかったんです。笑</div><div>あみに関しては「マニ舞妓さんになりな？本当に。」と、真面目に言ってくるですよ(^_^*)笑&nbsp;</div><div>&nbsp;</div><div>なれないよ。</div><div>でもそう言ってもらえて嬉しいどすへ～。</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/28/3974897/0003.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/28/3974897/0004.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>まだ沢山写真あるのでモバメや755の方に貼りますね。</div><div>&nbsp;</div><div>&nbsp;</div><div>そして日曜日、最後の個別握手会を終えました。</div><div>&nbsp;</div><div>七年間、握手会で沢山の人に勇気を貰い、励まされ、背中を押されました。</div><div>ありがとうございました。</div><div>&nbsp;</div><div>でも本当に色々あったな～。とつくづく思います。</div><div>どんな事も全部いい思い出ですね♡</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>と言うことで、読んでくれてありがとうございます。</div><div>&nbsp;</div><div>おやすみなさい。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>"},{"datetime":"2018/03/23 00:12","author":"川村真洋","title":"がおー。ちんぴらまに。46時間TV。","url":"http://blog.nogizaka46.com/mahiro.kawamura/2018/03/043750.php","content":"<div>&nbsp;</div><div>お疲れ様です！</div><div>昨日は個別握手会。</div><div>来て下さったファンの皆様、ありがとうございます♡</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/23/3143211/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>もうすぐ46時間TVが始まりますね！</div><div>今年はどんな名場面が生まれるだろう。楽しみっ。</div><div>&nbsp;</div><div>&nbsp;</div><div>それに46時間TVのグッズがありまして、その中でも「推しメンマフラータオル」と「軍団グッズ」はオススメです♡</div><div>&nbsp;</div><div>&nbsp;</div><div>推しメンマフラータオルは、メンバーそれぞれがデザインしているのでレア。</div><div>是非私のタオルもチェックして下さると嬉しいです♡</div><div>&nbsp;</div><div>&nbsp;</div><div>それに軍団グッズ...私は勿論チューリップとしてなんですが、、、超可愛いです。笑 &nbsp;特にタオルだったかな、、「や ら し い 目 で 見 な け れ ば」の文字だけで癒されます(^_^*)</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>タコだぁぁぁぁぁぁぁ！！！！</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/23/3143211/0001.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>なんやこれ。</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/23/3143211/0002.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>落書きしてしまいました。笑</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>かりんのファンの皆様へ。</div><div>卒業セレモニー、素敵なお花ありがとうございます。凄く嬉しかったです！かりんと同じでファンの皆様も本当に優しいんですね♡</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/23/3143211/0003.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>では♡</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/23/3143211/0004.jpeg\"></div>"},{"datetime":"2018/03/19 21:18","author":"川村真洋","title":"握手会と卒業セレモニー。 Rotty","url":"http://blog.nogizaka46.com/mahiro.kawamura/2018/03/043674.php","content":"<div>&nbsp;</div><div><font size=\"1\">こんにちわ。</font><font size=\"1\">川村真洋です‼︎</font><font size=\"1\">&nbsp;</font></div><div><font size=\"1\">ピース♪</font></div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/19/6174348/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><font size=\"1\">昨日は東京ビッグサイトにて握手会でした。</font></div><div><font size=\"1\">私服、久々に足出してみました。</font></div><div><font size=\"1\">寒かったです♡笑</font></div><div><font size=\"1\"><br></font></div><div><font size=\"1\">子供の頃は平気だったのに...</font></div><div><font size=\"1\">わぁぁぁぁぁ。</font></div><div><font size=\"1\"><br></font></div><div><font size=\"1\">赤と絶妙な青のボーダーが可愛いと思って購入した洋服。 肩のラインも膨らんでて面白い。</font></div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/19/6174348/0001.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><font size=\"1\">そして、卒業セレモニー。</font></div><div><font size=\"1\">私の為に、ファンの皆さんで色々と話し合い、準備して下さっていた事、本当に感謝しています。</font></div><div><font size=\"1\">ありがとうございます。</font></div><div>&nbsp;</div><div><font size=\"1\">皆さんが「ろってぃー！ろってぃー！」と叫び、笑顔で手を振って下さる姿を見て、凄く感動してしました(*´-`)</font></div><div><font size=\"1\">近い距離で皆さんの笑顔を見る事ができ、本当に幸せでした。</font></div><div><font size=\"1\"><br></font></div><div><font size=\"1\">握手会では、私の目の前がチューリップでいっぱいになりました。 何だか卒業式みたいで泣いちゃいそうになりました。 でも笑顔しか見せてないよ♡</font></div><div><font size=\"1\"><br></font></div><div><font size=\"1\"><br></font></div><div><font size=\"1\">素敵な大壇幕。</font></div><div><font size=\"1\">前の自分と手かざして見たよ。</font></div><div><font size=\"1\">自分、成長できてるのかな？</font></div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/19/6174348/0002.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><font size=\"1\">チューリップ。</font></div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/19/6174348/0003.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><font size=\"1\">ファンの皆さんと♡</font></div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/19/6174348/0004.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><font size=\"1\">本当にありがとうございました。</font></div><div><font size=\"1\">おやすみなさい(^.^)</font></div><div>&nbsp;</div>"},{"datetime":"2018/03/16 23:42","author":"川村真洋","title":"お久ぶり？かな♡ まひろ。","url":"http://blog.nogizaka46.com/mahiro.kawamura/2018/03/043635.php","content":"<div>&nbsp;</div><div>&nbsp;</div><div>こんにちわ、</div><div>川村 真洋です。</div><div>&nbsp;</div><div>暖かくなったり寒くなったり...</div><div>皆さん体調の方が大丈夫ですか？</div><div>&nbsp;</div><div>この時期は花粉症ですよね。</div><div>私も目、鼻、喉、大変です(*´-`)</div><div>一緒に乗り越えましょうね♡</div><div>&nbsp;</div><div>&nbsp;</div><div>前回の握手会、私服載せてなかったので載せます！</div><div>&nbsp;</div><div>&nbsp;</div><div>タイトだ～。</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/16/1097726/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>青と白のラインが可愛い。</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/16/1097726/0001.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>ラジオ、乃木坂46の「の」。</div><div>聞いて頂けたでしょうか？</div><div>私と花奈とちまの3人でまったりとトーク、楽しませて頂きました‼︎</div><div>&nbsp;</div><div>&nbsp;</div><div>ヤングギターも発売中‼︎</div><div>今月も動画が更新されていますので是非チェックして下さいね‼︎ ステキなゲスト登場します♡</div><div><a href=\"http://youngguitar.jp/rotty\"><a href=\"http://youngguitar.jp/rotty\">http://youngguitar.jp/rotty</a></a></div><div>&nbsp;</div><div>壁可愛い。</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/16/1097726/0002.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>今日は握手会。</div><div>&nbsp;</div><div>2部終わりに、私の卒業セレモニーを開催して下さる様です(*´-`)♡</div><div>&nbsp;</div><div>皆様、本当にありがとうございます。</div><div>皆様の顔を、近くで見れる事、楽しみにしてます。</div><div>&nbsp;</div><div>&nbsp;</div><div>では♡</div><div><img src=\"img/blog/mahiro.kawamura/img/2018/03/16/1097726/0003.jpeg\"></div><div>&nbsp;</div>"}]; </script>
 <script src="../script/main.js"></script>
+
 </html>

@@ -1,0 +1,151 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Meiryo, "Meiryo UI", sans-serif;
+  font-size: 15px;
+  background-color: #2b2d42;
+}
+
+#app {
+  padding: 24px 0;
+}
+
+.group {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.year {
+  margin: 12px;
+  padding: 0 0 6px 6px;
+  color: white;
+  font-size: 30px;
+  line-height: 30px;
+  border-bottom: solid 1px white;
+}
+
+.list {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  margin: 0 16px;
+
+  @media screen and (max-width: 700px) {
+    justify-content: center;
+  }
+}
+
+.member {
+  border-radius: 6px;
+  cursor: pointer;
+  color: #2b2d42;
+  background-color: white;
+  margin: 8px;
+  padding: 6px;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s linear;
+  text-shadow: 1px 1px 5px #c2c2c2;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #b5bfd1;
+    color: #7D2982;
+    transition: all 0.3s linear;
+
+    .avatar img {
+      transform: scale(1.08);
+    }
+  }
+
+  .avatar {
+    width: 97%;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 200px;
+      transition: transform .3s ease;
+    }
+
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 0 0;
+
+    .name {
+      font-size: 23px;
+      line-height: 25px;
+    }
+
+    .name-hiragana {
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+}
+
+.header {
+  height: 225px;
+
+  .blur-bg {
+    height: 100%;
+    width: 100%;
+    background-image: url("ogimg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 60%;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+
+    @media screen and (max-width: 700px) {
+      background-position-x: 50%;
+    }
+  }
+
+  .title {
+    position: absolute;
+    top: 70px;
+    color: white;
+    z-index: 100;
+    width: 100%;
+    text-align: center;
+    font-size: 33px;
+  }
+}
+
+.footer {
+  padding: 12px 0;
+  background-color: #3c4146;
+
+  .sns-info {
+    text-align: center;
+
+    a {
+      margin: 0 4px;
+      font-size: 29px;
+      text-decoration: none;
+      color: white;
+
+      &:visited {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+
+  .slogan {
+    text-align: center;
+    color: white;
+    font-size: 12px;
+  }
+}

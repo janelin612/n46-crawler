@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>井上 小百合 | 乃木坂46卒業メンバーのブログ</title>
+  <meta property="og:image" content="https://janelin612.github.io/n46-crawler/ogimg.jpg">
+
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <script src="../script/vue.min.js"></script>
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-38227412-4');
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../menu.svg" alt=""></button>
+    <div class="member" :class="{'hide':isFold}">
+      <img :src="member.image" alt="" class="avatar">
+      <div class="name">{{member.name}}</div>
+      <div class="name hiragana">{{member.name_hiragana}}</div>
+
+      <ul class="intro">
+        <li v-for="item in member.intro">
+          <span class="key">{{item.key}}</span>
+          <span class="value">{{item.value}}</span>
+        </li>
+      </ul>
+
+      <ul class="tag">
+        <li v-for="item in member.tag">{{item}}</li>
+      </ul>
+    </div>
+
+    <div class="menu" :class="{'hide':isFold}">
+      <div class="loading-spinner" v-if="isLoading">
+        <div class="spinner"></div>
+      </div>
+      <ul>
+        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
+          <div v-html="item.title"></div>
+          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
+          <div class="small-datetime">{{item.datetime}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main" v-if="currentPost!=null">
+      <div class="heading">
+        <a class="post-time" :href="currentPost.url" target="_blank">
+          <div class="year-month">{{currentPostDate.yearMonth}}</div>
+          <span class="date">{{currentPostDate.date}}</span>
+          <span class="week">{{currentPostDate.weekday}}</span>
+        </a>
+        <div class="post-info">
+          <div class="author">{{currentPost.author}}</div>
+          <div class="title" v-html="currentPost.title"></div>
+        </div>
+      </div>
+      <div class="content" v-html="currentPost.content"></div>
+    </div>
+  </div>
+</body>
+<script> const defaultList=[{"datetime":"2020/01/10 13:06","author":"井上小百合","title":"ヽ(｡･ω･｡)2020！","url":"http://blog.nogizaka46.com/sayuri.inoue/2020/01/054512.php","content":"<br>  <br>  遅くなりましたが、<br>  <br>  <br>  あけましておめでとうございます︎︎<br>  <br>  <br> <img src=\"img/blog/sayuri.inoue/img/2020/01/10/2884912/0000.jpeg\"><br>  <br>  <br>  <br>  2019年は、お気に入りのお弁当箱を<br>  食洗機に入れてむにょむにょに<br>  してしまいました<br>  <br>  食洗機対応じゃなかったみたい。<br>  <br>  <br>  すごく落ち込んだので、<br>  今年はちゃんと食洗機対応のものを<br>  食洗機に入れれるように<br>  気をつけたいと思います！<br>  <br>  <br>  <br>  <br>  <br>  第70回NHK紅白歌合戦、<br>  有難うございました！<br>  <br>  写真をいくつか<br>  <br>  <br> <img src=\"img/blog/sayuri.inoue/img/2020/01/10/2884912/0001.jpeg\"><br>  <br>  <br>  個人的には、半年ぶりの歌番組、<br>  乃木坂46として最後の紅白でした<br>  <br>  <br>  昨年を振り返ると、<br>  卒業の言葉が頭に浮かんでから<br>  中途半端な状態で<br>  アイドルをやりたくなくて<br>  休業して自分と向き合う時間を<br>  貰いました<br>  それから約半年、個人活動に専念し<br>  色々な人とお仕事をする中で<br>  多くのことを学び、<br>  色々なことを考えました<br>  <br>  とても意味のある時間を<br>  過ごすことができ、感謝しています<br>  <br>  <br>  モバメで少し話した様に<br>  抱えてるものが沢山あったけど、<br>  自分を強く保つためにも<br>  必要な時間でした<br>  <br>  <br>  <br>  でも最後は、アイドルとして<br>  残り数ヶ月、改めて<br>  周りの人に感謝しながら<br>  ひとつひとつ全力で楽しみたいな<br>  と思っています(*´ `*)<br>  <br>  <br>  <br>  <br>  <br>  まいやんの卒業も発表されましたね<br>  <br>  長い時間をかけて決断したことだと思うので<br>  まいやんの選んだ道が輝かしいもので<br>  ありますようにと願うばかりです！<br>  <br>  乃木坂が歩いてきた道のりの中で、<br>  本当に沢山色んなものを背負って<br>  進んできてくれたメンバーの一人だと<br>  思いますが、<br>  <br>  思い返すと、誕生日に<br>  顔面ケーキしたりとか<br>  くだらない時間を過ごしたときの<br>  思い出のほうがなぜか強くて<br>  あったかいです。<br>  <br>  <br>  乃木坂に入って、初めての<br>  厳しいレッスンで体調が<br>  悪くなってしまったとき<br>  <br>  そのわたしに気づいて、<br>  「ちょっと待ってて！」ってわざわざ<br>  自分の私服を持ってきて<br>  それをわたしに掛けて<br>  救護してくれた人がいて<br>  それが白石麻衣って人でした<br>  <br>  <br>  今まで、いっぱい有難う ***<br>  <br>  <br>  <br>  <br>  <br>   ー<br>  <br>  <br>  <br>  <br>  いまは、1月17日〜本番の<br>  ミュージカル「天国の本屋」に向けて、<br>  稽古に勤しんでいます<br>  <br>  稽古って、かなり地道で大変な<br>  作業だったりするんですけど、<br>  毎日稽古場が楽しいです<br>  <br>  勿論、オリジナルのミュージカルだから<br>  生まれて初めて聞く音楽を<br>  短時間で身体の中に<br>  落とし込んでいくのは大変でもあるけど<br>  <br>  胸がギュッとなったり、わくわくしたり、<br>  すごく新鮮な、素敵な感覚を<br>  持ちながらお芝居ができていて<br>  すごく楽しいです<br>  <br>  とてもあたたかい作品なので<br>  寒い季節でも、心がぽかぽかになります<br>  <br>  早く皆さんに届けられたらいいな<br>  <br>  一緒にぽかぽかになりましょ<br>  <br>  <br>  <br>  というわけで<br>  2020年もがんばります！<br>  <br>  皆さんにとって、<br>  幸せな一年になりますように◡̈<br>  <br>  <br>  <br> <img src=\"img/blog/sayuri.inoue/img/2020/01/10/2884912/0002.jpeg\"><br>  <br>  <br>  <br>  <br>  さゆ<br>  <br> "},{"datetime":"2019/12/28 20:24","author":"井上小百合","title":"ヽ(｡･ω･｡)２０１９","url":"http://blog.nogizaka46.com/sayuri.inoue/2019/12/054261.php","content":"<p><br> <br> <br> <br> おもち<br> <br> <img src=\"img/blog/sayuri.inoue/img/2019/12/28/3221133/0000.jpeg\"><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 遅ればせながら<br> <br> 今月で、写真集の発売から一年と<br> 25歳の誕生日を迎えることが<br> できました！<br> <br> 地元の友達から懐かしい写真が。<br> <br> <br> <img src=\"img/blog/sayuri.inoue/img/2019/12/28/3221133/0001.jpeg\"><br> <br> わ〜<br> 乃木坂1年目と2年目の誕生日です！<br> <br> ちょうど高2、高3の時期で<br> 離れ離れになったクラスのみんなが<br> 教室から写真を送って<br> お祝いしてくれたんですよね...<br> <br> 16歳で東京にきてから、25歳になるまで<br> 沢山の人に支えられて、恵まれながら<br> 頑張ることができて本当に濃い時間でした<br> <br> <br> <br> 24歳の一年は、がむしゃらに頑張る<br> と言うよりも、ひとつひとつ、<br> 人との繋がりや出会いに感謝したり、<br> いまの自分を、一歩一歩、<br> 確かめながら進めることができた<br> とても貴重な一年でした<br> <br> <br> その時間は、いまの自分にとって<br> すごく大事なもので<br> 周りの人には感謝でいっぱいです<br> <br> 沢山有難うです<br> <br> <br> <img src=\"img/blog/sayuri.inoue/img/2019/12/28/3221133/0002.jpeg\"><br> <br> <br> <br> 2019年もあと3日！<br> <br> 2020年も皆さんが<br> 幸せでありますように<br> <br> <br> <br> <img src=\"img/blog/sayuri.inoue/img/2019/12/28/3221133/0003.jpeg\"><br> <br> <br> <br> <br> 昨日、12／27 発売<br> 『乃木坂46×週刊プレイボーイ2019』<br> <br> ぜひ！<br> <br> <br> <img src=\"img/blog/sayuri.inoue/img/2019/12/28/3221133/0004.jpeg\"><br> <br> <br> <br> <br> さゆ</p>"},{"datetime":"2019/12/05 13:12","author":"井上小百合","title":"ヽ(｡･ω･｡)しわす","url":"http://blog.nogizaka46.com/sayuri.inoue/2019/12/053837.php","content":"<div dir=\"ltr\"></div>\n<div dir=\"ltr\">\n<div dir=\"ltr\"></div>\n<div dir=\"ltr\">\n<div dir=\"ltr\"></div>\n<div dir=\"ltr\">\n<div dir=\"ltr\"></div>\n<div dir=\"ltr\">\n<div dir=\"ltr\"></div>\n<div dir=\"ltr\">\n<div dir=\"ltr\"></div>\n<div dir=\"ltr\">\n<div dir=\"ltr\"></div>\n<div dir=\"ltr\">\n<div dir=\"ltr\"></div>\n<div dir=\"ltr\">\n<div dir=\"ltr\"></div>\n<div dir=\"ltr\">\n<div dir=\"ltr\"></div>\n<div dir=\"ltr\">\n<div dir=\"ltr\"></div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">来年春、シアタークリエにて上演の</div>\n<div dir=\"ltr\">ミュージカル「リトルショップオブホラーズ」</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">コメント動画が配信されました</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\"><a href=\"https://youtu.be/VM4kLFDuz6o\">https://youtu.be/VM4kLFDuz6o</a></div>\n<div dir=\"ltr\"><span></span><br>ぜひチェックしてください！<br><br><br><br><br><br>そして、昨日12月4日に、</div>\n<div dir=\"ltr\">6月に出演させて頂いた</div>\n<div dir=\"ltr\"><span style=\"background-color: rgba(255, 255, 255, 0);\">TXT vol.1「SLANG」 の<br>DVD&amp;Blu-rayが発売されました</span></div>\n<div dir=\"ltr\"><span style=\"background-color: rgba(255, 255, 255, 0);\"> </span></div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">映像で見るとまた違った印象を持ったし、</div>\n<div dir=\"ltr\">カメラワークもすごくキレイで、</div>\n<div dir=\"ltr\">生で見た方でも、全然違う楽しみ方が</div>\n<div dir=\"ltr\">できるんじゃないかなあと思いました</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">こんなにアップで撮られてたんだあ！</div>\n<div dir=\"ltr\">ってところも結構あったし、</div>\n<div dir=\"ltr\">各々の表情がすごく繊細に捉えられていて</div>\n<div dir=\"ltr\">すごく素敵でした</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">\n<div dir=\"ltr\"><span style=\"background-color: rgba(255, 255, 255, 0);\">そんな本編も勿論なんですが、<br></span></div>\n<div dir=\"ltr\"><span style=\"background-color: rgba(255, 255, 255, 0);\">それぞれのインタビューだったり、<br>特典も盛りだくさんです！</span></div>\n<div dir=\"ltr\"><span style=\"background-color: rgba(255, 255, 255, 0);\">コメンタリーも楽しかったなあ</span></div>\n</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">ぜひ見てみてください<br><br><br><br><span></span><br><span>でっかいエビフライを食べました</span><br><span></span></div>\n<div dir=\"ltr\"><img id=\"088C7191-80FB-4E3D-AC8A-9E008AE43709\" src=\"img/blog/sayuri.inoue/img/2019/12/05/1906681/0000.jpeg\"></div>\n<div dir=\"ltr\"><span></span><br><span>昔からエビが大好物です</span><br><span></span><br><span></span><br><span></span><br><br><span></span><br><span>先日、フラガールで共演した矢島舞美さんと</span><br><span>SLANGの舞台監督さんで、一緒にお仕事</span><br><span>させてもらって以来、すごく仲良くさせて</span><br><span>頂いてる共通の知り合いと共に</span><br><span>ごはんに行ってきました</span><br><span></span><br><span>期間中はバタバタでごはんに行けず</span><br><span>やっとやっと、念願叶ってうれしかったです</span><br><span></span><br><br><span>やじさんはすごく</span><span>気さくで優しくて真面目で、</span></div>\n<div dir=\"ltr\"><span>とにかく</span><span>アイドルとしてずっとトップを</span></div>\n<div dir=\"ltr\"><span>走ってきた</span><span>イメージだったので、こうして</span><br><span>共演できたことにすごくご縁を感じたし、</span><br><span>やじさんが演じるまどか先生が</span><br><span>素敵すぎたから、自分が紀美子として</span><br><span>頑張れたんだと本当に思います</span><br><br></div>\n<div dir=\"ltr\"></div>\n<div dir=\"ltr\">　<img width=\"640\" class=\"mt-image-none\" alt=\"井上ブログ用.jpg\" src=\"img/blog/sayuri.inoue/img/2019/12/05/%E4%BA%95%E4%B8%8A%E3%83%96%E3%83%AD%E3%82%B0%E7%94%A8.jpg\"></div>\n<div dir=\"ltr\"><span></span><br><span></span><br><span></span><br><br>再会といえば！</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">若草物語で共演させて頂いた</div>\n<div dir=\"ltr\">彩乃かなみさん、下村実生さんと、</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">\n<div dir=\"ltr\"><span style=\"background-color: rgba(255, 255, 255, 0);\">朝夏まなとさん主演の</span></div>\n<div dir=\"ltr\"><span style=\"background-color: rgba(255, 255, 255, 0);\">「天使にラブ・ソングを」</span><span style=\"background-color: rgba(255, 255, 255, 0);\">を観劇。</span></div>\n</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">マーチ家の四姉妹が集結しました〜</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\"><img id=\"09562ECD-CA71-41D8-9408-19F98F3616BA\" alt=\"image1.jpeg\" src=\"img/blog/sayuri.inoue/img/2019/12/05/1906681/0002.jpeg\"><br>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\"><span style=\"background-color: rgba(255, 255, 255, 0);\">久々に会ったのに</span></div>\n<div dir=\"ltr\"><span style=\"background-color: rgba(255, 255, 255, 0);\">すごい安心感に</span><span style=\"background-color: rgba(255, 255, 255, 0);\">ほっこり</span></div>\n<br>末っ子、エイミーちゃん役の</div>\n<div dir=\"ltr\">みきちゃんがみんなに声掛けてくれました</div>\n<div dir=\"ltr\">有難う！感謝！</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\"></div>\n<div dir=\"ltr\">じょしらく以来、仲良くさせて頂いてる</div>\n<div dir=\"ltr\">小山めぐみさんとごはん行ったときに<br><span>携帯で撮ってくれた写真。</span></div>\n<div dir=\"ltr\"><img id=\"78A39123-308F-4604-A725-98583EFA02E2\" src=\"img/blog/sayuri.inoue/img/2019/12/05/1906681/0003.jpeg\"></div>\n<div dir=\"ltr\"><span></span><span style=\"background-color: rgba(255, 255, 255, 0);\">すっぴんだし髪もボサボサだけど...</span></div>\n<div dir=\"ltr\">　</div>\n<div dir=\"ltr\">今の携帯って画質すごい！</div>\n<div dir=\"ltr\"><br><br></div>\n<div dir=\"ltr\"><span></span><br><span>12月になると一つ歳をとるし、</span><br><span>世間的にも年が変わるし、</span><span>時間の流れを</span></div>\n<div dir=\"ltr\"><span>とっても感じる</span><span>時期になるけど、</span><br><span>その中でも自分らしい</span><span>時間の</span></div>\n<div dir=\"ltr\"><span>過ごし方ができれば</span><span>いいなあと思います</span><br><span></span><br><span></span><br><span></span><br><span>ではまた！（防寒がすごい）</span></div>\n<div dir=\"ltr\"><span> </span></div>\n<div dir=\"ltr\"><img width=\"707\" class=\"mt-image-none\" alt=\"井上②.jpg\" src=\"img/blog/sayuri.inoue/img/2019/12/05/%E4%BA%95%E4%B8%8A%E2%91%A1.jpg\"></div>\n<div dir=\"ltr\"><span></span><br><br><br><span>さゆ</span></div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>"},{"datetime":"2019/11/06 15:00","author":"井上小百合","title":"ヽ(｡･ω･｡)スマイル","url":"http://blog.nogizaka46.com/sayuri.inoue/2019/11/053505.php","content":"<br>  <br>  <br>  「フラガール − dance for smile -」<br>  <br>  <br>  タイトル通り、無事に笑顔で<br>  最後まで駆け抜けることができました◡̈<br>  <br>  <br> <img src=\"img/blog/sayuri.inoue/img/2019/11/06/1986848/0000.jpeg\"><br>  <br>  <br>  東京・大阪公演と<br>  ご観劇下さった皆さま<br>  本当に本当に有難うございました！<br>  <br>  <br>  皆から沢山刺激をもらったなあ<br>  楽しかったなあ<br>  <br>  <br> <img src=\"img/blog/sayuri.inoue/img/2019/11/06/1986848/0001.jpeg\"><br>  <br>  <br>  大千秋楽のカーテンコールでも<br>  少しお話させて頂きましたが<br>  <br>  この期間中、色んなことがあって<br>  それでも自分を奮い立たせて<br>  笑顔で舞台に立てたのは、<br>  フラガールのみんなであったり、<br>  まどか先生であったり、<br>  母ちゃんや兄ちゃん、吉本さん、、<br>  <br>  本当にキャストみんなの<br>  登場人物みんなの、<br>  勇気や優しさや、生きる力強さ<br>  みたいなものに沢山助けられて、<br>  励まされて、救われて、<br>  ここまで来ることができました<br>  <br>  <br>  紀美子の台詞の中で、<br>  「おらの人生おらのもんだ！！」<br>  という言葉が印象に残っているのですが<br>  <br>  最初はそう言ってた紀美子が<br>  いつしか誰かのために、<br>  どんなに自分がしんどかろうか<br>  行動していくようになる姿や、<br>  <br>  そんな紀美子の夢をどんどん<br>  周りが応援していくようになる姿が、<br>  <br>  どうしても他人事には思えず、<br>  紀美子を通して<br>  自分も沢山のことを吸収していきました<br>  <br>  このタイミングでこういう作品に<br>  携われたことは、本当に<br>  大きなものだったなと思います<br>  <br>  <br>  自分がこの作品から与えられたものが<br>  沢山あるように<br>  皆さんの中に、少しでも何かを<br>  与えることができていたら、<br>  <br>  明日もがんばろうとか、ほんとに<br>  ちょっとしたことでもいいけど<br>  そういったプラスの感情が<br>  少しでも芽生えてくれてたら<br>  <br>  この公演に対して精一杯<br>  挑んだかいがあったなと思います！<br>  <br>  <br>  演出の河毛さん、岡村さん始め<br>  キャスト、スタッフの皆さん、<br>  ご観劇下さった皆さん、<br>  全ての方々に感謝します<br>  <br>  <br>  <br>  <br>  「負けないぞ負けないぞ<br>  私には夢がある<br>  <br>  フラがある フラがある  フラガール」<br>  <br>  耳に残る歌♪<br>  <br>  <br>  <br> <img src=\"img/blog/sayuri.inoue/img/2019/11/06/1986848/0002.jpeg\"><br>  <br>  <br>  <br>  さゆ<br>  <br>  <br>  <br> "}]; </script>
+<script src="../script/main.js"></script>
+
+</html>

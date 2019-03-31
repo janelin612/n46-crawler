@@ -1,50 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>乃木坂46卒業メンバーのブログ</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>乃木坂46卒業メンバーのブログ</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
 
-    <meta property="og:site_name" content="乃木坂46卒業メンバーのブログ">
-    <meta property="og:title" content="乃木坂46卒業メンバーのブログ">
-    <meta property="og:description" content="乃木坂46 已畢業成員部落格文章備份 " >
-    <meta property="og:type" content="article" >
-    <meta property="og:image" content="https://janelin612.github.io/n46-crawler/ogimg.jpg" >
+  <meta property="og:site_name" content="乃木坂46卒業メンバーのブログ">
+  <meta property="og:title" content="乃木坂46卒業メンバーのブログ">
+  <meta property="og:description" content="乃木坂46 卒業成員部落格備份">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://janelin612.github.io/n46-crawler/ogimg.jpg">
 
-    <script src="script/vue.min.js"></script>
-    <script src="script/vue-resource.js"></script>
-    <link rel="stylesheet" href="landingpage.css">
+  <script src="script/vue.min.js"></script>
+  <link rel="stylesheet" href="landingpage.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-38227412-4');
+  </script>
 </head>
 
 <body>
-    <div id="app">
-        <div v-for="(group,index) in list" class="group">
-            <div class="year">{{group.year}}</div>
-            <div class="list">
-                <a v-for="(item,index) in group.member" class="member" :href="item.link">
-                    <img :src="item.image" alt="" />
-                    <div class="info">
-                        <div class="name">{{item.name}}</div>
-                        <div class="name-hiragana">{{item.name_hiragana}}</div>
-                    </div>
-                </a>
-            </div>
-        </div>
+  <div class="header">
+    <h1 class="title">乃木坂46卒業メンバーのブログ</h1>
+    <div class="blur-bg"></div>
+  </div>
+  <div id="app">
+    <div v-for="(group,index) in list" class="group">
+      <div class="year">{{group.year}}</div>
+      <div class="list">
+        <a v-for="(item,index) in group.member" class="member" :href="item.link">
+          <div class="avatar"><img :src="item.image" alt="" /></div>
+          <div class="info">
+            <div class="name">{{item.name}}</div>
+            <div class="name-hiragana">{{item.name_hiragana}}</div>
+          </div>
+        </a>
+      </div>
     </div>
+  </div>
+  <div class="footer">
+    <div class="sns-info">
+      <a href="https://github.com/janelin612/n46-crawler" target="_blank" title="Give me a star"><i class="fab fa-github"></i></a>
+      <a href="https://www.buymeacoffee.com/janelin612" target="_blank" title="Buy me a coffee"><i class="fas fa-mug-hot"></i></a>
+    </div>
+    <div class="slogan">#また乃木坂で会いましょう</div>
+  </div>
 </body>
 <script>
-var app = new Vue({
+  var app = new Vue({
     el: "#app",
     data: {
-        list: []
+      list: []
     },
-    created:function(){
-        this.$http.get("./memberlist.json").then(res => { this.list = res.body }, res => { this.list = [] });
+    created: function () {
+      fetch("./memberlist.json")
+        .then(resp => resp.json())
+        .then(json => {
+          this.list = json;
+        })
+        .catch(err => {
+          console.warn(err);
+        })
     }
-});
+  });
 </script>
 
 </html>
