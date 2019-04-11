@@ -83,6 +83,12 @@
                 "name_hiragana": "いとう かりん",
                 "image": "karin.itou/img/www/member/img/itoukarin_prof.jpg",
                 "link": "karin.itou/index.html"
+            },
+            {
+                "name": "斉藤 優里",
+                "name_hiragana": "さいとう ゆうり",
+                "image": "yuuri.saito/img/www/member/img/saitouyuuri_prof.jpg",
+                "link": "yuuri.saito/index.html"
             }
         ]
     }
