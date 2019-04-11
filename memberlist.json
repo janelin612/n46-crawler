@@ -77,6 +77,12 @@
                 "name_hiragana": "えとう みさ",
                 "image": "misa.eto/img/www/member/img/etoumisa_prof.jpg",
                 "link": "misa.eto/index.html"
+            },
+            {
+                "name": "伊藤 かりん",
+                "name_hiragana": "いとう かりん",
+                "image": "karin.itou/img/www/member/img/itoukarin_prof.jpg",
+                "link": "karin.itou/index.html"
             }
         ]
     }
