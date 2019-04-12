@@ -24,7 +24,14 @@ n46-crawler
 + [斉藤優里](https://janelin612.github.io/n46-crawler/yuuri.saito) - archived on 2019-04-11
 
 # Get started #
-## 1.install dependencies ##
+
+## 1.clone project
+Because the whole demo site is hosting on github pages,you will take long time to clone project.  
+If you only need the source code,you can just clone the master branch.
+
+	$ git clone https://github.com/janelin612/n46-crawler.git --single-branch
+
+## 2.install dependencies
 
 [node-crawler](https://github.com/bda-research/node-crawler "https://github.com/bda-research/node-crawler")
 
@@ -34,10 +41,11 @@ n46-crawler
 
 	$ npm install minimist
 
-## 2.usage ##
+## 3.usage
 
 	$ node blog.js
-it will download all blog into `./viewer/result.json`  (**Will take long time!!**)
+
+It will download all blog into `./viewer/result.json`  (**Will take long time!!**)
 
 # Argument #
 
