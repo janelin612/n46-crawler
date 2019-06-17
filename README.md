@@ -43,19 +43,31 @@ If you only need the source code,you can just clone the master branch.
 
 ## 3.usage
 
-	$ node blog.js
+	$ node n46.js
 
-It will download all blog into `./viewer/result.json`  (**Will take long time!!**)
+It will download all blog into `./viewer/result.json` **(Will take long time~)**  
+And all images will be storaged into `./viwer/img/` as below:
+
+```html
+<!-- original  -->
+<img src="http://img.nogizaka46.com/blog/XXXXX.jpeg">
+
+<!-- new -->
+<img src="img/blog/XXXXX.jpeg">
+```
 
 # Argument #
 
-1. `-a MEMBER_NAME` : For example,if you only want to download all of Asuka's blog
+1. `-a "MEMBER_NAME"` : For example,if you only want to download all of Asuka's blog
 
 	> http://blog.nogizaka46.com/asuka.saito/
 
 	you can use this:
 
-		$ node blog.js -a 'asuka.saito'
+		$ node n46.js -a 'asuka.saito'
+
+	+ **It is recommended to always using this argument to avoid downloading too much data.**
+	+ you can get member's name by the next argument
 
 2. `--list` : list all member name like below
 
@@ -67,22 +79,6 @@ It will download all blog into `./viewer/result.json`  (**Will take long time!!*
 		伊藤 万理華     marika.ito
 		...etc
 
-3. `--image` : download all image and replace the original address into local address.   
-	For example:
-		
-		<!-- original  -->
-		<img src="http://img.nogizaka46.com/blog/XXXXX.jpeg">
-
-		<!-- new -->
-		<img src="img/blog/XXXXX.jpeg">
-
-4. `--strict` : strict mode.
-This feature is made for Nakamoto Himeka .   
-Because there is some wrong html format in her blog,it will causes the crawler crash...  
-
-	> http://blog.nogizaka46.com/himeka.nakamoto/?d=201505 
-
-	When you using strict mode, the crawler will enter every blog page to download data rather than list page. It will make about 5 times request than normal situation
 
 # Sample Result #
 
