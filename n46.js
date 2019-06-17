@@ -1,4 +1,4 @@
-const N46Crawler = require('./n46-crawler');
+const N46Crawler = require('./src/n46-crawler');
 
 /**
  * 成員名稱
