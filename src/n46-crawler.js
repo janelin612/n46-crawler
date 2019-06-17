@@ -155,7 +155,7 @@ let blogContentCrawler = new Crawler({
                 RESULT_JSON_FILE,
                 JSON.stringify(result),
                 'utf8',
-                function () { done(); });
+                () => { done(); });
         }
     }
 })
@@ -210,7 +210,7 @@ let memberInfoCrawler = new Crawler({
                 MEMBER_INFO_FILE,
                 JSON.stringify(member),
                 'utf8',
-                function () { done(); });
+                () => { done(); });
         }
     }
 })
