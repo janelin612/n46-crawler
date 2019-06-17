@@ -21,7 +21,7 @@ n46-crawler
 + [西野七瀬](https://janelin612.github.io/n46-crawler/nanase.nishino) - archived on 2018-12-30
 + [衛藤美彩](https://janelin612.github.io/n46-crawler/misa.eto) - archived on 2019-03-31
 + [伊藤かりん](https://janelin612.github.io/n46-crawler/karin.itou) - archived on 2019-06-10
-+ [斉藤優里](https://janelin612.github.io/n46-crawler/yuuri.saito) - archived on 2019-05-25
++ [斉藤優里](https://janelin612.github.io/n46-crawler/yuuri.saito) - archived on 2019-06-17
 
 # Get started #
 
