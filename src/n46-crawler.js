@@ -142,7 +142,7 @@ let blogContentCrawler = new Crawler({
             });
 
             let item = {
-                datetime: $("#sheet div.entrybottom").first().text().split('｜')[0].trim(),
+                datetime: $("#sheet div.entrybottom").text().trim(),
                 author: $("#sheet h1.clearfix .heading .author").text(),
                 title: $("#sheet h1.clearfix .heading .entrytitle").html(),
                 url: res.request.uri.href,
