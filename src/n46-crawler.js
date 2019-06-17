@@ -174,8 +174,10 @@ let memberInfoCrawler = new Crawler({
 
             //處理成員頭像
             let memberImage = $("#profile img").first().attr("src");
-            Image.download(memberImage);
-            memberImage = Image.getLocalUrl(memberImage);
+            if(memberImage){
+                Image.download(memberImage);
+                memberImage = Image.getLocalUrl(memberImage);
+            }
 
             //成員姓名
             let memberName_hiragana = $("#profile div.txt h2 span").text();
