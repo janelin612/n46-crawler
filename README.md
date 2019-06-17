@@ -1,10 +1,10 @@
 n46-crawler
 ===========
 
-將乃木坂46[官方部落格](https://blog.nogizaka46.com/)的文章整理成`json`格式的檔案，並且可以自由決定是否要下載全部圖片  
+將乃木坂46[官方部落格](https://blog.nogizaka46.com/)的文章整理成`json`格式的檔案，同時下載所有圖片檔，供備份即將畢業的成員部落格使用。  
 本專案包含:
 
-1. 爬蟲
+1. 爬蟲程式碼
 2. 一個簡單的Html檢視器，用來閱讀爬好的json檔 
 
 ### [Demo Site-乃木坂46卒業メンバーのブログ](https://janelin612.github.io/n46-crawler/)
@@ -33,7 +33,7 @@ If you only need the source code,you can just clone the master branch.
 
 ## 2.install dependencies
 
-[node-crawler](https://github.com/bda-research/node-crawler "https://github.com/bda-research/node-crawler")
+[node-crawler](https://github.com/bda-research/node-crawler)
 
 	$ npm install crawler
 
@@ -46,7 +46,7 @@ If you only need the source code,you can just clone the master branch.
 	$ node n46.js
 
 It will download all blog into `./viewer/result.json` **(Will take long time~)**  
-And all images will be storaged into `./viwer/img/` as below:
+And all images will be storaged into `./viewer/img/` as below:
 
 ```html
 <!-- original  -->
@@ -69,7 +69,7 @@ And all images will be storaged into `./viwer/img/` as below:
 	+ **It is recommended to always using this argument to avoid downloading too much data.**
 	+ you can get member's name by the next argument
 
-2. `--list` : list all member name like below
+2. `--list` : list all member's name like below
 
 		秋元 真夏       manatsu.akimoto
 		生田 絵梨花     erika.ikuta
