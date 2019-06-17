@@ -36,9 +36,8 @@ let imageDownloader=new Crawler({
           fs.mkdirSync(d);
         }
         d+="/"+splitArray[i];
-        // d+="-"+splitArray[i];
       }
-      console.log(d);
+      // console.log(d);
       let writeStream = fs.createWriteStream(d);
       writeStream.write(res.body);
       writeStream.end();

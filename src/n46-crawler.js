@@ -149,7 +149,7 @@ let blogContentCrawler = new Crawler({
                 content: $("#sheet div.entrybody").html()
             };
             result.push(item);
-            console.log(item.url + " | " + item.title);
+            console.log(item.datetime + " | " + item.title);
 
             Fs.writeFile(
                 RESULT_JSON_FILE,
