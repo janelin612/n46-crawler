@@ -134,9 +134,9 @@ let blogContentCrawler = new Crawler({
             $("#sheet div.entrybody").find("img").each(function (index, value) {
                 let src = $(value).attr("src");
                 if (src != null && src.length > 0) {
-                    Image.downloader.queue(src);
+                    Image.download(src);
 
-                    let localLocation = "img/" + src.replace(/^http(s){0,1}\S\/\/\S+?\//, '');
+                    let localLocation = Image.getLocalUrl(src);
                     $(value).attr("src", localLocation);
                 }
             });
@@ -174,8 +174,8 @@ let memberInfoCrawler = new Crawler({
 
             //處理成員頭像
             let memberImage = $("#profile img").first().attr("src");
-            Image.downloader.queue(memberImage);
-            memberImage = "img/" + memberImage.replace(/^http(s){0,1}\S\/\/\S+?\//, '');
+            Image.download(memberImage);
+            memberImage = Image.getLocalUrl(memberImage);
 
             //成員姓名
             let memberName_hiragana = $("#profile div.txt h2 span").text();
