@@ -5,16 +5,14 @@ body {
     font-size: 15px;
     background-color: #2b2d42;
 }
-#app{
-    height: 100%;
-    width: 100%;
-}
+
 .group{
     margin: 0 auto;
     max-width: 800px;
 }
 .year{
     margin: 12px;
+    padding: 0 0 6px 6px;
     color: white;
     font-size: 30px;
     line-height: 30px;
@@ -36,12 +34,12 @@ body {
     }
 }
 .member{
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     color: #2b2d42;
     background-color: white;
     margin: 8px;
-    padding: 8px;
+    padding: 6px;
     max-width: 160px;
     display: flex;
     flex-direction: column;
@@ -57,19 +55,37 @@ body {
 }
 .member img{
     width: 97%;
-}
-.member .info{
-    margin: 16px 0 0 0 ;
+    height: auto;
 }
 .member .info .name{
-    font-size: 25px;
+    font-size: 23px;
     line-height: 25px;
 }
 .member .info .name-hiragana{
-    font-size: 18px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 18px;
 }
 .member .info{
     display: flex;
     flex-direction: column;
+    margin: 10px 0 0 0 ;
+}
+
+.footer{
+    padding: 2px 0;
+    margin-top: 8px;
+    background-color: #3c4146;
+}
+.footer .copyright{
+    text-align: center;
+    color: white;
+}
+.footer .copyright a{
+    font-size: 30px;
+    text-decoration:none;
+    color: white;
+}
+.footer .copyright a:visited{
+    text-decoration:none;
+    color: white;
 }
