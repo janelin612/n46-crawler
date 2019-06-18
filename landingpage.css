@@ -71,24 +71,6 @@ body {
     margin: 10px 0 0 0 ;
 }
 
-.footer{
-    padding: 2px 0;
-    margin-top: 8px;
-    background-color: #3c4146;
-}
-.footer .copyright{
-    text-align: center;
-    color: white;
-}
-.footer .copyright a{
-    font-size: 30px;
-    text-decoration:none;
-    color: white;
-}
-.footer .copyright a:visited{
-    text-decoration:none;
-    color: white;
-}
 
 .header{
     height: 225px;
@@ -105,6 +87,11 @@ body {
     filter: blur(4px);
     -webkit-filter: blur(4px);
 }
+@media screen and (max-width: 700px) {
+    .header .cover{
+        background-position-x: 50%;
+    }
+}
 
 .header .title{
    position: absolute;
@@ -114,4 +101,23 @@ body {
    width: 100%;
    text-align: center;
    font-size: 33px;
+}
+
+.footer{
+    padding: 2px 0;
+    margin-top: 16px;
+    background-color: #3c4146;
+}
+.footer .copyright{
+    text-align: center;
+    color: white;
+}
+.footer .copyright a{
+    font-size: 30px;
+    text-decoration:none;
+    color: white;
+}
+.footer .copyright a:visited{
+    text-decoration:none;
+    color: white;
 }
