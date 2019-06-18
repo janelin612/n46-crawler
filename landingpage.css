@@ -89,3 +89,29 @@ body {
     text-decoration:none;
     color: white;
 }
+
+.header{
+    height: 225px;
+    margin-bottom: 25px;
+}
+
+.header .cover{
+    height: 100%;
+    width: 100%;
+    background-image: url("ogimg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 60%;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+}
+
+.header .title{
+   position: absolute;
+   top: 90px;
+   color: white;
+   z-index: 100;
+   width: 100%;
+   text-align: center;
+   font-size: 33px;
+}
