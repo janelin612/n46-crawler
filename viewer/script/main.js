@@ -58,8 +58,11 @@ var app = new Vue({
                 if ('name' in this.member) {
                     document.title = this.member.name + " 非公式ブログ";
                 }
-                return fetch("./result.json");
             })
+            .catch((err) => {
+                console.log(err);
+            })
+        fetch("./result.json")
             .then((resp) => {
                 return resp.json();
             })
