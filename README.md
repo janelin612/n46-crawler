@@ -79,10 +79,8 @@ And all images will be storaged into `./viewer/img/` as below:
 		伊藤 万理華     marika.ito
 		...etc
 
-
 # Sample Result #
-
-Crawler will generate two json file
+Crawler will generate two json file，and storage them at `./viewer/`
 
 1. `result.json` : main file
 
@@ -134,21 +132,18 @@ Crawler will generate two json file
 }
 ```
 
-# Viewer #
-本來只想要有個簡單的畫面來讀JSON檔，結果越寫越複雜...
+# Viewer
+於子資料夾`./viewer`內有簡易的閱讀器，可以用來顯示下載好的json檔案。
 
-## Dependencies
-只有要看的話不用裝東西，直接把`./viewer/index.html`打開就有了，但如果要自己改點東西的話....
-+ Vue.js : 此部分直接把檔案放在`./viewer/script`底下了，並非透過npm安裝，想要擴充應該是有點難度，但原先就只是想做個小東西而已XD
-+ Sass : 輸出已經包含.css檔，如果要自己改sass的話，該裝的編譯器還是要裝
+## Usage
+### Firefox
+不用安裝任何東西，直接開啟`./viewer/index.html`即可使用
+### Chrome
+Google Chrome預設是禁止在html內讀取本地端檔案(file-access-from-files)，所以直接打開html是看不到東西的。  
+如果你很堅持一定要用Chrome啟動的話，你需要建立一個本地端的server，這裡推薦使用[npm http-server](https://www.npmjs.com/package/http-server)，當然你可以用你自己熟悉的伺服器。
 
-		$ npm install -g node-sass less
-	
-	ps:沒有搭配gulp使用，要用的自己裝XD
-
-## Known issues
-
-+ Chrome : 載入的工作邏輯是對本地端的json檔打http get取得，結果這件事情被Chrome禁止(file-access-from-files)，所以目前本閱讀器不支援直接用Chrome開...
-	 + 解法1 : 找個空間把整包掛上去
-	 + 解法2 : 對Chrome下參數`--allow-file-access-from-files` 詳細說明:[連結](http://blog.twtnn.com/2015/03/ajaxcross-origin-requests-are-only.html)
-	 + 解法3 : 改用Firefox吧
+```shell
+$ npm install http-server -g
+$ http-server ./viewer
+```
+沒意外的話你可以在`http://127.0.0.1:8080/index.html`看到畫面
