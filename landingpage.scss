@@ -56,11 +56,22 @@ body {
         background-color: #b5bfd1;
         color: #7D2982;
         transition: all 0.3s linear;
+
+        .avatar img{
+            transform: scale(1.08);
+        }
     }
 
-    img{
+    .avatar{
         width: 97%;
-        height: auto;
+        height: 200px;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 200px;
+            transition: transform .3s ease;
+        }
+    
     }
 
     .info{
@@ -126,5 +137,11 @@ body {
                 color: white;
             }
         }
+    }
+
+    .slogan{
+        text-align: center;
+        color: white;
+        font-size: 12px;
     }
 }

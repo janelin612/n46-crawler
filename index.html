@@ -30,7 +30,7 @@
             <div class="year">{{group.year}}</div>
             <div class="list">
                 <a v-for="(item,index) in group.member" class="member" :href="item.link">
-                    <img :src="item.image" alt="" />
+                    <div class="avatar"><img :src="item.image" alt="" /></div>
                     <div class="info">
                         <div class="name">{{item.name}}</div>
                         <div class="name-hiragana">{{item.name_hiragana}}</div>
@@ -43,6 +43,7 @@
         <div class="sns-info">
             <a href="https://github.com/janelin612" target="_blank"><i class="fab fa-github"></i></a>
          </div>
+         <div class="slogan">#また乃木坂で会いましょう</div>
     </div>
 </body>
 <script>
