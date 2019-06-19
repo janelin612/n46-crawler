@@ -6,6 +6,10 @@ body {
     background-color: #2b2d42;
 }
 
+#app{
+    padding: 24px 0;
+}
+
 .group{
     margin: 0 auto;
     max-width: 800px;
@@ -50,7 +54,7 @@ body {
 }
 .member:hover{
     background-color: #b5bfd1;
-    color: #7e1083;
+    color: #7D2982;
     transition: all 0.3s linear;
 }
 .member img{
@@ -74,7 +78,6 @@ body {
 
 .header{
     height: 225px;
-    margin-bottom: 25px;
 }
 
 .header .cover{
@@ -95,7 +98,7 @@ body {
 
 .header .title{
    position: absolute;
-   top: 90px;
+   top: 70px;
    color: white;
    z-index: 100;
    width: 100%;
@@ -104,8 +107,7 @@ body {
 }
 
 .footer{
-    padding: 2px 0;
-    margin-top: 16px;
+    padding: 12px 0;
     background-color: #3c4146;
 }
 .footer .copyright{
