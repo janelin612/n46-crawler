@@ -1,244 +1,281 @@
-$color-member-bg:#2b2d42;
-$color-list-bg:#b5bfd1;
-$color-list-selected-bg:#edf2f4;
-$color-default-text:#34495e;
-$color-highlight:#7e1083;
-$color-light-text:#eaecf0;
-$color-member-tag-bg:#b773b9;
+$color-member-bg: #2b2d42;
+$color-list-bg: #b5bfd1;
+$color-list-selected-bg: #edf2f4;
+$color-default-text: #34495e;
+$color-highlight: #7e1083;
+$color-light-text: #eaecf0;
+$color-member-tag-bg: #b773b9;
 
-$width-cloumn-1:14%;
-$width-cloumn-2:26%;
+$width-cloumn-1: 14%;
+$width-cloumn-2: 26%;
 
-$width-gap:700px;
-$width-cloumn-1-m:35%;
-$width-cloumn-2-m:60%;
+$width-gap: 700px;
+$width-cloumn-1-m: 35%;
+$width-cloumn-2-m: 60%;
 
-body{
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
+    sans-serif;
+  font-size: 15px;
+  color: $color-default-text;
+  overflow-y: scroll;
+  background-color: white;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+
+.member {
+  @media screen and (max-width: $width-gap) {
+    width: $width-cloumn-1-m;
+
+    &.hide {
+      left: -(($width-cloumn-1-m));
+      transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1);
+    }
+  }
+  color: $color-light-text;
+  position: fixed;
+  left: 0;
+  transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1);
+  width: $width-cloumn-1;
+  height: 100%;
+  overflow: hidden;
+  background-color: $color-member-bg;
+  box-shadow: 1px 0 6px $color-member-bg;
+  z-index: 2;
+
+  .avatar {
+    width: 90%;
+    margin: 5%;
+    border-radius: 12px;
+  }
+
+  .name {
+    font-size: 120%;
+    text-align: center;
+  }
+
+  .hiragana {
+    line-height: 0.9;
+    font-size: 90%;
+  }
+
+  ul {
+    font-size: 12px;
+    padding: 0;
+    margin-top: 24px;
+    list-style: none;
+  }
+
+  .key {
+    @media screen and (max-width: $width-gap) {
+      display: none;
+    }
+    display: inline-block;
+    width: 35%;
+    text-align: right;
+
+    &::after {
+      content: "：";
+    }
+  }
+
+  .value {
+    @media screen and (max-width: $width-gap) {
+      width: 90%;
+      padding-left: 8px;
+    }
+    display: inline-block;
+    width: 60%;
+    text-align: left;
+  }
+
+  .tag {
+    margin: 24px 8px 0 8px;
+    li {
+      background: $color-member-tag-bg;
+      color: $color-light-text;
+      display: inline-block;
+      padding: 2px 8px;
+      margin: 0px 2px 5px 2px;
+      white-space: nowrap;
+      border-radius: 5px;
+    }
+  }
+}
+
+.menu {
+  @media screen and (max-width: $width-gap) {
+    margin-left: $width-cloumn-1-m;
+    width: $width-cloumn-2-m;
+    &.hide {
+      left: -(($width-cloumn-1-m)+ ($width-cloumn-2-m));
+      transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1);
+    }
+  }
+  position: fixed;
+  left: 0;
+  transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1);
+  margin-left: $width-cloumn-1;
+  width: $width-cloumn-2;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: $color-list-bg;
+  z-index: 1;
+
+  ul {
+    list-style: none;
     padding: 0;
     margin: 0;
-    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
-    font-size: 15px;
-    color: $color-default-text;
-    overflow-y: scroll;
-    background-color: white;
+  }
+
+  li {
+    color: $color-member-bg;
+    padding: 10px 8px 10px 12px;
+    transition: background-color 0.1s linear;
+
+    &.selected {
+      background-color: $color-list-selected-bg;
+      color: $color-highlight;
+    }
+    &:hover {
+      background-color: $color-list-selected-bg;
+      color: $color-highlight;
+      transition: background-color 0.1s linear;
+    }
+
+    div {
+      width: 99%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+      cursor: pointer;
+    }
+  }
+
+  .small-datetime {
+    padding-left: 2px;
+    font-size: 12px;
+  }
 }
-h2, h3, h4, h5, h6 {
-    font-size: 100%;
-}
 
-.member{
-    @media screen and (max-width:$width-gap){
-        width: $width-cloumn-1-m;
+.main {
+  @media screen and (max-width: $width-gap) {
+    margin-left: 0;
+  }
+  z-index: 0;
+  margin-left: ($width-cloumn-1)+ ($width-cloumn-2);
+  position: relative;
+  max-width: 640px;
+  padding: 8px 8px 8px 16px;
 
-        &.hide{
-            left: -(($width-cloumn-1-m));
-            transition: left 0.5s cubic-bezier(.17,.84,.44,1);
-        }
-    }
-    color:$color-light-text;
-    position: fixed;
-    left: 0;
-    transition: left 0.5s cubic-bezier(.17,.84,.44,1);
-    width: $width-cloumn-1;
-    height: 100%;
-    overflow: hidden;
-    background-color: $color-member-bg;
-    box-shadow: 1px 0 6px $color-member-bg;
-    z-index: 2;
-
-    .avatar{
-        width: 90%;
-        margin:5%;
-        border-radius: 12px;
-    }
-
-    .name{
-        font-size: 120%;
-        text-align: center;
-    }
-
-    .hiragana{
-        line-height: 0.9;
-        font-size: 90%;
-    }
-
-    ul{
+  .heading {
+    display: flex;
+    flex-direction: row;
+    border: $color-highlight 2px solid;
+    border-radius: 6px;
+    margin: 8px 0 24px 0;
+    .post-time {
+      text-decoration: none;
+      min-width: 96px;
+      color: white;
+      background-color: $color-highlight;
+      padding: 8px;
+      .year-month {
         font-size: 12px;
-        padding: 0;
-        margin-top: 24px;
-        list-style: none;
-    }
-
-    .key{
-        @media screen and (max-width:$width-gap){
-            display: none;
-        }
-        display: inline-block;
-        width: 35%;
-        text-align: right;
-
-        &::after{
-            content: "："
-        }
-    }
-
-    .value{
-        @media screen and (max-width:$width-gap){
-            width: 90%;
-            padding-left: 8px;
-        }
-        display: inline-block;
-        width: 60%;
-        text-align: left;
-    }
-
-    .tag {
-        margin: 24px 8px 0 8px;
-        li{
-            background: $color-member-tag-bg;
-            color: $color-light-text;
-            display: inline-block;
-            padding: 2px 8px;
-            margin: 0px 2px 5px 2px;
-            white-space: nowrap;
-            border-radius: 5px;
-        }
-    }
-}
-
-.menu{
-    @media screen and (max-width:$width-gap){
-        margin-left: $width-cloumn-1-m;
-        width: $width-cloumn-2-m;
-        &.hide{
-            left: -(($width-cloumn-1-m)+($width-cloumn-2-m));
-            transition: left 0.5s cubic-bezier(.17,.84,.44,1);
-        }
-    }
-    position: fixed;
-    left: 0;
-    transition: left 0.5s cubic-bezier(.17,.84,.44,1);
-    margin-left: $width-cloumn-1;
-    width: $width-cloumn-2;
-    height: 100%;
-    overflow-y:scroll;
-    background-color: $color-list-bg;
-    z-index: 1;
-    
-    ul{
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    li{
-        color: $color-member-bg;
-        padding: 10px 8px 10px 12px;
-        transition: background-color 0.1s linear;
-
-        &.selected{
-            background-color: $color-list-selected-bg;
-            color:$color-highlight;
-        }
-        &:hover{
-            background-color: $color-list-selected-bg;
-            color:$color-highlight;
-            transition: background-color 0.1s linear;
-        }
-
-        div{
-            width: 99%;
-            white-space: nowrap;
-            text-overflow:ellipsis;
-            overflow-x: hidden;
-            cursor: pointer;
-        }
-    }
-    
-    .small-datetime{
-        padding-left: 2px;
+      }
+      .date {
+        font-size: 43px;
+        line-height: 43px;
+      }
+      .week {
         font-size: 12px;
+      }
     }
+    .post-info {
+      color: $color-highlight;
+      padding: 8px;
+      width: 100%;
+      .author {
+        font-size: 13px;
+        border-bottom: $color-highlight 1px dotted;
+        margin-bottom: 8px;
+      }
+      .title {
+        font-size: 20px;
+        line-height: 22px;
+      }
+    }
+  }
+
+  .content {
+    font-size: 18px;
+
+    img {
+      max-width: 95%;
+    }
+  }
 }
 
-.main{
-    @media screen and (max-width:$width-gap){
-        margin-left: 0;
-    }
-    z-index: 0;
-    margin-left: ($width-cloumn-1)+($width-cloumn-2);
-    position: relative;
-    max-width: 640px;
-    padding: 8px 8px 8px 16px;
-
-    .heading{
-        display: flex;
-        flex-direction: row;
-        border: $color-highlight 2px solid;
-        border-radius: 6px;
-        margin: 8px 0 24px 0;
-        .post-time{
-            text-decoration: none;
-            min-width: 96px;
-            color: white;
-            background-color: $color-highlight;
-            padding: 8px;
-            .year-month{
-                font-size: 12px;
-            }
-            .date{
-                font-size: 43px;
-                line-height: 43px;
-            }
-            .week{
-                font-size: 12px;
-            }
-        }
-        .post-info{
-            color: $color-highlight;
-            padding: 8px;
-            width: 100%;
-            .author{
-                font-size: 13px;
-                border-bottom: $color-highlight 1px dotted;
-                margin-bottom: 8px;
-            }
-            .title{
-                font-size: 20px;
-                line-height: 22px;
-            }
-        }
-    }
-
-    .content{
-        font-size: 18px;
-    
-        img{
-            max-width: 95%;
-        }
-    }
+#btn-toggle {
+  @media screen and (max-width: $width-gap) {
+    display: block;
+  }
+  background-color: $color-highlight;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 100;
+  position: fixed;
+  left: 8px;
+  bottom: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  border: none;
+  img {
+    width: 99%;
+    height: 99%;
+  }
+  &.hide {
+    opacity: 0.5;
+  }
 }
 
-#btn-toggle{
-    @media screen and (max-width:$width-gap){
-        display: block;
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  .spinner {
+    width: 64px;
+    height: 64px;
+
+    &::after {
+      content: " ";
+      display: block;
+      width: 46px;
+      height: 46px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      border-color: #fff transparent #fff transparent;
+      animation: spinner 1.2s linear infinite;
+      -webkit-animation: spinner 1.2s linear infinite;
     }
-    background-color: $color-highlight;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 100;
-    position: fixed;
-    left: 8px;
-    bottom: 8px;
-    width: 40px;
-    height: 40px;
-    border-radius: 100px;
-    border: none;
-    img{
-        width: 99%;
-        height: 99%;
-    }
-    &.hide{
-        opacity: 0.5;
-    }
+  }
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

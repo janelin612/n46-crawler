@@ -5,7 +5,8 @@ var app = new Vue({
         selected: 0,
         list: [],
         member: {},
-        isFold: false
+        isFold: false,
+        isLoading:true
     },
     computed: {
         //指向目前選定的部落格文章
@@ -67,6 +68,7 @@ var app = new Vue({
                 return resp.json();
             })
             .then((json) => {
+                this.isLoading=false;
                 this.list = json;
                 let no = new URL(window.location).searchParams.get("no");
                 if (no != null && no != '') {
@@ -81,6 +83,7 @@ var app = new Vue({
                 }
             })
             .catch((err) => {
+                this.isLoading=false;
                 console.log(err);
             })
     },
