@@ -5,7 +5,8 @@ var app = new Vue({
         selected: 0,
         list: [],
         member: {},
-        isFold: false
+        isFold: false,
+        isLoading: true
     },
     computed: {
         //指向目前選定的部落格文章
@@ -25,9 +26,9 @@ var app = new Vue({
                     weekday: ""
                 }
             } else {
-                var time = new Date(this.currentPost.datetime);
-                var month = (time.getMonth() + 1) > 9 ? "" + (time.getMonth() + 1) : "0" + (time.getMonth() + 1);
-                var date = time.getDate() > 9 ? "" + time.getDate() : "0" + time.getDate();
+                let time = new Date(this.currentPost.datetime);
+                let month = this.formatNumber(time.getMonth() + 1);
+                let date = this.formatNumber(time.getDate());
                 return {
                     yearMonth: time.getFullYear() + "/" + month,
                     date: date,
@@ -46,6 +47,10 @@ var app = new Vue({
         },
         onToggle: function () {
             this.isFold = !this.isFold;
+        },
+        /** 一位數字前面補零 */
+        formatNumber: function (num) {
+            return num > 9 ? `${num}` : `0${num}`;
         }
     },
     created: function () {
@@ -61,12 +66,13 @@ var app = new Vue({
             })
             .catch((err) => {
                 console.log(err);
-            })
+            });
         fetch("./result.json")
             .then((resp) => {
                 return resp.json();
             })
             .then((json) => {
+                this.isLoading = false;
                 this.list = json;
                 let no = new URL(window.location).searchParams.get("no");
                 if (no != null && no != '') {
@@ -81,7 +87,8 @@ var app = new Vue({
                 }
             })
             .catch((err) => {
+                this.isLoading = false;
                 console.log(err);
-            })
+            });
     },
 });

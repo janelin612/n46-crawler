@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,6 @@
 
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <script src="../script/vue.min.js"></script>
-    <script src="../script/vue-resource.js"></script>
     <link rel="stylesheet" href="../main.css">
 </head>
 
@@ -34,6 +33,7 @@
         </div>
 
         <div class="menu" :class="{'hide':isFold}">
+            <div class="loading-spinner" v-if="isLoading"><div class="spinner"></div></div>
             <ul>
                 <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
                     <div v-html="item.title"></div>
