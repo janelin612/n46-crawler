@@ -61,7 +61,7 @@ var app = new Vue({
             .then((json) => {
                 this.member = json;
                 if ('name' in this.member) {
-                    document.title = this.member.name + " 非公式ブログ";
+                    document.title = `${this.member.name} | 乃木坂46卒業メンバーのブログ`;
                 }
             })
             .catch((err) => {
