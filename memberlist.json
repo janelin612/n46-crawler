@@ -3,6 +3,12 @@
         "year": "2019",
         "member": [
             {
+                "name": "桜井 玲香",
+                "name_hiragana": "さくらい れいか",
+                "image": "reika.sakurai/img/www/member/img/sakuraireika_prof.jpg",
+                "link": "reika.sakurai/index.html"
+            },
+            {
                 "name": "斉藤 優里",
                 "name_hiragana": "さいとう ゆうり",
                 "image": "yuuri.saito/img/www/member/img/saitouyuuri_prof.jpg",
