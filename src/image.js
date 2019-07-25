@@ -26,24 +26,20 @@ let downloader = new Crawler({
   callback: function (error, res, done) {
     if (error) {
       console.warn(error);
-      done();
     } else {
       let urlWithoutDomain = res.request.uri.href.replace(REGEX_REMOVE_SCHEME_AND_DOMAIN, '');
       let splitArray = urlWithoutDomain.split("/");
 
-      let d = IMAGE_SAVE_DIR;
+      let dir = IMAGE_SAVE_DIR;
       for (i = 0; i < splitArray.length; i++) {
-        if (!Fs.existsSync(d)) {
-          Fs.mkdirSync(d);
+        if (!Fs.existsSync(dir)) {
+          Fs.mkdirSync(dir);
         }
-        d += "/" + splitArray[i];
+        dir += "/" + splitArray[i];
       }
-      // console.log(d);
-      Fs.writeFile(
-        d,
-        res.body,
-        'binary',
-        () => { done(); });
+
+      Fs.writeFileSync(dir,res.body,'binary');
     }
+    done();
   }
 });

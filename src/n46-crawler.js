@@ -121,19 +121,18 @@ var result = [];
  * 下載內文資訊
  */
 let blogContentCrawler = new Crawler({
-    maxConnections: 10,
+    maxConnections: 5,
     jQuery: { name: 'cheerio', options: { decodeEntities: false } },
     callback: (error, res, done) => {
         if (error) {
             console.warn(error);
-            done();
         } else {
             let $ = res.$;
 
             //將圖片網址改為本地端位置，並下載圖片
             $("#sheet div.entrybody").find("img").each(function (index, value) {
                 let src = $(value).attr("src");
-                if (src != null && src.length > 0) {
+                if (src != null && src.length>0 && !src.startsWith("blob")) {
                     Image.download(src);
 
                     let localLocation = Image.getLocalUrl(src);
@@ -150,8 +149,8 @@ let blogContentCrawler = new Crawler({
             };
             result.push(item);
             console.log(item.datetime + " | " + item.title);
-            done();
         }
+        done();
     }
 })
 
@@ -177,7 +176,6 @@ let memberInfoCrawler = new Crawler({
     callback: (error, res, done) => {
         if (error) {
             console.warn(error);
-            done();
         } else {
             let $ = res.$;
 
@@ -210,18 +208,18 @@ let memberInfoCrawler = new Crawler({
             });
 
             //write all
-            member = {
+            let member = {
                 name: memberName,
                 name_hiragana: memberName_hiragana,
                 image: memberImage,
                 intro: introList,
                 tag: tagList
             }
-            Fs.writeFile(
+            Fs.writeFileSync(
                 MEMBER_INFO_FILE,
                 JSON.stringify(member),
-                'utf8',
-                () => { done(); });
+                'utf8');
         }
+        done();
     }
 })
