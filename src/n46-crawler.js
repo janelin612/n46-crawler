@@ -121,7 +121,7 @@ var result = [];
  * 下載內文資訊
  */
 let blogContentCrawler = new Crawler({
-    maxConnections: 1,
+    maxConnections: 10,
     jQuery: { name: 'cheerio', options: { decodeEntities: false } },
     callback: (error, res, done) => {
         if (error) {
@@ -150,15 +150,24 @@ let blogContentCrawler = new Crawler({
             };
             result.push(item);
             console.log(item.datetime + " | " + item.title);
-
-            Fs.writeFile(
-                RESULT_JSON_FILE,
-                JSON.stringify(result),
-                'utf8',
-                () => { done(); });
+            done();
         }
     }
 })
+
+/**
+ * 啟用多線程下載的話最後需要重新排序
+ */
+blogContentCrawler.on('drain', function () {
+    let regex=/[0-9]{6}/;
+    result.sort((a, b) => {
+        return new Number(b.url.match(regex)[0])-new Number(a.url.match(regex)[0]);
+    })
+    Fs.writeFileSync(
+        RESULT_JSON_FILE,
+        JSON.stringify(result),
+        'utf8');
+});
 
 /**
  * 下載成員資訊
@@ -174,7 +183,7 @@ let memberInfoCrawler = new Crawler({
 
             //處理成員頭像
             let memberImage = $("#profile img").first().attr("src");
-            if(memberImage){
+            if (memberImage) {
                 Image.download(memberImage);
                 memberImage = Image.getLocalUrl(memberImage);
             }
