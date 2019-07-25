@@ -54,6 +54,13 @@ var app = new Vue({
         }
     },
     created: function () {
+        if(typeof defaultList !== 'undefined'){
+            this.list=defaultList;
+        }
+        if(typeof defaultMember!=='undefined'){
+            this.member=defaultMember;
+        }
+
         fetch("./member.json")
             .then((resp) => {
                 return resp.json();
