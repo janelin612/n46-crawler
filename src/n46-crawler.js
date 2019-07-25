@@ -129,10 +129,20 @@ let blogContentCrawler = new Crawler({
         } else {
             let $ = res.$;
 
+            //拔掉DecoMailer的圖片備份連結
+            $("a").each((index, value) => {
+                let href=$(value).attr("href");
+                if (href!=null && href.indexOf("dcimg.awalker.jp") != -1) {
+                    let child = $(value).html();
+                    $(value).after(child);
+                    $(value).remove();
+                }
+            });
+
             //將圖片網址改為本地端位置，並下載圖片
             $("#sheet div.entrybody").find("img").each(function (index, value) {
                 let src = $(value).attr("src");
-                if (src != null && src.length>0 && !src.startsWith("blob")) {
+                if (src != null && src.length > 0 && !src.startsWith("blob")) {
                     Image.download(src);
 
                     let localLocation = Image.getLocalUrl(src);
@@ -158,9 +168,9 @@ let blogContentCrawler = new Crawler({
  * 啟用多線程下載的話最後需要重新排序
  */
 blogContentCrawler.on('drain', function () {
-    let regex=/[0-9]{6}/;
+    let regex = /[0-9]{6}/;
     result.sort((a, b) => {
-        return new Number(b.url.match(regex)[0])-new Number(a.url.match(regex)[0]);
+        return new Number(b.url.match(regex)[0]) - new Number(a.url.match(regex)[0]);
     })
     Fs.writeFileSync(
         RESULT_JSON_FILE,
