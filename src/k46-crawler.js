@@ -74,7 +74,26 @@ let contentCrawler = new Crawler({
         } else {
             let $ = res.$;
 
-            //TODO 尚未實作圖片下載
+            //拔掉DecoMailer的圖片備份連結
+            $(".box-main a").each((index, value) => {
+                let href = $(value).attr("href");
+                if (href != null && href.indexOf("dcimg.awalker.jp") != -1) {
+                    let child = $(value).html();
+                    $(value).after(child);
+                    $(value).remove();
+                }
+            });
+
+            //將圖片網址改為本地端位置，並下載圖片
+            $(".box-main img").each((index, value) => {
+                let src = $(value).attr("src");
+                if (src != null && src.length > 0 && !src.startsWith("blob")) {
+                    Image.download(src);
+
+                    let localLocation = Image.getLocalUrl(src);
+                    $(value).attr("src", localLocation);
+                }
+            });
 
             $(".box-main article").each((index, value) => {
                 let item = {
