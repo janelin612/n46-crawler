@@ -22,6 +22,7 @@ n46-crawler
 + [衛藤美彩](https://janelin612.github.io/n46-crawler/misa.eto) - archived on 2019-03-31
 + [伊藤かりん](https://janelin612.github.io/n46-crawler/karin.itou) - archived on 2019-06-10
 + [斉藤優里](https://janelin612.github.io/n46-crawler/yuuri.saito) - archived on 2019-07-01
++ [桜井玲香](https://janelin612.github.io/n46-crawler/reika.sakurai) - archived on 2019-07-08
 
 # Get started #
 
@@ -64,7 +65,7 @@ And all images will be storaged into `./viewer/img/` as below:
 
 	you can use this:
 
-		$ node n46.js -a 'asuka.saito'
+		$ node n46.js -a "asuka.saito"
 
 	+ **It is recommended to always using this argument to avoid downloading too much data.**
 	+ you can get member's name by the next argument
@@ -132,18 +133,25 @@ Crawler will generate two json file，and storage them at `./viewer/`
 }
 ```
 
+# Keyakizaka46
+Crawler now support Keyakizaka46(欅坂46) 🎉
+
+Simply change `n46.js` to `k46.js` : 
+
+```cmd
+$ node k46.js 			//list all member
+$ node k46.js -a 22		//長濱 ねる
+```
+> argument `-a` accept a number called "ct". It's different from nogizaka because they using another CMS website.
+
 # Viewer
 於子資料夾`./viewer`內有簡易的閱讀器，可以用來顯示下載好的json檔案。
 
-## Usage
-### Firefox
-不用安裝任何東西，直接開啟`./viewer/index.html`即可使用
-### Chrome
-Google Chrome預設是禁止在html內讀取本地端檔案(file-access-from-files)，所以直接打開html是看不到東西的。  
-如果你很堅持一定要用Chrome啟動的話，你需要建立一個本地端的server，這裡推薦使用[npm http-server](https://www.npmjs.com/package/http-server)，當然你可以用你自己熟悉的伺服器。
+## Usage 
+目前主流瀏覽器預設是禁止在html內讀取本地端檔案 (file-access-from-files)，也就是說直接打開 `./viewer/index.html` 是看不到東西的，因此你需要架一個簡單的http server，這裡推薦使用[npm http-server](https://www.npmjs.com/package/http-server)，當然你可以用你自己熟悉的伺服器。 
 
 ```shell
 $ npm install http-server -g
 $ http-server ./viewer
 ```
-沒意外的話你可以在`http://127.0.0.1:8080/index.html`看到畫面
+沒意外的話你可以在 `http://127.0.0.1:8080/index.html` 看到畫面
