@@ -3,15 +3,13 @@ const Crawler = require("crawler");
 const Image = require("./image");
 
 const DOMAIN = "http://www.keyakizaka46.com";
-/**
- * 部落格網址
- */
 const BLOG_URL = `${DOMAIN}/s/k46o/diary/member/list?`;
+
 const RESULT_JSON_FILE = "./viewer/result.json";
 const MEMBER_INFO_FILE = "./viewer/member.json";
 
 /**
- * 櫸坂46成立時間 所有部落格文章都不可能早於此時
+ * 欅坂46成立時間 所有部落格文章都不應早於此日期
  */
 const TIME_BEGIN = new Date("2015-08-21");
 
@@ -77,7 +75,7 @@ let contentCrawler = new Crawler({
             let $ = res.$;
 
             //TODO 尚未實作圖片下載
-            
+
             $(".box-main article").each((index, value) => {
                 let item = {
                     datetime: $(value).find(".box-bottom li:first-of-type").text().trim(),
