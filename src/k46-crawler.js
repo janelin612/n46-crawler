@@ -152,7 +152,7 @@ let memberInfoCrawler = new Crawler({
             //table
             let introList = [];
             $(".box-info dl dd").each((index, item) => {
-                let key = $(item).text().replace("：", "").trim();
+                let key = $(item).text().replace(":", "").trim();
                 let value = $(item).nextAll("dt").first().text().trim();
                 introList.push({
                     key: key, value: value
