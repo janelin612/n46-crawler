@@ -78,15 +78,11 @@ let paginateListCrawler = new Crawler({
             let $ = res.$;
             let URL = res.request.uri.href;
 
-            let list = [];
-            if ($("#sheet .paginate").length > 0) {
-                $("#sheet .paginate:first-child a").each((index, value) => {
-                    list.push(URL + "&p=" + (index + 1));
-                })
-            } else {
-                list.push(URL);
+            let size = $("#sheet .paginate:first-child a").length;
+            if(size==0) size+=1;
+            for(let i=0;i<size;i++){
+                blogLinkListCrawler.queue(`${URL}&p=${i+1}`);
             }
-            blogLinkListCrawler.queue(list);
         }
         done();
     }
@@ -96,7 +92,7 @@ let paginateListCrawler = new Crawler({
  * 取回每一個分頁的標題清單
  */
 let blogLinkListCrawler = new Crawler({
-    maxConnections: 1,
+    maxConnections: 5,
     jQuery: { name: 'cheerio', options: { decodeEntities: false } },
     callback: (error, res, done) => {
         if (error) {
@@ -130,7 +126,7 @@ let blogContentCrawler = new Crawler({
             let $ = res.$;
 
             //拔掉DecoMailer的圖片備份連結
-            $("a").each((index, value) => {
+            $("#sheet div.entrybody a").each((index, value) => {
                 let href=$(value).attr("href");
                 if (href!=null && href.indexOf("dcimg.awalker.jp") != -1) {
                     let child = $(value).html();
@@ -140,7 +136,7 @@ let blogContentCrawler = new Crawler({
             });
 
             //將圖片網址改為本地端位置，並下載圖片
-            $("#sheet div.entrybody").find("img").each(function (index, value) {
+            $("#sheet div.entrybody img").each(function (index, value) {
                 let src = $(value).attr("src");
                 if (src != null && src.length > 0 && !src.startsWith("blob")) {
                     Image.download(src);
