@@ -1,0 +1,30 @@
+{
+  "name": "n46-crawler",
+  "version": "1.0.0",
+  "description": "Nogizaka46 Blog Crawler",
+  "main": "n46.js",
+  "dependencies": {
+    "crawler": "^1.2.1",
+    "minimist": "^1.2.0",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janelin612/n46-crawler.git"
+  },
+  "keywords": [
+    "nogizaka46",
+    "crawler",
+    "json"
+  ],
+  "author": "tars",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/janelin612/n46-crawler/issues"
+  },
+  "homepage": "https://github.com/janelin612/n46-crawler#readme"
+}
