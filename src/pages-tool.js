@@ -9,11 +9,13 @@
 /** 網站在本地端的資料夾 */
 const SITE_FOLDER = "../nogizaka46";
 /** 網站在github io上的網址 */
-const BASE_URL = "https://janelin612.github.io/n46-crawler"
+const BASE_URL = "https://janelin612.github.io/n46-crawler";
+/** 預載在html內的文章數量 */
+const COUNT_OF_PRELOADING = 6;
 
-const cvt = require('xml-js');
+const cvt = require("xml-js");
 const fs = require("fs");
-const cheerio = require('cheerio');
+const cheerio = require("cheerio");
 
 injectPartialInfo();
 buildSitemap();
@@ -26,14 +28,11 @@ function buildSitemap() {
         loc: `${BASE_URL}`
     }];
 
-    let memberList = JSON.parse(fs.readFileSync(`${SITE_FOLDER}/memberlist.json`));
-    memberList.forEach((year) => {
-        year.member.forEach((memb) => {
-            urlList.push({
-                loc: `${BASE_URL}/${memb.link}`
-            });
-        })
-    })
+    memberForEach((memb) => {
+        urlList.push({
+            loc: `${BASE_URL}/${memb.link}`
+        });
+    });
 
     let result = {
         "_declaration": { "_attributes": { "version": "1.0", "encoding": "utf-8" } },
@@ -49,19 +48,28 @@ function buildSitemap() {
 };
 
 function injectPartialInfo() {
-    let html = fs.readFileSync(`${SITE_FOLDER}/template/index.html`,'utf-8');
+    let html = fs.readFileSync(`${SITE_FOLDER}/template/index.html`, 'utf-8');
 
+    memberForEach((memb) => {
+        let $ = cheerio.load(html, { decodeEntities: false });
+        let json = JSON.parse(fs.readFileSync(`${SITE_FOLDER}/${memb.link.replace("index.html", "result.json")}`));
+        json = json.slice(0, COUNT_OF_PRELOADING);
+
+        let text_script = `\n<script> const defaultList=${JSON.stringify(json)}; </script>`;
+        $("title").text(`${memb.name} | 乃木坂46卒業メンバーのブログ`);
+        $("body").after(text_script);
+        fs.writeFileSync(`${SITE_FOLDER}/${memb.link}`, $.html(), "utf-8");
+    });
+}
+
+/**
+ * 遍歷所有存在JSON檔內的成員資訊
+ */
+function memberForEach(callback) {
     let memberList = JSON.parse(fs.readFileSync(`${SITE_FOLDER}/memberlist.json`));
     memberList.forEach((year) => {
         year.member.forEach((memb) => {
-            let $ = cheerio.load(html,{ decodeEntities: false });
-            let json = JSON.parse(fs.readFileSync(`${SITE_FOLDER}/${memb.link.replace("index.html", "result.json")}`));
-            json = json.slice(0, 6); //預載前幾篇文章
-
-            let text_script = `\n<script> const defaultList=${JSON.stringify(json)}; </script>`;
-            $("title").text(`${memb.name} | 乃木坂46卒業メンバーのブログ`);
-            $("body").after(text_script);
-            fs.writeFileSync(`${SITE_FOLDER}/${memb.link}`, $.html(), "utf-8");
-        })
-    })
+            callback(memb);
+        });
+    });
 }
