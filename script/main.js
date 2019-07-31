@@ -87,7 +87,7 @@ var app = new Vue({
                 if (no != null && no != '') {
                     self.selected = new Number(no);
                     Vue.nextTick()
-                        .then(() => {
+                        .then(function() {
                             //第一次開啟時將卷軸捲到正確的位置
                             let dom = document.querySelector(".menu li:first-of-type");
                             let liHeight = dom.scrollHeight;
