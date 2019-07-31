@@ -55,47 +55,48 @@ var app = new Vue({
         }
     },
     created: function () {
-        if(typeof defaultList !== 'undefined'){
-            this.list=defaultList;
+        if (typeof defaultList !== 'undefined') {
+            this.list = defaultList;
         }
-        if(typeof defaultMember!=='undefined'){
-            this.member=defaultMember;
+        if (typeof defaultMember !== 'undefined') {
+            this.member = defaultMember;
         }
 
+        let self = this;
         fetch("./member.json")
-            .then((resp) => {
+            .then(function (resp) {
                 return resp.json();
             })
-            .then((json) => {
-                this.member = json;
-                if ('name' in this.member) {
-                    document.title = `${this.member.name} | 乃木坂46卒業メンバーのブログ`;
+            .then(function (json) {
+                self.member = json;
+                if ('name' in self.member) {
+                    document.title = `${self.member.name} | 乃木坂46卒業メンバーのブログ`;
                 }
             })
-            .catch((err) => {
+            .catch(function (err) {
                 console.log(err);
             });
         fetch("./result.json")
-            .then((resp) => {
+            .then(function (resp) {
                 return resp.json();
             })
-            .then((json) => {
-                this.isLoading = false;
-                this.list = json;
+            .then(function (json) {
+                self.isLoading = false;
+                self.list = json;
                 let no = new URL(window.location).searchParams.get("no");
                 if (no != null && no != '') {
-                    this.selected = new Number(no);
+                    self.selected = new Number(no);
                     Vue.nextTick()
                         .then(() => {
                             //第一次開啟時將卷軸捲到正確的位置
                             let dom = document.querySelector(".menu li:first-of-type");
                             let liHeight = dom.scrollHeight;
-                            document.querySelector(".menu").scrollTop = liHeight * (this.selected);
+                            document.querySelector(".menu").scrollTop = liHeight * (self.selected);
                         })
                 }
             })
-            .catch((err) => {
-                this.isLoading = false;
+            .catch(function (err) {
+                self.isLoading = false;
                 console.log(err);
             });
     },
