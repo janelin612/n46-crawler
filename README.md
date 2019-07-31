@@ -34,13 +34,7 @@ If you only need the source code,you can just clone the master branch.
 
 ## 2.install dependencies
 
-[node-crawler](https://github.com/bda-research/node-crawler)
-
-	$ npm install crawler
-
-[minimist](https://www.npmjs.com/package/minimist)
-
-	$ npm install minimist
+	$ npm install -–production 
 
 ## 3.usage
 

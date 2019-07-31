@@ -5,10 +5,11 @@
   "main": "n46.js",
   "dependencies": {
     "crawler": "^1.2.1",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
     "xml-js": "^1.6.11"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
