@@ -16,9 +16,23 @@ const COUNT_OF_PRELOADING = 6;
 const cvt = require("xml-js");
 const fs = require("fs");
 const cheerio = require("cheerio");
+const babel = require("@babel/core");
 
 injectPartialInfo();
 buildSitemap();
+transformJsFile();
+
+/**
+ * 遍歷所有存在JSON檔內的成員資訊
+ */
+function memberForEach(callback) {
+    let memberList = JSON.parse(fs.readFileSync(`${SITE_FOLDER}/memberlist.json`));
+    memberList.forEach((year) => {
+        year.member.forEach((memb) => {
+            callback(memb);
+        });
+    });
+}
 
 /**
  * 手動gen出sitemap
@@ -47,6 +61,9 @@ function buildSitemap() {
     fs.writeFileSync(`${SITE_FOLDER}/sitemap.xml`, cvt.js2xml(result, { compact: true, spaces: "\t" }), 'utf-8');
 };
 
+/**
+ * 將template html複製至各子資料夾內，並預載片段資訊
+ */
 function injectPartialInfo() {
     let html = fs.readFileSync(`${SITE_FOLDER}/template/index.html`, 'utf-8');
 
@@ -63,13 +80,19 @@ function injectPartialInfo() {
 }
 
 /**
- * 遍歷所有存在JSON檔內的成員資訊
+ * 使用babel轉譯js檔後移入正確的資料夾
  */
-function memberForEach(callback) {
-    let memberList = JSON.parse(fs.readFileSync(`${SITE_FOLDER}/memberlist.json`));
-    memberList.forEach((year) => {
-        year.member.forEach((memb) => {
-            callback(memb);
-        });
+function transformJsFile() {
+    let result = babel.transformFileSync("./viewer/script/main.js", {
+        "presets": [
+            [
+                "@babel/preset-env", {
+                    "targets": {
+                        "chrome": "41", //Google Bot
+                    }
+                }
+            ]
+        ]
     });
+    fs.writeFileSync(`${SITE_FOLDER}/script/main.js`, result.code, "UTF-8");
 }
