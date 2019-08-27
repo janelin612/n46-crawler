@@ -38,15 +38,19 @@ function memberForEach(callback) {
  * 手動gen出sitemap
  */
 function buildSitemap() {
-    let buildTime=new Date().toISOString();
     let urlList = [{
-        loc: `${BASE_URL}`
+        loc: `${BASE_URL}`,
+        lastmod: new Date().toISOString()
     }];
 
     memberForEach((memb) => {
+        let modifiedTime =
+            fs.statSync(`${SITE_FOLDER}/${memb.link.split("/")[0]}/result.json`)
+                .mtime.toISOString();
+
         urlList.push({
             loc: `${BASE_URL}/${memb.link}`,
-            lastmod:buildTime
+            lastmod: modifiedTime
         });
     });
 
