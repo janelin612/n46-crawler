@@ -22,7 +22,7 @@ n46-crawler
 + [衛藤美彩](https://janelin612.github.io/n46-crawler/misa.eto) - archived on 2019-03-31
 + [伊藤かりん](https://janelin612.github.io/n46-crawler/karin.itou) - archived on 2019-06-10
 + [斉藤優里](https://janelin612.github.io/n46-crawler/yuuri.saito) - archived on 2019-07-01
-+ [桜井玲香](https://janelin612.github.io/n46-crawler/reika.sakurai) - archived on 2019-07-08
++ [桜井玲香](https://janelin612.github.io/n46-crawler/reika.sakurai) - archived on 2019-09-04
 
 # Get started #
 
