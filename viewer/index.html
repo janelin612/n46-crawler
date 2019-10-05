@@ -2,63 +2,66 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>乃木坂46卒業メンバーのブログ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>乃木坂46卒業メンバーのブログ</title>
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script> -->
-    <script src="script/vue.min.js"></script>
-    <link rel="stylesheet" href="resource/main.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script> -->
+  <script src="script/vue.min.js"></script>
+  <link rel="stylesheet" href="resource/main.css">
 </head>
 
 <body>
-    <div id="app">
-        <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="resource/menu.svg" alt=""></button>
-        <div class="member" :class="{'hide':isFold}">
-            <img :src="member.image" alt="" class="avatar">
-            <div class="name">{{member.name}}</div>
-            <div class="name hiragana">{{member.name_hiragana}}</div>
+  <div id="app">
+    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="resource/menu.svg" alt=""></button>
+    <div class="member" :class="{'hide':isFold}">
+      <img :src="member.image" alt="" class="avatar">
+      <div class="name">{{member.name}}</div>
+      <div class="name hiragana">{{member.name_hiragana}}</div>
 
-            <ul class="intro">
-                <li v-for="item in member.intro">
-                    <span class="key">{{item.key}}</span>
-                    <span class="value">{{item.value}}</span>
-                </li>
-            </ul>
+      <ul class="intro">
+        <li v-for="item in member.intro">
+          <span class="key">{{item.key}}</span>
+          <span class="value">{{item.value}}</span>
+        </li>
+      </ul>
 
-            <ul class="tag">
-                <li v-for="item in member.tag">{{item}}</li>
-            </ul>
-        </div>
-
-        <div class="menu" :class="{'hide':isFold}">
-            <div class="loading-spinner" v-if="isLoading"><div class="spinner"></div></div>
-            <ul>
-                <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
-                    <div v-html="item.title"></div>
-                    <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
-                    <div class="small-datetime">{{item.datetime}}</div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="main" v-if="currentPost!=null">
-            <div class="heading">
-                <a class="post-time" :href="currentPost.url" target="_blank">
-                    <div class="year-month">{{currentPostDate.yearMonth}}</div>
-                    <span class="date">{{currentPostDate.date}}</span>
-                    <span class="week">{{currentPostDate.weekday}}</span>
-                </a>
-                <div class="post-info">
-                    <div class="author">{{currentPost.author}}</div>
-                    <div class="title" v-html="currentPost.title"></div>
-                </div>
-            </div>
-            <span class="content" v-html="currentPost.content"></span>
-        </div>
+      <ul class="tag">
+        <li v-for="item in member.tag">{{item}}</li>
+      </ul>
     </div>
+
+    <div class="menu" :class="{'hide':isFold}">
+      <div class="loading-spinner" v-if="isLoading">
+        <div class="spinner"></div>
+      </div>
+      <ul>
+        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
+          <div v-html="item.title"></div>
+          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
+          <div class="small-datetime">{{item.datetime}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main" v-if="currentPost!=null">
+      <div class="heading">
+        <a class="post-time" :href="currentPost.url" target="_blank">
+          <div class="year-month">{{currentPostDate.yearMonth}}</div>
+          <span class="date">{{currentPostDate.date}}</span>
+          <span class="week">{{currentPostDate.weekday}}</span>
+        </a>
+        <div class="post-info">
+          <div class="author">{{currentPost.author}}</div>
+          <div class="title" v-html="currentPost.title"></div>
+        </div>
+      </div>
+      <span class="content" v-html="currentPost.content"></span>
+    </div>
+  </div>
 </body>
 <script src="script/main.js"></script>
+
 </html>
