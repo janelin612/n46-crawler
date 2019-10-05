@@ -9,15 +9,14 @@ $color-member-tag-bg: #b773b9;
 $width-cloumn-1: 14%;
 $width-cloumn-2: 26%;
 
-$width-gap: 700px;
+$width-gap: 768px;
 $width-cloumn-1-m: 35%;
 $width-cloumn-2-m: 60%;
 
 body {
   padding: 0;
   margin: 0;
-  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
-    sans-serif;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
   font-size: 15px;
   color: $color-default-text;
   overflow-y: scroll;
@@ -70,7 +69,7 @@ h6 {
   ul {
     font-size: 12px;
     padding: 0;
-    margin-top: 24px;
+    margin-top: 16px;
     list-style: none;
   }
 
@@ -98,7 +97,7 @@ h6 {
   }
 
   .tag {
-    margin: 24px 8px 0 8px;
+    margin: 16px 8px;
     li {
       background: $color-member-tag-bg;
       color: $color-light-text;
