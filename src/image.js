@@ -38,7 +38,7 @@ let downloader = new Crawler({
         dir += "/" + splitArray[i];
       }
 
-      Fs.writeFileSync(dir,res.body,'binary');
+      Fs.writeFileSync(dir, res.body, 'binary');
     }
     done();
   }
