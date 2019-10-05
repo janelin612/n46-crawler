@@ -2,63 +2,66 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>若月 佑美 | 乃木坂46卒業メンバーのブログ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>若月 佑美 | 乃木坂46卒業メンバーのブログ</title>
 
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <script src="../script/vue.min.js"></script>
-    <link rel="stylesheet" href="../main.css">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <script src="../script/vue.min.js"></script>
+  <link rel="stylesheet" href="../main.css">
 </head>
 
 <body>
-    <div id="app">
-        <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../menu.svg" alt=""></button>
-        <div class="member" :class="{'hide':isFold}">
-            <img :src="member.image" alt="" class="avatar">
-            <div class="name">{{member.name}}</div>
-            <div class="name hiragana">{{member.name_hiragana}}</div>
+  <div id="app">
+    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../menu.svg" alt=""></button>
+    <div class="member" :class="{'hide':isFold}">
+      <img :src="member.image" alt="" class="avatar">
+      <div class="name">{{member.name}}</div>
+      <div class="name hiragana">{{member.name_hiragana}}</div>
 
-            <ul class="intro">
-                <li v-for="item in member.intro">
-                    <span class="key">{{item.key}}</span>
-                    <span class="value">{{item.value}}</span>
-                </li>
-            </ul>
+      <ul class="intro">
+        <li v-for="item in member.intro">
+          <span class="key">{{item.key}}</span>
+          <span class="value">{{item.value}}</span>
+        </li>
+      </ul>
 
-            <ul class="tag">
-                <li v-for="item in member.tag">{{item}}</li>
-            </ul>
-        </div>
-
-        <div class="menu" :class="{'hide':isFold}">
-            <div class="loading-spinner" v-if="isLoading"><div class="spinner"></div></div>
-            <ul>
-                <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
-                    <div v-html="item.title"></div>
-                    <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
-                    <div class="small-datetime">{{item.datetime}}</div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="main" v-if="currentPost!=null">
-            <div class="heading">
-                <a class="post-time" :href="currentPost.url" target="_blank">
-                    <div class="year-month">{{currentPostDate.yearMonth}}</div>
-                    <span class="date">{{currentPostDate.date}}</span>
-                    <span class="week">{{currentPostDate.weekday}}</span>
-                </a>
-                <div class="post-info">
-                    <div class="author">{{currentPost.author}}</div>
-                    <div class="title" v-html="currentPost.title"></div>
-                </div>
-            </div>
-            <span class="content" v-html="currentPost.content"></span>
-        </div>
+      <ul class="tag">
+        <li v-for="item in member.tag">{{item}}</li>
+      </ul>
     </div>
+
+    <div class="menu" :class="{'hide':isFold}">
+      <div class="loading-spinner" v-if="isLoading">
+        <div class="spinner"></div>
+      </div>
+      <ul>
+        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
+          <div v-html="item.title"></div>
+          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
+          <div class="small-datetime">{{item.datetime}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main" v-if="currentPost!=null">
+      <div class="heading">
+        <a class="post-time" :href="currentPost.url" target="_blank">
+          <div class="year-month">{{currentPostDate.yearMonth}}</div>
+          <span class="date">{{currentPostDate.date}}</span>
+          <span class="week">{{currentPostDate.weekday}}</span>
+        </a>
+        <div class="post-info">
+          <div class="author">{{currentPost.author}}</div>
+          <div class="title" v-html="currentPost.title"></div>
+        </div>
+      </div>
+      <span class="content" v-html="currentPost.content"></span>
+    </div>
+  </div>
 </body>
 <script> const defaultList=[{"datetime":"2018/12/04 23:36","author":"若月佑美","title":"やっぱ乃木坂だな。","url":"http://blog.nogizaka46.com/yumi.wakatsuki/2018/12/048143.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>最後のブログなんで</div><div>くさいし寒い台詞を真顔で</div><div>しれっと言っちゃう私をどうか</div><div>温かく見守ってください。</div><div>今日だけかっこつけさせてください。笑</div><div>&nbsp;</div><div>初期の頃から将来の夢を聞かれて</div><div>ずっと答えていたものがあります。</div><div>&nbsp;</div><div>それは女優さんとか</div><div>そういう職業についてじゃなくて</div><div>&nbsp;</div><div>誰かの人生に良い影響を与えられる人になるっていう不思議な夢です。</div><div>&nbsp;</div><div>結構本気で色々なとこで言っていたので</div><div>知ってる方も居ると思うけれど...</div><div>&nbsp;</div><div>しかもね それが</div><div>私の知らない何処かでだったら尚素敵だなって。</div><div>&nbsp;</div><div>家族や友人、担任の先生、習い事の先生とか</div><div>近しい人から影響を貰うっていうのは人生でも多々ある状況で...</div><div>&nbsp;</div><div>でも逆に直接的に会ったことない人から何か影響を貰うことってその人が選択して、受け取らないとなかなかないじゃないですか。</div><div>&nbsp;</div><div>しかもその影響を与える側になるってほんの一握り。</div><div>&nbsp;</div><div>これがね、少しでも叶っていたら</div><div>私の7年間の全てが報われて救われるんです。</div><div>悩み踠き苦しんだ日々なんてパッて</div><div>無くなっちゃうんです。</div><div>&nbsp;</div><div>こんな私でも人の役に立てるんじゃん！って、</div><div>誰かの助けになれるんじゃん！って</div><div>すっごい嬉しくなれる。</div><div>自己否定が強い性格をしてるだけに</div><div>なかなかこの喜びって生きる上で大事だったりしました。だから、みんなにありがとうってお礼を言いたいです。</div><div>&nbsp;</div><div>ありがとうを言ってくれてありがとう。</div><div>それが私の原動力でした。</div><div>&nbsp;</div><div>&nbsp;</div><div>不器用で空回りばっかで</div><div>技術も武器も持ち合わせてなくて</div><div>一本線ばっかりひいちゃう性格で、</div><div>でも何処か俯瞰的になるとこもあって</div><div>感性も変わってるし、女の子っぽくないし</div><div>もはや正直アイドルっぽくもなかったと思う。</div><div>&nbsp;</div><div>&nbsp;</div><div>でも、応援してくれるみんなが居てくれたから</div><div>そんな私でも楽しくアイドルが出来たし</div><div>どこまででも頑張ろうって思えました。</div><div>&nbsp;</div><div>ファンの方最高、</div><div>メンバーも最高、</div><div>スタッフさんも最高、</div><div>&nbsp;</div><div>つまりさ</div><div>&nbsp;</div><div>乃木坂46、最高かよ。笑</div><div>&nbsp;</div><div>&nbsp;</div><div>こんなアイドルを愛してくれて</div><div>ありがとうございました。</div><div>&nbsp;</div><div>次は女優としての私を良かったら</div><div>愛してください。</div><div>&nbsp;</div><div>ありがとうございました。</div><div>&nbsp;</div><div>2018.12.4 若月佑美</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/12/04/3399487/0000.jpeg\"></div><div>&nbsp;</div></body></html> "},{"datetime":"2018/12/02 14:18","author":"若月佑美","title":"Thanks a million.","url":"http://blog.nogizaka46.com/yumi.wakatsuki/2018/12/048123.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>こんにちわかつき！</div><div>&nbsp;</div><div>いよいよ、、、若月佑美卒業セレモニーが明後日に！！</div><div>&nbsp;</div><div>武道館というステージで終われるなんて...</div><div>あー幸せだなぁ。有り難いなぁ、、本当に。</div><div>噛み締めよう。</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/12/02/2783979/0000.jpeg\"></div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/12/02/2783979/0001.jpeg\"></div><div>&nbsp;</div><div>今回のグッズテーマ(<font size=\"5\" color=\"#ff00cc\">Thanks a million.</font>)</div><div>意味としては...本当に本当にありがとうです。</div><div>&nbsp;</div><div>好きな色は<font color=\"#ff0000\" size=\"5\">&nbsp;</font><font size=\"5\">黒</font></div><div>サイリュームカラーは<font color=\"#ff0000\" size=\"5\">&nbsp;</font><font color=\"#0000ff\" size=\"5\">青</font></div><div>趣味は<font color=\"#ff0000\" size=\"5\">&nbsp;</font><font size=\"5\"><font color=\"#ff0000\">デザ</font><font color=\"#ffa500\">イン</font><font color=\"#ff99cc\">アート</font></font></div><div>&nbsp;</div><div>私を全部詰め込みました。笑</div><div>&nbsp;</div><div>アイドルらしいグッズも可愛いけれど、</div><div>私はあえて最後まで</div><div>自分らしさを詰め込ませて貰いました！！！</div><div>&nbsp;</div><div>男女共に普段も使えたり、</div><div>飾っても周りの色の邪魔にならない</div><div>そんなデザインにしたつもりです。</div><div>良かったら記念によろしくお願いします。</div><div>&nbsp;</div><div>卒業なのに</div><div>ポスターなんて、リチャードなんだぜ。笑</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/12/02/2783979/0002.jpeg\"></div><div>&nbsp;</div><div>尊過ぎて</div><div>なんとも時間が惜しいですが、</div><div>最後の最後まで楽しく過ごしたいね！</div><div>&nbsp;</div><div>涙ばかりは流させない！！！</div><div>笑いも溢れる楽しいセレモニーにしますから。</div><div>&nbsp;</div><div>大好きな人達と</div><div>大好きな皆様を心からお待ちしてます。</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/12/02/2783979/0003.jpeg\"></div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/12/02/2783979/0004.jpeg\"></div><div>&nbsp;</div><div>では、またね。</div></body></html> "},{"datetime":"2018/11/26 10:06","author":"若月佑美","title":"鉄コン筋クリート千秋楽","url":"http://blog.nogizaka46.com/yumi.wakatsuki/2018/11/047939.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>&nbsp;</div><div>無事に終了しました。</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/26/9402056/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>もう少し！なんて思う位が逆に</div><div>次への活力になのかなと、、</div><div>腹8分目と同じかな。</div><div>それ位が良いのかもしれない。</div><div>&nbsp;</div><div>それでもやっぱり</div><div>何事も終わるのは寂しいです。</div><div>&nbsp;</div><div>実は今回の舞台、</div><div>稽古初日から千秋楽までの日数合わせても</div><div>意外と少なくて...</div><div>&nbsp;</div><div>なのに</div><div>これだけ濃くて去りがたい</div><div>そんな現場に出会えたのって最高です。</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/26/9402056/0001.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>凄い方々に囲まれて</div><div>向上心の大切さとお芝居の奥深さと難しさと面白さと学びが無い日がありませんでした。</div><div>&nbsp;</div><div>正直、今回の舞台のキャストの皆様とスタッフの皆様と原作鉄コン筋クリートの素晴らしさを語り出したら止まらんですわ。全部ずっと言える。</div><div>&nbsp;</div><div>支えられまくって、助けられまくって</div><div>優しく温かく囲んでくれるカンパニーでした。</div><div>&nbsp;</div><div>&nbsp;</div><div>また新しい私で</div><div>共演出来ますように。頑張ろう。</div><div>&nbsp;</div><div>&nbsp;</div><div>とりあえず、クロの役作りで</div><div>猫背にしてたのを直す作業をしなきゃ。</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/26/9402056/0002.jpeg\"></div><div>では、私はゆっくりと</div><div>静かな日を迎えます。</div><div>&nbsp;</div><div>&nbsp;</div><div>マラソンで</div><div>ゴールテープが見えたら</div><div>少しスピードを上げるでしょ、</div><div>力全部振り絞ったろ！って...</div><div>そんな感じの日々でした。</div><div>&nbsp;</div><div>戦いまくっていた毎日から</div><div>急にパタリと静かになると逆に</div><div>心がザワザワするね。</div><div>&nbsp;</div><div>それもまた素敵。</div><div>&nbsp;</div><div>では、今日も良い一日を。</div><div>&nbsp;</div><div>&nbsp;</div><div>あんしん、あんしん。</div><div>&nbsp;</div><div>&nbsp;</div><div>三戸シロの言葉に若月クロは毎日</div><div>心打たれて救われてました。</div><div>最高の相棒でした。</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/26/9402056/0003.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div></body></html> "},{"datetime":"2018/11/23 12:36","author":"若月佑美","title":"イタチがスキ.","url":"http://blog.nogizaka46.com/yumi.wakatsuki/2018/11/047917.php","content":"<div> </div>\n<div>中々刺激的な毎日です。</div>\n<div>考えることも多い。</div>\n<div> </div>\n<div>さて、舞台 鉄コン筋クリートの公演も</div>\n<div>残りあと3日間になりました。</div>\n<div> </div>\n<div>と言ったものの、この3日間はマチソワが全てあるので実はあと6公演あるのでございますが...日数にすると あっという間。</div>\n<div> </div>\n<div>初日に松本大洋先生にもお会いして...</div>\n<div>お話しさせて頂いて、</div>\n<div>クロ役をやれる事って最強に幸せな事なんだなぁって改めて再認識致しました。</div>\n<div> </div>\n<div>ここに来ても まだ毎日発見の連続、、</div>\n<div>心動くポイントも新しく追加されてて</div>\n<div>つまりはそれだけ密なものになってるって</div>\n<div>思っている。上がり続けたいね。</div>\n<div> </div>\n<div>絶対なんてなくて</div>\n<div>価値観は人それぞれだから</div>\n<div>自分を信じて、強要し過ぎず、色んな方向から色んな楽しみ方で観て頂けるように頑張ります。</div>\n<div> </div>\n<div>とりあえずね、</div>\n<div>24年間生きてきて毎回思うけど</div>\n<div>冬って寒いわ。</div>\n<div> </div>\n<div>毎度のこと体調崩す私が</div>\n<div>風邪になっていない奇跡。</div>\n<div> </div>\n<div>では、ばいばい。</div>\n<div> </div>\n<div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/23/4387539/0000.jpeg\"></div>\n<div> </div>"},{"datetime":"2018/11/17 17:12","author":"若月佑美","title":"#舞台 鉄コン筋クリート #乃木坂46 #ラスト","url":"http://blog.nogizaka46.com/yumi.wakatsuki/2018/11/047830.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>こんにちは。</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/17/4214197/0000.jpeg\"></div><div>&nbsp;</div><div>ブログだからハッシュタグは意味ないのかもだけど、時代に置いてかれるの怖いから私にも使わせて。</div><div>&nbsp;</div><div>&nbsp;</div><div>揚げ物の匂いは何故あんなに</div><div>食欲をそそるのでしょうか？</div><div>帰り道に色々な家からする夕飯の匂いって懐かしい。ちなみに、私はおばけの天ぷらが好き。</div><div>&nbsp;</div><div>冬も本格化してきましたが</div><div>明日、天王洲銀河劇場にて</div><div>舞台『鉄コン筋クリート』が開幕します。</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/17/4214197/0001.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>もう始まるなんて...儚すぎるよ、全く。</div><div>でもそれだけ 大切にしたいと思う大きなモノに出会えたということ。</div><div>最高じゃないですか。全く。</div><div>&nbsp;</div><div>まぁ相変わらずの満身創痍ですが、</div><div>ここまで来るといつも通りだし、</div><div>もはやいいんです。それで。</div><div>&nbsp;</div><div>かっこ良くて面白くて</div><div>演劇に対する熱量が半端じゃなくて...</div><div>そんな信頼しかない最高の</div><div>キャストの皆様とスタッフの皆様に沢山頼らせて頂きながら最後までクロを生きたいと思います。</div><div>&nbsp;</div><div>&nbsp;</div><div>お芝居とか普段あんまり目にしないよって方も</div><div>是非是非 観に来て欲しいです。</div><div>&nbsp;</div><div>物語が素晴らしいんです。本当に。</div><div>&nbsp;</div><div>&nbsp;</div><div>当日券とかもあるみたいですので、</div><div>気になったら。</div><div>&nbsp;</div><div>→<a href=\"https://st-tekkon.net/\">https://st-tekkon.net/</a></div><div>&nbsp;</div><div>あと、</div><div>来場者の皆様に毎公演日替わりで、私の手書きメッセージ入りの待ち受け画像も配信予定です！！</div><div>&nbsp;</div><div>乃木坂46若月佑美としての最後の舞台ですので、何か見に来てくださった皆様にお礼をと思って企画させて頂きました。</div><div>&nbsp;</div><div>メンバーも</div><div>観に来てくれるみたいだから嬉しい。</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/17/4214197/0002.jpeg\"></div><div>&nbsp;</div><div>頑張って参ります！！！！</div><div>よろしくお願いします！！</div></body></html> "},{"datetime":"2018/11/12 08:54","author":"若月佑美","title":"ソロで表紙をやらせて頂きましたー！","url":"http://blog.nogizaka46.com/yumi.wakatsuki/2018/11/047741.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>本日 発売 週刊スピリッツさんの</div><div>表紙をやらせていただきました！！！</div><div>やったー！</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/12/8035058/0000.jpeg\"></div><div>&nbsp;</div><div>ソロでの表紙、卒業前にやらせて頂けて凄く凄く嬉しかったです。</div><div>&nbsp;</div><div>実はソロで表紙やりたいなぁなんて</div><div>心の中で密かに思っていたら...</div><div>&nbsp;</div><div>有難き。</div><div>&nbsp;</div><div>是非、皆さまお手にとって貰えたら</div><div>本当に幸せです！！！！！</div><div>&nbsp;</div><div>撮影はとっても楽しくて</div><div>ドレスとか花とか...</div><div>綺麗に、女性っぽく、撮って頂きました。</div><div>&nbsp;</div><div>発売中です(*ﾟｰﾟ)v</div><div>&nbsp;</div><div>よろしくお願いします！！</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/12/8035058/0001.jpeg\"></div><div>&nbsp;</div><div>何が感慨深いかって...</div><div>私の前回のスピリッツさんの表紙が</div><div>まいまいとまりかとなのよね( ´-` ).ふふ</div><div>&nbsp;</div><div>今回のスピリッツ、</div><div>沢山の方に手にとってもらい</div><div>保存してもらえたら嬉しいです。</div><div>&nbsp;</div><div>&nbsp;</div><div>スピリッツさんですから、</div><div>鉄コン筋クリートのお話もさせて頂いております。</div><div>&nbsp;</div><div>舞台 鉄コン筋クリートは18日から本番です。</div><div>あともう少しー！！！！</div><div>緊張すると思うし</div><div>どうしよう、ばっか言いそうだけど</div><div>冷静に落ち着いて、背伸びせずに</div><div>自分を信じて頑張る。</div><div>&nbsp;</div><div>私にしか出来ない。</div><div>そう思って頑張るしかない。</div><div>&nbsp;</div><div>&nbsp;</div><div>ご来場お待ちしております。</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/12/8035058/0002.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div></body></html> "}]; </script>
 <script src="../script/main.js"></script>
+
 </html>
