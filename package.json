@@ -8,14 +8,15 @@
     "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "xml-js": "^1.6.11",
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
     "@babel/plugin-transform-arrow-functions": "^7.2.0",
-    "@babel/preset-env": "^7.5.5"
+    "@babel/preset-env": "^7.7.1",
+    "xml-js": "^1.6.11"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "view": "http-server ./viewer/"
   },
   "repository": {
     "type": "git",
