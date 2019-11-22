@@ -11,7 +11,7 @@ const SITE_FOLDER = "../nogizaka46";
 /** 網站在github io上的網址 */
 const BASE_URL = "https://janelin612.github.io/n46-crawler";
 /** 預載在html內的文章數量 */
-const COUNT_OF_PRELOADING = 6;
+const COUNT_OF_PRELOADING = 4;
 
 const cvt = require("xml-js");
 const fs = require("fs");
