@@ -10,8 +10,8 @@ $width-cloumn-1: 14%;
 $width-cloumn-2: 26%;
 
 $width-gap: 768px;
-$width-cloumn-1-m: 35%;
-$width-cloumn-2-m: 60%;
+$width-cloumn-1-m: 32%;
+$width-cloumn-2-m: 62%;
 
 body {
   padding: 0;
@@ -22,11 +22,7 @@ body {
   overflow-y: scroll;
   background-color: white;
 }
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2,h3,h4,h5,h6 {
   font-size: 100%;
 }
 
@@ -52,8 +48,10 @@ h6 {
 
   .avatar {
     width: 90%;
-    margin: 5%;
+    margin: 5% auto;
     border-radius: 12px;
+    max-width: 180px;
+    display: block;
   }
 
   .name {
@@ -173,7 +171,7 @@ h6 {
   margin-left: ($width-cloumn-1)+ ($width-cloumn-2);
   position: relative;
   max-width: 640px;
-  padding: 8px 8px 8px 16px;
+  padding: 12px 22px;
 
   .heading {
     display: flex;
@@ -215,8 +213,8 @@ h6 {
   }
 
   .content {
+    margin-bottom: 64px;
     font-size: 18px;
-
     img {
       max-width: 95%;
     }
