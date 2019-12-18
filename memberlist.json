@@ -1,5 +1,17 @@
 [
     {
+        "year":"2020",
+        "member":[
+            {
+                "name":"井上 小百合",
+                "name_hiragana":"いのうえ さゆり",
+                "image":"sayuri.inoue/img/www/member/img/inouesayuri_prof.jpg",
+                "link":"sayuri.inoue/index.html"
+            }
+        ]
+    }
+    ,
+    {
         "year": "2019",
         "member": [
             {
