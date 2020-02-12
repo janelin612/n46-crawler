@@ -1,20 +1,9 @@
-const N46Crawler = require('./src/n46-crawler');
-
-/**
- * 成員名稱
- * 留白的話表示抓全部人的
- */
-var MEMBER_NAME = '';
-
+const n46 = require('./src/n46-crawler');
 //自command line帶入參數
 var argv = require('minimist')(process.argv.slice(2));
-if (argv.a) {
-    MEMBER_NAME = argv.a;
-}
 
-//執行!
-if (argv.list) {
-    N46Crawler.printMemberList();
+if (argv.a) {
+  n46.downloadMemberBlog(argv.a);
 } else {
-    N46Crawler.downloadMemberBlog(MEMBER_NAME);
+  n46.printMemberList();
 }

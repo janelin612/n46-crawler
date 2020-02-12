@@ -7,7 +7,7 @@ n46-crawler
 1. 爬蟲程式碼
 2. 一個簡單的Html檢視器，用來閱讀爬好的json檔 
 
-### [Demo Site-乃木坂46卒業メンバーのブログ](https://janelin612.github.io/n46-crawler/)
+## [Site-乃木坂46卒業メンバーのブログ](https://janelin612.github.io/n46-crawler/)
 + [橋本奈々未](https://janelin612.github.io/n46-crawler/nanami.hashimoto) - archived on 2017-12-31
 + [伊藤万理華](https://janelin612.github.io/n46-crawler/marika.ito) - archived on 2017-12-31
 + [中元日芽香](https://janelin612.github.io/n46-crawler/himeka.nakamoto) - archived on 2017-12-31
@@ -23,56 +23,62 @@ n46-crawler
 + [伊藤かりん](https://janelin612.github.io/n46-crawler/karin.itou) - archived on 2019-06-10
 + [斉藤優里](https://janelin612.github.io/n46-crawler/yuuri.saito) - archived on 2019-07-01
 + [桜井玲香](https://janelin612.github.io/n46-crawler/reika.sakurai) - archived on 2019-09-04
++ [井上小百合](https://janelin612.github.io/n46-crawler/sayuri.inoue) - archived on 2020-01-21
 
 # Get started #
 
-## 1.clone project
+## 1. Clone project
 Because the whole demo site is hosting on github pages,you will take long time to clone project.  
 If you only need the source code,you can just clone the master branch.
 
 	$ git clone https://github.com/janelin612/n46-crawler.git --single-branch
 
-## 2.install dependencies
+## 2. Install dependencies
 
 	$ npm install -–production 
 
-## 3.usage
+## 3. Usage
 
-	$ node n46.js
+### (1) Show members list
 
-It will download all blog into `./viewer/result.json` **(Will take long time~)**  
+```
+$ node n46
+```
+
+It will print members list on console like below
+
+```
+秋元 真夏       manatsu.akimoto
+生田 絵梨花     erika.ikuta
+伊藤 純奈       junna.itou
+伊藤 理々杏     riria.itou
+井上 小百合     sayuri.inoue
+岩本 蓮加       renka.iwamoto
+```
+
+### (2) Download blog content
+
+Use argument `-a` to choose the member you want to download.  
+For example,if you only want to download all of Asuka's blog
+
+> https://blog.nogizaka46.com/asuka.saito/
+
+You can use this:
+
+```
+$ node n46 -a "asuka.saito"
+```
+
+It will download all blog into `./viewer/result.json`  
 And all images will be storaged into `./viewer/img/` as below:
 
 ```html
 <!-- original  -->
-<img src="http://img.nogizaka46.com/blog/XXXXX.jpeg">
+<img src="http://img.nogizaka46.com/blog/2019/XXXXX.jpeg">
 
 <!-- new -->
-<img src="img/blog/XXXXX.jpeg">
+<img src="img/blog/2019/XXXXX.jpeg">
 ```
-
-# Argument #
-
-1. `-a "MEMBER_NAME"` : For example,if you only want to download all of Asuka's blog
-
-	> http://blog.nogizaka46.com/asuka.saito/
-
-	you can use this:
-
-		$ node n46.js -a "asuka.saito"
-
-	+ **It is recommended to always using this argument to avoid downloading too much data.**
-	+ you can get member's name by the next argument
-
-2. `--list` : list all member's name like below
-
-		秋元 真夏       manatsu.akimoto
-		生田 絵梨花     erika.ikuta
-		生駒 里奈       rina.ikoma
-		伊藤 かりん     karin.itou
-		伊藤 純奈       junna.itou
-		伊藤 万理華     marika.ito
-		...etc
 
 # Sample Result #
 Crawler will generate two json file，and storage them at `./viewer/`
@@ -96,34 +102,34 @@ Crawler will generate two json file，and storage them at `./viewer/`
 }]
 ```
 
-2. `member.json` : member's introduction when you using `-a MEMBER_NAME` argument
+2. `member.json` : member's introduction
 
 ```json
 {
-    "name": "伊藤 万理華",
-    "name_hiragana": "いとう まりか ",
-    "image": "img/www/member/img/itoumarika_prof.jpg",
-    "intro": [
-        {
-            "key": "生年月日",
-            "value": "1996年2月20日"
-        },
-        {
-            "key": "血液型",
-            "value": "O型"
-        },
-        {
-            "key": "星座",
-            "value": "うお座"
-        },
-        {
-            "key": "身長",
-            "value": "156cm"
-        }
-    ],
-    "tag": [
-        "1期生","選抜メンバー","十一福神"
-    ]
+  "name": "伊藤 万理華",
+  "name_hiragana": "いとう まりか ",
+  "image": "img/www/member/img/itoumarika_prof.jpg",
+  "intro": [
+    {
+      "key": "生年月日",
+      "value": "1996年2月20日"
+    },
+    {
+      "key": "血液型",
+      "value": "O型"
+    },
+    {
+      "key": "星座",
+      "value": "うお座"
+    },
+    {
+      "key": "身長",
+      "value": "156cm"
+    }
+  ],
+  "tag": [
+    "1期生", "選抜メンバー", "十一福神"
+  ]
 }
 ```
 
