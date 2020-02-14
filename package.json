@@ -15,8 +15,8 @@
     "xml-js": "^1.6.11"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "view": "http-server ./viewer/"
+    "view": "http-server ./viewer/",
+    "build": "node ./src/pages-tool"
   },
   "repository": {
     "type": "git",

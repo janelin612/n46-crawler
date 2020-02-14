@@ -24,6 +24,7 @@ n46-crawler
 + [斉藤優里](https://janelin612.github.io/n46-crawler/yuuri.saito) - archived on 2019-07-01
 + [桜井玲香](https://janelin612.github.io/n46-crawler/reika.sakurai) - archived on 2019-09-04
 + [井上小百合](https://janelin612.github.io/n46-crawler/sayuri.inoue) - archived on 2020-01-21
++ [佐々木琴子](https://janelin612.github.io/n46-crawler/kotoko.sasaki) - archived on 2020-02-14
 
 # Get started #
 
