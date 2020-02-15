@@ -115,11 +115,10 @@ let contentCrawler = new Crawler({
  * 重新排序結果並寫入檔案
  */
 contentCrawler.on('drain', function () {
-  let regex_id = /\/[0-9]+\?/;    //取出文章ID區塊
-  let regex_num = /[0-9]+/;       //只留下數字部分
+  let regex=/\/([0-9]+)\?/;   //取出文章ID區塊數字的部分
   result.sort((a, b) => {
-    let idA = a.url.match(regex_id)[0].match(regex_num)[0];
-    let idB = b.url.match(regex_id)[0].match(regex_num)[0];
+    let idA = a.url.match(regex)[1];
+    let idB = b.url.match(regex)[1];
     return new Number(idB) - new Number(idA);
   })
   Fs.writeFileSync(
