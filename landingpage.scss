@@ -51,7 +51,6 @@ body {
   flex-direction: column;
   align-items: center;
   transition: all 0.5s linear;
-  text-shadow: 1px 1px 5px #c2c2c2;
   text-decoration: none;
 
   &:hover {
@@ -65,6 +64,7 @@ body {
   }
 
   .avatar {
+    position: relative;
     width: 97%;
     height: 200px;
     overflow: hidden;
@@ -81,7 +81,8 @@ body {
     display: flex;
     flex-direction: column;
     margin: 10px 0 0 0;
-
+    text-shadow: 1px 1px 5px #c2c2c2;
+    
     .name {
       font-size: 23px;
       line-height: 25px;
@@ -91,6 +92,20 @@ body {
       font-size: 16px;
       line-height: 18px;
     }
+  }
+
+  .ribbon {
+    font-size: 10px;
+    width: 85px;
+    padding: 3px;
+    position: absolute;
+    text-align: center;
+    color: #f0f0f0;
+    background-color: #7D2982;
+    top: 11px;
+    left: -22px;
+    transform: rotate(-45deg);
+    z-index: 99;
   }
 }
 
@@ -104,8 +119,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: 60%;
-    filter: blur(4px);
-    -webkit-filter: blur(4px);
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
 
     @media screen and (max-width: 700px) {
       background-position-x: 50%;
@@ -123,6 +138,8 @@ body {
   }
 }
 
+$footer-white:rgb(225, 225, 225);
+
 .footer {
   padding: 12px 0;
   background-color: #3c4146;
@@ -134,10 +151,13 @@ body {
       margin: 0 4px;
       font-size: 29px;
       text-decoration: none;
-      color: white;
+      color: $footer-white;
 
       &:visited {
-        text-decoration: none;
+        color: $footer-white;
+      }
+
+      &:hover {
         color: white;
       }
     }
@@ -145,7 +165,7 @@ body {
 
   .slogan {
     text-align: center;
-    color: white;
+    color: $footer-white;
     font-size: 12px;
   }
 }

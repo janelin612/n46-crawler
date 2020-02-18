@@ -38,7 +38,10 @@
       <div class="year">{{group.year}}</div>
       <div class="list">
         <a v-for="(item,index) in group.member" class="member" :href="item.link">
-          <div class="avatar"><img :src="item.image" alt="" /></div>
+          <div class="avatar">
+            <div class="ribbon" v-if="!item.graduation_date">卒業予定</div>
+            <img :src="item.image" :alt="item.name" />
+          </div>
           <div class="info">
             <div class="name">{{item.name}}</div>
             <div class="name-hiragana">{{item.name_hiragana}}</div>
@@ -49,7 +52,7 @@
   </div>
   <div class="footer">
     <div class="sns-info">
-      <a href="https://github.com/janelin612/n46-crawler" target="_blank" title="Give me a star"><i class="fab fa-github"></i></a>
+      <a href="https://github.com/janelin612/n46-crawler" title="Give me a star"><i class="fab fa-github"></i></a>
       <a href="https://www.buymeacoffee.com/janelin612" target="_blank" title="Buy me a coffee"><i class="fas fa-mug-hot"></i></a>
     </div>
     <div class="slogan">#また乃木坂で会いましょう</div>
