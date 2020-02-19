@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>白石 麻衣 | 乃木坂46卒業メンバーのブログ</title>
+  <meta property="og:image" content="https://janelin612.github.io/n46-crawler/ogimg.jpg">
+
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <script src="../script/vue.min.js"></script>
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-38227412-4');
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../menu.svg" alt=""></button>
+    <div class="member" :class="{'hide':isFold}">
+      <img :src="member.image" alt="" class="avatar">
+      <div class="name">{{member.name}}</div>
+      <div class="name hiragana">{{member.name_hiragana}}</div>
+
+      <ul class="intro">
+        <li v-for="item in member.intro">
+          <span class="key">{{item.key}}</span>
+          <span class="value">{{item.value}}</span>
+        </li>
+      </ul>
+
+      <ul class="tag">
+        <li v-for="item in member.tag">{{item}}</li>
+      </ul>
+    </div>
+
+    <div class="menu" :class="{'hide':isFold}">
+      <div class="loading-spinner" v-if="isLoading">
+        <div class="spinner"></div>
+      </div>
+      <ul>
+        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
+          <div v-html="item.title"></div>
+          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
+          <div class="small-datetime">{{item.datetime}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main" v-if="currentPost!=null">
+      <div class="heading">
+        <a class="post-time" :href="currentPost.url" target="_blank">
+          <div class="year-month">{{currentPostDate.yearMonth}}</div>
+          <span class="date">{{currentPostDate.date}}</span>
+          <span class="week">{{currentPostDate.weekday}}</span>
+        </a>
+        <div class="post-info">
+          <div class="author">{{currentPost.author}}</div>
+          <div class="title" v-html="currentPost.title"></div>
+        </div>
+      </div>
+      <div class="content" v-html="currentPost.content"></div>
+    </div>
+  </div>
+</body>
+<script> const defaultList=[{"datetime":"2020/01/07 08:48","author":"白石麻衣","title":"感謝。","url":"http://blog.nogizaka46.com/mai.shiraishi/2020/01/054325.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body>おはようございます<div>&nbsp;</div><div><br><div><div>&nbsp;</div><div>&nbsp;</div><div>今朝のスポーツ紙や公式サイトで発表がありました通り、次のシングルをもちまして乃木坂46を卒業します。</div></div><div>&nbsp;</div><div>&nbsp;</div><div>2020年始まったばかりなのに、最初のブログが卒業の話しでごめんなさい。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>卒業は2年前、25歳を迎えた辺りからずっと考えていました。</div><div>&nbsp;</div><div>&nbsp;</div><div>もうそろそろ、もうそろそろとずっと思っていたのですが、卒業するメンバーも増えていって、みんなには笑顔で旅立って行ってほしいなという気持ちと同時に私はもう少し乃木坂で頑張ろうかなという思いが強くなっていって、気付いたらここまできていました。</div><div>&nbsp;</div><div>&nbsp;</div><div>後輩も頼もしく成長していき、私ももう乃木坂で甘えてられないなと思い昨年の夏頃に改めて卒業のことを考え決断致しました。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>乃木坂で過ごした約8年は私にとってすごく大事な時間でしたし、たくさん自分と向き合うことができた時間でした。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>乃木坂に入って大好きなメンバーと出会い、応援してくださる大切なファンの皆さんとも出会うことができました。</div><div>&nbsp;</div><div>たくさんの声援をもらい、「頑張ってね」「応援してます」って言葉にたくさん救われました。</div><div>&nbsp;</div><div>&nbsp;</div><div>皆さんのおかげでこうして乃木坂46のメンバーで居続けることができました。本当にありがとうございます。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>卒業しても乃木坂は大好きなグループ、ずっと大事にしていきたいですし、次は外側から乃木坂を支えていけたらなと思っています。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>まだこれからバースデーライブもありますし、卒業ライブも出来たらいいなと思ってるので残りの時間も笑顔で楽しく過ごせたらなと思っております^ ^</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>寂しいけど寂しい気持ちは置いといて、2020年も乃木坂にとって素敵な一年になりますように。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>私も最後まで頑張ります。</div><div>&nbsp;</div><div>よろしくお願いします</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>白石麻衣</div></div></body></html> "},{"datetime":"2019/12/31 20:10","author":"白石麻衣","title":"39。","url":"http://blog.nogizaka46.com/mai.shiraishi/2019/12/054285.php","content":"<p><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></p>\n<div>今年も一年ありがとうございました！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>7thバースデーライブや演技のお仕事、たくさんのファッション誌にも出させて頂きました。</div>\n<div> </div>\n<div> </div>\n<div>どのお仕事もとても楽しくたくさん勉強にもなりましたし、少しだけだけどステップアップ出来たかなと思います。</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>年末はたくさんの音楽番組にも呼んで頂いて、後輩達がどんどん成長していくのを間近で感じました。</div>\n<div>本当に頼もしいものです！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>来年も現状維持で、色んなお仕事に関われたらいいなぁと思います。</div>\n<div> </div>\n<div>2020年も頑張るぞ〜！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>残るは紅白、この後です！</div>\n<div> </div>\n<div> </div>\n<div>初の坂道グループ全員、そして内村さんも一緒にパフォーマンスします！素敵な物をお届けできるよう精一杯頑張りたいとおもいます^_^</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>昨日のレコード大賞も楽しかったな〜！</div>\n<div>緊張したけど、みんなでhappyを届けられるようにとパフォーマンスしました！</div>\n<div>毎年良い思い出♡</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>2020年も楽しい年にしようね〜^_^</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>少し早いけど、</div>\n<div> </div>\n<div>皆さん良いお年を！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/mai.shiraishi/img/2019/12/31/9044056/0000.jpeg\"></div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>"},{"datetime":"2019/05/25 13:20","author":"白石麻衣","title":"純白。","url":"http://blog.nogizaka46.com/mai.shiraishi/2019/05/050848.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>こんにちは</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>久しぶりですね</div><div>私は元気です(^^)</div><div>&nbsp;</div><div>&nbsp;</div><div>最近もドラマの撮影や雑誌など、楽しくお仕事させてもらっています。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>俺のスカート、どこ行った？見てくれてるかなぁ？</div><div>&nbsp;</div><div>&nbsp;</div><div>今夜放送の6話は、里見先生のお話になっています。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>もうお写真が出てるのでチラ見せ</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/mai.shiraishi/img/2019/05/25/5156100/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>原田先生とウエディングドレスを着ています(*^_^*)</div><div>&nbsp;</div><div>&nbsp;</div><div>これは6話の撮影終盤の方、ウエディング見納めということで一緒に撮って頂きました！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>古田さんには現場でアドバイスを頂いたりいつも面白い話をしてくれたりとたくさん勉強させてもらっています！楽しい現場です！</div><div>&nbsp;</div><div>&nbsp;</div><div>今回も原田先生の言葉によって里見先生にも心の変化があったり。</div><div>見逃せない内容になってるので、今夜22時から、是非見てください(^^)</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>そして、</div><div>&nbsp;</div><div><img src=\"img/blog/mai.shiraishi/img/2019/05/25/5156100/0001.jpeg\"></div><div>&nbsp;</div><div>広田先生！</div><div>&nbsp;</div><div>&nbsp;</div><div>シソンヌじろうさんとは、マウスのお仕事でご一緒してからドラマでも共演できてとっても嬉しい！</div><div>&nbsp;</div><div>ジコチューでいこうのポーズをしてくれてます</div><div>&nbsp;</div><div>&nbsp;</div><div>いつも現場で会うと踊ってくれるんです(^▽^)o</div><div>イントロの部分は完璧に踊れてました！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>先生方との職員室のシーンは毎回笑いが起こるくらい面白くて、笑いをこらえるのにいつも必死です。笑</div><div>&nbsp;</div><div>とても楽しくて元気になれます。</div><div>&nbsp;</div><div>&nbsp;</div><div>そんな職員室のシーンも毎回必見ですよ^ ^</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>明日の選抜ライブですが、スケジュールが調整できたので私も参加できることになりました！</div><div>&nbsp;</div><div>&nbsp;</div><div>一部出演しない部分もありますが、参加できること嬉しく思います。</div><div>&nbsp;</div><div>&nbsp;</div><div>最高に楽しいライブにするので、来る方は明日会おうね！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>Sing Out!一緒に歌おうね〜</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/mai.shiraishi/img/2019/05/25/5156100/0002.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div></body></html> "},{"datetime":"2019/01/10 20:00","author":"白石麻衣","title":"GO。","url":"http://blog.nogizaka46.com/mai.shiraishi/2019/01/048771.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>あけましておめでとうございます！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/mai.shiraishi/img/2019/01/10/1778017/0000.jpeg\"></div><div>&nbsp;</div><div><img src=\"img/blog/mai.shiraishi/img/2019/01/10/1778017/0001.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>今年もどうぞ、</div><div>よろしくお願い致します(^^)</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>昨年末は、</div><div>たくさんの歌番組に出させて頂きました</div><div>&nbsp;</div><div>&nbsp;</div><div>2018年のレコード大賞も、嬉しい気持ちでいっぱいです。</div><div>&nbsp;</div><div>&nbsp;</div><div>シンクロニシティも、乃木坂にとってまた大きな１曲となりました。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>そして紅白！</div><div>&nbsp;</div><div>なぁちゃんにとって乃木坂最後のお仕事だったから、寂しい気持ちはあったよね。</div><div>たくさんのシングルを共に頑張ってきた仲だから、色々思い出しちゃうよねぇ。</div><div>&nbsp;</div><div>&nbsp;</div><div>たくさん助けられたこともあるし、大変な時こそ一緒に笑って乗り越えてきたなぁって！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>良い思い出がいっぱい。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>また卒業ライブで！</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/mai.shiraishi/img/2019/01/10/1778017/0002.jpeg\"></div><div>&nbsp;</div><div><img src=\"img/blog/mai.shiraishi/img/2019/01/10/1778017/0003.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>今年も素敵な一年を過ごせますように。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>さてさて、</div><div>&nbsp;</div><div>&nbsp;</div><div>今日は雑誌のお仕事があったのですが、</div><div>仕事現場が「乃木坂46 Artworks だいたいぜんぶ展」の近くでして、</div><div>&nbsp;</div><div>&nbsp;</div><div>ちょろっと見に行けました！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>凄かったよ！！！！！</div><div>懐かしい気持ちにもなったし、色んなことを感じました。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>明日から始まるので、</div><div>お時間ある方は是非見に行ってみてください(^^)</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/mai.shiraishi/img/2019/01/10/1778017/0004.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>ガールズルールのジャケ写の時のパネルがありました！</div><div>&nbsp;</div><div>ちょっと書かせてもらったりもしたので、見つけてみてね。</div><div>あ、でもおっきいからすぐわかるね。笑</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>そして帰り際に若に会ったよ！</div><div>いつ会ってもだいすきだなぁって思う♡</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/mai.shiraishi/img/2019/01/10/1778017/0005.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>12日の静岡TGCも一緒なので、</div><div>またすぐ会えるのうれしー！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>今日はいっぱい書いちゃったわ</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div></body></html> "}]; </script>
+<script src="../script/main.js"></script>
+
+</html>
