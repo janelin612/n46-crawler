@@ -17,6 +17,7 @@
   <div id="app">
     <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="resource/menu.svg" alt=""></button>
     <div class="member" :class="{'hide':isFold}">
+      <!-- <button id="btn-home"  onclick="location.href='../'" ><img src="resource/arrow.svg" alt="" srcset=""><span>ホーム</span></button> -->
       <img :src="member.image" alt="" class="avatar">
       <div class="name">{{member.name}}</div>
       <div class="name hiragana">{{member.name_hiragana}}</div>

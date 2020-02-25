@@ -22,7 +22,12 @@ body {
   overflow-y: scroll;
   background-color: white;
 }
-h2,h3,h4,h5,h6 {
+
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: 100%;
 }
 
@@ -35,6 +40,7 @@ h2,h3,h4,h5,h6 {
       transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1);
     }
   }
+
   color: $color-light-text;
   position: fixed;
   left: 0;
@@ -75,6 +81,7 @@ h2,h3,h4,h5,h6 {
     @media screen and (max-width: $width-gap) {
       display: none;
     }
+
     display: inline-block;
     width: 35%;
     text-align: right;
@@ -89,6 +96,7 @@ h2,h3,h4,h5,h6 {
       width: 90%;
       padding-left: 8px;
     }
+
     display: inline-block;
     width: 60%;
     text-align: left;
@@ -96,6 +104,7 @@ h2,h3,h4,h5,h6 {
 
   .tag {
     margin: 16px 8px;
+
     li {
       background: $color-member-tag-bg;
       color: $color-light-text;
@@ -112,11 +121,13 @@ h2,h3,h4,h5,h6 {
   @media screen and (max-width: $width-gap) {
     margin-left: $width-cloumn-1-m;
     width: $width-cloumn-2-m;
+
     &.hide {
       left: -(($width-cloumn-1-m)+ ($width-cloumn-2-m));
       transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1);
     }
   }
+
   position: fixed;
   left: 0;
   transition: left 0.5s cubic-bezier(0.17, 0.84, 0.44, 1);
@@ -142,6 +153,7 @@ h2,h3,h4,h5,h6 {
       background-color: $color-list-selected-bg;
       color: $color-highlight;
     }
+
     &:hover {
       background-color: $color-list-selected-bg;
       color: $color-highlight;
@@ -167,8 +179,9 @@ h2,h3,h4,h5,h6 {
   @media screen and (max-width: $width-gap) {
     margin-left: 0;
   }
+
   z-index: 0;
-  margin-left: ($width-cloumn-1)+ ($width-cloumn-2);
+  margin-left: ($width-cloumn-1)+($width-cloumn-2);
   position: relative;
   max-width: 640px;
   padding: 12px 22px;
@@ -179,32 +192,39 @@ h2,h3,h4,h5,h6 {
     border: $color-highlight 2px solid;
     border-radius: 6px;
     margin: 8px 0 24px 0;
+
     .post-time {
       text-decoration: none;
       min-width: 96px;
       color: white;
       background-color: $color-highlight;
       padding: 8px;
+
       .year-month {
         font-size: 12px;
       }
+
       .date {
         font-size: 43px;
         line-height: 43px;
       }
+
       .week {
         font-size: 12px;
       }
     }
+
     .post-info {
       color: $color-highlight;
       padding: 8px;
       width: 100%;
+
       .author {
         font-size: 13px;
         border-bottom: $color-highlight 1px dotted;
         margin-bottom: 8px;
       }
+
       .title {
         font-size: 20px;
         line-height: 22px;
@@ -215,6 +235,7 @@ h2,h3,h4,h5,h6 {
   .content {
     margin-bottom: 64px;
     font-size: 18px;
+
     img {
       max-width: 95%;
     }
@@ -225,6 +246,7 @@ h2,h3,h4,h5,h6 {
   @media screen and (max-width: $width-gap) {
     display: block;
   }
+
   background-color: $color-highlight;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
   display: none;
@@ -236,12 +258,43 @@ h2,h3,h4,h5,h6 {
   height: 40px;
   border-radius: 100px;
   border: none;
+
   img {
     width: 99%;
     height: 99%;
   }
+
   &.hide {
     opacity: 0.5;
+  }
+}
+
+#btn-home {
+  background: transparent;
+  border: 0;
+  height: 40px;
+  width: 99%;
+  text-align: left;
+  cursor: pointer;
+
+  img {
+    vertical-align: middle;
+    height: 60%;
+    margin: 0 8px 0 0;
+  }
+
+  span {
+    vertical-align: middle;
+    color: white;
+  }
+
+  &:hover {
+    background-color: $color-default-text;
+    transition: background-color 0.1s linear;
+  }
+
+  @media screen and (max-width: $width-gap) {
+    background-color: $color-default-text;
   }
 }
 
@@ -250,6 +303,7 @@ h2,h3,h4,h5,h6 {
   align-items: center;
   justify-content: center;
   height: 100%;
+
   .spinner {
     width: 64px;
     height: 64px;
@@ -268,10 +322,12 @@ h2,h3,h4,h5,h6 {
     }
   }
 }
+
 @keyframes spinner {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
