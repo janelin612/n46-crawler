@@ -100,5 +100,5 @@ function transformJsFile() {
       ]
     ]
   });
-  fs.writeFileSync(`${SITE_FOLDER}/script/main.js`, result.code, "UTF-8");
+  fs.writeFileSync(`${SITE_FOLDER}/assets/script/main.js`, result.code, "UTF-8");
 }
