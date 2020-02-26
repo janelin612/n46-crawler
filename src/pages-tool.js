@@ -79,7 +79,11 @@ function injectPartialInfo() {
     json = json.slice(0, COUNT_OF_PRELOADING);
 
     let text_script = `\n<script> const defaultList=${JSON.stringify(json)}; </script>`;
-    $("title").text(`${memb.name} | 乃木坂46卒業メンバーのブログ`);
+    let desc= json.reduce((prev,curr)=> prev+curr.datetime+curr.title , "");
+    let title=`${memb.name} | 乃木坂46卒業メンバーのブログ`;
+    $("title").text(title);
+    $("meta[name='twitter:title']").attr("content",title);
+    $("meta[name='twitter:description']").attr("content",desc);
     $("body").after(text_script);
     fs.writeFileSync(`${SITE_FOLDER}/${memb.link}`, $.html(), "utf-8");
   });
