@@ -115,7 +115,7 @@ let contentCrawler = new Crawler({
  * 重新排序結果並寫入檔案
  */
 contentCrawler.on('drain', function () {
-  let regex=/\/([0-9]+)\?/;   //取出文章ID區塊數字的部分
+  let regex = /\/([0-9]+)\?/;   //取出文章ID區塊數字的部分
   result.sort((a, b) => {
     let idA = a.url.match(regex)[1];
     let idB = b.url.match(regex)[1];

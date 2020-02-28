@@ -79,11 +79,11 @@ function injectPartialInfo() {
     json = json.slice(0, COUNT_OF_PRELOADING);
 
     let text_script = `\n<script> const defaultList=${JSON.stringify(json)}; </script>`;
-    let desc= json.reduce((prev,curr)=> prev+curr.datetime+curr.title , "");
-    let title=`${memb.name} | 乃木坂46卒業メンバーのブログ`;
+    let desc = json.reduce((prev, curr) => prev + curr.datetime + curr.title, "");
+    let title = `${memb.name} | 乃木坂46卒業メンバーのブログ`;
     $("title").text(title);
-    $("meta[name='twitter:title']").attr("content",title);
-    $("meta[name='twitter:description']").attr("content",desc);
+    $("meta[name='twitter:title']").attr("content", title);
+    $("meta[name='twitter:description']").attr("content", desc);
     $("body").after(text_script);
     fs.writeFileSync(`${SITE_FOLDER}/${memb.link}`, $.html(), "utf-8");
   });
@@ -94,15 +94,7 @@ function injectPartialInfo() {
  */
 function transformJsFile() {
   let result = babel.transformFileSync("./viewer/script/main.js", {
-    "presets": [
-      [
-        "@babel/preset-env", {
-          "targets": {
-            "chrome": "41", //Google Bot
-          }
-        }
-      ]
-    ]
+    "presets": [["@babel/preset-env", { "targets": { "chrome": "41" } }]]//Google Bot
   });
   fs.writeFileSync(`${SITE_FOLDER}/assets/script/main.js`, result.code, "UTF-8");
 }
