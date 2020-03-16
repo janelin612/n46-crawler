@@ -19,7 +19,7 @@
   <meta property="og:title" name="twitter:title" content="乃木坂46卒業メンバーのブログ">
   <meta property="og:description" name="twitter:description" content="乃木坂46 卒業成員部落格備份">
   <meta property="og:type" content="article">
-  <meta property="og:image" name="twitter:image" content="https://janelin612.github.io/n46-crawler/assets/ogimg.jpg">
+  <meta property="og:image" name="twitter:image" content="https://janelin612.github.io/n46-crawler/assets/zaoidj.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <script src="./assets/script/vue.min.js"></script>
@@ -43,16 +43,18 @@
     <div v-for="(group,index) in list" class="group">
       <div class="year">{{group.year}}</div>
       <div class="list">
-        <a v-for="(item,index) in group.member" class="member" :href="item.link">
-          <div class="avatar">
-            <div class="ribbon" v-if="!item.graduation_date">卒業予定</div>
-            <img :src="item.image" :alt="item.name" />
-          </div>
-          <div class="info">
-            <div class="name">{{item.name}}</div>
-            <div class="name-hiragana">{{item.name_hiragana}}</div>
-          </div>
-        </a>
+        <div v-for="(item,index) in group.member" class="list-container">
+          <a class="member" :href="item.link">
+            <div class="avatar">
+              <div class="ribbon" v-if="!item.graduation_date">卒業予定</div>
+              <img :src="item.image" :alt="item.name" />
+            </div>
+            <div class="info">
+              <div class="name">{{item.name}}</div>
+              <div class="name-hiragana">{{item.name_hiragana}}</div>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>

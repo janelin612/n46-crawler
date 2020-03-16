@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>堀 未央奈 | 乃木坂46卒業メンバーのブログ</title>
+  <meta name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA">
+  <meta property="og:image" name="twitter:image" content="https://janelin612.github.io/n46-crawler/assets/zaoidj.jpg">
+  <meta property="og:title" name="twitter:title" content="堀 未央奈 | 乃木坂46卒業メンバーのブログ">
+  <meta property="og:description" name="twitter:description" content="2021/03/28 21:00乃木坂46の堀未央奈です。2021/02/26 20:15一度あった事は忘れないよ覚えていないだけで2021/02/08 16:00ジブリパークがたのしみすぎて寝れない毎日が続いていてまあ2時には寝てます2021/01/10 14:54最近のマイブームはGoogle Earthで行きたい場所に行った気分になること ps.エモくないのよ全然">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+  <script src="../assets/script/vue.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-38227412-4');
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../assets/menu.svg" alt=""></button>
+    <div class="member" :class="{'hide':isFold}">
+      <button id="btn-home" onclick="location.href='../'"><img src="../assets/arrow.svg" alt="" srcset=""><span>ホーム</span></button>
+      <img :src="member.image" alt="" class="avatar">
+      <div class="name">{{member.name}}</div>
+      <div class="name hiragana">{{member.name_hiragana}}</div>
+
+      <ul class="intro">
+        <li v-for="item in member.intro">
+          <span class="key">{{item.key}}</span>
+          <span class="value">{{item.value}}</span>
+        </li>
+      </ul>
+
+      <ul class="tag">
+        <li v-for="item in member.tag">{{item}}</li>
+      </ul>
+    </div>
+
+    <div class="menu" :class="{'hide':isFold}">
+      <div class="loading-spinner" v-if="isLoading">
+        <div class="spinner"></div>
+      </div>
+      <ul>
+        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
+          <div v-html="item.title"></div>
+          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
+          <div class="small-datetime">{{item.datetime}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main" v-if="currentPost!=null">
+      <div class="heading">
+        <a class="post-time" :href="currentPost.url" target="_blank">
+          <div class="year-month">{{currentPostDate.yearMonth}}</div>
+          <span class="date">{{currentPostDate.date}}</span>
+          <span class="week">{{currentPostDate.weekday}}</span>
+        </a>
+        <div class="post-info">
+          <div class="author">{{currentPost.author}}</div>
+          <div class="title" v-html="currentPost.title"></div>
+        </div>
+      </div>
+      <div class="content" v-html="currentPost.content"></div>
+    </div>
+  </div>
+</body>
+<script> const defaultList=[{"datetime":"2021/03/28 21:00","author":"堀未央奈","title":"乃木坂46の堀未央奈です。","url":"http://blog.nogizaka46.com/miona.hori/2021/03/060612.php","content":"<p><br> <br> <br> <br> <br> この挨拶も、今日でおしまい。<br> 明日からは\"堀未央奈\"になります。ね、<br> <br> <br> 乃木坂46に加入して今日で8年ぴったり。<br> 今日の2期生ライブはどうでしたか...？<br> 私は、この時間がずっと続けばいいのに...と何度も心の中で思いました。<br> <br> リハーサルからみんなの顔が見れなくて、<br> それは胸がざわざわ苦しくなって　<br> 大好きで楽しいのにつらくて寂しくてたくさんの感情が押し寄せてどうしようもできなかったからです。<br> 気持ちを押し殺すのは得意ですが、今回ばかりは溢れました。<br> <br> <br> <br> 8年前、<br> 16歳の私は分からない事だらけで都会にも慣れず、今の私がみても不安になるくらい自分に自信もなければ実力もなくてふわふわしていました。<br> でもたくさんの経験をしていつのまにか自分の事も人の事も好きになる事ができて、新しいことや挑戦が\"怖い\"という思いより\"楽しい\"に変わっていきました。<br> 乃木坂46としての活動も自信と責任を持って<br> 取り組んでこれた8年間だったなと思います。<br> <br> <br> メンバー、家族、スタッフさん、友達、ファンの皆さん<br> 本当に私は周りの人に恵まれていて支えられながら毎日を過ごしてきました。<br> 強がって一人で抱え込もうとしますが、なんだかんだで周りの人に支えられっぱなしで...<br> みなさんがいなかったら今の私は存在していないと思います。たくさんの感謝の気持ちでいっぱいです。<br> <br> <br> MV撮影、ライブ、歌番組、イベント、<br> 撮影、、、何もかもが新鮮で挑戦で...<br> わたしには夢のような<br> 未だに私が乃木坂46だったという事が<br> 神隠しにあっていて夢だったんじゃないかと思うほど<br> あっという間で濃密な時間でした。<br> いや、でもネット検索したらちゃんと出てきますよね。夢じゃない。よかったー。<br> <br> <br> <br> 来世では、乃木坂46に入って、<br> 同じメンバーで、<br> また違う景色をみてみたいなとも思います。<br> たのしみ。<br> <br> <br> 明日からは1人になりますが関わる方や応援してくださる方、全ての方への感謝の気持ちと初心を忘れずに頑張っていきたいと思います。<br> <br> 今までの活動で自分の盾となってくれたメイク関連のこともしていって、少しでも自信を持ちたいと思っている方の力になりたいのと、人が幸せになるようなプロデュースなどもしていきたいです。<br> <br> 女優としても0から、自分に厳しく、楽しみながら<br> 私らしくいろんなことに挑戦していきたいなと思います。<br> <br> <br> <br> <br> <br> 堀未央奈を推していて、楽しかったですか？<br> <br> 楽しかった　と言っていただけたら、<br> それだけで私はもう大満足です。<br> 私は皆さんに出会えて本当によかったです。<br> <br> <br> <br> <br> ありがとうございました<br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/03/28/5764567/0000.jpeg\"><br> <br> <br> <br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/03/28/5764567/0001.jpeg\"><br> <br> <br> <br> <br> 2021.3.28<br> <br> <br> 乃木坂46 2期生　堀未央奈<br> <br> <br> </p>"},{"datetime":"2021/02/26 20:15","author":"堀未央奈","title":"一度あった事は忘れないよ覚えていないだけで","url":"http://blog.nogizaka46.com/miona.hori/2021/02/060217.php","content":"<p><br> <br> <br> <br> <br> <br> 歌や映画や人物のすてきな言葉に<br> たくさんの影響を受けてきました<br> すてきな言葉があるから毎日頑張れています<br> <br> <br> 言葉だけじゃなくても<br> \"希望\"みたいなものを与えられる人になりたい<br> ざっくりとしているようで案外具体的な<br> わたしの人生の目標がこの24年間の間でできました<br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/02/26/3660219/0000.jpeg\"><br> <br> 明日発売のBUBKA<br> <br> <br> <br> 2/27 BUBKA 4月号表紙発売<br> 2/27 16:30〜 NHK総合「坂道テレビ」 <br> 2/28 18:30〜 テレ東系「楽しく学べる！最強教科書クイズ」<br> よろしくお願いします☺︎<br> <br> <br> <br> 最近はいろんな準備を毎日していまして<br> バタバタ。ありがたいですね。<br> またお知らせします<br> <br> <br> <br> <br> <br> <br> <br> 3月28日の2期生ライブが<br> 最後の活動となりました<br> 残り1ヶ月...案外最後が近くて<br> 今ようやく実感してきています<br> <br> <br> 1期生の皆さん、3.4期生のみんなとのライブは<br> 先日のバスラが最後でした<br> みんなの笑顔が改めて大好き。<br> <br> <br> ずっと憧れだったしこれからもそんな存在の先輩方、<br> かわいくて放っておけない妹のような後輩たち、<br> いつもサポートしてくださるスタッフさんに<br> 応援してくださるファンの皆さん<br> たくさんのすてきな出会いがあったから<br> こんなにも\"人\"を、<br> \"乃木坂\"を好きなれたんだと思います<br> <br> <br> <br> <br> とあるオーディションに最終審査で落ちて<br> 悔しい思いをして岐阜に帰り、<br> それからはバイトをしながら毎日何となく<br> 過ごしていました<br> そのあと、乃木坂のオーディションに<br> 最後の挑戦として受けて合格することができたあの日からわたしの人生は大きく変わりました<br> <br> <br> <br> <br> どんな道だろうと<br> どんな靴を履いていようと<br> わたしらしくまっすぐ歩いて<br> いきたいと思います<br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/02/26/3660219/0001.jpeg\"><br> <br> <br> もう3月ですね<br> 花粉に負けず新生活に向けて<br> 一緒に頑張りましょう~<br> <br> <br> <br> <br> <br> みおな<br> <br> <br> <br> <br> <br> <br> </p>"},{"datetime":"2021/02/08 16:00","author":"堀未央奈","title":"ジブリパークがたのしみすぎて寝れない毎日が続いていてまあ2時には寝てます","url":"http://blog.nogizaka46.com/miona.hori/2021/02/060013.php","content":"<p><br> <br> <br> <br> こんにちは！<br> <br> 寒かったり暖かかったり<br> わがままな天気が続いていますね<br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/02/08/6575232/0000.jpeg\"><br> <br> <br> <br> platinum FLASH発売中です！<br> <br> <br> ほかにも色々お知らせもあるので（╹◡╹）♡<br> 楽しみに待っていてください（╹◡╹）♡<br> <br> <br> バスラもうすぐですね〜<br> というかもう2月なんですね<br> いつも今って何月だ?とわからなくなります<br> だいすきな豆を食べるイベント節分も終わったし<br> 2月もあっという間なんだろなぁ<br> 春が来るなぁ<br> 花粉はもう来てるなぁ<br> ...<br> <br> <br> 髪を洗っているときは無心で<br> RIPSLYMEさんの歌を口ずさむのが癖で、<br> ラップって歌っていて心地良いんですよとても<br> 姉の影響で中学からきいてるので<br> もう歌詞は頭に入ってます<br> いつか自作ラップしてみたいですね〜<br> <br> <br> <br> <br> <br> 【 ジブリパーク開園が待ち遠しい 】<br> <br> 来年の秋かあ<br> 待ち遠しいなあ<br> ジブリパークが今のモチベ<br> 何よりも楽しみタノシミたのしみtanoshimi<br> <br> <br> <br> <br> <br> <br> 今月、初オンライントーク会があります<br> ミートアンドグリート　って言うと美味しそうだから<br> オンライントーク会って言いますね<br> <br> 楽しい話たくさんしたいです！<br> いつもの握手会みたいな！<br> 面白い話たくさんしてほしい〜！しましょ〜！<br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/02/08/6575232/0001.jpeg\"><br> <br> <br> <br> <br> ヨーグルトたべてくる！またね！<br> <br> <br> <br> </p>"},{"datetime":"2021/01/10 14:54","author":"堀未央奈","title":"最近のマイブームはGoogle Earthで行きたい場所に行った気分になること ps.エモくないのよ全然","url":"http://blog.nogizaka46.com/miona.hori/2021/01/059697.php","content":"﻿<br> <br> <br> <br> <br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/01/10/5776261/0000.jpeg\"><br>  <br>  <br>  僕は僕を好きになる　のmvが公開されました<br>  乃木坂46としてのmv撮影はこれが最後でした<br>  <br>  制作の方々の中では監督さんだけが<br>  わたしの卒業を知っていたので<br>  みなさんにちゃんとご挨拶できなかったことが<br>  心残りです<br>  制作に携わってくださったみなさん<br>  ありがとうございました...届きますように<br>  そしてまたどこかでご一緒できたら嬉しいです！<br>  <br>  <br>  <br>  <br>  最近は優里さんのドライフラワーを<br>  よく聴いてますが<br>  アゲアゲなpopsongよりも<br>  しっとりとした曲や落ち着いた曲が好きみたいです<br>  <br>  <br>  <br>  <br>  今日の乃木坂工事中では<br>  新年らしくお着物を着ています<br>  <br>  2年前かな？着た時もツインをしたのですが<br>  今回も途中から髪が邪魔でツインにしました☺︎<br>  <br>  <br> <img src=\"img/blog/miona.hori/img/2021/01/10/5776261/0001.jpeg\"><br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/01/10/5776261/0002.jpeg\"><br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/01/10/5776261/0003.jpeg\"><br>  <br>  <br>  高めツインをするとりんごさんが必ず<br>  かわいいってきゅるきゅるな目で<br>  褒めてくれます笑<br>  やりがいがあります笑<br>  <br>  <br>  素敵なお着物を用意してくださり<br>  ありがとうございます^ - ^<br>  2021年は、世界中が素敵な一年になりますように<br>  <br>  <br>  <br>  そして明日は成人の日<br>  新成人の皆さん、おめでとうございます☺︎<br>  <br>  気付けば成人を迎えのは4年前...<br>  <br>  \"曇り空にも雨にも負けない太陽でいたい\"<br>  そう自分の中で思ってきました<br>  どんなものにも惑わされず、自分の道を進む<br>  <br>  果たして自分の選択は正しいのか<br>  そう悩む時もたくさんありました<br>  たくさん怖くもなりました<br>  でも、ちゃんと自分の奥底の気持ちに<br>  耳を傾けたら正解はわかります<br>  正しい選択ができないのは自分自身の軸が<br>  ぶれていて、軸自体がまだ脆いのかもしれない<br>  少しずつ、少しずつ、自分を高めて行けたら<br>  きっといつか自分の為にも誰かの為にも<br>  動ける日がくると思っています<br>  <br>  <br>  <br>  わたしが大切にしている言葉<br>  <br>  \"悔しい思いをするから成長する<br>  悔しい。はチャンス\"<br>  <br>  悔しい事があると人はなんで自分だけ、<br>  なんて不運なんだと悲観的になります<br>  でも私はその悔しさこそが原動力だと思っているので<br>  よし、もっともっと頑張ろうって思えます<br>  悔しさを人にぶつけた時点で自分の負けです<br>  <br>  誰かを落として、不幸にしてまで自分が救われたいなんていう考え方は絶対に間違っているし、自分も幸せになりたいなら自分自身が変わっていって成長しないと意味がない。<br>  だから悔しさをあくまでもポジティブに変換してます。<br>  悔しいからこそ自分がしてほしかったことを誰かにしたり、自分でもう一度頑張ってみる。<br>  <br>  <br>  簡単な道では無いし苦労もあるけど<br>  自分にちゃんと向き合える人は<br>  そう生きていくべきなんじゃないかと思います<br>  <br>  人生は思い通りにはいかないけど<br>  自分が描く未来や夢を諦める必要はないし<br>  \"思い通り\"じゃなくても、\"想う道\"を歩めばいい<br>  <br>  <br>  今年は乃木坂46という場所を離れ<br>  新たな道へと進みますが<br>  1つ1つの試練や壁を楽しみながら<br>  頑張りたいなと思っています<br>  そして周りの人を笑顔に、幸せに導ける大人になりたいと改めて思います<br>  どうか新成人の皆さんの新たな道が<br>  惑わされることのなく<br>  幸せと希望に満ちたものとなりますように<br>  <br>  <br>  <br>  <br>  <br>  寒いね、餅食べたい<br>  では☺︎<br>  <br>  <br>  <br>  <br>  <br>  <br> "}]; </script>
+<script src="../assets/script/main.js"></script>
+
+</html>

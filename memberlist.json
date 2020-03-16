@@ -1,24 +1,46 @@
 [
   {
+    "year": "2021",
+    "member": [
+      {
+        "name": "堀 未央奈",
+        "name_hiragana": "ほり みおな",
+        "image": "miona.hori/img/www/member/img/horimiona_prof.jpg",
+        "link": "miona.hori/index.html",
+        "graduation_date": "2021/03/28"
+      }
+    ]
+  },
+  {
     "year": "2020",
     "member": [
       {
-        "name": "佐々木 琴子",
-        "name_hiragana": "ささき ことこ ",
-        "image": "kotoko.sasaki/img/www/member/img/sasakikotoko_prof.jpg",
-        "link": "kotoko.sasaki/index.html"
+        "name": "中田 花奈",
+        "name_hiragana": "なかだ かな",
+        "image": "kana.nakada/img/www/member/img/nakadakana_prof.jpg",
+        "link": "kana.nakada/index.html",
+        "graduation_date": "2020/10/25"
       },
       {
         "name": "白石 麻衣",
         "name_hiragana": "しらいし まい",
         "image": "mai.shiraishi/img/www/member/img/shiraishimai_prof.jpg",
-        "link": "mai.shiraishi/index.html"
+        "link": "mai.shiraishi/index.html",
+        "graduation_date": "2020/10/28"
       },
       {
         "name": "井上 小百合",
         "name_hiragana": "いのうえ さゆり",
         "image": "sayuri.inoue/img/www/member/img/inouesayuri_prof.jpg",
-        "link": "sayuri.inoue/index.html"
+        "link": "sayuri.inoue/index.html",
+        "graduation_date": "2020/04/27"
+      },
+      {
+        "name": "佐々木 琴子",
+        "name_hiragana": "ささき ことこ ",
+        "image": "kotoko.sasaki/img/www/member/img/sasakikotoko_prof.jpg",
+        "link": "kotoko.sasaki/index.html",
+        "graduation_date": "2020/03/31"
       }
     ]
   },
