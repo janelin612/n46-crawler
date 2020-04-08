@@ -3,12 +3,6 @@
     "year": "2020",
     "member": [
       {
-        "name": "佐々木 琴子",
-        "name_hiragana": "ささき ことこ ",
-        "image": "kotoko.sasaki/img/www/member/img/sasakikotoko_prof.jpg",
-        "link": "kotoko.sasaki/index.html"
-      },
-      {
         "name": "白石 麻衣",
         "name_hiragana": "しらいし まい",
         "image": "mai.shiraishi/img/www/member/img/shiraishimai_prof.jpg",
@@ -19,6 +13,13 @@
         "name_hiragana": "いのうえ さゆり",
         "image": "sayuri.inoue/img/www/member/img/inouesayuri_prof.jpg",
         "link": "sayuri.inoue/index.html"
+      },
+      {
+        "name": "佐々木 琴子",
+        "name_hiragana": "ささき ことこ ",
+        "image": "kotoko.sasaki/img/www/member/img/sasakikotoko_prof.jpg",
+        "link": "kotoko.sasaki/index.html",
+        "graduation_date": "2020/03/31"
       }
     ]
   },
