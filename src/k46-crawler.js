@@ -88,10 +88,8 @@ let contentCrawler = new Crawler({
       $(".box-main img").each((index, value) => {
         let src = $(value).attr("src");
         if (src != null && src.length > 0 && !src.startsWith("blob")) {
-          Image.download(src);
-
-          let localLocation = Image.getLocalUrl(src);
-          $(value).attr("src", localLocation);
+          let localPath = Image.download(src);
+          $(value).attr("src", localPath);
         }
       });
 
@@ -159,8 +157,7 @@ let memberInfoCrawler = new Crawler({
       //處理成員頭像
       let memberImage = $("div.box-profile_img img").first().attr("src");
       if (memberImage) {
-        Image.download(memberImage);
-        memberImage = Image.getLocalUrl(memberImage);
+        memberImage = Image.download(memberImage);
       }
 
       //成員姓名
