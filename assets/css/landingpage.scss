@@ -28,15 +28,15 @@ body {
   height: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  align-content: flex-start;
   flex-wrap: wrap;
   overflow-y: auto;
   margin: 0 16px;
+  justify-content: start;
+}
 
-  @media screen and (max-width: 700px) {
-    justify-content: center;
-  }
+.list-container {
+  width: 50%;
+  max-width: 180px;
 }
 
 .member {
@@ -46,7 +46,6 @@ body {
   background-color: white;
   margin: 8px;
   padding: 6px;
-  width: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,7 +55,7 @@ body {
   &:hover {
     background-color: #b5bfd1;
     color: #7D2982;
-    transition: all 0.3s linear;
+    transition: all 0.2s linear;
 
     .avatar img {
       transform: scale(1.08);
@@ -71,8 +70,9 @@ body {
 
     img {
       width: 100%;
-      height: 200px;
-      transition: transform .3s ease;
+      height: 100%;
+      transition: transform .35s ease;
+      object-fit: cover;
     }
 
   }
@@ -82,15 +82,15 @@ body {
     flex-direction: column;
     margin: 10px 0 0 0;
     text-shadow: 1px 1px 5px #c2c2c2;
-    
+
     .name {
-      font-size: 23px;
-      line-height: 25px;
+      font-size: 21px;
+      line-height: 23px;
     }
 
     .name-hiragana {
-      font-size: 16px;
-      line-height: 18px;
+      font-size: 15px;
+      line-height: 16px;
     }
   }
 

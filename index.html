@@ -43,16 +43,18 @@
     <div v-for="(group,index) in list" class="group">
       <div class="year">{{group.year}}</div>
       <div class="list">
-        <a v-for="(item,index) in group.member" class="member" :href="item.link">
-          <div class="avatar">
-            <div class="ribbon" v-if="!item.graduation_date">卒業予定</div>
-            <img :src="item.image" :alt="item.name" />
-          </div>
-          <div class="info">
-            <div class="name">{{item.name}}</div>
-            <div class="name-hiragana">{{item.name_hiragana}}</div>
-          </div>
-        </a>
+        <div v-for="(item,index) in group.member" class="list-container">
+          <a class="member" :href="item.link">
+            <div class="avatar">
+              <div class="ribbon" v-if="!item.graduation_date">卒業予定</div>
+              <img :src="item.image" :alt="item.name" />
+            </div>
+            <div class="info">
+              <div class="name">{{item.name}}</div>
+              <div class="name-hiragana">{{item.name_hiragana}}</div>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
