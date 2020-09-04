@@ -4,6 +4,7 @@
  */
 const Epub = require("epub-gen");
 const Fs = require("fs");
+const Crypto = require('crypto');
 
 let member = JSON.parse(Fs.readFileSync("./viewer/member.json"));
 let content = JSON.parse(Fs.readFileSync("./viewer/result.json"));
@@ -16,7 +17,8 @@ const option = {
     return {
       title: value.title,
       author: value.author,
-      data: value.content.replace(/\"img\//g, "\"http://127.0.0.1:8080/img/")
+      data: value.content.replace(/\"img\//g, "\"http://127.0.0.1:8080/img/"),
+      filename: Crypto.createHash('md5').update(value.url).digest('hex')
     }
   })
 };
