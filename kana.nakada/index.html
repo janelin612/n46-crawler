@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>中田 花奈 | 乃木坂46卒業メンバーのブログ</title>
+  <meta name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA">
+  <meta property="og:image" name="twitter:image" content="https://janelin612.github.io/n46-crawler/assets/zaoidj.jpg">
+  <meta property="og:title" name="twitter:title" content="中田 花奈 | 乃木坂46卒業メンバーのブログ">
+  <meta property="og:description" name="twitter:description" content="2020/10/21 16:30ガトーショコラカナ？18882020/10/20 16:50とまとカナ？18872020/10/18 14:30うん、ラジオ好きカナ？18862020/10/16 18:30重版ありがとうございますカナ？1885">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+  <script src="../assets/script/vue.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-38227412-4');
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../assets/menu.svg" alt=""></button>
+    <div class="member" :class="{'hide':isFold}">
+      <button id="btn-home" onclick="location.href='../'"><img src="../assets/arrow.svg" alt="" srcset=""><span>ホーム</span></button>
+      <img :src="member.image" alt="" class="avatar">
+      <div class="name">{{member.name}}</div>
+      <div class="name hiragana">{{member.name_hiragana}}</div>
+
+      <ul class="intro">
+        <li v-for="item in member.intro">
+          <span class="key">{{item.key}}</span>
+          <span class="value">{{item.value}}</span>
+        </li>
+      </ul>
+
+      <ul class="tag">
+        <li v-for="item in member.tag">{{item}}</li>
+      </ul>
+    </div>
+
+    <div class="menu" :class="{'hide':isFold}">
+      <div class="loading-spinner" v-if="isLoading">
+        <div class="spinner"></div>
+      </div>
+      <ul>
+        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
+          <div v-html="item.title"></div>
+          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
+          <div class="small-datetime">{{item.datetime}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main" v-if="currentPost!=null">
+      <div class="heading">
+        <a class="post-time" :href="currentPost.url" target="_blank">
+          <div class="year-month">{{currentPostDate.yearMonth}}</div>
+          <span class="date">{{currentPostDate.date}}</span>
+          <span class="week">{{currentPostDate.weekday}}</span>
+        </a>
+        <div class="post-info">
+          <div class="author">{{currentPost.author}}</div>
+          <div class="title" v-html="currentPost.title"></div>
+        </div>
+      </div>
+      <div class="content" v-html="currentPost.content"></div>
+    </div>
+  </div>
+</body>
+<script> const defaultList=[{"datetime":"2020/10/21 16:30","author":"中田花奈","title":"ガトーショコラカナ？1888","url":"http://blog.nogizaka46.com/kana.nakada/2020/10/058475.php","content":"<p><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></p>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>本日も</div>\n<div>オンライン ミート＆グリート</div>\n<div>行ってきます</div>\n<div> </div>\n<div> </div>\n<div>ここ2週間は</div>\n<div>ほぼ毎日してます</div>\n<div> </div>\n<div> </div>\n<div>凄くいいシステムに感じる！</div>\n<div> </div>\n<div> </div>\n<div>皆さんにとっては</div>\n<div>\n<div>交通費やホテル代が浮くとかくらいかもだけど</div>\n</div>\n<div> </div>\n<div>オンラインで話せてる方が</div>\n<div>なんか特別感あるし</div>\n<div> </div>\n<div>お家にグッズたくさん飾ってくれてたり</div>\n<div>ポスター飾ってくれてるのも嬉しいし</div>\n<div> </div>\n<div>可愛いお部屋だな～</div>\n<div>オシャレな部屋だな～</div>\n<div>めっちゃいい家だな～とかもあるし(笑)</div>\n<div> </div>\n<div> </div>\n<div>それこそ写真集の好きなページを見せてもらうとかも</div>\n<div>このシステムじゃなきゃ</div>\n<div>難しかっただろうし</div>\n<div> </div>\n<div>\n<div>握手会ではできない</div>\n<div>このシステムならではの遊び方を見つけてくれてる方も</div>\n<div>もういるし</div>\n</div>\n<div> </div>\n<div>楽しい</div>\n<div> </div>\n<div> </div>\n<div>これからも続くと思うから</div>\n<div>1番やってるであろう中田的に</div>\n<div>いろいろアドバイス的な事したいと思います～</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>まず、場所！</div>\n<div> </div>\n<div>お家以外の方も多い印象です</div>\n<div> </div>\n<div>ホテルとかカラオケとか車内とか会社とか</div>\n<div> </div>\n<div>家族にバレないようにー</div>\n<div>家に帰る時間がないー</div>\n<div>電波がいい所でー</div>\n<div> </div>\n<div>と事情があると思いますが</div>\n<div> </div>\n<div>家じゃできないよって今まで諦めてた方は</div>\n<div>考えてみてください～</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>それから</div>\n<div>電波は絶対いい所がいいよ！</div>\n<div> </div>\n<div>電波が悪い人はいつも悪いから</div>\n<div>たぶんこっちの責任じゃない事が多い(笑)</div>\n<div> </div>\n<div>声も途切れ途切れの人は</div>\n<div>いつも一緒だし</div>\n<div> </div>\n<div>繋がらない人は</div>\n<div>いつも一緒だから</div>\n<div> </div>\n<div>なんとなく</div>\n<div>読唇術が備わってきたけど(笑)</div>\n<div> </div>\n<div> </div>\n<div>同じ握手券を</div>\n<div>いいものにするか、否か</div>\n<div> </div>\n<div>皆さん次第と言っても過言ではないです！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>あと、時間</div>\n<div> </div>\n<div>時間が終わった後に</div>\n<div>白いモヤモヤになり始めると思うけど</div>\n<div>その時間はもう声は聞こえてないから</div>\n<div>時間内に全部伝えてください～</div>\n<div> </div>\n<div>枚数持ってたら</div>\n<div>まとめ出しが絶対楽しめると思う</div>\n<div> </div>\n<div>10枚だと</div>\n<div>喋る事無くなっちゃったりしそうで怖いって方もいるかもだけど</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>最後に、やっぱりルールは守りましょう！</div>\n<div> </div>\n<div>トークの録画、録音、スクリーンショット等は禁止なんだけど</div>\n<div> </div>\n<div>こっちからしたら</div>\n<div>結構わかっちゃうー</div>\n<div> </div>\n<div>ルール守れない人なんだー</div>\n<div>って悪い印象残すのは</div>\n<div>嫌かなと思うし</div>\n<div> </div>\n<div>こっちもガッカリしちゃうし</div>\n<div> </div>\n<div>発言、言動含め</div>\n<div>オンラインもちゃんと</div>\n<div>スタッフさんにチェックされてるから</div>\n<div>ルールはみんな守ろー！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>個人的にも乃木坂としての</div>\n<div>最後の活動がこれになるので</div>\n<div>皆さんといい思い出が作れたらなと思います</div>\n<div> </div>\n<div> </div>\n<div>本日もよろしくお願いします～</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/kana.nakada/img/2020/10/21/6498043/0000.jpeg\"></div>\n<div> </div>\n<div> </div>\n<div>なかだかな</div>"},{"datetime":"2020/10/20 16:50","author":"中田花奈","title":"とまとカナ？1887","url":"http://blog.nogizaka46.com/kana.nakada/2020/10/058468.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>&nbsp;</div><div><div>一昨日は</div><div>らじらー！に出演させていただきました！</div><div>&nbsp;</div><div>&nbsp;</div><div>藤森さん、徳井さん</div><div>ありがとうございました！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>素敵な花束を頂いちゃったよ～</div><div>&nbsp;</div><div>頂いた時はまだ蕾だった百合が咲いてきたから</div><div>今日雄しべをとりました～</div><div>&nbsp;</div><div>お花に囲まれて幸せ</div><div>&nbsp;</div><div>ありがとうございます！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>14回も出演させていただき</div><div>本当にありがとうございます</div><div>&nbsp;</div><div>それぞれのメンバーにあわせて</div><div>コーナーを作ってもらえて</div><div>嬉しかったし</div><div>&nbsp;</div><div>藤森さんver.のナカダカナシカ</div><div>めっちゃ好きでした！</div><div>&nbsp;</div><div>&nbsp;</div><div>サンエトも</div><div>らじらー！さんにたくさん協力していただいて</div><div>本当にありがとうございました</div><div>&nbsp;</div><div><div>サンエトの時代を思い出すと</div><div>なんかすごくドキドキするんだ～</div></div><div>&nbsp;</div><div>本当に楽しかった</div><div>&nbsp;</div><div>&nbsp;</div><div>らじらー！さん</div><div>今までありがとうございました！</div></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>クランクイン！さんの記事があがってます！</div><div>&nbsp;</div><div>読んでね～</div><div>&nbsp;</div><div><a href=\"http://www.crank-in.net/interview/82094\"><a href=\"http://www.crank-in.net/interview/82094\">http://www.crank-in.net/interview/82094</a></a></div><div>&nbsp;</div><div>&nbsp;</div><div>何年か前にファンの方が竹中さんに私が麻雀を好きだと言うのを伝えてくれた事がきっかけでトップ目とご縁ができたり</div><div>&nbsp;</div><div>ファンの方がお仕事をオファーしてくださってありがたい機会をいただいたり</div><div>&nbsp;</div><div>今年、もう少し続けようと思ったのは</div><div>ファンの方のおかげでした。</div><div>&nbsp;</div><div>&nbsp;</div><div>うちのメンバーは</div><div>たくさんお仕事もいただけてるから</div><div>忘れちゃいそうだけど</div><div>&nbsp;</div><div>乃木坂のファンの皆さんには</div><div>推すってどういう事なのか</div><div>後悔のないように</div><div>全力で推してほしいです！</div><div>&nbsp;</div><div>中田もこれから乃木坂の一ファンとして</div><div>なにかできる事があればと思います！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/kana.nakada/img/2020/10/20/8006241/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>なかだかな</div></body></html> "},{"datetime":"2020/10/18 14:30","author":"中田花奈","title":"うん、ラジオ好きカナ？1886","url":"http://blog.nogizaka46.com/kana.nakada/2020/10/058449.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>本日、らじらー！に</div><div>出演させていただきます！！</div><div>&nbsp;</div><div>ラストらじらー！になりますね～</div><div>&nbsp;</div><div>最後に出演できて嬉しい！</div><div>&nbsp;</div><div>よろしくお願いします</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/kana.nakada/img/2020/10/18/9883331/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>昨日、タダバカに</div><div>コメント出演させていただきました！！！</div><div>&nbsp;</div><div>めっちゃ嬉しい～～～</div><div>&nbsp;</div><div>&nbsp;</div><div>ブーンブンブンしてる気分になれるらしいです！</div><div>写真集『好きなことだけをしていたい』よろしくお願いします(笑)</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>サプライズみたいな感じだったので</div><div>告知できなくてすみません</div><div>&nbsp;</div><div>タイムフリーでまだ聴けますが</div><div>過激派のファンの皆さんは</div><div>絶対に聴かないでね！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>さらば青春の光の</div><div>森田さん、東ブクロさん</div><div>&nbsp;</div><div>タダバカスタッフさん</div><div>&nbsp;</div><div>そして、しろくまきなこさん</div><div>本当にありがとうございました！！！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>一昨日は</div><div>沈金でした</div><div>&nbsp;</div><div>&nbsp;</div><div>ゲストは</div><div>22/7から宮瀬玲奈ちゃんが出演してくれました！</div><div>&nbsp;</div><div>れいにゃんいつもありがと～！</div><div>また遊びに行こうね～</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>テーマは</div><div>卒業までにやっておいたほうがいいこと</div><div>&nbsp;</div><div>モテないおじさんのコーナーは</div><div>100万円の使いかた</div><div>&nbsp;</div><div>女優とエチュードのコーナーは</div><div>ねぇ、もっと一緒にいたいんだけど</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>ボディーアート見て見なきゃ</div><div>&nbsp;</div><div>ベアキラーは彫らないです</div><div>&nbsp;</div><div>&nbsp;</div><div>次はラストだー！わー！</div><div>&nbsp;</div><div>&nbsp;</div><div>なかだかな</div></body></html> "},{"datetime":"2020/10/16 18:30","author":"中田花奈","title":"重版ありがとうございますカナ？1885","url":"http://blog.nogizaka46.com/kana.nakada/2020/10/058434.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>&nbsp;</div><div>今日は沈金だよー！</div><div>&nbsp;</div><div>ラス前！！</div><div>&nbsp;</div><div>聴いてね</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>一昨日は</div><div>&nbsp;</div><div><div>中田花奈1st 写真集「好きなことだけをしていたい」発売記念スペシャル!</div><div>&nbsp;</div><div>のSHOWROOMを</div><div>やらせてもらいました～</div></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>見てくださった皆さん</div><div>ありがとうございました！</div><div>&nbsp;</div><div>コメントやギフトも</div><div>ありがとうございます！！</div><div><div>&nbsp;</div><div>&nbsp;</div><div>#僕は中田花奈ちゃん</div><div>トレンド入りありがとうございます(笑)</div></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>メッセージ入りポスター付き写真集も</div><div>限定で販売させてもらいました～</div><div>&nbsp;</div><div>買ってくださった皆さん</div><div>ありがとうございます</div><div>&nbsp;</div><div>放送上では</div><div>メッセージは頑なに見せなかったんですが</div><div>皆さんに早く届くといいな</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>レイちゃん、葉月、久保ちゃん</div><div>美波ちゃん、みり愛、真夏</div><div>&nbsp;</div><div>本当にありがとう</div><div>&nbsp;</div><div>もう号泣でした</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>SHOWROOM中に</div><div>3刷決定も嬉しかったです！</div><div>&nbsp;</div><div>ありがとうございます</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>TwitterとTikTokであがってますが</div><div>写真集発売の</div><div>オシャレな動画を作っていただきました！</div><div>&nbsp;</div><div>それぞれちょっと違う動画になってますので</div><div>両方見てみてねー！</div><div>&nbsp;</div><div>&nbsp;</div><div>Twitter</div><div><a href=\"https://twitter.com/nogizaka46/status/1315959900430766081?s=21\"><a href=\"https://twitter.com/nogizaka46/status/1315959900430766081?s=21\">https://twitter.com/nogizaka46/status/1315959900430766081?s=21</a></a></div><div>&nbsp;</div><div>TikTok</div><div><a href=\"https://snssdk1180.onelink.me/BAuo/79076418\"><a href=\"https://snssdk1180.onelink.me/BAuo/79076418\">https://snssdk1180.onelink.me/BAuo/79076418</a></a></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>SHOWROOM前に</div><div><div>タワーレコード新宿店様と</div><div>SHIBUYA TSUTAYA様で</div><div>やっていただいるパネル展に遊びに行ってきました！</div><div>&nbsp;</div><div><img src=\"img/blog/kana.nakada/img/2020/10/16/4058522/0000.jpeg\"></div></div><div>&nbsp;</div><div><div>サインとかいろいろ書いてきたので</div><div>見てきてね</div><div>&nbsp;</div><div>抽選で落書きしたパネルのプレゼントがあったりとかもしちゃうよ～</div></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>因みに、</div><div>&nbsp;</div><div><img src=\"img/blog/kana.nakada/img/2020/10/16/4058522/0001.jpeg\"></div><div>&nbsp;</div><div>ママが一生懸命写真撮ってるの</div><div>パパから送られてきた(笑)</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><div>エンタメ NEXTさんの記事</div><div>あがってますので</div><div>読んでね～</div><div>&nbsp;</div><div><a href=\"https://entamenext.com/articles/detail/7399\">https://entamenext.com/articles/detail/7399</a></div></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>昨日発売しました『EX大衆』さん</div><div>&nbsp;</div><div>さゆりんご軍団の連載が載ってます</div><div>&nbsp;</div><div>&nbsp;</div><div>知ってる人は知ってるかと思いますが</div><div>&nbsp;</div><div>いろいろ赤裸々に語ってる</div><div>写真集の1万字インタビューを書いてくださった大貫さんが</div><div>いつも書いてくださってます</div><div>&nbsp;</div><div>この連載に限らず</div><div>初期の頃から本当にありがとうございます</div><div>&nbsp;</div><div>読んでね</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>なかだかな</div></body></html> "}]; </script>
+<script src="../assets/script/main.js"></script>
+
+</html>
