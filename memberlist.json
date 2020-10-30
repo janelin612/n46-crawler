@@ -6,13 +6,15 @@
         "name": "中田 花奈",
         "name_hiragana": "なかだ かな",
         "image": "kana.nakada/img/www/member/img/nakadakana_prof.jpg",
-        "link": "kana.nakada/index.html"
+        "link": "kana.nakada/index.html",
+        "graduation_date": "2020/10/25"
       },
       {
         "name": "白石 麻衣",
         "name_hiragana": "しらいし まい",
         "image": "mai.shiraishi/img/www/member/img/shiraishimai_prof.jpg",
-        "link": "mai.shiraishi/index.html"
+        "link": "mai.shiraishi/index.html",
+        "graduation_date": "2020/10/28"
       },
       {
         "name": "井上 小百合",
