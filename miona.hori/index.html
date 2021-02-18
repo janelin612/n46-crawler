@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>堀 未央奈 | 乃木坂46卒業メンバーのブログ</title>
+  <meta name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA">
+  <meta property="og:image" name="twitter:image" content="https://janelin612.github.io/n46-crawler/assets/zaoidj.jpg">
+  <meta property="og:title" name="twitter:title" content="堀 未央奈 | 乃木坂46卒業メンバーのブログ">
+  <meta property="og:description" name="twitter:description" content="2021/02/08 16:00ジブリパークがたのしみすぎて寝れない毎日が続いていてまあ2時には寝てます2021/01/10 14:54最近のマイブームはGoogle Earthで行きたい場所に行った気分になること ps.エモくないのよ全然2021/01/06 20:42髪切ったのー2021/01/02 18:002021">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+  <script src="../assets/script/vue.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-38227412-4');
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../assets/menu.svg" alt=""></button>
+    <div class="member" :class="{'hide':isFold}">
+      <button id="btn-home" onclick="location.href='../'"><img src="../assets/arrow.svg" alt="" srcset=""><span>ホーム</span></button>
+      <img :src="member.image" alt="" class="avatar">
+      <div class="name">{{member.name}}</div>
+      <div class="name hiragana">{{member.name_hiragana}}</div>
+
+      <ul class="intro">
+        <li v-for="item in member.intro">
+          <span class="key">{{item.key}}</span>
+          <span class="value">{{item.value}}</span>
+        </li>
+      </ul>
+
+      <ul class="tag">
+        <li v-for="item in member.tag">{{item}}</li>
+      </ul>
+    </div>
+
+    <div class="menu" :class="{'hide':isFold}">
+      <div class="loading-spinner" v-if="isLoading">
+        <div class="spinner"></div>
+      </div>
+      <ul>
+        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
+          <div v-html="item.title"></div>
+          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
+          <div class="small-datetime">{{item.datetime}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main" v-if="currentPost!=null">
+      <div class="heading">
+        <a class="post-time" :href="currentPost.url" target="_blank">
+          <div class="year-month">{{currentPostDate.yearMonth}}</div>
+          <span class="date">{{currentPostDate.date}}</span>
+          <span class="week">{{currentPostDate.weekday}}</span>
+        </a>
+        <div class="post-info">
+          <div class="author">{{currentPost.author}}</div>
+          <div class="title" v-html="currentPost.title"></div>
+        </div>
+      </div>
+      <div class="content" v-html="currentPost.content"></div>
+    </div>
+  </div>
+</body>
+<script> const defaultList=[{"datetime":"2021/02/08 16:00","author":"堀未央奈","title":"ジブリパークがたのしみすぎて寝れない毎日が続いていてまあ2時には寝てます","url":"http://blog.nogizaka46.com/miona.hori/2021/02/060013.php","content":"<p><br> <br> <br> <br> こんにちは！<br> <br> 寒かったり暖かかったり<br> わがままな天気が続いていますね<br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/02/08/6575232/0000.jpeg\"><br> <br> <br> <br> platinum FLASH発売中です！<br> <br> <br> ほかにも色々お知らせもあるので（╹◡╹）♡<br> 楽しみに待っていてください（╹◡╹）♡<br> <br> <br> バスラもうすぐですね〜<br> というかもう2月なんですね<br> いつも今って何月だ?とわからなくなります<br> だいすきな豆を食べるイベント節分も終わったし<br> 2月もあっという間なんだろなぁ<br> 春が来るなぁ<br> 花粉はもう来てるなぁ<br> ...<br> <br> <br> 髪を洗っているときは無心で<br> RIPSLYMEさんの歌を口ずさむのが癖で、<br> ラップって歌っていて心地良いんですよとても<br> 姉の影響で中学からきいてるので<br> もう歌詞は頭に入ってます<br> いつか自作ラップしてみたいですね〜<br> <br> <br> <br> <br> <br> 【 ジブリパーク開園が待ち遠しい 】<br> <br> 来年の秋かあ<br> 待ち遠しいなあ<br> ジブリパークが今のモチベ<br> 何よりも楽しみタノシミたのしみtanoshimi<br> <br> <br> <br> <br> <br> <br> 今月、初オンライントーク会があります<br> ミートアンドグリート　って言うと美味しそうだから<br> オンライントーク会って言いますね<br> <br> 楽しい話たくさんしたいです！<br> いつもの握手会みたいな！<br> 面白い話たくさんしてほしい〜！しましょ〜！<br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/02/08/6575232/0001.jpeg\"><br> <br> <br> <br> <br> ヨーグルトたべてくる！またね！<br> <br> <br> <br> </p>"},{"datetime":"2021/01/10 14:54","author":"堀未央奈","title":"最近のマイブームはGoogle Earthで行きたい場所に行った気分になること ps.エモくないのよ全然","url":"http://blog.nogizaka46.com/miona.hori/2021/01/059697.php","content":"﻿<br> <br> <br> <br> <br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/01/10/5776261/0000.jpeg\"><br>  <br>  <br>  僕は僕を好きになる　のmvが公開されました<br>  乃木坂46としてのmv撮影はこれが最後でした<br>  <br>  制作の方々の中では監督さんだけが<br>  わたしの卒業を知っていたので<br>  みなさんにちゃんとご挨拶できなかったことが<br>  心残りです<br>  制作に携わってくださったみなさん<br>  ありがとうございました...届きますように<br>  そしてまたどこかでご一緒できたら嬉しいです！<br>  <br>  <br>  <br>  <br>  最近は優里さんのドライフラワーを<br>  よく聴いてますが<br>  アゲアゲなpopsongよりも<br>  しっとりとした曲や落ち着いた曲が好きみたいです<br>  <br>  <br>  <br>  <br>  今日の乃木坂工事中では<br>  新年らしくお着物を着ています<br>  <br>  2年前かな？着た時もツインをしたのですが<br>  今回も途中から髪が邪魔でツインにしました☺︎<br>  <br>  <br> <img src=\"img/blog/miona.hori/img/2021/01/10/5776261/0001.jpeg\"><br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/01/10/5776261/0002.jpeg\"><br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/01/10/5776261/0003.jpeg\"><br>  <br>  <br>  高めツインをするとりんごさんが必ず<br>  かわいいってきゅるきゅるな目で<br>  褒めてくれます笑<br>  やりがいがあります笑<br>  <br>  <br>  素敵なお着物を用意してくださり<br>  ありがとうございます^ - ^<br>  2021年は、世界中が素敵な一年になりますように<br>  <br>  <br>  <br>  そして明日は成人の日<br>  新成人の皆さん、おめでとうございます☺︎<br>  <br>  気付けば成人を迎えのは4年前...<br>  <br>  \"曇り空にも雨にも負けない太陽でいたい\"<br>  そう自分の中で思ってきました<br>  どんなものにも惑わされず、自分の道を進む<br>  <br>  果たして自分の選択は正しいのか<br>  そう悩む時もたくさんありました<br>  たくさん怖くもなりました<br>  でも、ちゃんと自分の奥底の気持ちに<br>  耳を傾けたら正解はわかります<br>  正しい選択ができないのは自分自身の軸が<br>  ぶれていて、軸自体がまだ脆いのかもしれない<br>  少しずつ、少しずつ、自分を高めて行けたら<br>  きっといつか自分の為にも誰かの為にも<br>  動ける日がくると思っています<br>  <br>  <br>  <br>  わたしが大切にしている言葉<br>  <br>  \"悔しい思いをするから成長する<br>  悔しい。はチャンス\"<br>  <br>  悔しい事があると人はなんで自分だけ、<br>  なんて不運なんだと悲観的になります<br>  でも私はその悔しさこそが原動力だと思っているので<br>  よし、もっともっと頑張ろうって思えます<br>  悔しさを人にぶつけた時点で自分の負けです<br>  <br>  誰かを落として、不幸にしてまで自分が救われたいなんていう考え方は絶対に間違っているし、自分も幸せになりたいなら自分自身が変わっていって成長しないと意味がない。<br>  だから悔しさをあくまでもポジティブに変換してます。<br>  悔しいからこそ自分がしてほしかったことを誰かにしたり、自分でもう一度頑張ってみる。<br>  <br>  <br>  簡単な道では無いし苦労もあるけど<br>  自分にちゃんと向き合える人は<br>  そう生きていくべきなんじゃないかと思います<br>  <br>  人生は思い通りにはいかないけど<br>  自分が描く未来や夢を諦める必要はないし<br>  \"思い通り\"じゃなくても、\"想う道\"を歩めばいい<br>  <br>  <br>  今年は乃木坂46という場所を離れ<br>  新たな道へと進みますが<br>  1つ1つの試練や壁を楽しみながら<br>  頑張りたいなと思っています<br>  そして周りの人を笑顔に、幸せに導ける大人になりたいと改めて思います<br>  どうか新成人の皆さんの新たな道が<br>  惑わされることのなく<br>  幸せと希望に満ちたものとなりますように<br>  <br>  <br>  <br>  <br>  <br>  寒いね、餅食べたい<br>  では☺︎<br>  <br>  <br>  <br>  <br>  <br>  <br> "},{"datetime":"2021/01/06 20:42","author":"堀未央奈","title":"髪切ったのー","url":"http://blog.nogizaka46.com/miona.hori/2021/01/059665.php","content":"﻿<br>  <br>  <br>  <br>  <br>  切りました。<br>  ボブより長く、ミディアムより短い<br>  ロブです！<br>  <br>  <br>  <br>  <br>  <br> <img src=\"img/blog/miona.hori/img/2021/01/06/3316844/0000.jpeg\"><br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/01/06/3316844/0001.jpeg\"><br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/01/06/3316844/0002.jpeg\"><br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/01/06/3316844/0003.jpeg\"><br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/01/06/3316844/0004.jpeg\"><br>  <br>  <br>  <br>  短くてごめんなさい>_<<br>  <br>  <br>  質問返し、次回します〜<br>  なにかあればコメントしてください♪<br>  <br>  <br>  <br>  最近ハマってるドラマは<br>  \"あなたが眠っている間に\"です<br>  SUZYさんが好きなので見始めたのですが<br>  話も面白いしきゅんきゅんするしで<br>  ハマっています...☺︎<br>  観た方いますか〜？<br>  <br>  <br>  <br>  では☺︎<br>  <br>  <br>  <br>  <br>  <br> "},{"datetime":"2021/01/02 18:00","author":"堀未央奈","title":"2021","url":"http://blog.nogizaka46.com/miona.hori/2021/01/059631.php","content":"<br>  <br>  <br>  <br>  <br>  あけましておめでとうございます．<br>  今年もよろしくお願いします！<br>  <br>  <br>  <br>  <br>  <br> <img src=\"img/blog/miona.hori/img/2021/01/02/6137029/0000.jpeg\"><br>  <br>  <br>  mステスーパーライブから<br>  レコ大、紅白、CDTVと<br>  怒涛の年末が終わり今はお家でまったりしてます<br>  <br>  <br>  <br>  乃木坂46としての残りの時間、<br>  楽しみたいと思います．<br>  <br>  <br>  そして新たな道も、頑張りたいです．<br>  2021年、笑いで溢れた1年にしたいな！<br>  <br>  <br>  <br>  <br> <img src=\"img/blog/miona.hori/img/2021/01/02/6137029/0001.jpeg\"><br>  <br>  まぶし<br>  <br>  <br>  <br>  あ、今月1/28発売の<br>  platinum FLASH チェックしてください✨<br>  表紙巻頭させていただいています<br>  <br>  <br>  <br>  <br> <img src=\"img/blog/miona.hori/img/2021/01/02/6137029/0002.jpeg\"><br> <br> <br> <br> <br> <br> <img src=\"img/blog/miona.hori/img/2021/01/02/6137029/0003.jpeg\"><br>  <br>  では<br>  <br>  <br>  ☺︎<br>  <br>  <br>  <br>  <br>  <br> "}]; </script>
+<script src="../assets/script/main.js"></script>
+
+</html>
