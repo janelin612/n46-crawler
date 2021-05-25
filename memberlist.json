@@ -8,6 +8,24 @@
         "image": "miona.hori/img/www/member/img/horimiona_prof.jpg",
         "link": "miona.hori/index.html",
         "graduation_date": "2021/03/28"
+      },
+      {
+        "name": "松村 沙友理",
+        "name_hiragana": "まつむら さゆり",
+        "image": "sayuri.matsumura/img/www/member/img/matsumurasayuri_prof.jpg",
+        "link": "sayuri.matsumura/index.html"
+      },
+      {
+        "name": "渡辺 みり愛",
+        "name_hiragana": "わたなべ みりあ",
+        "image": "miria.watanabe/img/www/member/img/watanabemiria_prof.jpg",
+        "link": "miria.watanabe/index.html"
+      },
+      {
+        "name": "伊藤 純奈",
+        "name_hiragana": "いとう じゅんな",
+        "image": "junna.itou/img/www/member/img/itoujunna_prof.jpg",
+        "link": "junna.itou/index.html"
       }
     ]
   },

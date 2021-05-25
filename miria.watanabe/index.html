@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>渡辺 みり愛 | 乃木坂46卒業メンバーのブログ</title>
+  <meta name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA">
+  <meta property="og:image" name="twitter:image" content="https://janelin612.github.io/n46-crawler/assets/zaoidj.jpg">
+  <meta property="og:title" name="twitter:title" content="渡辺 みり愛 | 乃木坂46卒業メンバーのブログ">
+  <meta property="og:description" name="twitter:description" content="2021/05/16 18:00大切な皆様へ2021/03/17 18:54草木と空2021/01/01 19:39花に刺繍2020/11/01 20:2421の記憶">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+  <script src="../assets/script/vue.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-38227412-4');
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../assets/menu.svg" alt=""></button>
+    <div class="member" :class="{'hide':isFold}">
+      <button id="btn-home" onclick="location.href='../'"><img src="../assets/arrow.svg" alt="" srcset=""><span>ホーム</span></button>
+      <img :src="member.image" alt="" class="avatar">
+      <div class="name">{{member.name}}</div>
+      <div class="name hiragana">{{member.name_hiragana}}</div>
+
+      <ul class="intro">
+        <li v-for="item in member.intro">
+          <span class="key">{{item.key}}</span>
+          <span class="value">{{item.value}}</span>
+        </li>
+      </ul>
+
+      <ul class="tag">
+        <li v-for="item in member.tag">{{item}}</li>
+      </ul>
+    </div>
+
+    <div class="menu" :class="{'hide':isFold}">
+      <div class="loading-spinner" v-if="isLoading">
+        <div class="spinner"></div>
+      </div>
+      <ul>
+        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
+          <div v-html="item.title"></div>
+          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
+          <div class="small-datetime">{{item.datetime}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main" v-if="currentPost!=null">
+      <div class="heading">
+        <a class="post-time" :href="currentPost.url" target="_blank">
+          <div class="year-month">{{currentPostDate.yearMonth}}</div>
+          <span class="date">{{currentPostDate.date}}</span>
+          <span class="week">{{currentPostDate.weekday}}</span>
+        </a>
+        <div class="post-info">
+          <div class="author">{{currentPost.author}}</div>
+          <div class="title" v-html="currentPost.title"></div>
+        </div>
+      </div>
+      <div class="content" v-html="currentPost.content"></div>
+    </div>
+  </div>
+</body>
+<script> const defaultList=[{"datetime":"2021/05/16 18:00","author":"渡辺みり愛","title":"大切な皆様へ","url":"https://blog.nogizaka46.com/miria.watanabe/2021/05/061542.php","content":"﻿<br>  ﻿<br>  ﻿<br>  <br>  ファンの皆様へ<br>  私からお知らせがあります。<br>  <br>  <br>  27枚目シングルをもちまして<br>  乃木坂46を卒業する事を決めました。<br>  <br>  <br>  <br>  お久しぶりのブログがこのような<br>  内容のブログになってしまい<br>  いきなりの発表で驚かせてしまい<br>  申し訳ありません...<br>  <br>  卒業日程は決まり次第<br>  またお知らせ致します。<br>  <br>  <br>  私の中では1年半程前から悩みに悩んで<br>  スタッフさんと相談させて頂き<br>  決めていました。<br>  <br>  <br>  私の中で、<br>  外の世界での色々なものを<br>  もっと見ていきたいと思ったし<br>  きっとそう簡単ではない山も<br>  登っていきたいなあと<br>  そう思い決断したので<br>  とってもとっても前向きな決断です！！<br>  <br>  <br>  <br>  13歳で入り、乃木坂46として<br>  活動してきた8年間は<br>  大切な宝物です。<br>  <br>  悔しい事も嬉しい事も<br>  色々な感情を経験しました<br>  メンバーが大好きで、<br>  ファンの皆様が大好きで、<br>  スタッフの皆様が大好きだからこそ<br>  8年という長い間、乃木坂に<br>  いることが出来たのだと思います。<br>  <br>  <br>  かけがえのない奇跡のような場所に<br>  いられた感謝。<br>  みんなに出会えて本当に良かった！<br>  <br>  <br>  ファンの皆さんは<br>  私が失敗した時は慰めてくれて、<br>  私を笑わせようと毎回考えてきてくれて<br>  私に嬉しいお仕事があった時は<br>  私よりも私の親よりも喜んでくれてる気がする笑<br>  <br>  私の為に泣いてくれたら笑ってくれたり、<br>  私を好きでいてくれてるみんなは<br>  本当に感受性が豊かで心が繊細だからこそ<br>  他のメンバーをも大切に出来る<br>  素敵な人たちばかり。<br>  <br>  そんな方達に囲まれて8年間<br>  乃木坂46として活動してこれたことが<br>  何よりの幸せです！<br>  <br>  <br>  右も左も分からないような未熟な私に<br>  皆さんはたくさんの事を<br>  教えて下さいました。<br>  それを無駄にはせず沢山の感謝を込めて<br>  これからも前に進んでいきたいと思います！<br>  <br>  <br>  <br>  <br>  そしてアンダーライブ2021の開催が<br>  決定致しました！<br>  <br>  私と純奈にとって、<br>  これが最後のライブになります。<br>  是非、沢山の方に見ていただきたいです！<br>  <br>  <br>  ラストライブ、全力で楽しみたい。<br>  無観客という部分では悔しい思いもあります。<br>  ですがその分沢山の方に<br>  見ていただけるという事だよね<br>  だったら張り切って頑張るぞ〜！！<br>  <br>  <br>  <br>  <br>  <br> <img src=\"img/blog/miria.watanabe/img/2021/05/16/4460872/0000.jpeg\"><br>  <br>  <br>  <br>  同じタイミングで卒業発表した純奈。<br>  <br>  曲の好みだったり趣味だったり<br>  共通するものが多くて<br>  共有し合ったり、<br>  仕事帰り1時間以上二人で歩いて帰ったり。<br>  <br>  ふとお互い会いたくなって<br>  会いたいって連絡くれたから<br>  次の日純奈の家にすぐ行った事もあった笑<br>  <br>  <br>  お互いメンバーみんなと仲良いけど、<br>  何かあるたびすぐ連絡したり<br>  仕事の事、プライベートの事を<br>  話し合ったり価値観が合ってるのは<br>  なんだかんだ純奈だった<br>  <br>  <br>  8年間、お互いよく頑張ったね！！<br>  最後までみんなと、<br>  そしてファンの皆さんと<br>  沢山の思い出を作りたいなあと<br>  思います(^ ^)<br>  <br>  <br>  読んでくれてありがとうございました。<br>  <br>  <br>  <br>  <br>  みり愛<br>  <br>  <br> "},{"datetime":"2021/03/17 18:54","author":"渡辺みり愛","title":"草木と空","url":"https://blog.nogizaka46.com/miria.watanabe/2021/03/060423.php","content":"﻿<br>  <br>  <br>  Instagram開設致しました！<br>  ブログやモバメとはまた違う写真を<br>  上げていきたいと思っています。<br>  私の大好きな世界観で。<br>  <br>  ブログやモバメ等は引き続き<br>  自撮りなどを載せていきたいと<br>  思っております！<br>  <br>  <br>  女の子のファンの皆様からは<br>  メイクのお話も聞きたいと意見をくれたので<br>  それもInstagramの方で紹介出来たら<br>  いいなあと思っております。<br>  <br>  <br>  <br> <img src=\"img/blog/miria.watanabe/img/2021/03/17/7479600/0000.jpeg\"><br> <br> <br> <br> <br> <br> <img src=\"img/blog/miria.watanabe/img/2021/03/17/7479600/0001.jpeg\"><br>  <br>  <br>  BUBKA発売中です！<br>  <br>  <br>  <br>  <br>  9th birthday live<br>  遅ればせながら、<br>  ありがとうございました！<br>  <br>  個人的にはセットリストも含めみんなが<br>  一人一人輝けるライブだったのではないかな<br>  と思っています。<br>  <br>  普段の全体ライブというと<br>  どうしても出る曲数に個人差が出てしまったり<br>  するのですが、今回は最初の<br>  インフルエンサーとシンクロニシティの<br>  ポジションをバラバラに振り分けて<br>  踊れたことが凄く良かったのかなあと<br>  思います！<br>  <br>  <br>  <br>  アナスターシャのイントロを聴いた時<br>  いつも聴いているはずなのに<br>  広い会場では初めてだったからか<br>  響き渡る音が鮮明に聞こえて<br>  それが凄く胸に突き刺さって<br>  鳥肌が立って泣きそうになりました。<br>  <br>  やはり良い曲だなあ<br>  <br>  <br>  <br>  3月28日には2期生ライブ<br>  3月29日には1期生ライブがあります。<br>  <br>  皆様、ご都合良ければ<br>  是非見てくださると嬉しいです(^^)<br>  <br>  <br>  <br>  　<br>  <br> <img src=\"img/blog/miria.watanabe/img/2021/03/17/7479600/0002.jpeg\"><br> <br> <br> <br> <br> <br> みり愛<br> <br> <br> <br> <br> <br> <br> "},{"datetime":"2021/01/01 19:39","author":"渡辺みり愛","title":"花に刺繍","url":"https://blog.nogizaka46.com/miria.watanabe/2021/01/059622.php","content":"﻿<br>  <br>  <br>  <br>  あけましておめでとうございます<br>  今年もどうか宜しくお願い致します。<br>  お久しぶりのブログ更新になってしまい<br>  すみません！<br>  <br>  <br>  <br> <img src=\"img/blog/miria.watanabe/img/2021/01/01/9310825/0000.jpeg\"><br> <br> <br> <br> <img src=\"img/blog/miria.watanabe/img/2021/01/01/9310825/0001.jpeg\"><br>  <br>  <br>  <br>  <br>  まずはアンダーライブのお話から。<br>  <br>  <br>  久しぶりの有観客ライブ。<br>  スタッフの皆様、ファンの皆様のご協力のもと<br>  開催できたものです。<br>  心から感謝いたします<br>  本当にありがとうございました。<br>  <br>  ずっとずっと楽しみにしていた<br>  サイリウムの景色<br>  本当に綺麗で初日から泣きそうで、笑<br>  <br>  <br>  でもそれより何より最高に楽しくて、<br>  歌ったり踊ったりする事が、<br>  舞台に立つという事がどれだけ幸せか<br>  毎日噛み締めながらやっていました。<br>  声は出せない状況の中<br>  スティックバルーンで応援して下さった皆様<br>  そして配信から応援して下さった皆様<br>  沢山の力を貰いました！ありがとう。<br>  <br>  <br>  <br>  そしてレコード大賞、紅白歌合戦、<br>  CDTVライブライブ<br>  沢山の歌番組に出演させて頂きました。<br>  <br>  この毎年の年末の忙しさが<br>  心地良くて、とても幸せです。<br>  本当に有難いことです...<br>  <br>  <br>  <br> <img src=\"img/blog/miria.watanabe/img/2021/01/01/9310825/0002.jpeg\"><br> <br> <br> <br> <img src=\"img/blog/miria.watanabe/img/2021/01/01/9310825/0003.jpeg\"><br>  <br>  <br>  パンツスタイル大好きだから<br>  お気に入り衣装に追加されました。笑<br>  <br>  <br>  <br> <img src=\"img/blog/miria.watanabe/img/2021/01/01/9310825/0004.jpeg\"><br>  <br>  <br>  振り入れの時間がなかなかタイトで、<br>  僕は僕を好きになる<br>  ダンスが染み込まずに本番を<br>  迎えてしまった事が少々心残り。<br>  <br>  またメンバーと年越しジャンプが出来て<br>  嬉しかった〜<br>  珍ハプニングもあったけど。笑<br>  <br>  <br>  <br>  2021年、皆様に沢山笑顔を届けられるよう<br>  精進して参ります。<br>  <br>  <br>  <br>  ちなみに今日はアーカイブ配信で<br>  Aqoursの皆さんの<br>  <br>  Aqours COUNTDOWN LoveLive! ～WHITE ISLAND～<br>  <br>  <br>  家でゆっくり見てました( ^ω^ )<br>  <br>  <br>  <br>  <br>  みり愛<br> "},{"datetime":"2020/11/01 20:24","author":"渡辺みり愛","title":"21の記憶","url":"https://blog.nogizaka46.com/miria.watanabe/2020/11/058618.php","content":"<p><br> <br> <br> <br> 花奈さん、白石さん<br> ご卒業おめでとうございます。<br> そして本当にお疲れ様でした！<br> <br> <br> <br> <img src=\"img/blog/miria.watanabe/img/2020/11/01/2949718/0000.jpeg\"><br> <br> 2018年の握手会<br> <br> <br> <br> <br> <br> <br> <img src=\"img/blog/miria.watanabe/img/2020/11/01/2949718/0001.jpeg\"><br> <br> <br> 2017年の夏、懐かしい、笑<br> <br> <br> <br> お二人は私にとって大切なお姉ちゃん<br> 8年間共に乃木坂46として歩めたことを<br> とても誇りに思います。<br> <br> ああ、大好きー、寂しいーー。<br> 　<br> <br> 色々な思い出があるけど秘めておきたい。<br> 私の心の中に大切にしまっておきます<br> 大好きで尊敬するお姉ちゃん達、<br> 本当にお疲れ様でした。<br> <br> <br> <br> <br> <img src=\"img/blog/miria.watanabe/img/2020/11/01/2949718/0002.jpeg\"><br> <br> <br> <br> そして、今日で21歳になりました！<br> <br> まちこちゃんに(ひなちまの事ね)<br> 「みり愛って今19歳だっけ？」<br> って言われるくらいに<br> メンバーやファンの方からしたら<br> 21歳は驚かれる年齢となりました、笑<br> <br> <br> 13歳で乃木坂46に入り、<br> そして今8年目に突入しています。<br> いつも変わらず応援して下さる皆様<br> ありがとうございます。<br> <br> <br> 私ってたぶん乃木坂の中で1番<br> 普通の子、何も特徴がないし<br> これといった趣味もない<br> だからと言って不得意な事もない<br> アイドルらしいとは言い難い女の子。<br> <br> それなのにファンの皆様は<br> いつだって私を見てくれています<br> 沢山の期待を持ってくれています<br> 私を乃木坂46として、ステージで<br> きらきら輝けるように支えてくださっています<br> <br> 本当に嬉しいんです、ありがとう。<br> <br> <br> そして乃木坂46が本当に大好き！<br> 21歳も少しでも皆様の期待に<br> 応えられるよう努力は変えず<br> 頑張って参ります！<br> <br> <br> <br> <br> <br> <img src=\"img/blog/miria.watanabe/img/2020/11/01/2949718/0003.jpeg\"><br> <br> <br> そんな本日は<br> オンラインミート&amp;グリートでした！<br> 誕生日の日に皆さんとお話が出来て<br> 私はとても嬉しいです<br> <br> 私に見せるために<br> わざわざケーキを買ってきてくれたり<br> 部屋に飾り付けをしてくれたり<br> 仮装して笑わせてくれたり<br> 用意したお手紙を読んでくれたり<br> 「みり愛のファンは本当に楽しそうで<br> 面白いね」とマネージャーさんに<br> 言われるほど。笑<br> <br> <br> 私は改めて幸せ者だなあと感じました。<br> 皆さんは私に力を貰ってるよ！と<br> 言って下さるけれど<br> それは私も同じです！凄くジーンと<br> 心にくる新しい生誕祭のような感じでした。<br> <br> 本当に本当にありがとう。<br> <br> <br> <br> <br> <br> <img src=\"img/blog/miria.watanabe/img/2020/11/01/2949718/0004.jpeg\"><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> みり愛</p>"}]; </script>
+<script src="../assets/script/main.js"></script>
+
+</html>
