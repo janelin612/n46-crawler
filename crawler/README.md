@@ -59,18 +59,18 @@ Crawler will generate two json file，and storage them at `./viewer/`
 
 ```json
 [{
-	"datetime": "2017/08/19 20:42",
-	"author": "３期生",
-	"title": "何が好きかな〜。大園桃子",
-	"url": "http://blog.nogizaka46.com/third/2017/08/040351.php",
-	"content":"<div>...........</div>"
-},
-{
-	"datetime": "2017/08/19 17:06",
-	"author": "佐々木琴子",
-	"title": "ツ",
-	"url": "http://blog.nogizaka46.com/kotoko.sasaki/2017/08/040349.php",
-	"content":"<div>...........</div>"
+    "datetime": "2017/08/19 20:42",
+    "author": "３期生",
+    "title": "何が好きかな〜。大園桃子",
+    "url": "http://blog.nogizaka46.com/third/2017/08/040351.php",
+    "content": "<div>...........</div>"
+  },
+  {
+    "datetime": "2017/08/19 17:06",
+    "author": "佐々木琴子",
+    "title": "ツ",
+    "url": "http://blog.nogizaka46.com/kotoko.sasaki/2017/08/040349.php",
+    "content": "<div>...........</div>"
 }]
 ```
 
@@ -81,8 +81,7 @@ Crawler will generate two json file，and storage them at `./viewer/`
   "name": "伊藤 万理華",
   "name_hiragana": "いとう まりか ",
   "image": "img/www/member/img/itoumarika_prof.jpg",
-  "intro": [
-    {
+  "intro": [{
       "key": "生年月日",
       "value": "1996年2月20日"
     },

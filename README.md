@@ -10,7 +10,7 @@ n46-crawler
 ## [Site-乃木坂46卒業メンバーのブログ](https://janelin612.github.io/n46-crawler/)
 
 # Notice before clone project
-Because the whole demo site is hosting on github pages, you will take long time to clone project.  
+Because the whole demo site is hosting on github pages, there are lots of files in the `gh-pages` branch. You will take long time to clone and waste the disk space.  
 If you only need the source code, you can just clone the master branch.
 
 ```
