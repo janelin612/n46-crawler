@@ -1,17 +1,35 @@
 const Fs = require("fs");
 const Crawler = require("crawler");
-const Image = require("./image")
+const ImageUtil = require("./image")
 
 const BLOG_URL = "http://blog.nogizaka46.com/";
-const RESULT_JSON_FILE = "./viewer/result.json";
-const MEMBER_INFO_FILE = "./viewer/member.json";
+/** Demo Site 的目錄位置 */
+const PROJECT_FOLDER = '../nogizaka46/'
+const RESULT_JSON_FILE = "result.json";
+const MEMBER_INFO_FILE = "member.json";
+
+let folder = './viewer/'
 
 module.exports = {
   printMemberList: () => {
     memberListCrawler.queue(BLOG_URL);
   },
   downloadMemberBlog: (memberPath) => {
+    createDirectory(memberPath);
+    ImageUtil.setDirectory(folder);
     archiveListCrawler.queue(BLOG_URL + memberPath)
+  }
+}
+
+/**
+ * 如果 Demo Site 存在，就不把資料存到預設的./viewer內
+ */
+function createDirectory(memberPath) {
+  if (Fs.existsSync(PROJECT_FOLDER)) {
+    folder = `${PROJECT_FOLDER}${memberPath}/`;
+    if (!Fs.existsSync(folder)) {
+      Fs.mkdirSync(folder);
+    }
   }
 }
 
@@ -53,7 +71,9 @@ let archiveListCrawler = new Crawler({
       let list = [];
       $("#sidearchives select option").each((index, value) => {
         let url = $(value).attr("value");
-        if (url) { list.push(url) }
+        if (url) {
+          list.push(url)
+        }
       });
       paginateListCrawler.queue(list);
 
@@ -93,7 +113,12 @@ let paginateListCrawler = new Crawler({
  */
 let blogLinkListCrawler = new Crawler({
   maxConnections: 5,
-  jQuery: { name: 'cheerio', options: { decodeEntities: false } },
+  jQuery: {
+    name: 'cheerio',
+    options: {
+      decodeEntities: false
+    }
+  },
   callback: (error, res, done) => {
     if (error) {
       console.warn(error);
@@ -118,7 +143,12 @@ var result = [];
  */
 let blogContentCrawler = new Crawler({
   maxConnections: 5,
-  jQuery: { name: 'cheerio', options: { decodeEntities: false } },
+  jQuery: {
+    name: 'cheerio',
+    options: {
+      decodeEntities: false
+    }
+  },
   callback: (error, res, done) => {
     if (error) {
       console.warn(error);
@@ -139,7 +169,7 @@ let blogContentCrawler = new Crawler({
       $("#sheet div.entrybody img").each(function (index, value) {
         let src = $(value).attr("src");
         if (src != null && src.length > 0 && !src.startsWith("blob")) {
-          let localPath = Image.download(src);
+          let localPath = ImageUtil.download(src);
           $(value).attr("src", localPath);
         }
       });
@@ -168,10 +198,7 @@ blogContentCrawler.on('drain', function () {
     let idA = a.url.match(regex)[0].replace(/\//g, "");
     return new Number(idB) - new Number(idA);
   })
-  Fs.writeFileSync(
-    RESULT_JSON_FILE,
-    JSON.stringify(result),
-    'utf8');
+  Fs.writeFileSync(folder + RESULT_JSON_FILE, JSON.stringify(result), 'utf8');
 });
 
 /**
@@ -188,7 +215,7 @@ let memberInfoCrawler = new Crawler({
       //處理成員頭像
       let memberImage = $("#profile img").first().attr("src");
       if (memberImage) {
-        memberImage = Image.download(memberImage);
+        memberImage = ImageUtil.download(memberImage);
       }
 
       //成員姓名
@@ -202,7 +229,8 @@ let memberInfoCrawler = new Crawler({
         let key = $(item).text().replace("：", "");
         let value = $(item).nextAll("dd").first().text();
         introList.push({
-          key: key, value: value
+          key: key,
+          value: value
         });
       });
 
@@ -220,10 +248,7 @@ let memberInfoCrawler = new Crawler({
         intro: introList,
         tag: tagList
       }
-      Fs.writeFileSync(
-        MEMBER_INFO_FILE,
-        JSON.stringify(member),
-        'utf8');
+      Fs.writeFileSync(folder + MEMBER_INFO_FILE, JSON.stringify(member), 'utf8');
     }
     done();
   }

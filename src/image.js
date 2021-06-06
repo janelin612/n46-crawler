@@ -1,7 +1,7 @@
 const Fs = require('fs');
 const Crawler = require("crawler");
 
-const VIEWER_DIR = "./viewer/"
+let directory = "./viewer/"
 const IMAGE_FOLDER_NAME = "img/"
 
 /**
@@ -11,12 +11,15 @@ const REGEX_REMOVE_SCHEME_AND_DOMAIN = /^http(s){0,1}\S\/\/\S+?\//;
 
 module.exports = {
   /** 下載圖片，並回傳檔案路徑 */
-  download: (imgUrl) => {
+  download(imgUrl) {
     let localPath = getLocalUrl(imgUrl);
-    if (!Fs.existsSync(VIEWER_DIR + localPath)) {
+    if (!Fs.existsSync(directory + localPath)) {
       downloader.queue(imgUrl);
     }
     return localPath;
+  },
+  setDirectory(dir) {
+    directory = dir;
   }
 }
 
@@ -35,7 +38,7 @@ let downloader = new Crawler({
       let urlWithoutDomain = res.request.uri.href.replace(REGEX_REMOVE_SCHEME_AND_DOMAIN, '');
       let splitArray = urlWithoutDomain.split("/");
 
-      let dir = VIEWER_DIR + IMAGE_FOLDER_NAME;
+      let dir = directory + IMAGE_FOLDER_NAME;
       for (i = 0; i < splitArray.length; i++) {
         if (!Fs.existsSync(dir)) {
           Fs.mkdirSync(dir);

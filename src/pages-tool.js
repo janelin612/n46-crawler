@@ -7,7 +7,7 @@
  */
 
 /** 網站在本地端的資料夾 */
-const SITE_FOLDER = "../nogizaka46";
+const SITE_FOLDER = "../nogizaka46/";
 /** 網站在github io上的網址 */
 const BASE_URL = "https://janelin612.github.io/n46-crawler";
 /** 預載在html內的文章數量 */
@@ -55,7 +55,12 @@ function buildSitemap() {
   });
 
   let result = {
-    "_declaration": { "_attributes": { "version": "1.0", "encoding": "utf-8" } },
+    "_declaration": {
+      "_attributes": {
+        "version": "1.0",
+        "encoding": "utf-8"
+      }
+    },
     urlset: {
       "_attributes": {
         "xmlns": "http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -64,7 +69,10 @@ function buildSitemap() {
     }
   };
 
-  fs.writeFileSync(`${SITE_FOLDER}/sitemap.xml`, cvt.js2xml(result, { compact: true, spaces: "\t" }), 'utf-8');
+  fs.writeFileSync(`${SITE_FOLDER}/sitemap.xml`, cvt.js2xml(result, {
+    compact: true,
+    spaces: "\t"
+  }), 'utf-8');
 };
 
 /**
@@ -74,7 +82,9 @@ function injectPartialInfo() {
   let html = fs.readFileSync(`${SITE_FOLDER}/template/index.html`, 'utf-8');
 
   memberForEach((memb) => {
-    let $ = cheerio.load(html, { decodeEntities: false });
+    let $ = cheerio.load(html, {
+      decodeEntities: false
+    });
     let json = JSON.parse(fs.readFileSync(`${SITE_FOLDER}/${memb.link.replace("index.html", "result.json")}`));
     json = json.slice(0, COUNT_OF_PRELOADING);
 
@@ -94,7 +104,13 @@ function injectPartialInfo() {
  */
 function transformJsFile() {
   let result = babel.transformFileSync("./viewer/script/main.js", {
-    "presets": [["@babel/preset-env", { "targets": { "chrome": "41" } }]]//Google Bot
+    "presets": [
+      ["@babel/preset-env", {
+        "targets": {
+          "chrome": "41"
+        }
+      }]
+    ] //Google Bot
   });
   fs.writeFileSync(`${SITE_FOLDER}/assets/script/main.js`, result.code, "UTF-8");
 }
