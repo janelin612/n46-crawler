@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/miria.watanabe", {data:[{id:"miria.watanabe",base:"\u002Fn46-crawler\u002F"}],fetch:{},mutations:void 0});

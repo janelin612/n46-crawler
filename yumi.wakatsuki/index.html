@@ -1,86 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>若月 佑美 | 乃木坂46卒業メンバーのブログ</title>
-  <meta name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA">
-  <meta property="og:image" name="twitter:image" content="https://janelin612.github.io/n46-crawler/assets/zaoidj.jpg">
-  <meta property="og:title" name="twitter:title" content="若月 佑美 | 乃木坂46卒業メンバーのブログ">
-  <meta property="og:description" name="twitter:description" content="2018/12/04 23:36やっぱ乃木坂だな。2018/12/02 14:18Thanks a million.2018/11/26 10:06鉄コン筋クリート千秋楽2018/11/23 12:36イタチがスキ.">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="../assets/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="../assets/android-chrome-512x512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-  <script src="../assets/script/vue.min.js"></script>
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-38227412-4');
-  </script>
-</head>
-
-<body>
-  <div id="app">
-    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../assets/menu.svg" alt=""></button>
-    <div class="member" :class="{'hide':isFold}">
-      <button id="btn-home" onclick="location.href='../'"><img src="../assets/arrow.svg" alt="" srcset=""><span>ホーム</span></button>
-      <img :src="member.image" alt="" class="avatar">
-      <div class="name">{{member.name}}</div>
-      <div class="name hiragana">{{member.name_hiragana}}</div>
-
-      <ul class="intro">
-        <li v-for="item in member.intro">
-          <span class="key">{{item.key}}</span>
-          <span class="value">{{item.value}}</span>
-        </li>
-      </ul>
-
-      <ul class="tag">
-        <li v-for="item in member.tag">{{item}}</li>
-      </ul>
-    </div>
-
-    <div class="menu" :class="{'hide':isFold}">
-      <div class="loading-spinner" v-if="isLoading">
-        <div class="spinner"></div>
-      </div>
-      <ul>
-        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
-          <div v-html="item.title"></div>
-          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
-          <div class="small-datetime">{{item.datetime}}</div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="main" v-if="currentPost!=null">
-      <div class="heading">
-        <a class="post-time" :href="currentPost.url" target="_blank">
-          <div class="year-month">{{currentPostDate.yearMonth}}</div>
-          <span class="date">{{currentPostDate.date}}</span>
-          <span class="week">{{currentPostDate.weekday}}</span>
-        </a>
-        <div class="post-info">
-          <div class="author">{{currentPost.author}}</div>
-          <div class="title" v-html="currentPost.title"></div>
-        </div>
-      </div>
-      <div class="content" v-html="currentPost.content"></div>
-    </div>
-  </div>
-</body>
-<script> const defaultList=[{"datetime":"2018/12/04 23:36","author":"若月佑美","title":"やっぱ乃木坂だな。","url":"http://blog.nogizaka46.com/yumi.wakatsuki/2018/12/048143.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>最後のブログなんで</div><div>くさいし寒い台詞を真顔で</div><div>しれっと言っちゃう私をどうか</div><div>温かく見守ってください。</div><div>今日だけかっこつけさせてください。笑</div><div>&nbsp;</div><div>初期の頃から将来の夢を聞かれて</div><div>ずっと答えていたものがあります。</div><div>&nbsp;</div><div>それは女優さんとか</div><div>そういう職業についてじゃなくて</div><div>&nbsp;</div><div>誰かの人生に良い影響を与えられる人になるっていう不思議な夢です。</div><div>&nbsp;</div><div>結構本気で色々なとこで言っていたので</div><div>知ってる方も居ると思うけれど...</div><div>&nbsp;</div><div>しかもね それが</div><div>私の知らない何処かでだったら尚素敵だなって。</div><div>&nbsp;</div><div>家族や友人、担任の先生、習い事の先生とか</div><div>近しい人から影響を貰うっていうのは人生でも多々ある状況で...</div><div>&nbsp;</div><div>でも逆に直接的に会ったことない人から何か影響を貰うことってその人が選択して、受け取らないとなかなかないじゃないですか。</div><div>&nbsp;</div><div>しかもその影響を与える側になるってほんの一握り。</div><div>&nbsp;</div><div>これがね、少しでも叶っていたら</div><div>私の7年間の全てが報われて救われるんです。</div><div>悩み踠き苦しんだ日々なんてパッて</div><div>無くなっちゃうんです。</div><div>&nbsp;</div><div>こんな私でも人の役に立てるんじゃん！って、</div><div>誰かの助けになれるんじゃん！って</div><div>すっごい嬉しくなれる。</div><div>自己否定が強い性格をしてるだけに</div><div>なかなかこの喜びって生きる上で大事だったりしました。だから、みんなにありがとうってお礼を言いたいです。</div><div>&nbsp;</div><div>ありがとうを言ってくれてありがとう。</div><div>それが私の原動力でした。</div><div>&nbsp;</div><div>&nbsp;</div><div>不器用で空回りばっかで</div><div>技術も武器も持ち合わせてなくて</div><div>一本線ばっかりひいちゃう性格で、</div><div>でも何処か俯瞰的になるとこもあって</div><div>感性も変わってるし、女の子っぽくないし</div><div>もはや正直アイドルっぽくもなかったと思う。</div><div>&nbsp;</div><div>&nbsp;</div><div>でも、応援してくれるみんなが居てくれたから</div><div>そんな私でも楽しくアイドルが出来たし</div><div>どこまででも頑張ろうって思えました。</div><div>&nbsp;</div><div>ファンの方最高、</div><div>メンバーも最高、</div><div>スタッフさんも最高、</div><div>&nbsp;</div><div>つまりさ</div><div>&nbsp;</div><div>乃木坂46、最高かよ。笑</div><div>&nbsp;</div><div>&nbsp;</div><div>こんなアイドルを愛してくれて</div><div>ありがとうございました。</div><div>&nbsp;</div><div>次は女優としての私を良かったら</div><div>愛してください。</div><div>&nbsp;</div><div>ありがとうございました。</div><div>&nbsp;</div><div>2018.12.4 若月佑美</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/12/04/3399487/0000.jpeg\"></div><div>&nbsp;</div></body></html> "},{"datetime":"2018/12/02 14:18","author":"若月佑美","title":"Thanks a million.","url":"http://blog.nogizaka46.com/yumi.wakatsuki/2018/12/048123.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>こんにちわかつき！</div><div>&nbsp;</div><div>いよいよ、、、若月佑美卒業セレモニーが明後日に！！</div><div>&nbsp;</div><div>武道館というステージで終われるなんて...</div><div>あー幸せだなぁ。有り難いなぁ、、本当に。</div><div>噛み締めよう。</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/12/02/2783979/0000.jpeg\"></div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/12/02/2783979/0001.jpeg\"></div><div>&nbsp;</div><div>今回のグッズテーマ(<font size=\"5\" color=\"#ff00cc\">Thanks a million.</font>)</div><div>意味としては...本当に本当にありがとうです。</div><div>&nbsp;</div><div>好きな色は<font color=\"#ff0000\" size=\"5\">&nbsp;</font><font size=\"5\">黒</font></div><div>サイリュームカラーは<font color=\"#ff0000\" size=\"5\">&nbsp;</font><font color=\"#0000ff\" size=\"5\">青</font></div><div>趣味は<font color=\"#ff0000\" size=\"5\">&nbsp;</font><font size=\"5\"><font color=\"#ff0000\">デザ</font><font color=\"#ffa500\">イン</font><font color=\"#ff99cc\">アート</font></font></div><div>&nbsp;</div><div>私を全部詰め込みました。笑</div><div>&nbsp;</div><div>アイドルらしいグッズも可愛いけれど、</div><div>私はあえて最後まで</div><div>自分らしさを詰め込ませて貰いました！！！</div><div>&nbsp;</div><div>男女共に普段も使えたり、</div><div>飾っても周りの色の邪魔にならない</div><div>そんなデザインにしたつもりです。</div><div>良かったら記念によろしくお願いします。</div><div>&nbsp;</div><div>卒業なのに</div><div>ポスターなんて、リチャードなんだぜ。笑</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/12/02/2783979/0002.jpeg\"></div><div>&nbsp;</div><div>尊過ぎて</div><div>なんとも時間が惜しいですが、</div><div>最後の最後まで楽しく過ごしたいね！</div><div>&nbsp;</div><div>涙ばかりは流させない！！！</div><div>笑いも溢れる楽しいセレモニーにしますから。</div><div>&nbsp;</div><div>大好きな人達と</div><div>大好きな皆様を心からお待ちしてます。</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/12/02/2783979/0003.jpeg\"></div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/12/02/2783979/0004.jpeg\"></div><div>&nbsp;</div><div>では、またね。</div></body></html> "},{"datetime":"2018/11/26 10:06","author":"若月佑美","title":"鉄コン筋クリート千秋楽","url":"http://blog.nogizaka46.com/yumi.wakatsuki/2018/11/047939.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>&nbsp;</div><div>無事に終了しました。</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/26/9402056/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>もう少し！なんて思う位が逆に</div><div>次への活力になのかなと、、</div><div>腹8分目と同じかな。</div><div>それ位が良いのかもしれない。</div><div>&nbsp;</div><div>それでもやっぱり</div><div>何事も終わるのは寂しいです。</div><div>&nbsp;</div><div>実は今回の舞台、</div><div>稽古初日から千秋楽までの日数合わせても</div><div>意外と少なくて...</div><div>&nbsp;</div><div>なのに</div><div>これだけ濃くて去りがたい</div><div>そんな現場に出会えたのって最高です。</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/26/9402056/0001.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>凄い方々に囲まれて</div><div>向上心の大切さとお芝居の奥深さと難しさと面白さと学びが無い日がありませんでした。</div><div>&nbsp;</div><div>正直、今回の舞台のキャストの皆様とスタッフの皆様と原作鉄コン筋クリートの素晴らしさを語り出したら止まらんですわ。全部ずっと言える。</div><div>&nbsp;</div><div>支えられまくって、助けられまくって</div><div>優しく温かく囲んでくれるカンパニーでした。</div><div>&nbsp;</div><div>&nbsp;</div><div>また新しい私で</div><div>共演出来ますように。頑張ろう。</div><div>&nbsp;</div><div>&nbsp;</div><div>とりあえず、クロの役作りで</div><div>猫背にしてたのを直す作業をしなきゃ。</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/26/9402056/0002.jpeg\"></div><div>では、私はゆっくりと</div><div>静かな日を迎えます。</div><div>&nbsp;</div><div>&nbsp;</div><div>マラソンで</div><div>ゴールテープが見えたら</div><div>少しスピードを上げるでしょ、</div><div>力全部振り絞ったろ！って...</div><div>そんな感じの日々でした。</div><div>&nbsp;</div><div>戦いまくっていた毎日から</div><div>急にパタリと静かになると逆に</div><div>心がザワザワするね。</div><div>&nbsp;</div><div>それもまた素敵。</div><div>&nbsp;</div><div>では、今日も良い一日を。</div><div>&nbsp;</div><div>&nbsp;</div><div>あんしん、あんしん。</div><div>&nbsp;</div><div>&nbsp;</div><div>三戸シロの言葉に若月クロは毎日</div><div>心打たれて救われてました。</div><div>最高の相棒でした。</div><div>&nbsp;</div><div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/26/9402056/0003.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div></body></html> "},{"datetime":"2018/11/23 12:36","author":"若月佑美","title":"イタチがスキ.","url":"http://blog.nogizaka46.com/yumi.wakatsuki/2018/11/047917.php","content":"<div> </div>\n<div>中々刺激的な毎日です。</div>\n<div>考えることも多い。</div>\n<div> </div>\n<div>さて、舞台 鉄コン筋クリートの公演も</div>\n<div>残りあと3日間になりました。</div>\n<div> </div>\n<div>と言ったものの、この3日間はマチソワが全てあるので実はあと6公演あるのでございますが...日数にすると あっという間。</div>\n<div> </div>\n<div>初日に松本大洋先生にもお会いして...</div>\n<div>お話しさせて頂いて、</div>\n<div>クロ役をやれる事って最強に幸せな事なんだなぁって改めて再認識致しました。</div>\n<div> </div>\n<div>ここに来ても まだ毎日発見の連続、、</div>\n<div>心動くポイントも新しく追加されてて</div>\n<div>つまりはそれだけ密なものになってるって</div>\n<div>思っている。上がり続けたいね。</div>\n<div> </div>\n<div>絶対なんてなくて</div>\n<div>価値観は人それぞれだから</div>\n<div>自分を信じて、強要し過ぎず、色んな方向から色んな楽しみ方で観て頂けるように頑張ります。</div>\n<div> </div>\n<div>とりあえずね、</div>\n<div>24年間生きてきて毎回思うけど</div>\n<div>冬って寒いわ。</div>\n<div> </div>\n<div>毎度のこと体調崩す私が</div>\n<div>風邪になっていない奇跡。</div>\n<div> </div>\n<div>では、ばいばい。</div>\n<div> </div>\n<div><img src=\"img/blog/yumi.wakatsuki/img/2018/11/23/4387539/0000.jpeg\"></div>\n<div> </div>"}]; </script>
-<script src="../assets/script/main.js"></script>
-
+<!doctype html>
+<html data-n-head-ssr lang="ja" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22ja%22%7D%7D">
+  <head>
+    <title>乃木坂46卒業メンバーのブログ</title><meta data-n-head="ssr" charset="utf-8"><meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1"><meta data-n-head="ssr" name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA"><meta data-n-head="ssr" http-equiv="refresh" content="0; url=/n46-crawler/mb/yumi.wakatsuki"><base href="/n46-crawler/"><link data-n-head="ssr" rel="icon" type="image/x-icon" href="favicon.ico"><link data-n-head="ssr" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous"><link data-n-head="ssr" rel="canonical" href="/n46-crawler/mb/yumi.wakatsuki"><script data-n-head="ssr" data-hid="gtm-script">window._gtm_init||(window._gtm_init=1,function(t,e,n,a,o){t[n]=1==t[n]||"yes"==e[n]||1==e[n]||1==e.msDoNotTrack||t[a]&&t[a][o]&&t[a][o]()?1:0}(window,navigator,"doNotTrack","external","msTrackingProtectionEnabled"),function(a,o,i,g,m){a[m]={},a._gtm_inject=function(t){var e,n;a.doNotTrack||a[m][t]||(a[m][t]=1,a[g]=a[g]||[],a[g].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),e=o.getElementsByTagName(i)[0],(n=o.createElement(i)).async=!0,n.src="https://www.googletagmanager.com/gtm.js?id="+t,e.parentNode.insertBefore(n,e))},a._gtm_inject("GTM-5K473GZ")}(window,document,"script","dataLayer","_gtm_ids"))</script><link rel="preload" href="/n46-crawler/_nuxt/ff01422.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/836cb17.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/9b93b85.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/e22598d.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/47477eb.js" as="script"><style data-vue-ssr-id="42a028c7:0 fa7ff0ca:0 56b15182:0">.nuxt-progress{position:fixed;top:0;left:0;right:0;height:2px;width:0;opacity:1;transition:width .1s,opacity .4s;background-color:#000;z-index:999999}.nuxt-progress.nuxt-progress-notransition{transition:none}.nuxt-progress-failed{background-color:red}html{font-family:Meiryo,"Meiryo UI",sans-serif;font-size:15px;word-spacing:1px;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;box-sizing:border-box}*,:after,:before{box-sizing:border-box;margin:0}.button--green{display:inline-block;border-radius:4px;border:1px solid #3b8070;color:#3b8070;text-decoration:none;padding:10px 30px}.button--green:hover{color:#fff;background-color:#3b8070}.button--grey{display:inline-block;border-radius:4px;border:1px solid #35495e;color:#35495e;text-decoration:none;padding:10px 30px;margin-left:15px}.button--grey:hover{color:#fff;background-color:#35495e}</style><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/yumi.wakatsuki/state.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/yumi.wakatsuki/payload.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/manifest.js" as="script">
+  </head>
+  <body>
+    <noscript data-n-head="ssr" data-hid="gtm-noscript" data-pbody="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5K473GZ&" height="0" width="0" style="display:none;visibility:hidden" title="gtm"></iframe></noscript><div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div><div></div></div></div></div><script defer src="/n46-crawler/_nuxt/static/1626430494/yumi.wakatsuki/state.js"></script><script src="/n46-crawler/_nuxt/ff01422.js" defer></script><script src="/n46-crawler/_nuxt/47477eb.js" defer></script><script src="/n46-crawler/_nuxt/836cb17.js" defer></script><script src="/n46-crawler/_nuxt/9b93b85.js" defer></script><script src="/n46-crawler/_nuxt/e22598d.js" defer></script>
+  </body>
 </html>

@@ -1,176 +1,171 @@
-[
-  {
+[{
     "year": "2021",
-    "member": [
-      {
-        "name": "堀 未央奈",
-        "name_hiragana": "ほり みおな",
-        "image": "miona.hori/img/www/member/img/horimiona_prof.jpg",
-        "link": "miona.hori/index.html",
-        "graduation_date": "2021/03/28"
-      },
-      {
-        "name": "松村 沙友理",
-        "name_hiragana": "まつむら さゆり",
-        "image": "sayuri.matsumura/img/www/member/img/matsumurasayuri_prof.jpg",
-        "link": "sayuri.matsumura/index.html"
+    "member": [{
+        "name": "伊藤 純奈",
+        "name_hiragana": "いとう じゅんな",
+        "image": "junna.itou/img/www/member/img/itoujunna_prof.jpg",
+        "link": "junna.itou"
       },
       {
         "name": "渡辺 みり愛",
         "name_hiragana": "わたなべ みりあ",
         "image": "miria.watanabe/img/www/member/img/watanabemiria_prof.jpg",
-        "link": "miria.watanabe/index.html"
+        "link": "miria.watanabe"
       },
       {
-        "name": "伊藤 純奈",
-        "name_hiragana": "いとう じゅんな",
-        "image": "junna.itou/img/www/member/img/itoujunna_prof.jpg",
-        "link": "junna.itou/index.html"
+        "name": "松村 沙友理",
+        "name_hiragana": "まつむら さゆり",
+        "image": "sayuri.matsumura/img/www/member/img/matsumurasayuri_prof.jpg",
+        "link": "sayuri.matsumura",
+        "graduation_date": "2021/07/13"
+      },
+      {
+        "name": "堀 未央奈",
+        "name_hiragana": "ほり みおな",
+        "image": "miona.hori/img/www/member/img/horimiona_prof.jpg",
+        "link": "miona.hori",
+        "graduation_date": "2021/03/28"
       }
     ]
   },
   {
     "year": "2020",
-    "member": [
-      {
+    "member": [{
         "name": "中田 花奈",
         "name_hiragana": "なかだ かな",
         "image": "kana.nakada/img/www/member/img/nakadakana_prof.jpg",
-        "link": "kana.nakada/index.html",
+        "link": "kana.nakada",
         "graduation_date": "2020/10/25"
       },
       {
         "name": "白石 麻衣",
         "name_hiragana": "しらいし まい",
         "image": "mai.shiraishi/img/www/member/img/shiraishimai_prof.jpg",
-        "link": "mai.shiraishi/index.html",
+        "link": "mai.shiraishi",
         "graduation_date": "2020/10/28"
       },
       {
         "name": "井上 小百合",
         "name_hiragana": "いのうえ さゆり",
         "image": "sayuri.inoue/img/www/member/img/inouesayuri_prof.jpg",
-        "link": "sayuri.inoue/index.html",
+        "link": "sayuri.inoue",
         "graduation_date": "2020/04/27"
       },
       {
         "name": "佐々木 琴子",
         "name_hiragana": "ささき ことこ ",
         "image": "kotoko.sasaki/img/www/member/img/sasakikotoko_prof.jpg",
-        "link": "kotoko.sasaki/index.html",
+        "link": "kotoko.sasaki",
         "graduation_date": "2020/03/31"
       }
     ]
   },
   {
     "year": "2019",
-    "member": [
-      {
+    "member": [{
         "name": "桜井 玲香",
         "name_hiragana": "さくらい れいか",
         "image": "reika.sakurai/img/www/member/img/sakuraireika_prof.jpg",
-        "link": "reika.sakurai/index.html",
+        "link": "reika.sakurai",
         "graduation_date": "2019/09/01"
       },
       {
         "name": "斉藤 優里",
         "name_hiragana": "さいとう ゆうり",
         "image": "yuuri.saito/img/www/member/img/saitouyuuri_prof.jpg",
-        "link": "yuuri.saito/index.html",
+        "link": "yuuri.saito",
         "graduation_date": "2019/06/30"
       },
       {
         "name": "伊藤 かりん",
         "name_hiragana": "いとう かりん",
         "image": "karin.itou/img/www/member/img/itoukarin_prof.jpg",
-        "link": "karin.itou/index.html",
+        "link": "karin.itou",
         "graduation_date": "2019/05/24"
       },
       {
         "name": "衛藤 美彩",
         "name_hiragana": "えとう みさ",
         "image": "misa.eto/img/www/member/img/etoumisa_prof.jpg",
-        "link": "misa.eto/index.html",
+        "link": "misa.eto",
         "graduation_date": "2019/03/31"
       }
     ]
   },
   {
     "year": "2018",
-    "member": [
-      {
+    "member": [{
         "name": "西野 七瀬",
         "name_hiragana": "にしの ななせ",
         "image": "nanase.nishino/img/www/member/img/nishinonanase_prof.jpg",
-        "link": "nanase.nishino/index.html",
+        "link": "nanase.nishino",
         "graduation_date": "2018/12/31"
       },
       {
         "name": "川後 陽菜",
         "name_hiragana": "かわご ひな",
         "image": "hina.kawago/img/www/member/img/kawagohina_prof.jpg",
-        "link": "hina.kawago/index.html",
+        "link": "hina.kawago",
         "graduation_date": "2018/12/20"
       },
       {
         "name": "能條 愛未",
         "name_hiragana": "のうじょう あみ",
         "image": "ami.noujo/img/www/member/img/noujouami_prof.jpg",
-        "link": "ami.noujo/index.html",
+        "link": "ami.noujo",
         "graduation_date": "2018/12/15"
       },
       {
         "name": "若月 佑美",
         "name_hiragana": "わかつき ゆみ",
         "image": "yumi.wakatsuki/img/www/member/img/wakatsukiyumi_prof.jpg",
-        "link": "yumi.wakatsuki/index.html",
+        "link": "yumi.wakatsuki",
         "graduation_date": "2018/11/30"
       },
       {
         "name": "斎藤 ちはる",
         "name_hiragana": "さいとう ちはる",
         "image": "chiharu.saito/img/www/member/img/saitouchiharu_prof.jpg",
-        "link": "chiharu.saito/index.html",
+        "link": "chiharu.saito",
         "graduation_date": "2018/07/16"
       },
       {
         "name": "生駒 里奈",
         "name_hiragana": "いこま りな",
         "image": "rina.ikoma/img/www/member/img/ikomarina_prof.jpg",
-        "link": "rina.ikoma/index.html",
+        "link": "rina.ikoma",
         "graduation_date": "2018/05/06"
       },
       {
         "name": "川村 真洋",
         "name_hiragana": "かわむら まひろ",
         "image": "mahiro.kawamura/img/www/member/img/kawamuramahiro_prof.jpg",
-        "link": "mahiro.kawamura/index.html",
+        "link": "mahiro.kawamura",
         "graduation_date": "2018/03/31"
       }
     ]
   },
   {
     "year": "2017",
-    "member": [
-      {
+    "member": [{
         "name": "伊藤 万理華",
         "name_hiragana": "いとう まりか",
         "image": "marika.ito/img/www/member/img/itoumarika_prof.jpg",
-        "link": "marika.ito/index.html",
+        "link": "marika.ito",
         "graduation_date": "2017/12/23"
       },
       {
         "name": "中元 日芽香",
         "name_hiragana": "なかもと ひめか",
         "image": "himeka.nakamoto/img/www/member/img/nakamotohimeka_prof.jpg",
-        "link": "himeka.nakamoto/index.html",
+        "link": "himeka.nakamoto",
         "graduation_date": "2017/11/19"
       },
       {
         "name": "橋本 奈々未",
         "name_hiragana": "はしもと　ななみ",
         "image": "nanami.hashimoto/img/hashimotonanami_prof.jpg",
-        "link": "nanami.hashimoto/index.html",
+        "link": "nanami.hashimoto",
         "graduation_date": "2017/02/20"
       }
     ]

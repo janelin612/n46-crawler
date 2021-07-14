@@ -1,86 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>橋本 奈々未 | 乃木坂46卒業メンバーのブログ</title>
-  <meta name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA">
-  <meta property="og:image" name="twitter:image" content="https://janelin612.github.io/n46-crawler/assets/zaoidj.jpg">
-  <meta property="og:title" name="twitter:title" content="橋本 奈々未 | 乃木坂46卒業メンバーのブログ">
-  <meta property="og:description" name="twitter:description" content="2017/02/22 22:54今までありがとうございました！2017/02/16 13:1822時からみんな大丈夫ー？？2017/02/13 23:42花束が部屋に溢れてる2017/01/31 11:30赤ニット×スキニー">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="../assets/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="../assets/android-chrome-512x512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-  <script src="../assets/script/vue.min.js"></script>
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-38227412-4');
-  </script>
-</head>
-
-<body>
-  <div id="app">
-    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../assets/menu.svg" alt=""></button>
-    <div class="member" :class="{'hide':isFold}">
-      <button id="btn-home" onclick="location.href='../'"><img src="../assets/arrow.svg" alt="" srcset=""><span>ホーム</span></button>
-      <img :src="member.image" alt="" class="avatar">
-      <div class="name">{{member.name}}</div>
-      <div class="name hiragana">{{member.name_hiragana}}</div>
-
-      <ul class="intro">
-        <li v-for="item in member.intro">
-          <span class="key">{{item.key}}</span>
-          <span class="value">{{item.value}}</span>
-        </li>
-      </ul>
-
-      <ul class="tag">
-        <li v-for="item in member.tag">{{item}}</li>
-      </ul>
-    </div>
-
-    <div class="menu" :class="{'hide':isFold}">
-      <div class="loading-spinner" v-if="isLoading">
-        <div class="spinner"></div>
-      </div>
-      <ul>
-        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
-          <div v-html="item.title"></div>
-          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
-          <div class="small-datetime">{{item.datetime}}</div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="main" v-if="currentPost!=null">
-      <div class="heading">
-        <a class="post-time" :href="currentPost.url" target="_blank">
-          <div class="year-month">{{currentPostDate.yearMonth}}</div>
-          <span class="date">{{currentPostDate.date}}</span>
-          <span class="week">{{currentPostDate.weekday}}</span>
-        </a>
-        <div class="post-info">
-          <div class="author">{{currentPost.author}}</div>
-          <div class="title" v-html="currentPost.title"></div>
-        </div>
-      </div>
-      <div class="content" v-html="currentPost.content"></div>
-    </div>
-  </div>
-</body>
-<script> const defaultList=[{"datetime":"2017/02/22 22:54","author":"橋本奈々未","title":"今までありがとうございました！","url":"#","content":"<div>&nbsp;</div><div>&nbsp;</div><div>2月20日のライブをもって、わたしの乃木坂46としての時間は終了しました！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>わたしの思いは番組だったりライブだったり写真集だったりMVだったりラジオだったり、各所に残してきたので、ここではあまり多くは書きません。</div><div>&nbsp;</div><div>皆さんライブはどうでしたか？</div><div>今日はデビュー５周年ですね。おめでとう！</div><div>&nbsp;</div><div>&nbsp;</div><div>写真集はどうでしたか？見てくれましたか？評判とても良いみたいで嬉しい！！</div><div>渋谷TSUTAYAさんにサイン書いてきたよ！みて！笑</div><div>&nbsp;</div><div>&nbsp;</div><div>ないものねだりのMV、良いよね！さいこう！最後にあんなに素敵なMVに映れて幸せ！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>わたしの、最後に皆さんに届ける声はラジオで、SOLで、ガールズロックスで、になりました！</div><div>&nbsp;</div><div>すごく大事にしていた場所で最後にできるなんて、幸せです！</div><div>&nbsp;</div><div>明日の放送で、乃木坂のわたしの全てが終了します！</div><div>自分へも、皆さんへも、全ての思いは明日のSOLに置いてきました、良かったら、聴いてください。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>みんな今まで応援してくれて、好きでいてくれて、本当にありがとうございました！！</div><div>&nbsp;</div><div>私は変わります！皆さんもお幸せに過ごしてください！お互い新しい道にキラキラ輝くものがたくさんあることを願って、さようなら！！</div><div>&nbsp;</div><div>橋本奈々未</div>"},{"datetime":"2017/02/16 13:18","author":"橋本奈々未","title":"22時からみんな大丈夫ー？？","url":"#","content":"<div>&nbsp;</div><div>そう、前回の ついさっき手元に届いて最高だった、みんなに早くお届けしたかったものは、ないものねだりのMVのことでした...！！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>今日22時からSHOWROOMで</div><div>ないものねだりのMV初解禁&amp;写真集の見どころなど、配信します！</div><div>&nbsp;</div><div>&nbsp;</div><div>写真集も昨日わたしの手元に届いた！紙質がわたしのすきなやつ！良き！</div><div>&nbsp;</div><div>等々、いろんな話しますので、</div><div>お時間合う方、また22時に～ヾ(｡･ω･｡)&nbsp;</div>"},{"datetime":"2017/02/13 23:42","author":"橋本奈々未","title":"花束が部屋に溢れてる","url":"#","content":"<div>&nbsp;</div><div>みんなに早くみてほしいものたちがここからドドドドッと出て行く予定で、今日そのうちの１つがついさっき手元に届いたんだけど、</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>もう最高でわたしこれを最後にみんなに届けられるの最高に幸せだなと思い何度見ても泣きそう！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>わたしを好きでいてくれたみんなとはもう会えない、からより多くのものを最後に感謝の気持ちを込めて届けたい！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>世の中からは私はすぐに過去になってなかったものになる！もうなりつつある！わたしはそれも望んでる！</div><div>&nbsp;</div><div>&nbsp;</div><div>けど、それと同じように、</div><div>自分を好きでいてくれて、自分を思ってくれている人、思ってくれていた人に最後まで誠実でありたい！</div><div>他にどう思われても、そりゃしんどい時もあるけど、そこが今の私が一番大事にするべき気持ちだと思う！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>CanCamの表紙を飾れて、渋谷駅がわたしとCanCamの名前が連なっていっぱいになって、</div><div>&nbsp;</div><div>&nbsp;</div><div>昼夜逆転していた中学時代に毎日聴いていたラジオ番組、SOLで私の最後の声を届けることができて、</div><div>&nbsp;</div><div>&nbsp;</div><div>約６年間一緒に歩いて来たメンバーと、何万人の人に見届けてもらいながら歌って踊ってステージを去れます</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>色んなことがあったけど、６年前はこんな大きな終わりを迎える想像はついてなかったよ</div><div>&nbsp;</div><div>この先も想像を超えたいです</div><div>&nbsp;</div><div>&nbsp;</div><div>みんなも、きっと、今は想像がつかないようなこの先を送るんだろうねえ</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>残りの日々をみなさん楽しんでください！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>"},{"datetime":"2017/01/31 11:30","author":"橋本奈々未","title":"赤ニット×スキニー","url":"#","content":"<div>&nbsp;</div><div>この前、たまたまさゆりんと服が完全にかぶった！笑</div><div>&nbsp;</div><div><img title=\"null\" src=\"img/0000.jpeg\" tppabs=\"http://img.nogizaka46.com/blog/nanami.hashimoto/img/2017/01/31/2957970/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>CanCam効果...？笑</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img title=\"null\" src=\"img/0001.jpeg\" tppabs=\"http://img.nogizaka46.com/blog/nanami.hashimoto/img/2017/01/31/2957970/0001.jpeg\"></div><div>&nbsp;</div><div>モデルいくちゃん</div><div>（何故乃木坂ジャージなのかは突っ込まない）</div><div>（なんの深い意味もない）</div><div>（私ほぼすっぴん故みんなと写るのに耐えられる顔してなかったためお星様）</div>"}]; </script>
-<script src="../assets/script/main.js"></script>
-
+<!doctype html>
+<html data-n-head-ssr lang="ja" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22ja%22%7D%7D">
+  <head>
+    <title>乃木坂46卒業メンバーのブログ</title><meta data-n-head="ssr" charset="utf-8"><meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1"><meta data-n-head="ssr" name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA"><meta data-n-head="ssr" http-equiv="refresh" content="0; url=/n46-crawler/mb/nanami.hashimoto"><base href="/n46-crawler/"><link data-n-head="ssr" rel="icon" type="image/x-icon" href="favicon.ico"><link data-n-head="ssr" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous"><link data-n-head="ssr" rel="canonical" href="/n46-crawler/mb/nanami.hashimoto"><script data-n-head="ssr" data-hid="gtm-script">window._gtm_init||(window._gtm_init=1,function(t,e,n,a,o){t[n]=1==t[n]||"yes"==e[n]||1==e[n]||1==e.msDoNotTrack||t[a]&&t[a][o]&&t[a][o]()?1:0}(window,navigator,"doNotTrack","external","msTrackingProtectionEnabled"),function(a,o,i,g,m){a[m]={},a._gtm_inject=function(t){var e,n;a.doNotTrack||a[m][t]||(a[m][t]=1,a[g]=a[g]||[],a[g].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),e=o.getElementsByTagName(i)[0],(n=o.createElement(i)).async=!0,n.src="https://www.googletagmanager.com/gtm.js?id="+t,e.parentNode.insertBefore(n,e))},a._gtm_inject("GTM-5K473GZ")}(window,document,"script","dataLayer","_gtm_ids"))</script><link rel="preload" href="/n46-crawler/_nuxt/ff01422.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/836cb17.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/9b93b85.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/e22598d.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/47477eb.js" as="script"><style data-vue-ssr-id="42a028c7:0 fa7ff0ca:0 56b15182:0">.nuxt-progress{position:fixed;top:0;left:0;right:0;height:2px;width:0;opacity:1;transition:width .1s,opacity .4s;background-color:#000;z-index:999999}.nuxt-progress.nuxt-progress-notransition{transition:none}.nuxt-progress-failed{background-color:red}html{font-family:Meiryo,"Meiryo UI",sans-serif;font-size:15px;word-spacing:1px;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;box-sizing:border-box}*,:after,:before{box-sizing:border-box;margin:0}.button--green{display:inline-block;border-radius:4px;border:1px solid #3b8070;color:#3b8070;text-decoration:none;padding:10px 30px}.button--green:hover{color:#fff;background-color:#3b8070}.button--grey{display:inline-block;border-radius:4px;border:1px solid #35495e;color:#35495e;text-decoration:none;padding:10px 30px;margin-left:15px}.button--grey:hover{color:#fff;background-color:#35495e}</style><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/nanami.hashimoto/state.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/nanami.hashimoto/payload.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/manifest.js" as="script">
+  </head>
+  <body>
+    <noscript data-n-head="ssr" data-hid="gtm-noscript" data-pbody="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5K473GZ&" height="0" width="0" style="display:none;visibility:hidden" title="gtm"></iframe></noscript><div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div><div></div></div></div></div><script defer src="/n46-crawler/_nuxt/static/1626430494/nanami.hashimoto/state.js"></script><script src="/n46-crawler/_nuxt/ff01422.js" defer></script><script src="/n46-crawler/_nuxt/47477eb.js" defer></script><script src="/n46-crawler/_nuxt/836cb17.js" defer></script><script src="/n46-crawler/_nuxt/9b93b85.js" defer></script><script src="/n46-crawler/_nuxt/e22598d.js" defer></script>
+  </body>
 </html>

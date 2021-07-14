@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/miona.hori", {data:[{id:"miona.hori",base:"\u002Fn46-crawler\u002F"}],fetch:{},mutations:void 0});

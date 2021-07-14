@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/nanami.hashimoto", {data:[{id:"nanami.hashimoto",base:"\u002Fn46-crawler\u002F"}],fetch:{},mutations:void 0});

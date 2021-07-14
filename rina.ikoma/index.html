@@ -1,86 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>生駒 里奈 | 乃木坂46卒業メンバーのブログ</title>
-  <meta name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA">
-  <meta property="og:image" name="twitter:image" content="https://janelin612.github.io/n46-crawler/assets/zaoidj.jpg">
-  <meta property="og:title" name="twitter:title" content="生駒 里奈 | 乃木坂46卒業メンバーのブログ">
-  <meta property="og:description" name="twitter:description" content="2018/05/06 21:07乃木坂46の生駒里奈でした！！2018/05/05 19:21今日アイスたべる2018/04/27 13:13アイドルとしての表現は出し切りました。2018/04/24 10:19取り急ぎね！">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="../assets/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="../assets/android-chrome-512x512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-  <script src="../assets/script/vue.min.js"></script>
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-38227412-4');
-  </script>
-</head>
-
-<body>
-  <div id="app">
-    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../assets/menu.svg" alt=""></button>
-    <div class="member" :class="{'hide':isFold}">
-      <button id="btn-home" onclick="location.href='../'"><img src="../assets/arrow.svg" alt="" srcset=""><span>ホーム</span></button>
-      <img :src="member.image" alt="" class="avatar">
-      <div class="name">{{member.name}}</div>
-      <div class="name hiragana">{{member.name_hiragana}}</div>
-
-      <ul class="intro">
-        <li v-for="item in member.intro">
-          <span class="key">{{item.key}}</span>
-          <span class="value">{{item.value}}</span>
-        </li>
-      </ul>
-
-      <ul class="tag">
-        <li v-for="item in member.tag">{{item}}</li>
-      </ul>
-    </div>
-
-    <div class="menu" :class="{'hide':isFold}">
-      <div class="loading-spinner" v-if="isLoading">
-        <div class="spinner"></div>
-      </div>
-      <ul>
-        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
-          <div v-html="item.title"></div>
-          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
-          <div class="small-datetime">{{item.datetime}}</div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="main" v-if="currentPost!=null">
-      <div class="heading">
-        <a class="post-time" :href="currentPost.url" target="_blank">
-          <div class="year-month">{{currentPostDate.yearMonth}}</div>
-          <span class="date">{{currentPostDate.date}}</span>
-          <span class="week">{{currentPostDate.weekday}}</span>
-        </a>
-        <div class="post-info">
-          <div class="author">{{currentPost.author}}</div>
-          <div class="title" v-html="currentPost.title"></div>
-        </div>
-      </div>
-      <div class="content" v-html="currentPost.content"></div>
-    </div>
-  </div>
-</body>
-<script> const defaultList=[{"datetime":"2018/05/06 21:07","author":"生駒里奈","title":"乃木坂46の生駒里奈でした！！","url":"http://blog.nogizaka46.com/rina.ikoma/2018/05/044787.php","content":"今日で<br>\n<br>\n私は乃木坂46を卒業します！<br>\n<br>\n15歳で受けたオーディション<br>\n<br>\n16歳でデビューして<br>\n<br>\n今は22歳<br>\n<br>\n大人になりました(*´꒳`*)<br>\n<br>\n<br>\n<br>\n<br>\n乃木坂46が私に与えたものはものすごーくステキな物ばかりです。<br>\n<br>\n<br>\n嬉しいも楽しいも苦しいも悔しいも<br>\n<br>\nどれもこれも輝いています。<br>\n<br>\n<br>\n今の私を作ったのは私自身でもありますが、<br>\n<br>\nスタッフさん、お仕事でお世話になった方々、<br>\n<br>\nメンバー、ファンの皆さん<br>\n<br>\n一人一人の言葉や想いが私を動かしてくれました。<br>\n<br>\n<br>\n本当にありがとうございました！！！<br>\n<br>\n一生物の財産です<br>\n<br>\n私のチカラです。<br>\n<br>\n私は、<br>\n<br>\n乃木坂46になれてよかったです。<br>\n<br>\n乃木坂46の生駒ちゃんと呼ばれた日々が宝物です。<br>\n<br>\n<br>\nあーー！！！！<br>\n<br>\nたった人生22年<br>\n<br>\nたった芸歴7年目<br>\n<br>\n<br>\nそんな人間がこんなに清々しい感情を抱けるのか<br>\n<br>\nすごい事だよね<br>\n<br>\n<br>\n贅沢なことです<br>\n<br>\n<br>\nそれだけずっとずっと乃木坂にかけていた。<br>\n<br>\n乃木坂46を頑張れていたんだ。<br>\n<br>\n<br>\n乃木坂を良くしたいと泣いた日々が懐かしいです。<br>\n<br>\n青春とよく言いますが、<br>\n<br>\n私にとって乃木坂46は相棒です。<br>\n<br>\n苦楽を共にずっとしてきました。<br>\n<br>\n起きても寝ててもオフの日に買い物してても<br>\n<br>\nずっと乃木坂46を考えて過ごしてきました。<br>\n<br>\nお陰で、私色んなこと出来るようになったよ。<br>\n<br>\nありがとう。<br>\n<br>\n<br>\n<br>\nこれからは、自分の事を考えて行きます。<br>\n<br>\n<br>\nお仕事も、プライベートも<br>\n<br>\n青春させてーーー笑笑☆☆（楽しく過ごすお♪）<br>\n<br>\nですが、<br>\n<br>\nファンの皆さんには<br>\n<br>\n芸能人の生駒ちゃんがやる作品だったり、テレビだったり<br>\n<br>\n目にした時に必ず楽しいと思わせますから、<br>\n<br>\nそこは楽しみにしていて下さいね<br>\n<br>\nそして、変わらず応援して下さったら嬉しいです(*´꒳`*)<br>\n<br>\n<br>\n<br>\n<br>\nでもね、<br>\n<br>\n<br>\n乃木坂46をずっとずっと好きでいて欲しいです(*´꒳`*)<br>\n<br>\n<br>\n私が大好きな乃木坂46をこれからも支えて下さったら嬉しいです(*´꒳`*)！！！<br>\n<br>\n生駒ちゃんもずっと大好きだし、<br>\n<br>\n私の活動が未来の乃木坂に繋がるようにするのも私の役目だと思います。<br>\n<br>\n頑張りますね！！<br>\n<br>\n<br>\n改めて、<br>\n<br>\n私を支えて下さった皆さん本当にありがとうございました。<br>\n<br>\nやりきりました。<br>\n<br>\n乃木坂46<br>\n<br>\n楽しかったです！！<br>\n<br>\nこれからもよろしくお願いします(*´꒳`*)！！<br>\n<br>\n期待していて下さい。<br>\n<br>\nではっ<br>\n<br><img alt=\"A1C73B18-70DC-42AE-A35F-3EE314A35E99.jpeg\" src=\"img/blog/rina.ikoma/img/2018/05/06/A1C73B18-70DC-42AE-A35F-3EE314A35E99.jpeg\" width=\"2068\" class=\"mt-image-none\" style=\"\">\nへばなっ★彡<br>\n\n"},{"datetime":"2018/05/05 19:21","author":"生駒里奈","title":"今日アイスたべる","url":"http://blog.nogizaka46.com/rina.ikoma/2018/05/044765.php","content":"<p>さゆりすとが出演している<br><br>舞台<br><br>若様組まいる〜 アイスクリン強し<br><br>を観劇してきました(*´꒳`*)</p>\n<p></p>\n<p><img alt=\"7907139794304.jpg\" src=\"img/blog/rina.ikoma/img/2018/05/05/7907139794304.jpg\" width=\"1478\" class=\"mt-image-none\"></p>\n<p><br><br>モマで共演しました</p>\n<p><br>鎌苅健太さん<br>中村優一さん<br>とさゆりすと<br><br>少年社中のふみこさんが生駒卒コンTシャツをモマメンバーに配ってるんだって！！<br><br>本当にありがとうございます！！☆☆<br><br>（いいもん作ったかもしれない笑笑）<br><br>嬉しいし<br><br>だけど、今日お二人とも着てるし<br><br>なんだか、照れたけど嬉しかった(*´꒳`*)<br><br>またお二人と共演出来るように明後日から頑張らなきゃと思いました。<br><br><br>さゆりすと頑張ってね(*´꒳`*)☆<br><br>会えて良かった〜！！！<br><br>あやねちゃんのはまた後で行くよう<br><br><br>メンバーが出ている舞台沢山あるから観劇沢山出来るの超嬉しい(*´꒳`*)<br><br><br><br>明日で乃木坂最後だと言うのに、<br><br>私は至っていつも通りです<br><br>時間があるから、<br><br>浴室のカビ防止の散布して、<br><br>掃除機かけて<br><br>断捨離して<br><br>お散歩がてら服買って<br><br>自炊のレパートリー増やしてみてます！<br><br><br>楽しいよ〜笑<br><br><br><br>明日、乃木坂楽しみます！！<br><br>へばなっ★彡</p>"},{"datetime":"2018/04/27 13:13","author":"生駒里奈","title":"アイドルとしての表現は出し切りました。","url":"http://blog.nogizaka46.com/rina.ikoma/2018/04/044615.php","content":"生駒です<br>\n<br>\n卒業ライブが終わり数日経ちました。<br>\n<br>\n一番に思うのは、<br>\n<br>\nあぁ<br>\n<br>\n結局歌は上手くならなかったなぁです。<br>\n<br>\nまぁ、こんな生駒にソロパートなんて任せられないし。<br>\n<br>\nでもでも、もう少し上手くなりたかったなぁ。<br>\n<br>\n<br>\n<br>\nてか、私は歌上達出来る人なのかなぁ。<br>\n<br>\n音痴だからな、<br>\n<br>\n<br>\n水玉模様<br>\n<br>\n一回も上手に歌えなくてごめんね。<br>\n<br>\nそれだけが悔やまれます。<br>\n<br>\n<br>\n<br>\nただ、<br>\n<br>\nライブはすごーくすごーく楽しかった(*´꒳`*)<br>\n<br>\n<br>\nだって皆んなといっぱいパフォーマンス出来たし！！<br>\n<br>\nナルトが出てきたし！！<br>\n<br>\nてか！<br>\n<br>\n<br>\n岸本斉史先生からイラスト頂いた(´；ω；｀)☆<br>\n<br>\n<br>\nこんな事起こっていい事なの⁈<br>\n<br>\nナルトくんがコメントくれた(´；ω；｀)☆<br>\n<br>\n<br>\nいいのかなぁ。。。<br>\n<br>\n1ファンだよ。。。。<br>\n<br>\nただのファンだよ。。。。<br>\n<br>\n<br>\n。。。。こんな贅沢はもうないんだからな生駒、<br>\n<br>\nこれからの修行、絶対投げ出すなよ！！<br>\n<br>\n<br>\n改めて、<br>\n<br>\n仲間がいて、自分の名前がライブのタイトルに付いていて、<br>\n<br>\n歴史ある建物でライブが出来る<br>\n<br>\n<br>\nこんな事やらせていただけた事、本当に感謝しています。<br>\n<br>\n<br>\n<br>\n生生星と言ってファンの皆さんに好きだといってくださっています。<br>\n<br>\n実はね、そこに私がいるのがすごく怖かったんだ、<br>\n<br>\n初期はね、私が真ん中にいたら2人も悪く言われちゃうって思ってて、<br>\n<br>\n私なんか消えて、2人を見てっ！！<br>\n<br>\n<br>\nってずっと思ってたなぁ。。笑<br>\n<br>\nとんだ厨二病野郎だな☆<br>\n<br>\nでもその時は本気で思ってたんだよ笑<br>\n<br>\n<br>\nそんな事思い出しながら最後に歌いました<br>\n<br>\n<br>\nみなみといくちゃんはずっと歌が上手いなぁってアイコンタクトしたよ☆<br>\n<br>\n<br>\n満月が消えたも三人揃って出来て満足(*´꒳`*)<br>\n<br>\n<br>\nこん時、マイクが唇に当たって唇の真ん中に血豆が出来たのは面白かった！<br>\n<br>\nオーディションの時からお世話になっているメイクさんが、生駒何口につけてるんだってびっくりしたってごめんぬ！笑<br>\n<br>\n<br>\nシンクロニシティのお客様の前で披露するのは初めてだったし<br>\n<br>\n今回、期生ごとに曲を頂いたので披露したかったし、<br>\n<br>\nAKB48との兼任は私は忘れて欲しくなかったから、<br>\n<br>\n大好きな三曲を披露しました。<br>\n<br>\n<br>\n<br>\n<br>\nそれぞれ、一期生と最後に踊れて、<br>\n<br>\n二期生、三期生とも一緒に踊れて嬉しかった(*´꒳`*)<br>\n<br>\n<br>\n絢音ちゃんと、秋田の皆さんも観ている中ユニット出来て超嬉しかった～～♡♡<br>\n<br>\n<br>\nサプライズで、メンバーにバラの花を一輪ずつ貰い、ライブTシャツの背中に一文字づつ字が書いてあって、<br>\n<br>\nくるくる回るメンバーが可愛くて、でも嬉しくて<br>\n<br>\n皆んなほんとに時間がない中準備してくれたんだって<br>\n<br>\n私の為に時間を使ってくれてありがとうございました(´；ω；｀)！！<br>\n<br>\n<br>\n私はほんとに幸せです。<br>\n<br>\n<br>\nあとね、沢山の方々からメッセージを頂きました。<br>\n<br>\nバナナマンさん、まゆゆさん、スタッフの皆さん、メンバー、ファンの皆さん、<br>\n<br>\nお父さん、お母さん。<br>\n<br>\n今までテレビ、映画や舞台を通してお世話になった皆さん。<br>\n<br>\n中にはね、写真付きでメッセージ下さった方々も居るんだよ(*´꒳`*)<br>\n<br>\n<br>\n私には勿体ない言葉ばかり。<br>\n<br>\n私、そんな人間じゃないよ。<br>\n<br>\nありがとうって言われる人じゃないよ。<br>\n<br>\n皆さんにこそありがとうをあげたいよ！！！<br>\n<br>\n<br>\n<br>\n<br>\n<img alt=\"69FCBF39-A802-4AA0-86C5-652CD30645EE.jpeg\" src=\"img/blog/rina.ikoma/img/2018/04/27/69FCBF39-A802-4AA0-86C5-652CD30645EE.jpeg\" width=\"1568\" class=\"mt-image-none\" style=\"\">\nまだ、卒業じゃないからまとまらない！！<br>\n<br>\nただ、最高に楽しいライブでした！<br>\n<br>\n5月6日までは乃木坂46なので、<br>\n<br>\n最後までよろしくお願いします！！<br>\n<br>\nへばなっ★彡<br>\n\n\n\n\n\n\n\n\n\n\n\n"},{"datetime":"2018/04/24 10:19","author":"生駒里奈","title":"取り急ぎね！","url":"http://blog.nogizaka46.com/rina.ikoma/2018/04/044571.php","content":"<br>\n生駒里奈卒業コンサート終わりました！！<br>\n<br>\nご来場いただき誠にありがとうございました！！<br>\n<br>\n<br>\n<img alt=\"07FBF5E5-C326-453A-B6A7-A9B9F51F809E.jpeg\" src=\"img/blog/rina.ikoma/img/2018/04/24/07FBF5E5-C326-453A-B6A7-A9B9F51F809E.jpeg\" width=\"1478\" class=\"mt-image-none\" style=\"\"><br>\n<br>\nかわいいね！<br>\n<br>\nへばなっ★彡<br>"}]; </script>
-<script src="../assets/script/main.js"></script>
-
+<!doctype html>
+<html data-n-head-ssr lang="ja" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22ja%22%7D%7D">
+  <head>
+    <title>乃木坂46卒業メンバーのブログ</title><meta data-n-head="ssr" charset="utf-8"><meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1"><meta data-n-head="ssr" name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA"><meta data-n-head="ssr" http-equiv="refresh" content="0; url=/n46-crawler/mb/rina.ikoma"><base href="/n46-crawler/"><link data-n-head="ssr" rel="icon" type="image/x-icon" href="favicon.ico"><link data-n-head="ssr" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous"><link data-n-head="ssr" rel="canonical" href="/n46-crawler/mb/rina.ikoma"><script data-n-head="ssr" data-hid="gtm-script">window._gtm_init||(window._gtm_init=1,function(t,e,n,a,o){t[n]=1==t[n]||"yes"==e[n]||1==e[n]||1==e.msDoNotTrack||t[a]&&t[a][o]&&t[a][o]()?1:0}(window,navigator,"doNotTrack","external","msTrackingProtectionEnabled"),function(a,o,i,g,m){a[m]={},a._gtm_inject=function(t){var e,n;a.doNotTrack||a[m][t]||(a[m][t]=1,a[g]=a[g]||[],a[g].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),e=o.getElementsByTagName(i)[0],(n=o.createElement(i)).async=!0,n.src="https://www.googletagmanager.com/gtm.js?id="+t,e.parentNode.insertBefore(n,e))},a._gtm_inject("GTM-5K473GZ")}(window,document,"script","dataLayer","_gtm_ids"))</script><link rel="preload" href="/n46-crawler/_nuxt/ff01422.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/836cb17.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/9b93b85.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/e22598d.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/47477eb.js" as="script"><style data-vue-ssr-id="42a028c7:0 fa7ff0ca:0 56b15182:0">.nuxt-progress{position:fixed;top:0;left:0;right:0;height:2px;width:0;opacity:1;transition:width .1s,opacity .4s;background-color:#000;z-index:999999}.nuxt-progress.nuxt-progress-notransition{transition:none}.nuxt-progress-failed{background-color:red}html{font-family:Meiryo,"Meiryo UI",sans-serif;font-size:15px;word-spacing:1px;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;box-sizing:border-box}*,:after,:before{box-sizing:border-box;margin:0}.button--green{display:inline-block;border-radius:4px;border:1px solid #3b8070;color:#3b8070;text-decoration:none;padding:10px 30px}.button--green:hover{color:#fff;background-color:#3b8070}.button--grey{display:inline-block;border-radius:4px;border:1px solid #35495e;color:#35495e;text-decoration:none;padding:10px 30px;margin-left:15px}.button--grey:hover{color:#fff;background-color:#35495e}</style><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/rina.ikoma/state.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/rina.ikoma/payload.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/manifest.js" as="script">
+  </head>
+  <body>
+    <noscript data-n-head="ssr" data-hid="gtm-noscript" data-pbody="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5K473GZ&" height="0" width="0" style="display:none;visibility:hidden" title="gtm"></iframe></noscript><div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div><div></div></div></div></div><script defer src="/n46-crawler/_nuxt/static/1626430494/rina.ikoma/state.js"></script><script src="/n46-crawler/_nuxt/ff01422.js" defer></script><script src="/n46-crawler/_nuxt/47477eb.js" defer></script><script src="/n46-crawler/_nuxt/836cb17.js" defer></script><script src="/n46-crawler/_nuxt/9b93b85.js" defer></script><script src="/n46-crawler/_nuxt/e22598d.js" defer></script>
+  </body>
 </html>
