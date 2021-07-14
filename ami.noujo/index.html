@@ -1,86 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>能條 愛未 | 乃木坂46卒業メンバーのブログ</title>
-  <meta name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA">
-  <meta property="og:image" name="twitter:image" content="https://janelin612.github.io/n46-crawler/assets/zaoidj.jpg">
-  <meta property="og:title" name="twitter:title" content="能條 愛未 | 乃木坂46卒業メンバーのブログ">
-  <meta property="og:description" name="twitter:description" content="2018/12/19 13:32スタート2018/12/11 14:36出発の準備2018/10/28 09:00感謝。伝われ〜〜〜！2018/10/18 09:48２４歳になっちゃった♪♪">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="../assets/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="../assets/android-chrome-512x512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-  <script src="../assets/script/vue.min.js"></script>
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-38227412-4');
-  </script>
-</head>
-
-<body>
-  <div id="app">
-    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../assets/menu.svg" alt=""></button>
-    <div class="member" :class="{'hide':isFold}">
-      <button id="btn-home" onclick="location.href='../'"><img src="../assets/arrow.svg" alt="" srcset=""><span>ホーム</span></button>
-      <img :src="member.image" alt="" class="avatar">
-      <div class="name">{{member.name}}</div>
-      <div class="name hiragana">{{member.name_hiragana}}</div>
-
-      <ul class="intro">
-        <li v-for="item in member.intro">
-          <span class="key">{{item.key}}</span>
-          <span class="value">{{item.value}}</span>
-        </li>
-      </ul>
-
-      <ul class="tag">
-        <li v-for="item in member.tag">{{item}}</li>
-      </ul>
-    </div>
-
-    <div class="menu" :class="{'hide':isFold}">
-      <div class="loading-spinner" v-if="isLoading">
-        <div class="spinner"></div>
-      </div>
-      <ul>
-        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
-          <div v-html="item.title"></div>
-          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
-          <div class="small-datetime">{{item.datetime}}</div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="main" v-if="currentPost!=null">
-      <div class="heading">
-        <a class="post-time" :href="currentPost.url" target="_blank">
-          <div class="year-month">{{currentPostDate.yearMonth}}</div>
-          <span class="date">{{currentPostDate.date}}</span>
-          <span class="week">{{currentPostDate.weekday}}</span>
-        </a>
-        <div class="post-info">
-          <div class="author">{{currentPost.author}}</div>
-          <div class="title" v-html="currentPost.title"></div>
-        </div>
-      </div>
-      <div class="content" v-html="currentPost.content"></div>
-    </div>
-  </div>
-</body>
-<script> const defaultList=[{"datetime":"2018/12/19 13:32","author":"能條愛未","title":"スタート","url":"http://blog.nogizaka46.com/ami.noujo/2018/12/048399.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>&nbsp;</div><div>乃木坂46に入って、</div><div>本当に良かったと</div><div>ファンの皆様が改めてそう感じさせてくれました。</div><div>アイドルになってくれてありがとうと、</div><div>涙を流して言ってくださいました。</div><div>&nbsp;</div><div>&nbsp;</div><div>その涙、言葉を決して無駄にしないと</div><div>決心させられました。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>自分自身でこのタイミングで旅立ち 1人で戦っていくと決めたからには、</div><div>とことんボロボロになって&nbsp;</div><div>それでも歩みを止めず そしてその先の夢を叶えたい</div><div>&nbsp;</div><div>&nbsp;</div><div>怖くない。と言ったらやっぱり嘘になるけど、</div><div>何があっても私についてきてくれたファンの皆様がいるから</div><div>今の私には勇気があります</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/ami.noujo/img/2018/12/19/8709568/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/ami.noujo/img/2018/12/19/8709568/0001.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>素晴らしい7年間を本当にありがとうございました！！</div><div>&nbsp;</div><div>乃木坂46に入れて</div><div>幸せでした。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>よし！スタートだ！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>2018.12.19</div><div>&nbsp;</div><div>能條愛未</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div></body></html> "},{"datetime":"2018/12/11 14:36","author":"能條愛未","title":"出発の準備","url":"http://blog.nogizaka46.com/ami.noujo/2018/12/048211.php","content":"<p><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></p>\n<div> </div>\n<div> </div>\n<div>もうすぐなんですよね〜。</div>\n<div> </div>\n<div>実感が湧いてるんだか湧いてないんだかっていうところが正直な気持ち</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>すでにいろいろなことが始動していて</div>\n<div>今後は一人で戦っていくことになるんだということをしみじみ感じております</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>早く皆様にお会いしたいです！</div>\n<div> </div>\n<div>手を握って、目を見て、いろんなお話がしたいです！！！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>出来ることなら最後まで明るく笑顔で、</div>\n<div>私らしく</div>\n<div>乃木坂としての活動を終われたらなと＾＾</div>\n<div> </div>\n<div> </div>\n<div>...とか言って10月に北海道でやったラストのライブのときみたいに、</div>\n<div>嗚咽が出るほど泣きじゃくってしまうのかな。</div>\n<div> </div>\n<div>どうなるかはわからない</div>\n<div>ファンの皆様しだいですね。笑笑</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>素敵な日になるといいな＾＾</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/ami.noujo/img/2018/12/11/0628336/0000.jpeg\"></div>\n<div>今年全国ツアー中のご飯会</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/ami.noujo/img/2018/12/11/0628336/0001.jpeg\"></div>\n<div>三角mv</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/ami.noujo/img/2018/12/11/0628336/0002.jpeg\"></div>\n<div>風船mv</div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/ami.noujo/img/2018/12/11/0628336/0003.jpeg\"></div>\n<div>ブランコmv</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/ami.noujo/img/2018/12/11/0628336/0004.jpeg\"></div>\n<div>のぎるーむ</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>懐かしい写真</div>\n<div>まだまだあるけど貼りきれない</div>\n<div> </div>\n<div> </div>\n<div>思い出の数が多すぎるね。。</div>\n<div>全部素敵な思い出＾＾</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>"},{"datetime":"2018/10/28 09:00","author":"能條愛未","title":"感謝。伝われ〜〜〜！","url":"http://blog.nogizaka46.com/ami.noujo/2018/10/047532.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>&nbsp;</div><div>&nbsp;</div><div>皆さまこんにちは＾＾</div><div>&nbsp;</div><div>&nbsp;</div><div>２４歳、大人の能條愛未です。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>さて、パシフィコ横浜にて乃木坂としてはラストの生誕祭がありました。</div><div>&nbsp;</div><div><img src=\"img/blog/ami.noujo/img/2018/10/28/5734759/0000.jpeg\"></div><div>&nbsp;</div><div>今年のテーマは「能條劇場」</div><div>お上手。。。</div><div>&nbsp;</div><div>&nbsp;</div><div>ブースには舞台の幕のようなものが飾られてあって、置いてあるもの一つ一つに皆様の愛を感じました(^^)</div><div>生誕祭は、ファンの方の愛情や想いを改めて見て感じれる 毎年楽しみなイベントでした！</div><div>&nbsp;</div><div>あー これ寝ずに作ってくれたんだろうなぁ〜とか</div><div>これはあみを思ってデザインしてくれたんだろうな〜とか</div><div>隅から隅までしっかり目と心に焼き付けさせていただきました。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/ami.noujo/img/2018/10/28/5734759/0001.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>そして今年のお手紙はずーりんが＾＾</div><div>&nbsp;</div><div>ずーりんペスカトーレ&nbsp;</div><div>最近私はそう呼んでます。</div><div>&nbsp;</div><div>ずーの手紙嬉しかったなぁ。。</div><div>&nbsp;</div><div>仲良しだからこそ普段言えないようなことをこういう場では伝えられる</div><div>照れくさくなるようなこともたくさん言ってくれた！笑</div><div>&nbsp;</div><div>ずーりんペスカトーレが、卒業したら女優 能條愛未のファンになってくれるって言ってたよ＾＾</div><div>&nbsp;</div><div>頑張らなくちゃいけないねぇっ！</div><div>&nbsp;</div><div>ずー大好き本当に(^^)べー</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>そしてこの日はハロウィンが近いということでメンバーがこぞってコスプレしてましたね！</div><div>&nbsp;</div><div>あみはというと〜</div><div>&nbsp;</div><div><img src=\"img/blog/ami.noujo/img/2018/10/28/5734759/0002.jpeg\"></div><div>&nbsp;</div><div>エクスペスト パトローナーム！！</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/ami.noujo/img/2018/10/28/5734759/0003.jpeg\"></div><div>&nbsp;</div><div>あみポタです。</div><div>&nbsp;</div><div>&nbsp;</div><div>ファンの方に有無も言わさず呪文かけまくったら みんなどういう反応したらいいのかわからなかったみたいですごく困惑してた。笑笑</div><div>でもその姿が愛おしくて 構わず石になる呪文とかとなえまくった。</div><div>ひたすら無邪気なあみポタです。お許しください</div><div>&nbsp;</div><div>あみがどんなに自由な握手をしてもそれでも好きだよと言ってくださるまるで神様のようなあみのファンのみんな。</div><div>泣きながらあみに、アイドルになってくれてありがとうって言ってくれるんだ</div><div>嬉しすぎるし、こちらが泣いてしまうそんなの。</div><div>&nbsp;</div><div>本当に、本当に、大切です。</div><div>あみに出会ってくれてありがとうと</div><div>心から全員一人一人に言いたいです。</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/ami.noujo/img/2018/10/28/5734759/0004.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div></body></html> "},{"datetime":"2018/10/18 09:48","author":"能條愛未","title":"２４歳になっちゃった♪♪","url":"http://blog.nogizaka46.com/ami.noujo/2018/10/047405.php","content":"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div>タイトルはあえてポップな感じにしました</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>本日１０月１８日<div>&nbsp;</div><div>２４歳になりました！</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>やばいですもうどんどん本気の大人になっていく。</div><div>&nbsp;</div><div>本気の大人ってのがいったいいくつなのかは私にもわからないけど なんか本気の大人に近づいてる気がします</div><div>&nbsp;</div><div>&nbsp;</div><div>しっかり地に足つけて、</div><div>強い意志を持って、</div><div>２４歳という年を生きたい。</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/ami.noujo/img/2018/10/18/2350196/0000.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div></body></html> "}]; </script>
-<script src="../assets/script/main.js"></script>
-
+<!doctype html>
+<html data-n-head-ssr lang="ja" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22ja%22%7D%7D">
+  <head>
+    <title>乃木坂46卒業メンバーのブログ</title><meta data-n-head="ssr" charset="utf-8"><meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1"><meta data-n-head="ssr" name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA"><meta data-n-head="ssr" http-equiv="refresh" content="0; url=/n46-crawler/mb/ami.noujo"><base href="/n46-crawler/"><link data-n-head="ssr" rel="icon" type="image/x-icon" href="favicon.ico"><link data-n-head="ssr" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous"><link data-n-head="ssr" rel="canonical" href="/n46-crawler/mb/ami.noujo"><script data-n-head="ssr" data-hid="gtm-script">window._gtm_init||(window._gtm_init=1,function(t,e,n,a,o){t[n]=1==t[n]||"yes"==e[n]||1==e[n]||1==e.msDoNotTrack||t[a]&&t[a][o]&&t[a][o]()?1:0}(window,navigator,"doNotTrack","external","msTrackingProtectionEnabled"),function(a,o,i,g,m){a[m]={},a._gtm_inject=function(t){var e,n;a.doNotTrack||a[m][t]||(a[m][t]=1,a[g]=a[g]||[],a[g].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),e=o.getElementsByTagName(i)[0],(n=o.createElement(i)).async=!0,n.src="https://www.googletagmanager.com/gtm.js?id="+t,e.parentNode.insertBefore(n,e))},a._gtm_inject("GTM-5K473GZ")}(window,document,"script","dataLayer","_gtm_ids"))</script><link rel="preload" href="/n46-crawler/_nuxt/ff01422.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/836cb17.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/9b93b85.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/e22598d.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/47477eb.js" as="script"><style data-vue-ssr-id="42a028c7:0 fa7ff0ca:0 56b15182:0">.nuxt-progress{position:fixed;top:0;left:0;right:0;height:2px;width:0;opacity:1;transition:width .1s,opacity .4s;background-color:#000;z-index:999999}.nuxt-progress.nuxt-progress-notransition{transition:none}.nuxt-progress-failed{background-color:red}html{font-family:Meiryo,"Meiryo UI",sans-serif;font-size:15px;word-spacing:1px;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;box-sizing:border-box}*,:after,:before{box-sizing:border-box;margin:0}.button--green{display:inline-block;border-radius:4px;border:1px solid #3b8070;color:#3b8070;text-decoration:none;padding:10px 30px}.button--green:hover{color:#fff;background-color:#3b8070}.button--grey{display:inline-block;border-radius:4px;border:1px solid #35495e;color:#35495e;text-decoration:none;padding:10px 30px;margin-left:15px}.button--grey:hover{color:#fff;background-color:#35495e}</style><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/ami.noujo/state.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/ami.noujo/payload.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/manifest.js" as="script">
+  </head>
+  <body>
+    <noscript data-n-head="ssr" data-hid="gtm-noscript" data-pbody="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5K473GZ&" height="0" width="0" style="display:none;visibility:hidden" title="gtm"></iframe></noscript><div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div><div></div></div></div></div><script defer src="/n46-crawler/_nuxt/static/1626430494/ami.noujo/state.js"></script><script src="/n46-crawler/_nuxt/ff01422.js" defer></script><script src="/n46-crawler/_nuxt/47477eb.js" defer></script><script src="/n46-crawler/_nuxt/836cb17.js" defer></script><script src="/n46-crawler/_nuxt/9b93b85.js" defer></script><script src="/n46-crawler/_nuxt/e22598d.js" defer></script>
+  </body>
 </html>

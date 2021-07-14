@@ -1,86 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>伊藤 万理華 | 乃木坂46卒業メンバーのブログ</title>
-  <meta name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA">
-  <meta property="og:image" name="twitter:image" content="https://janelin612.github.io/n46-crawler/assets/zaoidj.jpg">
-  <meta property="og:title" name="twitter:title" content="伊藤 万理華 | 乃木坂46卒業メンバーのブログ">
-  <meta property="og:description" name="twitter:description" content="2017/12/23 23:30ありがとうございました。790回目2017/12/21 11:06カーテン。789回目2017/12/08 13:00SUNNY AND BLUE。788回目2017/11/10 22:06きっかけ。787回目">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="../assets/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="../assets/android-chrome-512x512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-  <script src="../assets/script/vue.min.js"></script>
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38227412-4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-38227412-4');
-  </script>
-</head>
-
-<body>
-  <div id="app">
-    <button id="btn-toggle" :class="{'hide':isFold}" @click="onToggle()"><img src="../assets/menu.svg" alt=""></button>
-    <div class="member" :class="{'hide':isFold}">
-      <button id="btn-home" onclick="location.href='../'"><img src="../assets/arrow.svg" alt="" srcset=""><span>ホーム</span></button>
-      <img :src="member.image" alt="" class="avatar">
-      <div class="name">{{member.name}}</div>
-      <div class="name hiragana">{{member.name_hiragana}}</div>
-
-      <ul class="intro">
-        <li v-for="item in member.intro">
-          <span class="key">{{item.key}}</span>
-          <span class="value">{{item.value}}</span>
-        </li>
-      </ul>
-
-      <ul class="tag">
-        <li v-for="item in member.tag">{{item}}</li>
-      </ul>
-    </div>
-
-    <div class="menu" :class="{'hide':isFold}">
-      <div class="loading-spinner" v-if="isLoading">
-        <div class="spinner"></div>
-      </div>
-      <ul>
-        <li v-for="(item,index) in list" v-on:click="onListSelected(index)" :class="index==selected?'selected':''">
-          <div v-html="item.title"></div>
-          <div v-if="item.title.length==0">&nbsp;&nbsp;&nbsp;</div>
-          <div class="small-datetime">{{item.datetime}}</div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="main" v-if="currentPost!=null">
-      <div class="heading">
-        <a class="post-time" :href="currentPost.url" target="_blank">
-          <div class="year-month">{{currentPostDate.yearMonth}}</div>
-          <span class="date">{{currentPostDate.date}}</span>
-          <span class="week">{{currentPostDate.weekday}}</span>
-        </a>
-        <div class="post-info">
-          <div class="author">{{currentPost.author}}</div>
-          <div class="title" v-html="currentPost.title"></div>
-        </div>
-      </div>
-      <div class="content" v-html="currentPost.content"></div>
-    </div>
-  </div>
-</body>
-<script> const defaultList=[{"datetime":"2017/12/23 23:30","author":"伊藤万理華","title":"ありがとうございました。790回目","url":"http://blog.nogizaka46.com/marika.ito/2017/12/042386.php","content":"<div>&nbsp;</div><div>&nbsp;</div><div>本日をもって</div><div>乃木坂46としての最後のイベントが</div><div>終了致しました。</div><div>&nbsp;</div><div>仙台個別握手会、</div><div>お越し下さった皆様</div><div>ありがとうございました。</div><div>&nbsp;</div><div><img src=\"img/blog/marika.ito/img/2017/12/23/3933479/0000.jpeg\"></div><div>&nbsp;</div><div><img src=\"img/blog/marika.ito/img/2017/12/23/3933479/0001.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>まさか、自分の人生の中に</div><div>アイドルになる選択肢があったなんて。</div><div>まったく不思議です。</div><div>世界が広がった瞬間です。</div><div>&nbsp;</div><div>時期も人も環境も</div><div>素敵な巡り合わせでした。</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div><img src=\"img/blog/marika.ito/img/2017/12/23/3933479/0002.jpeg\"></div><div>&nbsp;</div><div><img src=\"img/blog/marika.ito/img/2017/12/23/3933479/0003.jpeg\"></div><div>&nbsp;</div><div>&nbsp;</div><div>気づいたら6年と半年経ちました。</div><div> </div><div> </div><div>乃木坂46において</div><div>私はどんな存在だったのでしょうか。</div><div> </div><div> </div><div> </div><div> </div><div> </div><div> </div><div>今までお世話になりました！！！！</div><div> </div><div> </div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>伊藤万理華</div><div>&nbsp;</div>"},{"datetime":"2017/12/21 11:06","author":"伊藤万理華","title":"カーテン。789回目","url":"http://blog.nogizaka46.com/marika.ito/2017/12/042218.php","content":"<div> </div>\n<div>こんにちは！</div>\n<div> </div>\n<div>2017年もあと少し。</div>\n<div> </div>\n<div>今年も楽しかったなあ</div>\n<div>私の中の一大行事は</div>\n<div>あさひなぐと脳内博覧会でした。</div>\n<div> </div>\n<div>上半期はずっと薙刀やってたな</div>\n<div>下半期は家にあるものいっぱい外に出したな</div>\n<div> </div>\n<div>展示してた服や物や家具たちが</div>\n<div>最近戻ってきて、</div>\n<div>あーーー娘たちーー！</div>\n<div>ってなりました。</div>\n<div> </div>\n<div>あと、展示のために購入した</div>\n<div>人体模型も増えたから</div>\n<div>どこに置こうか迷ったんだけど、</div>\n<div>あのガラス棚とテレビの間に置きました。</div>\n<div> </div>\n<div>だから必然的に</div>\n<div>テレビ見ながらごはん食べる時</div>\n<div>人体模型も目につくわけよ、</div>\n<div> </div>\n<div>人呼べないよなあ</div>\n<div>って思った、、</div>\n<div> </div>\n<div> </div>\n<div>NOGIBINGOでゲットした</div>\n<div>炊飯器使い始めました。やっと！</div>\n<div>最近カレー作ったり、レタス鍋←！</div>\n<div>も作ったりしてます。</div>\n<div> </div>\n<div>レタス鍋、玲香が乃木中で紹介してたやつ！</div>\n<div>タレがこれまた美味しいのよー</div>\n<div>薬味たくさんいれるのおすすめだよ～～</div>\n<div>ネギとニラとミョウガと生姜とシソ！</div>\n<div> </div>\n<div> </div>\n<div>￼<img src=\"img/blog/marika.ito/img/2017/12/21/2175150/0000.jpeg\"></div>\n<div> </div>\n<div><img src=\"img/blog/marika.ito/img/2017/12/21/2175150/0001.jpeg\"></div>\n<div>blt graph.</div>\n<div> </div>\n<div>富士山！！！</div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/marika.ito/img/2017/12/21/2175150/0002.jpeg\"></div>\n<div> </div>\n<div>￼<img src=\"img/blog/marika.ito/img/2017/12/21/2175150/0003.jpeg\"></div>\n<div>EX大衆</div>\n<div> </div>\n<div>表紙ー！</div>\n<div> </div>\n<div> </div>\n<div>￼<img src=\"img/blog/marika.ito/img/2017/12/21/2175150/0004.jpeg\"></div>\n<div>OVERTURE</div>\n<div> </div>\n<div>ずーー！</div>\n<div> </div>\n<div>たくさん載せてもらってます。</div>\n<div>お世話になりました。</div>\n<div>インタビューも読んでね！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>まりか</div>"},{"datetime":"2017/12/08 13:00","author":"伊藤万理華","title":"SUNNY AND BLUE。788回目","url":"http://blog.nogizaka46.com/marika.ito/2017/12/042070.php","content":"<div> </div><div><img src=\"img/blog/marika.ito/img/2017/12/08/9540456/0000.jpeg\"></div><div> </div><div>GALLERY X BY PARCO</div><div>KYOTO NIPPON FESTIVAL</div><div>FUKUOKA PARCO</div><div>にて開催していた</div><div>『伊藤万理華の脳内博覧会』</div><div>3日をもって閉幕いたしました。</div><div> </div><div>展示した作品ひとつひとつ、</div><div>乃木坂46の活動を通して出会った</div><div>クリエイターの方々の協力があって</div><div>脳内博覧会はつくられました。</div><div>宝物です。</div><div>&nbsp;</div><div>脳内を外にぶちまけた瞬間、</div><div>空っぽになった気がしたけど</div><div>展示されてる僅かの期間でも</div><div>発見したことがたくさんありました。</div><div>&nbsp;</div><div>どう受け取るかはそれぞれです。</div><div>直接目に触れる、同じ空間にいることで</div><div>物の印象も伝わり方も変わる気がします。</div><div>3都市、それぞれで受けた印象も</div><div>また違ったりしたのかな？</div><div>すごく幸せな時間だったな。</div><div>&nbsp;</div><div>ご来場くださった皆様</div><div>ありがとうございました！</div><div>少しでも楽しんでいただけたなら幸いです。</div><div> </div><div><img src=\"img/blog/marika.ito/img/2017/12/08/9540456/0001.jpeg\"></div><div><img src=\"img/blog/marika.ito/img/2017/12/08/9540456/0002.jpeg\"></div><div> </div><div>「トイ」「はじまりか、」</div><div>1月10日リリースのアンダーアルバムに</div><div>収録されるそう！</div><div> </div><div>PARCO limited storeにて</div><div>伊藤万理華の脳内博覧会の物</div><div>限定発売決定致しました！</div><div>12月9日正午～22日正午までだよーーー</div><div>来られなかった人にはグッズだけでも</div><div>手にとってほしい。</div><div><a href=\"http://store.parco-enta.com/fs/parco/c/nounai\">http://store.parco-enta.com/fs/parco/c/nounai</a></div><div> </div><div><img src=\"img/blog/marika.ito/img/2017/12/08/9540456/0003.jpeg\"></div><div> </div><div>発売中のMdN、</div><div>トイが表紙になってます。</div><div> </div><div>SUNNY AND BLUEという</div><div>付録ブックレット付いてます。</div><div> </div><div>私の6年間をすごく贅沢に</div><div>かっこよくしてもらってる、</div><div>映像と個展のまとめ本です。</div><div> </div><div>あのMdNさんから自分の付録が</div><div>出るなんて信じられないのよ、、</div><div>読んだけど、これが世に出てるのかと</div><div>思うと変な気持ちです。</div><div>よかったらみなさんも読んでください</div><div> </div><div> </div><div>そして、2年半続いた連載</div><div>MARIKA meets CREATORSは</div><div>30回目を迎え、ついに最終回です、、</div><div>ついに、、</div><div> </div><div>最後のお相手は、映像監督の湯浅弘章さん！</div><div>&nbsp;</div><div>辛い時、必ず湯浅さんの作品が</div><div>あった気がします。</div><div>グループの1人のメンバーとして</div><div>目を逸らさずに、真摯に向き合えたのは</div><div>湯浅監督の作品があったからだなあ</div><div>と思う、</div><div>最後に一緒に振り返れてよかった。</div><div> </div><div> </div><div>思えば、連載が始まって今日まで</div><div>編集長の本信さんに</div><div>何度も助けられました。</div><div>&nbsp;</div><div>答えをポンと出してくれた時に</div><div>素直に受け入れることができたのは</div><div>本信さんだからだなあと思う。</div><div>お世話になりました。</div><div> </div><div><img src=\"img/blog/marika.ito/img/2017/12/08/9540456/0004.jpeg\"></div><div> </div><div>連載終了は寂しい気もしますが、</div><div>私にとっちゃ</div><div>2年半続いたことが奇跡です！！！！！</div><div>拙いインタビュアーでしたが、</div><div>どうだったんでしょうか、、</div><div>つくる人ってかっこいい。</div><div>本当にありがとうございました。</div><div> </div><div> </div><div> </div><div> </div><div> </div><div>1st写真集、香港に行きました。</div><div> </div><div>撮影は乃木坂派以来4年ぶりの</div><div>大江麻貴さん。</div><div> </div><div>本日発売の</div><div>乃木坂46×週刊プレイボーイ2017</div><div>裏表紙にも中ページにも</div><div>写真集の一部が掲載されています。</div><div>集英社インターナショナルさんから</div><div>2018年2月20日発売予定。</div><div> </div><div>@nounaihakurankai</div><div>伊藤万理華の脳内博覧会→1st写真集official</div><div><a href=\"http://instagram.com/nounaihakurankai\">http://instagram.com/nounaihakurankai</a></div><div> </div><div>情報は引き続き、こちらに更新します。</div><div>&nbsp;</div><div> </div><div>脳内博覧会に加えて</div><div>MdNブックレットと写真集。</div><div>また宝物が増えた気持ちです。</div><div>興味があれば！！！！、！、見てほしいです！</div><div> </div><div> </div><div> </div><div>まりか</div>"},{"datetime":"2017/11/10 22:06","author":"伊藤万理華","title":"きっかけ。787回目","url":"http://blog.nogizaka46.com/marika.ito/2017/11/041787.php","content":"<div> </div>\n<div> </div>\n<div><img src=\"img/blog/marika.ito/img/2017/11/10/1913377/0000.jpeg\"></div>\n<div> </div>\n<div>真夏の全国ツアー2017ファイナル</div>\n<div>東京ドーム2days完走しました！</div>\n<div> </div>\n<div> </div>\n<div>ライブで徹してることがずっとあるのですが、</div>\n<div>それは、誰よりもいちばん楽しむことです。</div>\n<div> </div>\n<div>ステージで衣装を着て</div>\n<div>パフォーマンスしてる時だけは</div>\n<div>変な殻も全部捨てて</div>\n<div>自分がいちばんだと思い込むこと。</div>\n<div> </div>\n<div>私が唯一、自信を持ってできることでした。</div>\n<div> </div>\n<div>それはどのステージでも同じことで、</div>\n<div>絶対誰かが見てくれるから。</div>\n<div> </div>\n<div>だから、誰かの目にとまるよう</div>\n<div>いつも全身全霊でした。</div>\n<div> </div>\n<div></div>\n<div>少しでも目にとまったなら嬉しいです！</div>\n<div> </div>\n<div> </div>\n<div>どの瞬間もずっと忘れないんだろうなあ</div>\n<div>一緒に歌って踊るみんな、</div>\n<div>かっこよくて美しくて華やかで</div>\n<div>やっぱりすげえと思った。</div>\n<div>お客さんからのサプライズも</div>\n<div>嬉しかった。</div>\n<div>ステージのいちばん上から見た景色</div>\n<div>綺麗だった。</div>\n<div> </div>\n<div> </div>\n<div>きっかけ</div>\n<div>迷っていた時期にやっと決心できた瞬間が</div>\n<div>アンダーライブ中国地方で歌った</div>\n<div>きっかけでした。</div>\n<div>あの時から私の中のテーマ曲。</div>\n<div>最後の最後に歌えて良かった。</div>\n<div>ありがとう！</div>\n<div> </div>\n<div>花道を隣で歩いてくれた玲香の顔が</div>\n<div>忘れられないぜー</div>\n<div>泣きたくなかったな</div>\n<div> </div>\n<div>披露した曲全部思い入れ深い。</div>\n<div>あらロマも他の星からも</div>\n<div>ここにいる理由も生まれたままでも咄嗟も</div>\n<div>インフルエンサーも！</div>\n<div>東京ドームでパフォーマンスできてよかった！</div>\n<div> </div>\n<div> </div>\n<div><img src=\"img/blog/marika.ito/img/2017/11/10/1913377/0001.jpeg\"></div>\n<div> </div>\n<div>このメンバーじゃなかったら</div>\n<div>ここにいなかった、ほんとに。</div>\n<div> </div>\n<div>スタッフの皆様、メンバーのみんな</div>\n<div>本当にお疲れ様でした！！</div>\n<div> </div>\n<div>来てくださった皆様</div>\n<div>本当にありがとうございました。</div>\n<div> </div>\n<div> </div>\n<div><img alt=\"6969193898732.jpg\" src=\"img/blog/marika.ito/img/2017/11/10/6969193898732.jpg\" width=\"1473\" class=\"mt-image-none\"></div>\n<div> </div>\n<div> </div>\n<div><br><br><br></div>\n<div></div>\n<div></div>\n<div><span>明日は京都 北野天満宮にて </span><br><span>スペシャルトークショーに登壇します。 </span><br><br><span>まだまだ開催中。 </span><br><span>興味があれば、ぜひ足を運んでください！ </span><br><br><span>《伊藤万理華の脳内博覧会》 </span><br><span>KYOTO NIPPON FESTIVAL </span><br><span>10月21日(土)〜12月3日(日) </span><br><a href=\"http://www.kyotonippon.com/\" target=\"_blank\">http://www.kyotonippon.com</a><span> </span><br><br><span>福岡ももうすぐ！ </span><br><br><span>《伊藤万理華の脳内博覧会mini》 </span><br><span>FUKUOKA PARCO 6F </span><br><span>11月17日(金)〜12月3日(日) </span><br><a href=\"http://www.parco-art.com/web/other/exhibition.php?id=1172\" target=\"_blank\">http://www.parco-art.com/web/other/exhibition.php?id=1172</a><span> </span><br><br><span>  </span><br><span>@nounaihakurankai </span><br><span>伊藤万理華の脳内博覧会official </span><br><a href=\"http://instagram.com/nounaihakurankai\" target=\"_blank\">http://instagram.com/nounaihakurankai</a><span> </span><br><span> </span></div>\n<div></div>\n<div></div>\n<div> </div>\n<div>活動に関しては</div>\n<div>12月23日仙台の握手会で最後になります。</div>\n<div>最後までどうか応援よろしくお願いします！</div>\n<div> </div>\n<div> </div>\n<div> </div>\n<div>まりか</div>"}]; </script>
-<script src="../assets/script/main.js"></script>
-
+<!doctype html>
+<html data-n-head-ssr lang="ja" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22ja%22%7D%7D">
+  <head>
+    <title>乃木坂46卒業メンバーのブログ</title><meta data-n-head="ssr" charset="utf-8"><meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1"><meta data-n-head="ssr" name="msvalidate.01" content="D6451EE2AECEE8675E78CEEA635F67DA"><meta data-n-head="ssr" http-equiv="refresh" content="0; url=/n46-crawler/mb/marika.ito"><base href="/n46-crawler/"><link data-n-head="ssr" rel="icon" type="image/x-icon" href="favicon.ico"><link data-n-head="ssr" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous"><link data-n-head="ssr" rel="canonical" href="/n46-crawler/mb/marika.ito"><script data-n-head="ssr" data-hid="gtm-script">window._gtm_init||(window._gtm_init=1,function(t,e,n,a,o){t[n]=1==t[n]||"yes"==e[n]||1==e[n]||1==e.msDoNotTrack||t[a]&&t[a][o]&&t[a][o]()?1:0}(window,navigator,"doNotTrack","external","msTrackingProtectionEnabled"),function(a,o,i,g,m){a[m]={},a._gtm_inject=function(t){var e,n;a.doNotTrack||a[m][t]||(a[m][t]=1,a[g]=a[g]||[],a[g].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),e=o.getElementsByTagName(i)[0],(n=o.createElement(i)).async=!0,n.src="https://www.googletagmanager.com/gtm.js?id="+t,e.parentNode.insertBefore(n,e))},a._gtm_inject("GTM-5K473GZ")}(window,document,"script","dataLayer","_gtm_ids"))</script><link rel="preload" href="/n46-crawler/_nuxt/ff01422.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/836cb17.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/9b93b85.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/e22598d.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/47477eb.js" as="script"><style data-vue-ssr-id="42a028c7:0 fa7ff0ca:0 56b15182:0">.nuxt-progress{position:fixed;top:0;left:0;right:0;height:2px;width:0;opacity:1;transition:width .1s,opacity .4s;background-color:#000;z-index:999999}.nuxt-progress.nuxt-progress-notransition{transition:none}.nuxt-progress-failed{background-color:red}html{font-family:Meiryo,"Meiryo UI",sans-serif;font-size:15px;word-spacing:1px;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;box-sizing:border-box}*,:after,:before{box-sizing:border-box;margin:0}.button--green{display:inline-block;border-radius:4px;border:1px solid #3b8070;color:#3b8070;text-decoration:none;padding:10px 30px}.button--green:hover{color:#fff;background-color:#3b8070}.button--grey{display:inline-block;border-radius:4px;border:1px solid #35495e;color:#35495e;text-decoration:none;padding:10px 30px;margin-left:15px}.button--grey:hover{color:#fff;background-color:#35495e}</style><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/marika.ito/state.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/marika.ito/payload.js" as="script"><link rel="preload" href="/n46-crawler/_nuxt/static/1626430494/manifest.js" as="script">
+  </head>
+  <body>
+    <noscript data-n-head="ssr" data-hid="gtm-noscript" data-pbody="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5K473GZ&" height="0" width="0" style="display:none;visibility:hidden" title="gtm"></iframe></noscript><div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div><div></div></div></div></div><script defer src="/n46-crawler/_nuxt/static/1626430494/marika.ito/state.js"></script><script src="/n46-crawler/_nuxt/ff01422.js" defer></script><script src="/n46-crawler/_nuxt/47477eb.js" defer></script><script src="/n46-crawler/_nuxt/836cb17.js" defer></script><script src="/n46-crawler/_nuxt/9b93b85.js" defer></script><script src="/n46-crawler/_nuxt/e22598d.js" defer></script>
+  </body>
 </html>
