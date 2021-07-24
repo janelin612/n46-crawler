@@ -1,8 +1,8 @@
 const Fs = require('fs');
-const Crawler = require("crawler");
+const Crawler = require('crawler');
 
-let directory = "./viewer/"
-const IMAGE_FOLDER_NAME = "img/"
+let directory = './viewer/';
+const IMAGE_FOLDER_NAME = 'img/';
 
 /**
  * 去除圖片網址前綴的正規表達式
@@ -21,7 +21,7 @@ module.exports = {
   setDirectory(dir) {
     directory = dir;
   }
-}
+};
 
 function getLocalUrl(imgUrl) {
   return IMAGE_FOLDER_NAME + imgUrl.replace(REGEX_REMOVE_SCHEME_AND_DOMAIN, '');
@@ -35,15 +35,18 @@ let downloader = new Crawler({
     if (error) {
       console.warn(error);
     } else {
-      let urlWithoutDomain = res.request.uri.href.replace(REGEX_REMOVE_SCHEME_AND_DOMAIN, '');
-      let splitArray = urlWithoutDomain.split("/");
+      let urlWithoutDomain = res.request.uri.href.replace(
+        REGEX_REMOVE_SCHEME_AND_DOMAIN,
+        ''
+      );
+      let splitArray = urlWithoutDomain.split('/');
 
       let dir = directory + IMAGE_FOLDER_NAME;
       for (i = 0; i < splitArray.length; i++) {
         if (!Fs.existsSync(dir)) {
           Fs.mkdirSync(dir);
         }
-        dir += "/" + splitArray[i];
+        dir += '/' + splitArray[i];
       }
 
       Fs.writeFileSync(dir, res.body, 'binary');

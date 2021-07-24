@@ -1,4 +1,4 @@
-const k46 = require('./src/k46-crawler')
+const k46 = require('./src/k46-crawler');
 //自command line帶入參數
 var argv = require('minimist')(process.argv.slice(2));
 
