@@ -4,7 +4,7 @@ const ImageUtil = require('./image');
 
 const BLOG_URL = 'http://blog.nogizaka46.com/';
 /** Demo Site 的目錄位置 */
-const PROJECT_FOLDER = '../nogizaka46/';
+const PROJECT_FOLDER = '../../n46-crawler/mb/';
 const RESULT_JSON_FILE = 'result.json';
 const MEMBER_INFO_FILE = 'member.json';
 
@@ -14,8 +14,10 @@ module.exports = {
   printMemberList: () => {
     memberListCrawler.queue(BLOG_URL);
   },
-  downloadMemberBlog: (memberPath) => {
-    createDirectory(memberPath);
+  downloadMemberBlog: (memberPath, save) => {
+    if (save) {
+      createDirectory(memberPath);
+    }
     ImageUtil.setDirectory(folder);
     archiveListCrawler.queue(BLOG_URL + memberPath);
   }
