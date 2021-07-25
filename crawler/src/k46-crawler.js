@@ -12,7 +12,7 @@ module.exports = {
   listMember() {
     memberListCrawler.queue(BLOG_URL);
   },
-  download(ct) {
+  download(ct, append) {
     if (ct == null || ct.length == 0 || isNaN(new Number(ct))) {
       console.log('wrong member ct');
       return;
@@ -21,10 +21,20 @@ module.exports = {
       ct = '0' + ct;
     }
 
+    appendMode = append;
     pageCursor.queue(`${BLOG_URL}?ct=${ct}&page=0`);
-    memberInfoCrawler.queue(`${DOMAIN}/s/k46o/artist/${ct}`);
+    if (!appendMode) {
+      memberInfoCrawler.queue(`${DOMAIN}/s/k46o/artist/${ct}`);
+    }
   }
 };
+
+/**
+ * 拼接模式
+ * 開啟此模式時舊的result不會被覆寫，而是直接接在陣列後端
+ * 用來將同一成員於櫻坂、櫸坂兩個時期的文章全部整合
+ */
+let appendMode = false;
 
 /**
  * 取得成員列表並輸出在終端機上
@@ -144,7 +154,13 @@ pageCursor.on('drain', function () {
     let idB = b.url.match(regex)[1];
     return new Number(idB) - new Number(idA);
   });
-  fs.writeFileSync(RESULT_JSON_FILE, JSON.stringify(result), 'utf8');
+
+  if (!appendMode) {
+    fs.writeFileSync(RESULT_JSON_FILE, JSON.stringify(result), 'utf8');
+  } else {
+    result = JSON.parse(fs.readFileSync(RESULT_JSON_FILE)).concat(result);
+    fs.writeFileSync(RESULT_JSON_FILE, JSON.stringify(result), 'utf8');
+  }
 });
 
 /**

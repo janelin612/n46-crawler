@@ -1,12 +1,11 @@
-crawler
-===========
+# crawler
 
-# Get started #
+# Get started
 
 ## 1. Install dependencies
 
 ```
-$ npm install --production 
+$ npm install --production
 ```
 
 ## 2. Usage
@@ -46,19 +45,21 @@ And all images will be storaged into `./viewer/img/` as below:
 
 ```html
 <!-- original  -->
-<img src="http://img.nogizaka46.com/blog/2019/XXXXX.jpeg">
+<img src="http://img.nogizaka46.com/blog/2019/XXXXX.jpeg" />
 
 <!-- new -->
-<img src="img/blog/2019/XXXXX.jpeg">
+<img src="img/blog/2019/XXXXX.jpeg" />
 ```
 
-# Sample Result #
+# Sample Result
+
 Crawler will generate two json file，and storage them at `./viewer/`
 
 1. `result.json` : main file
 
 ```json
-[{
+[
+  {
     "datetime": "2017/08/19 20:42",
     "author": "３期生",
     "title": "何が好きかな〜。大園桃子",
@@ -71,7 +72,8 @@ Crawler will generate two json file，and storage them at `./viewer/`
     "title": "ツ",
     "url": "http://blog.nogizaka46.com/kotoko.sasaki/2017/08/040349.php",
     "content": "<div>...........</div>"
-}]
+  }
+]
 ```
 
 2. `member.json` : member's introduction
@@ -81,7 +83,8 @@ Crawler will generate two json file，and storage them at `./viewer/`
   "name": "伊藤 万理華",
   "name_hiragana": "いとう まりか ",
   "image": "img/www/member/img/itoumarika_prof.jpg",
-  "intro": [{
+  "intro": [
+    {
       "key": "生年月日",
       "value": "1996年2月20日"
     },
@@ -98,31 +101,54 @@ Crawler will generate two json file，and storage them at `./viewer/`
       "value": "156cm"
     }
   ],
-  "tag": [
-    "1期生", "選抜メンバー", "十一福神"
-  ]
+  "tag": ["1期生", "選抜メンバー", "十一福神"]
 }
 ```
 
-# Keyakizaka46
-Crawler now support Keyakizaka46(欅坂46) 🎉
+# Sakamichi Series
 
-Simply change `n46.js` to `k46.js` : 
+Crawler now also support Keyakizaka46(欅坂 46) & Sakurazaka46(櫻坂 46) 🎉
 
-```cmd
-$ node k46.js 			//list all member
-$ node k46.js -a 22		//長濱 ねる
+## 1. Keyakizaka46
+
+Simply change `n46.js` to `k46.js` :
+
 ```
+$ node k46 		//list all member
+$ node k46 -a 22	//長濱 ねる
+```
+
 > argument `-a` accept a number called "ct". It's different from nogizaka because they using another CMS website.
 
-# Viewer
-於子資料夾`./viewer`內有簡易的閱讀器，可以用來顯示下載好的json檔案。
+## 2. Sakurazaka46
 
-## Usage 
-目前主流瀏覽器預設是禁止在html內讀取本地端檔案 (file-access-from-files)，也就是說直接打開 `./viewer/index.html` 是看不到東西的，因此你需要架一個簡單的http server，這裡推薦使用[npm http-server](https://www.npmjs.com/package/http-server)，當然你可以用你自己熟悉的伺服器。 
+Same as Keyakizaka, change to `s46.js` :
+
+```
+$ node s46 		//list all member
+$ node s46 -a 14	//土生 瑞穂
+```
+
+### Sakurazaka only
+
+By default, when you select a member in Sakurazaka46, the crawler will automatically download this member's all blogs from both Sakurazaka and Keyakizaka.  
+If you only need the part of Sakurazaka , you can use `--only` .
+
+```
+$ node s46 -a 14 --only
+```
+
+# Viewer
+
+於子資料夾`./viewer`內有簡易的閱讀器，可以用來顯示下載好的 json 檔案。
+
+## Usage
+
+目前主流瀏覽器預設是禁止在 html 內讀取本地端檔案 (file-access-from-files)，也就是說直接打開 `./viewer/index.html` 是看不到東西的，因此你需要架一個簡單的 http server，這裡推薦使用[npm http-server](https://www.npmjs.com/package/http-server)，當然你可以用你自己熟悉的伺服器。
 
 ```shell
 $ npm install http-server -g
 $ http-server ./viewer
 ```
+
 沒意外的話你可以在 `http://127.0.0.1:8080/index.html` 看到畫面

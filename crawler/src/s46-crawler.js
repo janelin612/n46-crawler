@@ -1,6 +1,7 @@
 const fs = require('fs');
 const Crawler = require('crawler');
 const Image = require('./image');
+const k46 = require('./k46-crawler');
 
 const DOMAIN = 'https://sakurazaka46.com';
 const BLOG_URL = `${DOMAIN}/s/s46/diary/blog/list`;
@@ -12,7 +13,7 @@ module.exports = {
   listMember() {
     memberListCrawler.queue(BLOG_URL);
   },
-  download(ct) {
+  download(ct, only) {
     if (ct == null || ct.length == 0 || isNaN(new Number(ct))) {
       console.log('wrong member ct');
       return;
@@ -20,10 +21,19 @@ module.exports = {
     if (new Number(ct) < 10) {
       ct = '0' + ct;
     }
+    memberCt = ct;
+    onlyMode = only;
     memberInfoCrawler.queue(`${DOMAIN}/s/s46/artist/${ct}`);
     pageCursor.queue(`${BLOG_URL}?ct=${ct}&page=0`);
   }
 };
+
+/**
+ * 嚴格模式
+ * 開啟此模式時將不會往前追加櫸坂時期的部落格文章
+ */
+let onlyMode = false;
+let memberCt = '';
 
 let memberListCrawler = new Crawler({
   maxConnections: 1,
@@ -130,6 +140,9 @@ contentCrawler.on('drain', () => {
     return parseInt(idB) - parseInt(idA);
   });
   fs.writeFileSync(RESULT_JSON_FILE, JSON.stringify(result), 'utf-8');
+  if (!onlyMode) {
+    k46.download(memberCt, true);
+  }
 });
 
 let memberInfoCrawler = new Crawler({
