@@ -2,16 +2,11 @@ const fs = require('fs');
 const Crawler = require('crawler');
 const Image = require('./image');
 
-const DOMAIN = 'http://www.keyakizaka46.com';
-const BLOG_URL = `${DOMAIN}/s/k46o/diary/member/list?`;
+const DOMAIN = 'https://www.keyakizaka46.com';
+const BLOG_URL = `${DOMAIN}/s/k46o/diary/member/list`;
 
 const RESULT_JSON_FILE = './viewer/result.json';
 const MEMBER_INFO_FILE = './viewer/member.json';
-
-/**
- * 欅坂46成立時間 所有部落格文章都不應早於此日期
- */
-const TIME_BEGIN = new Date('2015-08-21');
 
 module.exports = {
   listMember() {
@@ -26,7 +21,7 @@ module.exports = {
       ct = '0' + ct;
     }
 
-    contentCrawler.queue(generateTimeTable(ct));
+    pageCursor.queue(`${BLOG_URL}?ct=${ct}&page=0`);
     memberInfoCrawler.queue(`${DOMAIN}/s/k46o/artist/${ct}`);
   }
 };
@@ -64,58 +59,86 @@ let memberListCrawler = new Crawler({
  * 儲存最後結果
  */
 var result = [];
-/**
- * 自每月清單中取得內文
- */
-let contentCrawler = new Crawler({
-  maxConnections: 10,
-  jQuery: { name: 'cheerio', options: { decodeEntities: false } },
-  callback: (error, res, done) => {
+let pageCursor = new Crawler({
+  maxConnections: 3,
+  callback(error, res, done) {
     if (error) {
       console.warn(error);
     } else {
       let $ = res.$;
-
-      //拔掉DecoMailer的圖片備份連結
-      $('.box-main a').each((index, value) => {
-        let href = $(value).attr('href');
-        if (href != null && href.indexOf('dcimg.awalker.jp') != -1) {
-          let child = $(value).html();
-          $(value).after(child);
-          $(value).remove();
+      //找下一頁
+      $('.pager ul li').each((index, value) => {
+        value = $(value);
+        if (value.find('span.active').length > 0) {
+          let next = value.next();
+          if (next.find('a').length > 0) {
+            let url = DOMAIN + next.children('a').attr('href');
+            pageCursor.queue(url);
+          }
         }
       });
 
-      //將圖片網址改為本地端位置，並下載圖片
-      $('.box-main img').each((index, value) => {
-        let src = $(value).attr('src');
-        if (src != null && src.length > 0 && !src.startsWith('blob')) {
-          let localPath = Image.download(src);
-          $(value).attr('src', localPath);
-        }
-      });
-
-      $('.box-main article').each((index, value) => {
-        let item = {
-          datetime: $(value).find('.box-bottom li:first-of-type').text().trim(),
-          author: $(value).find('.box-ttl p.name').text().trim(),
-          title: $(value).find('.box-ttl h3').text().trim(),
-          url: DOMAIN + $(value).find('.box-ttl h3 a').attr('href'),
-          content: $(value).find('div.box-article').html()
-        };
-        result.push(item);
-        console.log(`${item.datetime} | ${item.title}`);
+      //儲存每一篇文章
+      $('.box-content .box-main article').each((index, value) => {
+        handleArticle($, $(value));
       });
     }
     done();
   }
 });
 
+function handleArticle($, article) {
+  //拔掉DecoMailer的圖片備份連結
+  article.find('.box-article a').each((index, value) => {
+    let href = $(value).attr('href');
+    if (href != null && href.indexOf('dcimg.awalker.jp') != -1) {
+      let child = $(value).html();
+      $(value).after(child);
+      $(value).remove();
+    }
+  });
+
+  //下載圖片
+  article.find('.box-article img').each((index, value) => {
+    value = $(value);
+    let src = value.attr('src');
+    if (src != null && src.length > 0 && !src.startsWith('blob')) {
+      let localPath;
+      if (!src.startsWith('http')) {
+        localPath = Image.download(DOMAIN + src);
+      } else {
+        localPath = Image.download(src);
+      }
+      value.attr('src', localPath);
+    }
+  });
+
+  let datetime = article.find('.box-bottom li:first-of-type').text().trim();
+  let author = article.find('.box-ttl p.name').text().trim();
+  let title = article.find('.box-ttl h3').text().trim();
+  let url = new URL(DOMAIN + article.find('.box-ttl h3 a').attr('href'));
+  url = url.origin + url.pathname;
+
+  //透過預先移除多餘段落的方式減少因為div沒有關閉而弄壞爬蟲
+  article.find('.box-bottom').remove();
+  let content = article.children('div.box-article').html();
+
+  let item = {
+    datetime,
+    author,
+    title,
+    url,
+    content
+  };
+  result.push(item);
+  console.log(`${item.datetime} | ${item.title}`);
+}
+
 /**
  * 重新排序結果並寫入檔案
  */
-contentCrawler.on('drain', function () {
-  let regex = /\/([0-9]+)\?/; //取出文章ID區塊數字的部分
+pageCursor.on('drain', function () {
+  let regex = /\/(\d+)$/; //取出文章ID區塊數字的部分
   result.sort((a, b) => {
     let idA = a.url.match(regex)[1];
     let idB = b.url.match(regex)[1];
@@ -123,24 +146,6 @@ contentCrawler.on('drain', function () {
   });
   fs.writeFileSync(RESULT_JSON_FILE, JSON.stringify(result), 'utf8');
 });
-
-/**
- * 產生現在時間至創團日的所有年月列表並組合出網址
- */
-function generateTimeTable(ct) {
-  let now = new Date();
-  let list = [];
-  while (now > TIME_BEGIN) {
-    let year = now.getFullYear();
-    let month = now.getMonth() + 1;
-    if (new Number(month) < 10) {
-      month = '0' + month;
-    }
-    list.push(`${BLOG_URL}ct=${ct}&dy=${year}${month}`);
-    now.setMonth(now.getMonth(), 0);
-  }
-  return list;
-}
 
 /**
  * 下載成員資訊
