@@ -1,4 +1,4 @@
-const Fs = require('fs');
+const fs = require('fs');
 const Crawler = require('crawler');
 const Image = require('./image');
 
@@ -14,10 +14,10 @@ const MEMBER_INFO_FILE = './viewer/member.json';
 const TIME_BEGIN = new Date('2015-08-21');
 
 module.exports = {
-  printMemberList: () => {
+  listMember() {
     memberListCrawler.queue(BLOG_URL);
   },
-  downloadMemberBlog: (ct) => {
+  download(ct) {
     if (ct == null || ct.length == 0 || isNaN(new Number(ct))) {
       console.log('wrong member ct');
       return;
@@ -121,7 +121,7 @@ contentCrawler.on('drain', function () {
     let idB = b.url.match(regex)[1];
     return new Number(idB) - new Number(idA);
   });
-  Fs.writeFileSync(RESULT_JSON_FILE, JSON.stringify(result), 'utf8');
+  fs.writeFileSync(RESULT_JSON_FILE, JSON.stringify(result), 'utf8');
 });
 
 /**
@@ -182,7 +182,7 @@ let memberInfoCrawler = new Crawler({
         intro: introList,
         tag: []
       };
-      Fs.writeFileSync(MEMBER_INFO_FILE, JSON.stringify(member), 'utf8');
+      fs.writeFileSync(MEMBER_INFO_FILE, JSON.stringify(member), 'utf8');
     }
     done();
   }

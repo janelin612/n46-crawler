@@ -1,4 +1,4 @@
-const Fs = require('fs');
+const fs = require('fs');
 const Crawler = require('crawler');
 const Image = require('./image');
 
@@ -9,7 +9,7 @@ const RESULT_JSON_FILE = './viewer/result.json';
 const MEMBER_INFO_FILE = './viewer/member.json';
 
 module.exports = {
-  print() {
+  listMember() {
     memberListCrawler.queue(BLOG_URL);
   },
   download(ct) {
@@ -129,7 +129,7 @@ contentCrawler.on('drain', () => {
     let idB = b.url.match(regex)[1];
     return parseInt(idB) - parseInt(idA);
   });
-  Fs.writeFileSync(RESULT_JSON_FILE, JSON.stringify(result), 'utf-8');
+  fs.writeFileSync(RESULT_JSON_FILE, JSON.stringify(result), 'utf-8');
 });
 
 let memberInfoCrawler = new Crawler({
@@ -166,7 +166,7 @@ let memberInfoCrawler = new Crawler({
         image: img,
         tag: []
       };
-      Fs.writeFileSync(MEMBER_INFO_FILE, JSON.stringify(output), 'utf8');
+      fs.writeFileSync(MEMBER_INFO_FILE, JSON.stringify(output), 'utf8');
     }
     done();
   }

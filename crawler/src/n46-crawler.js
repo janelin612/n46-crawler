@@ -1,4 +1,4 @@
-const Fs = require('fs');
+const fs = require('fs');
 const Crawler = require('crawler');
 const ImageUtil = require('./image');
 
@@ -11,10 +11,10 @@ const MEMBER_INFO_FILE = 'member.json';
 let folder = './viewer/';
 
 module.exports = {
-  printMemberList: () => {
+  listMember() {
     memberListCrawler.queue(BLOG_URL);
   },
-  downloadMemberBlog: (memberPath, save) => {
+  download(memberPath, save) {
     if (save) {
       createDirectory(memberPath);
     }
@@ -27,10 +27,10 @@ module.exports = {
  * 如果 Demo Site 存在，就不把資料存到預設的./viewer內
  */
 function createDirectory(memberPath) {
-  if (Fs.existsSync(PROJECT_FOLDER)) {
+  if (fs.existsSync(PROJECT_FOLDER)) {
     folder = `${PROJECT_FOLDER}${memberPath}/`;
-    if (!Fs.existsSync(folder)) {
-      Fs.mkdirSync(folder);
+    if (!fs.existsSync(folder)) {
+      fs.mkdirSync(folder);
     }
   }
 }
@@ -199,7 +199,7 @@ blogContentCrawler.on('drain', function () {
     let idA = a.url.match(regex)[0].replace(/\//g, '');
     return new Number(idB) - new Number(idA);
   });
-  Fs.writeFileSync(folder + RESULT_JSON_FILE, JSON.stringify(result), 'utf8');
+  fs.writeFileSync(folder + RESULT_JSON_FILE, JSON.stringify(result), 'utf8');
 });
 
 /**
@@ -249,7 +249,7 @@ let memberInfoCrawler = new Crawler({
         intro: introList,
         tag: tagList
       };
-      Fs.writeFileSync(
+      fs.writeFileSync(
         folder + MEMBER_INFO_FILE,
         JSON.stringify(member),
         'utf8'

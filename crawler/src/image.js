@@ -1,4 +1,4 @@
-const Fs = require('fs');
+const fs = require('fs');
 const Crawler = require('crawler');
 
 let directory = './viewer/';
@@ -13,7 +13,7 @@ module.exports = {
   /** 下載圖片，並回傳檔案路徑 */
   download(imgUrl) {
     let localPath = getLocalUrl(imgUrl);
-    if (!Fs.existsSync(directory + localPath)) {
+    if (!fs.existsSync(directory + localPath)) {
       downloader.queue(imgUrl);
     }
     return localPath;
@@ -43,13 +43,13 @@ let downloader = new Crawler({
 
       let dir = directory + IMAGE_FOLDER_NAME;
       for (i = 0; i < splitArray.length; i++) {
-        if (!Fs.existsSync(dir)) {
-          Fs.mkdirSync(dir);
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir);
         }
         dir += '/' + splitArray[i];
       }
 
-      Fs.writeFileSync(dir, res.body, 'binary');
+      fs.writeFileSync(dir, res.body, 'binary');
     }
     done();
   }
