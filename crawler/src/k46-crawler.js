@@ -13,11 +13,12 @@ module.exports = {
     memberListCrawler.queue(BLOG_URL);
   },
   download(ct, append) {
-    if (ct == null || ct.length == 0 || isNaN(new Number(ct))) {
-      console.log('wrong member ct');
+    if (isNaN(ct)) {
+      console.warn('wrong member ct');
       return;
     }
-    if (new Number(ct) < 10) {
+    ct = parseInt(ct);
+    if (ct < 10) {
       ct = '0' + ct;
     }
 
