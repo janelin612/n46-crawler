@@ -8,9 +8,11 @@
     "epub-gen": "^0.1.0",
     "minimist": "^1.2.5"
   },
+  "engines": {
+    "node": ">=10.12"
+  },
   "scripts": {
-    "view": "http-server ./viewer/",
-    "build": "node ./src/pages-tool"
+    "view": "http-server ./viewer/ -c0"
   },
   "repository": {
     "type": "git",

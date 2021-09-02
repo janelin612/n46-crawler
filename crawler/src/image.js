@@ -5,9 +5,10 @@ let directory = './viewer/';
 const IMAGE_FOLDER_NAME = 'img/';
 
 /**
- * 去除圖片網址前綴的正規表達式
+ * 比對網址主機名稱
+ * @example https://ooo.xxx/
  */
-const REGEX_REMOVE_SCHEME_AND_DOMAIN = /^http(s){0,1}\S\/\/\S+?\//;
+const REGEX_HTTP_ORIGIN = /^http(s){0,1}:\/\/\S+?\//;
 
 module.exports = {
   /** 下載圖片，並回傳檔案路徑 */
@@ -24,7 +25,7 @@ module.exports = {
 };
 
 function getLocalUrl(imgUrl) {
-  return IMAGE_FOLDER_NAME + imgUrl.replace(REGEX_REMOVE_SCHEME_AND_DOMAIN, '');
+  return imgUrl.replace(REGEX_HTTP_ORIGIN, IMAGE_FOLDER_NAME);
 }
 
 let downloader = new Crawler({
@@ -35,21 +36,15 @@ let downloader = new Crawler({
     if (error) {
       console.warn(error);
     } else {
-      let urlWithoutDomain = res.request.uri.href.replace(
-        REGEX_REMOVE_SCHEME_AND_DOMAIN,
-        ''
+      let path = res.request.uri.href.replace(
+        REGEX_HTTP_ORIGIN,
+        directory + IMAGE_FOLDER_NAME
       );
-      let splitArray = urlWithoutDomain.split('/');
-
-      let dir = directory + IMAGE_FOLDER_NAME;
-      for (i = 0; i < splitArray.length; i++) {
-        if (!fs.existsSync(dir)) {
-          fs.mkdirSync(dir);
-        }
-        dir += '/' + splitArray[i];
+      let dir = path.match(/\S+\//)[0];
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
       }
-
-      fs.writeFileSync(dir, res.body, 'binary');
+      fs.writeFileSync(path, res.body, 'binary');
     }
     done();
   }
