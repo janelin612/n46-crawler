@@ -193,11 +193,11 @@ let blogContentCrawler = new Crawler({
  * 啟用多線程下載的話最後需要重新排序
  */
 blogContentCrawler.on('drain', function () {
-  let regex = /20[0-9]{2}\/[0-9]{2}\/[0-9]{6}/;
+  const regex = /20[0-9]{2}\/[0-9]{2}\/[0-9]{6}/;
   result.sort((a, b) => {
     let idB = b.url.match(regex)[0].replace(/\//g, '');
     let idA = a.url.match(regex)[0].replace(/\//g, '');
-    return new Number(idB) - new Number(idA);
+    return parseInt(idB) - parseInt(idA);
   });
   fs.writeFileSync(folder + RESULT_JSON_FILE, JSON.stringify(result), 'utf8');
 });

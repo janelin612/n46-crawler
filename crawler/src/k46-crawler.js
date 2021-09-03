@@ -56,7 +56,7 @@ let memberListCrawler = new Crawler({
 
       list
         .sort((a, b) => {
-          return new Number(a.ct) - new Number(b.ct);
+          return parseInt(a.ct) - parseInt(b.ct);
         })
         .forEach((item) => {
           console.log(`${item.ct} | ${item.name}`);
@@ -149,11 +149,11 @@ function handleArticle($, article) {
  * 重新排序結果並寫入檔案
  */
 pageCursor.on('drain', function () {
-  let regex = /\/(\d+)$/; //取出文章ID區塊數字的部分
+  const regex = /\/(\d+)$/; //取出文章ID區塊數字的部分
   result.sort((a, b) => {
     let idA = a.url.match(regex)[1];
     let idB = b.url.match(regex)[1];
-    return new Number(idB) - new Number(idA);
+    return parseInt(idB) - parseInt(idA);
   });
 
   if (!appendMode) {

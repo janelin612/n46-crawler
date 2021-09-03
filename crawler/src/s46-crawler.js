@@ -52,7 +52,7 @@ let memberListCrawler = new Crawler({
       });
       list
         .sort((a, b) => {
-          return new Number(a.ct) - new Number(b.ct);
+          return parseInt(a.ct) - parseInt(b.ct);
         })
         .forEach((item) => {
           console.log(`${item.ct} | ${item.name}`);
@@ -134,7 +134,7 @@ let contentCrawler = new Crawler({
   }
 });
 contentCrawler.on('drain', () => {
-  let regex = /\/(\d+)$/;
+  const regex = /\/(\d+)$/;
   result.sort((a, b) => {
     let idA = a.url.match(regex)[1];
     let idB = b.url.match(regex)[1];
