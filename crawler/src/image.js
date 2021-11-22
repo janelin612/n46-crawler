@@ -29,22 +29,24 @@ function getLocalUrl(imgUrl) {
 }
 
 let downloader = new Crawler({
-  maxConnections: 20,
+  maxConnections: 5,
   encoding: null,
   jQuery: false,
   callback: function (error, res, done) {
     if (error) {
       console.warn(error);
     } else {
-      let path = res.request.uri.href.replace(
-        REGEX_HTTP_ORIGIN,
-        directory + IMAGE_FOLDER_NAME
-      );
-      let dir = path.match(/\S+\//)[0];
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
+      if (res.statusCode == 200) {
+        let path = res.request.uri.href.replace(
+          REGEX_HTTP_ORIGIN,
+          directory + IMAGE_FOLDER_NAME
+        );
+        let dir = path.match(/\S+\//)[0];
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir, { recursive: true });
+        }
+        fs.writeFileSync(path, res.body, 'binary');
       }
-      fs.writeFileSync(path, res.body, 'binary');
     }
     done();
   }
