@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/ranze.terada", {data:[{id:"ranze.terada",base:"\u002Fn46-crawler\u002F"}],fetch:{},mutations:void 0});

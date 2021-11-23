@@ -1,12 +1,26 @@
 [{
     "year": "2021",
     "member": [{
+        "name": "寺田 蘭世",
+        "name_hiragana": "てらだ らんぜ",
+        "image": "ranze.terada/img/www/member/img/teradaranze_prof.jpg",
+        "link": "ranze.terada/"
+      },
+      {
+        "name": "高山 一実",
+        "name_hiragana": "たかやま かずみ",
+        "image": "kazumi.takayama/img/www/member/img/takayamakazumi_prof.jpg",
+        "link": "kazumi.takayama/",
+        "graduation_date": "2021/11/21"
+      },
+      {
         "name": "大園 桃子",
         "name_hiragana": "おおぞの ももこ",
         "image": "momoko.oozono/img/www/member/img/oozonomomoko_prof.jpg",
         "link": "momoko.oozono/",
         "graduation_date": "2021/09/04"
-      }, {
+      },
+      {
         "name": "伊藤 純奈",
         "name_hiragana": "いとう じゅんな",
         "image": "junna.itou/img/www/member/img/itoujunna_prof.jpg",
