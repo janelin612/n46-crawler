@@ -156,20 +156,32 @@ let blogContentCrawler = new Crawler({
     } else {
       let $ = res.$;
 
-      //拔掉DecoMailer的圖片備份連結
+      /**比對官網的圖床*/
+      const REGEX_MATCH_IMG_URL =
+        /https{0,1}:\/\/\S+?\.nogizaka46\.com\/\S+\.(jpg|jpeg|png|gif)/;
+
       $('#sheet div.entrybody a').each((index, value) => {
         let href = $(value).attr('href');
-        if (href != null && href.indexOf('dcimg.awalker.jp') != -1) {
+        // 拔掉DecoMailer的圖片備份連結
+        if (href && href.indexOf('dcimg.awalker.jp') != -1) {
+          let child = $(value).html();
+          $(value).after(child);
+          $(value).remove();
+        }
+
+        // 處理早期的預覽圖片
+        if (href && href.match(REGEX_MATCH_IMG_URL)) {
+          $(value).children('img').attr('src', href);
           let child = $(value).html();
           $(value).after(child);
           $(value).remove();
         }
       });
 
-      //將圖片網址改為本地端位置，並下載圖片
+      // 將圖片網址改為本地端位置，並下載圖片
       $('#sheet div.entrybody img').each(function (index, value) {
         let src = $(value).attr('src');
-        if (src != null && src.length > 0 && !src.startsWith('blob')) {
+        if (src && src.match(REGEX_MATCH_IMG_URL)) {
           let localPath = ImageUtil.download(src);
           $(value).attr('src', localPath);
         }
