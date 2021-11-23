@@ -46,6 +46,8 @@ let downloader = new Crawler({
           fs.mkdirSync(dir, { recursive: true });
         }
         fs.writeFileSync(path, res.body, 'binary');
+      } else {
+        console.warn(`${res.statusCode} : ${res.request.uri.href}`);
       }
     }
     done();
