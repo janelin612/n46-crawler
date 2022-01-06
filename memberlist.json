@@ -1,6 +1,14 @@
 [{
     "year": "2021",
-    "member": [{
+    "member": [
+      {
+        "name": "生田 絵梨花",
+        "name_hiragana": "いくた えりか",
+        "image": "erika.ikuta/img/www/member/img/ikutaerika_prof.jpg",
+        "link": "erika.ikuta/",
+        "graduation_date": "2021/12/31"
+      }
+      ,{
         "name": "寺田 蘭世",
         "name_hiragana": "てらだ らんぜ",
         "image": "ranze.terada/img/www/member/img/teradaranze_prof.jpg",
