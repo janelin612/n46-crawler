@@ -1,4 +1,24 @@
-[{
+[
+  {
+    "year": "2022",
+    "member": [
+      {
+        "name": "星野みなみ",
+        "name_hiragana": "ほしの みなみ",
+        "image": "minami.hoshino/img/www/member/img/hoshinominami_prof.jpg",
+        "link": "minami.hoshino/",
+        "graduation_date": "2022/2/12"
+      },
+      {
+        "name": "新内 眞衣",
+        "name_hiragana": "しんうち まい",
+        "image": "mai.shinuchi/img/www/member/img/shinuchimai_prof.jpg",
+        "link": "mai.shinuchi/",
+        "graduation_date": "2022/2/10"
+      }
+    ]
+  },
+  {
     "year": "2021",
     "member": [
       {
@@ -7,8 +27,8 @@
         "image": "erika.ikuta/img/www/member/img/ikutaerika_prof.jpg",
         "link": "erika.ikuta/",
         "graduation_date": "2021/12/31"
-      }
-      ,{
+      },
+      {
         "name": "寺田 蘭世",
         "name_hiragana": "てらだ らんぜ",
         "image": "ranze.terada/img/www/member/img/teradaranze_prof.jpg",
@@ -61,7 +81,8 @@
   },
   {
     "year": "2020",
-    "member": [{
+    "member": [
+      {
         "name": "中田 花奈",
         "name_hiragana": "なかだ かな",
         "image": "kana.nakada/img/www/member/img/nakadakana_prof.jpg",
@@ -93,7 +114,8 @@
   },
   {
     "year": "2019",
-    "member": [{
+    "member": [
+      {
         "name": "桜井 玲香",
         "name_hiragana": "さくらい れいか",
         "image": "reika.sakurai/img/www/member/img/sakuraireika_prof.jpg",
@@ -125,7 +147,8 @@
   },
   {
     "year": "2018",
-    "member": [{
+    "member": [
+      {
         "name": "西野 七瀬",
         "name_hiragana": "にしの ななせ",
         "image": "nanase.nishino/img/www/member/img/nishinonanase_prof.jpg",
@@ -178,7 +201,8 @@
   },
   {
     "year": "2017",
-    "member": [{
+    "member": [
+      {
         "name": "伊藤 万理華",
         "name_hiragana": "いとう まりか",
         "image": "marika.ito/img/www/member/img/itoumarika_prof.jpg",
