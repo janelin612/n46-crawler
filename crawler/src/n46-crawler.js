@@ -2,7 +2,10 @@ const fs = require('fs');
 const Crawler = require('crawler');
 const ImageUtil = require('./image');
 
-const BLOG_URL = 'http://blog.nogizaka46.com/';
+const DOMAIN = 'https://www.nogizaka46.com';
+const MEMBER_PAGE = DOMAIN + '/s/n46/artist';
+const BLOG_PAGE = DOMAIN + '/s/n46/diary/MEMBER';
+
 /** Demo Site 的目錄位置 */
 const PROJECT_FOLDER = '../../n46-crawler/mb/';
 const RESULT_JSON_FILE = 'result.json';
@@ -12,7 +15,7 @@ let folder = './viewer/';
 
 module.exports = {
   listMember() {
-    memberListCrawler.queue(BLOG_URL);
+    memberListCrawler.queue(BLOG_PAGE);
   },
   download(memberPath, save) {
     if (save) {
@@ -45,90 +48,13 @@ let memberListCrawler = new Crawler({
       console.warn(error);
     } else {
       let $ = res.$;
-      $('#sidemember a').each((index, value) => {
-        let path = $(value).attr('href').replace('./', '');
-        let name = '';
-        if ($(value).find('img').length > 0) {
-          name = $(value).find('.kanji').text();
-        } else {
-          name = $(value).text();
-        }
-        console.log(name + ' \t' + path);
-      });
-    }
-    done();
-  }
-});
-
-/**
- * 自畫面右側取得年月清單
- */
-let archiveListCrawler = new Crawler({
-  maxConnections: 1,
-  callback: (error, res, done) => {
-    if (error) {
-      console.warn(error);
-    } else {
-      let $ = res.$;
-      let list = [];
-      $('#sidearchives select option').each((index, value) => {
-        let url = $(value).attr('value');
-        if (url) {
-          list.push(url);
-        }
-      });
-      paginateListCrawler.queue(list);
-
-      let memberUrl = $('#sideprofile .txt p a').attr('href');
-      if (memberUrl != null && memberUrl.length > 0) {
-        memberInfoCrawler.queue(memberUrl);
-      }
-    }
-    done();
-  }
-});
-
-/**
- * 取回單一年月的分頁清單
- */
-let paginateListCrawler = new Crawler({
-  maxConnections: 1,
-  callback: (error, res, done) => {
-    if (error) {
-      console.warn(error);
-    } else {
-      let $ = res.$;
-      let URL = res.request.uri.href;
-
-      let size = $('#sheet .paginate:first-child a').length;
-      if (size == 0) size += 1;
-      for (let i = 0; i < size; i++) {
-        blogLinkListCrawler.queue(`${URL}&p=${i + 1}`);
-      }
-    }
-    done();
-  }
-});
-
-/**
- * 取回每一個分頁的標題清單
- */
-let blogLinkListCrawler = new Crawler({
-  maxConnections: 5,
-  jQuery: {
-    name: 'cheerio',
-    options: {
-      decodeEntities: false
-    }
-  },
-  callback: (error, res, done) => {
-    if (error) {
-      console.warn(error);
-    } else {
-      let $ = res.$;
-      $('#sheet .entrytitle a').each((index, value) => {
-        let link = $(value).attr('href');
-        blogContentCrawler.queue(link);
+      $('main section div.ba--ml__list>div').each((index, value) => {
+        let ct = $(value)
+          .find('a.hv--thumb')
+          .attr('href')
+          .match(/ct=(\d+)/)[1];
+        let name = $(value).find('p.f--head').text();
+        console.log(`${ct}\t${name}`);
       });
     }
     done();
