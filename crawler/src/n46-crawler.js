@@ -128,7 +128,7 @@ let contentCrawler = new Crawler({
       $('main div.bd--edit img').each((index, value) => {
         value = $(value);
         let src = value.attr('src');
-        if (src && !src.startsWith('blob')) {
+        if (src && src.match(/(^\/.+)|(^http.+)/)) {
           let localPath;
           if (src.startsWith('/')) {
             localPath = ImageUtil.download(DOMAIN + src);
