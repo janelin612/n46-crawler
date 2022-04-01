@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/kotoko.sasaki", {data:[{canonical:"\u002Fn46-crawler\u002Fmb\u002Fkotoko.sasaki"}],fetch:{},mutations:void 0});

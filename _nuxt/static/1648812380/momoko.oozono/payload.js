@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/momoko.oozono", {data:[{canonical:"\u002Fn46-crawler\u002Fmb\u002Fmomoko.oozono"}],fetch:{},mutations:void 0});

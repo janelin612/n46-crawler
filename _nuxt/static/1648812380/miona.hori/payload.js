@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/miona.hori", {data:[{canonical:"\u002Fn46-crawler\u002Fmb\u002Fmiona.hori"}],fetch:{},mutations:void 0});

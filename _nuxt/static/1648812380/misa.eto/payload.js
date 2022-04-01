@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/misa.eto", {data:[{canonical:"\u002Fn46-crawler\u002Fmb\u002Fmisa.eto"}],fetch:{},mutations:void 0});

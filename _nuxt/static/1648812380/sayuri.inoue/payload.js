@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/sayuri.inoue", {data:[{canonical:"\u002Fn46-crawler\u002Fmb\u002Fsayuri.inoue"}],fetch:{},mutations:void 0});

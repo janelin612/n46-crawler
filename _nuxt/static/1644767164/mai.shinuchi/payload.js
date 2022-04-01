@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/mai.shinuchi", {data:[{id:"mai.shinuchi",base:"\u002Fn46-crawler\u002F"}],fetch:{},mutations:void 0});
