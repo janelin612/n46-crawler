@@ -19,12 +19,13 @@ $ node n46
 It will print members list on console like below
 
 ```
-秋元 真夏       manatsu.akimoto
-生田 絵梨花     erika.ikuta
-伊藤 純奈       junna.itou
-伊藤 理々杏     riria.itou
-井上 小百合     sayuri.inoue
-岩本 蓮加       renka.iwamoto
+7639    秋元 真夏
+36749   伊藤 理々杏
+36750   岩本 蓮加
+36751   梅澤 美波
+16454   北野 日奈子
+36753   久保 史緒里
+264     齋藤 飛鳥
 ```
 
 ### (2) Download blog content
@@ -32,12 +33,12 @@ It will print members list on console like below
 Use argument `-a` to choose the member you want to download.  
 For example,if you only want to download all of Asuka's blog
 
-> https://blog.nogizaka46.com/asuka.saito/
+> https://www.nogizaka46.com/s/n46/diary/MEMBER/list?ct=264
 
 You can use this:
 
 ```
-$ node n46 -a "asuka.saito"
+$ node n46 -a 264
 ```
 
 It will download all blog into `./viewer/result.json`  
@@ -61,14 +62,12 @@ Crawler will generate two json file，and storage them at `./viewer/`
 [
   {
     "datetime": "2017/08/19 20:42",
-    "author": "３期生",
     "title": "何が好きかな〜。大園桃子",
     "url": "http://blog.nogizaka46.com/third/2017/08/040351.php",
     "content": "<div>...........</div>"
   },
   {
     "datetime": "2017/08/19 17:06",
-    "author": "佐々木琴子",
     "title": "ツ",
     "url": "http://blog.nogizaka46.com/kotoko.sasaki/2017/08/040349.php",
     "content": "<div>...........</div>"
@@ -117,8 +116,6 @@ Simply change `n46.js` to `k46.js` :
 $ node k46 		//list all member
 $ node k46 -a 22	//長濱 ねる
 ```
-
-> argument `-a` accept a number called "ct". It's different from nogizaka because they using another CMS website.
 
 ## 2. Sakurazaka46
 
