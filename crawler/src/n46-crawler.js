@@ -139,6 +139,11 @@ let contentCrawler = new Crawler({
         }
       });
 
+      // 處置一些因為div沒有關閉造成的錯誤
+      $('main div.bd--edit .m--pnv').remove();
+      $('main div.bd--edit .bd--cmt').remove();
+      $('main div.bd--edit .bd--aside').remove();
+
       let title = $('header h1.bd--hd__ttl').text().trim();
       let datetime = $('header div.bd--hd__sub p.bd--hd__date').text().trim();
       let content = $('main div.bd--edit').html();

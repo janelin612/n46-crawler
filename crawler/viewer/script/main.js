@@ -30,7 +30,7 @@ var app = new Vue({
           weekday: ''
         };
       } else {
-        let time = new Date(this.currentPost.datetime);
+        let time = new Date(this.currentPost.datetime.replace(/\./g, '/'));
         let month = this.formatNumber(time.getMonth() + 1);
         let date = this.formatNumber(time.getDate());
         return {
