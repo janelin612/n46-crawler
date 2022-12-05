@@ -144,7 +144,7 @@ let contentCrawler = new Crawler({
       $('main div.bd--edit .bd--cmt').remove();
       $('main div.bd--edit .bd--aside').remove();
 
-      let title = $('header h1.bd--hd__ttl').text().trim();
+      let title = $('meta[property="og:title"]').attr('content').trim();
       let datetime = $('header div.bd--hd__sub p.bd--hd__date').text().trim();
       let content = $('main div.bd--edit').html();
       let url = new URL(res.request.uri.href);
