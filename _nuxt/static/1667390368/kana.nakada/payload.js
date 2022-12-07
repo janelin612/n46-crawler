@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/kana.nakada", {data:[{canonical:"\u002Fn46-crawler\u002Fmb\u002Fkana.nakada"}],fetch:{},mutations:void 0});

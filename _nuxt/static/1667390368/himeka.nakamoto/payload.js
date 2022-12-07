@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/himeka.nakamoto", {data:[{canonical:"\u002Fn46-crawler\u002Fmb\u002Fhimeka.nakamoto"}],fetch:{},mutations:void 0});

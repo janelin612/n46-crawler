@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/karin.itou", {data:[{canonical:"\u002Fn46-crawler\u002Fmb\u002Fkarin.itou"}],fetch:{},mutations:void 0});

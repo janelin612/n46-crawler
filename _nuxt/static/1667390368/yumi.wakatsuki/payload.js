@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/yumi.wakatsuki", {data:[{canonical:"\u002Fn46-crawler\u002Fmb\u002Fyumi.wakatsuki"}],fetch:{},mutations:void 0});

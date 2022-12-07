@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/ami.noujo", {data:[{canonical:"\u002Fn46-crawler\u002Fmb\u002Fami.noujo"}],fetch:{},mutations:void 0});

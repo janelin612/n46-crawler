@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/rina.ikoma", {data:[{canonical:"\u002Fn46-crawler\u002Fmb\u002Frina.ikoma"}],fetch:{},mutations:void 0});

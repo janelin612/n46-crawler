@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a){return {staticAssetsBase:"\u002Fn46-crawler\u002F_nuxt\u002Fstatic\u002F1667390368",layout:"default",error:a,serverRendered:true,routePath:"\u002Fmb\u002Fmisa.eto",config:{_app:{basePath:"\u002Fn46-crawler\u002F",assetsPath:"\u002Fn46-crawler\u002F_nuxt\u002F",cdnURL:a}}}}(null));
