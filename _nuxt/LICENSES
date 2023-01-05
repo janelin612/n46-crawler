@@ -1,11 +1,3 @@
-/*!***************************************************
-* mark.js v8.11.1
-* https://markjs.io/
-* Copyright (c) 2014–2018, Julian Kühnel
-* Released under the MIT license https://git.io/vwTVl
-*****************************************************/
-
-
 /*!
  * vue-client-only v2.0.0
  * (c) 2019-present egoist <0x142857@gmail.com>
@@ -17,6 +9,14 @@
  * (c) 2018-present egoist <0x142857@gmail.com>
  * Released under the MIT License.
  */
+
+
+/*!***************************************************
+* mark.js v8.11.1
+* https://markjs.io/
+* Copyright (c) 2014–2018, Julian Kühnel
+* Released under the MIT license https://git.io/vwTVl
+*****************************************************/
 
 
 /*!

@@ -3,6 +3,13 @@
     "year": "2022",
     "member": [
       {
+        "name": "齋藤 飛鳥",
+        "name_hiragana": "さいとう あすか",
+        "image": "asuka.saito/img/images/46/83c/8edd4e0d72fd9bc2f6b7aed33ea56.jpg",
+        "link": "asuka.saito/",
+        "graduation_date": "2022/12/31"
+      },
+      {
         "name": "和田 まあや",
         "name_hiragana": "わだ まあや",
         "image": "maaya.wada/img/images/46/43b/92d716d1f682b982febf1b28c1cba.jpg",
@@ -21,28 +28,28 @@
         "name_hiragana": "やまざき れな",
         "image": "rena.yamazaki/img/images/46/171/f3147a7a7d1739643a2e6a2425033.jpg",
         "link": "rena.yamazaki/",
-        "graduation_date": "2022/7/17"
+        "graduation_date": "2022/07/17"
       },
       {
         "name": "北野 日奈子",
         "name_hiragana": "きたの ひなこ",
         "image": "hinako.kitano/img/images/46/8ab/c0cc585deb438b6a3b1be66893c12.jpg",
         "link": "hinako.kitano/",
-        "graduation_date": "2022/4/30"
+        "graduation_date": "2022/04/30"
       },
       {
         "name": "星野みなみ",
         "name_hiragana": "ほしの みなみ",
         "image": "minami.hoshino/img/www/member/img/hoshinominami_prof.jpg",
         "link": "minami.hoshino/",
-        "graduation_date": "2022/2/12"
+        "graduation_date": "2022/02/12"
       },
       {
         "name": "新内 眞衣",
         "name_hiragana": "しんうち まい",
         "image": "mai.shinuchi/img/www/member/img/shinuchimai_prof.jpg",
         "link": "mai.shinuchi/",
-        "graduation_date": "2022/2/10"
+        "graduation_date": "2022/02/10"
       }
     ]
   },
