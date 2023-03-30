@@ -127,6 +127,8 @@ let contentCrawler = new Crawler({
 
       $('main div.bd--edit img').each((index, value) => {
         value = $(value);
+        value.removeAttr('width');
+        value.removeAttr('height');
         let src = value.attr('src');
         if (src && src.match(/(^\/.+)|(^http.+)/)) {
           let localPath;
@@ -144,7 +146,7 @@ let contentCrawler = new Crawler({
       $('main div.bd--edit .bd--cmt').remove();
       $('main div.bd--edit .bd--aside').remove();
 
-      let title = $('meta[property="og:title"]').attr('content').trim();
+      let title = $('title').text().trim();
       let datetime = $('header div.bd--hd__sub p.bd--hd__date').text().trim();
       let content = $('main div.bd--edit').html();
       let url = new URL(res.request.uri.href);
