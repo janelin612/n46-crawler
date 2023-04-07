@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Crawler = require('crawler');
 
-let directory = './viewer/';
+const DIR = './viewer/';
 const IMAGE_FOLDER_NAME = 'img/';
 
 /**
@@ -14,13 +14,10 @@ module.exports = {
   /** 下載圖片，並回傳檔案路徑 */
   download(imgUrl) {
     let localPath = getLocalUrl(imgUrl);
-    if (!fs.existsSync(directory + localPath)) {
+    if (!fs.existsSync(DIR + localPath)) {
       downloader.queue(imgUrl);
     }
     return localPath;
-  },
-  setDirectory(dir) {
-    directory = dir;
   }
 };
 
@@ -39,7 +36,7 @@ let downloader = new Crawler({
       if (res.statusCode == 200) {
         let path = res.request.uri.href.replace(
           REGEX_HTTP_ORIGIN,
-          directory + IMAGE_FOLDER_NAME
+          DIR + IMAGE_FOLDER_NAME
         );
         let dir = path.match(/\S+\//)[0];
         if (!fs.existsSync(dir)) {

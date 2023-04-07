@@ -3,7 +3,7 @@ const crawler = require('./src/n46-crawler');
 var argv = require('minimist')(process.argv.slice(2));
 
 if (argv.a) {
-  crawler.download(argv.a, argv.save);
+  crawler.download(argv.a);
 } else {
   crawler.listMember();
 }

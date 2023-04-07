@@ -3,41 +3,22 @@ const Crawler = require('crawler');
 const ImageUtil = require('./image');
 
 const DOMAIN = 'https://www.nogizaka46.com';
-const MEMBER_PAGE = DOMAIN + '/s/n46/artist';
-const BLOG_PAGE = DOMAIN + '/s/n46/diary/MEMBER';
+const MEMBER_PAGE = `${DOMAIN}/s/n46/artist`;
+const BLOG_PAGE = `${DOMAIN}/s/n46/diary/MEMBER`;
 
-/** Demo Site 的目錄位置 */
-const PROJECT_FOLDER = '../../n46-crawler/mb';
 const RESULT_JSON_FILE = 'result.json';
 const MEMBER_INFO_FILE = 'member.json';
-
-let folder = './viewer/';
+const DIR = './viewer/';
 
 module.exports = {
   listMember() {
     memberListCrawler.queue(BLOG_PAGE);
   },
-  download(ct, save) {
-    if (save) {
-      createDirectory(ct);
-    }
-    ImageUtil.setDirectory(folder);
+  download(ct) {
     memberInfoCrawler.queue(`${MEMBER_PAGE}/${ct}`);
     pageCursor.queue(`${BLOG_PAGE}/list?ct=${ct}&page=0`);
   }
 };
-
-/**
- * 如果 Demo Site 存在，就不把資料存到預設的./viewer內
- */
-function createDirectory(memberPath) {
-  if (fs.existsSync(PROJECT_FOLDER)) {
-    folder = `${PROJECT_FOLDER}/${memberPath}/`;
-    if (!fs.existsSync(folder)) {
-      fs.mkdirSync(folder);
-    }
-  }
-}
 
 /**
  * 取得成員列表並輸出在終端機上
@@ -171,7 +152,7 @@ contentCrawler.on('drain', () => {
     let idB = b.url.match(regex)[1];
     return parseInt(idB) - parseInt(idA);
   });
-  fs.writeFileSync(folder + RESULT_JSON_FILE, JSON.stringify(result), 'utf-8');
+  fs.writeFileSync(DIR + RESULT_JSON_FILE, JSON.stringify(result), 'utf-8');
 });
 
 /**
@@ -213,11 +194,7 @@ let memberInfoCrawler = new Crawler({
         image: img,
         tag: []
       };
-      fs.writeFileSync(
-        folder + MEMBER_INFO_FILE,
-        JSON.stringify(output),
-        'utf8'
-      );
+      fs.writeFileSync(DIR + MEMBER_INFO_FILE, JSON.stringify(output), 'utf8');
     }
     done();
   }
