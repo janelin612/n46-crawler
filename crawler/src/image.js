@@ -34,10 +34,8 @@ let downloader = new Crawler({
       console.warn(error);
     } else {
       if (res.statusCode == 200) {
-        let path = res.request.uri.href.replace(
-          REGEX_HTTP_ORIGIN,
-          DIR + IMAGE_FOLDER_NAME
-        );
+        let path = decodeURIComponent(res.request.uri.href);
+        path = path.replace(REGEX_HTTP_ORIGIN, DIR + IMAGE_FOLDER_NAME);
         let dir = path.match(/\S+\//)[0];
         if (!fs.existsSync(dir)) {
           fs.mkdirSync(dir, { recursive: true });
