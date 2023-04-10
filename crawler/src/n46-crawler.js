@@ -174,7 +174,9 @@ let memberInfoCrawler = new Crawler({
 
       //照片
       let img = $('main div.md--hd__fig>div').data('src');
-      img = ImageUtil.download(DOMAIN + img);
+      if (img) {
+        img = ImageUtil.download(DOMAIN + img);
+      }
 
       //table
       let introList = [];
