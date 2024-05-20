@@ -1,13 +1,39 @@
 [
   {
+    "year": "2024",
+    "member": [
+      {
+        "name": "山下 美月",
+        "name_hiragana": "やました みづき",
+        "image": "mizuki.yamashita/img/images/46/604/28d731b5afd6015abc449c5016563.jpg",
+        "link": "mizuki.yamashita/",
+        "graduation_date": "2024/05/12"
+      }
+    ]
+  },
+  {
     "year": "2023",
     "member": [
       {
-        "name": "秋元 真夏",
-        "name_hiragana": "あきもと まなつ",
-        "image": "manatsu.akimoto/img/images/46/dd5/1f1454110705ecb16fc882d3e63ea.jpg",
-        "link": "manatsu.akimoto/",
-        "graduation_date": "2023/02/26"
+        "name": "早川 聖来",
+        "name_hiragana": "はやかわ せいら",
+        "image": "seira.hayakawa/img/images/46/fdf/8aae16cae57263bf2121ae2942de0.jpg",
+        "link": "seira.hayakawa/",
+        "graduation_date": "2023/08/24"
+      },
+      {
+        "name": "北川 悠理",
+        "name_hiragana": "きたがわ ゆり",
+        "image": "yuri.kitagawa/img/images/46/15f/c02de720b14c65fc67f822178eb7b.jpg",
+        "link": "yuri.kitagawa/",
+        "graduation_date": "2023/06/30"
+      },
+      {
+        "name": "研究生",
+        "name_hiragana": "研究生",
+        "image": "40006/img/files/46/assets/img/blog/none.png",
+        "link": "40006/",
+        "graduation_date": "2023/03/28"
       },
       {
         "name": "鈴木 絢音",
@@ -17,11 +43,11 @@
         "graduation_date": "2023/03/28"
       },
       {
-        "name": "研究生",
-        "name_hiragana": "研究生",
-        "image": "40006/img/files/46/assets/img/blog/none.png",
-        "link": "40006/",
-        "graduation_date": "2023/03/28"
+        "name": "秋元 真夏",
+        "name_hiragana": "あきもと まなつ",
+        "image": "manatsu.akimoto/img/images/46/dd5/1f1454110705ecb16fc882d3e63ea.jpg",
+        "link": "manatsu.akimoto/",
+        "graduation_date": "2023/02/26"
       }
     ]
   },
